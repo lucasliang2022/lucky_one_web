@@ -1,0 +1,47 @@
+{
+  "navTop": {
+    "credit": "Two–Sided Play",
+    "official": "Official Play",
+    "history": "Draw History"
+  },
+  "methodShow": {
+    "tips1": "You have selected",
+    "tips2": "bets",
+    "tips3": "Total",
+    "tips4": "Yuan",
+    "tips5": "Balance"
+  },
+  "button": {
+    "addToCart": "Add to Cart",
+    "trace": "Chase",
+    "submit": "Place Bet Now"
+  },
+  "navBottom": {
+    "orderHistory": "Current Issue Orders",
+    "taskPlan": "Chase Plan"
+  },
+  "bet": {
+    "dialog": {
+      "label": {
+        "title": "Confirm Betslip",
+        "chooseAll": "Select All",
+        "method": "Betting Method",
+        "content": "Content",
+        "count": "Bets",
+        "times": "Multiplier",
+        "cost": "Amount",
+        "confirm": "Confirm"
+      },
+      "tips": {
+        "total_1": "Total",
+        "total_2": "groups",
+        "total_3": "Total Amount",
+        "confirm": "Please confirm at least one bet"
+      },
+      "button": {
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+      }
+    }
+  }
+}

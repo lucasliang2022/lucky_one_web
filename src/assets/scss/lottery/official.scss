@@ -1,0 +1,195 @@
+.menu-container {
+  .main-menu {
+    padding: 0 !important;
+  }
+  .el-tabs__nav-scroll {
+    .el-tabs__nav {
+      float: right !important;
+    }
+  }
+
+  .el-tabs__content {
+    padding: 0 !important;
+  }
+
+  .el-tabs--border-card {
+    border: none !important;
+  }
+}
+.method-container {
+  .method-menu {
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: var(--color-gray-3);
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    .method-category {
+      .el-tabs__nav-wrap {
+        padding: 0 55px 0 15px !important;
+        display: flex;
+        align-items: center;
+        .el-tabs__nav-scroll {
+          padding: 0 20px 0 0 !important;
+        }
+        .el-tabs__header {
+          padding: 5px 0 0 0 !important;
+          margin-bottom: 0;
+        }
+        .el-tabs__item {
+          padding: 0 15px !important;
+        }
+        .el-tabs__nav-prev {
+          right: 23px !important;
+          left: unset !important;
+          width: 19px !important;
+          background-color: #d0e7ff !important;
+          line-height: 28px !important;
+          height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px;
+        }
+        .el-tabs__nav-next {
+          right: 2px !important;
+          width: 19px !important;
+          background-color: #d0e7ff !important;
+          line-height: 28px !important;
+          height: 28px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-top-right-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+        .is-disabled {
+          background-color: #f5f5f5 !important;
+        }
+      }
+
+    }
+    .method-group {
+      position: relative;
+      font-size: 12px;
+      font-weight: 400;
+      background-color: #eff4ff;
+      padding: 12px 0 8px 0;
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+      gap: 9px;
+      .method-group-item {
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        .group-title {
+          font-weight: 600;
+          color: #000;
+          margin-right: 10px;
+          white-space: nowrap;
+        }
+        .group-method-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          .group-method-item {
+            cursor: pointer;
+            margin-right: 8px;
+            padding: 1px 6px;
+            border-radius: 4px;
+            border: 1px solid #dee3e8;
+            &.active {
+              background-blend-mode: soft-light;
+              font-weight: 500;
+              color: #179dff;
+              background-color: #d0e7ff;
+              border: 1px solid #409eff;
+              animation: methodClick 0.3s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+  .method-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #FFFFFF;
+    .display-ball {
+      padding: 0.75rem;
+    }
+    .display-options {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 1.15rem;
+      align-items: center;
+      .method-middle-right {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+      }
+    }
+
+    .display-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 1.15rem;
+      align-items: center;
+      margin-bottom: 10px;
+      .tips {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        line-height: 1;
+        .tip-count,
+        .tip-amount,
+        .tip-balance {
+          margin: 0 2px;
+          color: #e02020;
+        }
+        span b {
+          font-weight: 700;
+          font-size: 14px;
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}
+.animated {
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+.zoomIn {
+  animation-name: zoomIn;
+  animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 更平滑的曲线 */
+  -webkit-animation-name: zoomIn;
+  -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(.3,.3,.3)
+  }
+
+  50% {
+    opacity: 1
+  }
+}
+@keyframes methodClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

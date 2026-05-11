@@ -1,0 +1,182 @@
+$red-color: #e53935;
+$blue-color: #1e88e5;
+$green-color: #43a047;
+$selected-bg: #d6edff;
+$selected-border: #55b7ff;
+$default-border: #e1e6ea;
+$price-color: #179dff;
+$hot-color: #ff8989;
+$cold-color: #21cafe;
+$gray-text: #999;
+
+.ball-small {
+  width: 24px;
+  height: 24px;
+  line-height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  background: #fff;
+  box-sizing: border-box;
+  border: 1px solid;
+}
+
+.ball-large {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: all 0.2s ease-in-out;
+}
+
+.red-wave {
+  color: $red-color;
+}
+
+.blue-wave {
+  color: $blue-color;
+}
+
+.green-wave {
+  color: $green-color;
+}
+
+.ball-red {
+  color: $red-color;
+  border-color: #ef9a9a !important;
+}
+
+.ball-blue {
+  color: $blue-color;
+  border-color: #90caf9 !important;
+}
+
+.ball-green {
+  color: $green-color;
+  border-color: #a5d6a7 !important;
+}
+
+.ball-item.selected {
+  background: #d6edff !important;
+  border: 1px solid #55b7ff;
+  box-shadow: 0 0 6px 2px rgba(64, 158, 255, 0.6);
+}
+
+.ball-item.ball-red.selected {
+  border-color: red;
+  background-color: #ffebee;
+  box-shadow: 0 0 2px 2px $red-color;
+}
+
+.ball-item.ball-blue.selected {
+  background-color: #e3f2fd;
+  border-color: blue;
+  box-shadow: 0 0 2px 2px $blue-color;
+}
+
+.ball-item.ball-green.selected {
+  background-color: #e8f5e9;
+  border-color: green;
+  box-shadow: 0 0 4px 2px $green-color;
+}
+
+.ball-circle {
+  border-radius: 50%;
+}
+
+.ball-rectangle {
+  border-radius: 6px;
+}
+
+.animated {
+  animation: zoomIn 0.2s ease-in-out;
+}
+
+.show-chm {
+  font-family: DINAlternate, sans-serif;
+  color: $gray-text;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+  display: flex;
+  gap: 2px;
+
+  .chm {
+    display: inline-block;
+  }
+
+  .hot {
+    color: $hot-color;
+  }
+
+  .cold {
+    color: $cold-color;
+  }
+
+  .max-omission {
+    color: $hot-color;
+  }
+
+  .min-omission {
+    color: $cold-color;
+  }
+
+  span:nth-child(2):before {
+    content: "|";
+    color: #c9c9c9;
+    margin: 0 2px;
+  }
+}
+
+.show-tips {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  background: none;
+  color: #050505;
+
+  .icon-sd {
+    font-size: 13px;
+    color: #1c9eff;
+  }
+}
+
+.ball-circle .show-chm {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+.ball-rectangle .show-chm {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+}
+
+.show-price {
+  font-size: 12px;
+  line-height: 1.4;
+  color: $price-color;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

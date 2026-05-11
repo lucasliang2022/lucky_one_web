@@ -1,0 +1,23 @@
+{
+  "lineTest": "Line Check",
+  "memberBenefits": "Member Points Benefits",
+  "agentJoin": "Agent Partnership",
+  "rmbBalance": "RMB Balance",
+  "usdtBalance": "USDT Balance",
+  "platformBalance": "Platform Balance",
+  "recharge": "Recharge",
+  "rmbRecharge": "RMB Recharge",
+  "usdtRecharge": "USDT Recharge",
+  "withdraw": "Withdraw",
+  "rmbWithdraw": "RMB Withdraw",
+  "usdtWithdraw": "USDT Withdraw",
+  "balanceTransfer": "Balance Transfer",
+  "welcome": "Welcome",
+  "myAccount": "My Account",
+  "messages": "Messages",
+  "gameRecords": "Game Records",
+  "logout": "Logout",
+  "login": "Login",
+  "register": "Register",
+  "freePlay": "Free Play"
+}

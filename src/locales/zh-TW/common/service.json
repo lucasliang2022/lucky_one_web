@@ -1,0 +1,12 @@
+{
+  "api": {
+    "network": "網路錯誤，請稍後再試",
+    "loginExpired": "登入已過期，請重新登入",
+    "forbidden": "您沒有權限訪問",
+    "serverError": "伺服器錯誤，請稍後再試",
+    "unknownError": "未知錯誤"
+  },
+  "lottery": {
+
+  }
+}

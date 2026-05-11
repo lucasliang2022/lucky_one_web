@@ -1,0 +1,12 @@
+{
+  "api": {
+    "network": "Network error, please try again later.",
+    "loginExpired": "Login has expired. Please log in again.",
+    "forbidden": "You do not have permission.",
+    "serverError": "Server error, please try again later.",
+    "unknownError": "Unknown error"
+  },
+  "lottery": {
+
+  }
+}

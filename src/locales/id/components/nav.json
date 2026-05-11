@@ -1,0 +1,23 @@
+{
+  "lineTest": "线路检测",
+  "memberBenefits": "会员积分权益",
+  "agentJoin": "代理加盟",
+  "rmbBalance": "RMB余额",
+  "usdtBalance": "USDT余额",
+  "platformBalance": "平台余额",
+  "recharge": "充值",
+  "rmbRecharge": "RMB充值",
+  "usdtRecharge": "USDT充值",
+  "withdraw": "取款",
+  "rmbWithdraw": "RMB取款",
+  "usdtWithdraw": "USDT取款",
+  "balanceTransfer": "额度转换",
+  "welcome": "欢迎您",
+  "myAccount": "我的账户",
+  "messages": "站内消息",
+  "gameRecords": "游戏记录",
+  "logout": "退出登陆",
+  "login": "登陆",
+  "register": "注册",
+  "freePlay": "免费试玩"
+}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@lottery/*": ["src/lottery/*"]
+    },
+    "types": ["vite/client"]
+  },
+  "include": ["src/**/*", "src/**/*.vue","src/**/*.d.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "登陆",
+  "username": "用户名",
+  "password": "密码",
+  "submit": "登陆",
+  "register": "注册",
+  "enterUsername": "Please enter your username",
+  "enterPassword": "Please enter your password",
+  "failed": "Login failed. Please check your credentials."
+}

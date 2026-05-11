@@ -1,0 +1,54 @@
+.l-container[data-v-44069529] {
+    width: 100%;
+    background-color: var(--color-gray-4);
+    padding-top: .625rem
+}
+
+.l-wrapper[data-v-44069529] {
+    border-radius: 10px;
+    width: 100%;
+    min-width: var(--width-small-container);
+    max-width: var(--width-container);
+    margin: auto;
+    padding-left: 80px;
+    padding-right: 80px
+}
+
+.account[data-v-44069529] {
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    display: flex;
+    min-height: 100vh
+}
+
+.account__aside[data-v-44069529] {
+    padding: 10px 0 10px 10px;
+    border-radius: 10px 0 0 10px;
+    width: 200px;
+    flex-shrink: 0;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    border-right-width: 1px;
+    border-style: solid;
+    border-color: rgb(170 170 170 / var(--tw-border-opacity));
+    --tw-border-opacity: .1
+}
+
+.account__main[data-v-44069529] {
+    min-height: 820px;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+    box-sizing: border-box;
+    flex: 1 1 0%;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity))
+}
+
+.clear-style[data-v-44069529] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding: 0;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),var(--tw-ring-shadow, 0 0 #0000),var(--tw-shadow)
+}

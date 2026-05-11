@@ -1,0 +1,26 @@
+{
+  "bet": {
+    "dialog": {
+      "label": {
+        "title": "确认注单",
+        "chooseAll": "全选",
+        "method": "玩法",
+        "content": "内容",
+        "count": "注数",
+        "times": "倍数",
+        "cost": "金额",
+        "confirm": "确认"
+      },
+      "tips": {
+        "total_1": "",
+        "total_2": "",
+        "total_3": "",
+        "confirm": "请至少确认一项投注"
+      },
+      "buttons": {
+        "cancel": "取消",
+        "confirm": "确认"
+      }
+    }
+  }
+}
