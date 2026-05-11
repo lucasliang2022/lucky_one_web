@@ -35,21 +35,24 @@ export const useCommonStore = defineStore('common', () => {
     const isLanguageSupported = (code: string) => languages.value.some(l => l.code === code);
     const isCurrencySupported = (code: string) => currencies.value.some(c => c.code === code);
     const isTimezoneSupported = (code: string) => timezones.value.some(t => t.code === code);
+    const isCountrySupported = (code: string) => countries.value.some(c => c.code === code);
 
-    /** 把分位数（minor units，整数）按币种格式化成 "¥1,234.56" */
-    const formatMoney = (minorAmount: number | string, currencyCode: string): string => {
+    const formatMoney = (amount: number | string, currencyCode: string): string => {
         const cur = getCurrency(currencyCode);
-        if (!cur) return String(minorAmount);
+        if (!cur) {
+            const n = typeof amount === 'string' ? parseFloat(amount) : amount;
+            return n.toFixed(2);
+        }
         const decimals = cur.decimal_places ?? 2;
-        const num = typeof minorAmount === 'string' ? parseFloat(minorAmount) : minorAmount;
-        const major = num / Math.pow(10, decimals);
+        const num = typeof amount === 'string' ? parseFloat(amount) : amount;
+
         try {
             return cur.symbol + new Intl.NumberFormat(undefined, {
                 minimumFractionDigits: decimals,
                 maximumFractionDigits: decimals,
-            }).format(major);
+            }).format(num);
         } catch {
-            return cur.symbol + major.toFixed(decimals);
+            return cur.symbol + num.toFixed(decimals);
         }
     };
 
@@ -90,7 +93,7 @@ export const useCommonStore = defineStore('common', () => {
         dataVersion, partner, languages, currencies, countries, timezones,
         betConfig, lotteryList, thirdGameList, featureFlags, isLoaded,
         getCurrency, getLanguage, getCountry, getTimezone, getBetConfig,
-        isLanguageSupported, isCurrencySupported, isTimezoneSupported,
+        isLanguageSupported, isCurrencySupported, isTimezoneSupported,isCountrySupported,
         formatMoney,
         initMainConfig,
     };

@@ -23,6 +23,11 @@ export interface ReqRegister {
     password: string;
     password_confirm: string;
     captcha?: string;
+
+    language?: string;
+    currency?: string;
+    timezone?: string;
+    country?: string;
 }
 
 export interface RespRegister {

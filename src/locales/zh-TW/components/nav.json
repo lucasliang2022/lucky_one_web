@@ -1,23 +1,32 @@
 {
-  "lineTest": "线路检测",
-  "memberBenefits": "会员积分权益",
+  "login": "登入",
+  "register": "註冊",
+  "logout": "登出",
+  "welcome": "歡迎您",
+
+  "myAccount": "我的帳戶",
+  "messages": "站內訊息",
+  "gameRecords": "投注記錄",
+
+  "balance": "餘額",
+  "platformBalance": "平台主錢包",
+  "thirdGameBalance": "三方遊戲餘額",
+  "balanceTransfer": "餘額轉換",
+  "recharge": "儲值",
+  "withdraw": "提領",
+
+  "lineTest": "線路測試",
   "agentJoin": "代理加盟",
-  "rmbBalance": "RMB余额",
-  "usdtBalance": "USDT余额",
-  "platformBalance": "平台余额",
-  "recharge": "充值",
-  "rmbRecharge": "RMB充值",
-  "usdtRecharge": "USDT充值",
-  "withdraw": "取款",
-  "rmbWithdraw": "RMB取款",
-  "usdtWithdraw": "USDT取款",
-  "balanceTransfer": "额度转换",
-  "welcome": "欢迎您",
-  "myAccount": "我的账户",
-  "messages": "站内消息",
-  "gameRecords": "游戏记录",
-  "logout": "退出登陆",
-  "login": "登陆",
-  "register": "注册",
-  "freePlay": "免费试玩"
+  "memberBenefits": "會員特權",
+  "freePlay": "免費試玩",
+
+  "language": "語言",
+  "country": "地區",
+  "currency": "貨幣",
+  "timezone": "時區",
+
+  "default": "預設",
+  "current": "目前",
+  "noCurrencies": "暫無可用貨幣",
+  "switchFailed": "切換失敗，請重試"
 }

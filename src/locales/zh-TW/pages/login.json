@@ -1,10 +1,30 @@
 {
-  "title": "登陆",
-  "username": "用户名",
-  "password": "密码",
-  "submit": "登陆",
-  "register": "注册",
-  "enterUsername": "Please enter your username",
-  "enterPassword": "Please enter your password",
-  "failed": "Login failed. Please check your credentials."
+  "title": "登入",
+  "register": "註冊",
+  "username": "使用者名稱",
+  "password": "密碼",
+  "confirmPassword": "確認密碼",
+  "captcha": "驗證碼",
+
+  "submit": "立即登入",
+  "submitting": "登入中…",
+
+  "enterUsername": "請輸入使用者名稱",
+  "enterPassword": "請輸入密碼",
+  "enterPasswordConfirm": "請再次輸入密碼",
+  "enterCaptcha": "請輸入驗證碼",
+
+  "empty": "請填寫完整的使用者名稱和密碼",
+  "passwordMismatch": "兩次輸入的密碼不一致",
+  "captchaError": "驗證碼錯誤",
+  "failed": "登入失敗，請檢查帳號密碼",
+
+  "rememberMe": "記住我",
+  "forgotPassword": "忘記密碼？",
+  "noAccount": "還沒有帳號？",
+  "haveAccount": "已有帳號？",
+
+  "support": "線上客服",
+  "supportPending": "客服功能尚未開放",
+  "guestEntry": "訪客進入"
 }

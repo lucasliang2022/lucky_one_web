@@ -16,6 +16,7 @@ export interface PartnerConfig {
 export interface LanguageOption {
     code: SupportedLocale;
     label: string;
+    flag?: string;
     native_label: string;
 }
 

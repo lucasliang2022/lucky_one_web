@@ -4,6 +4,7 @@ export const STORAGE_KEYS = {
     LANGUAGE:      'lc_language',
     CURRENCY:      'lc_currency',
     TIMEZONE:      'lc_timezone',
+    COUNTRY:       'lc_country',
     USER_INFO:     'lc_user_info',
     DATA_VERSION:  'lc_data_version',
 } as const;

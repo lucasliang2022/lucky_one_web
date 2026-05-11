@@ -1,3 +1,6 @@
+import { polyfillCountryFlagEmojis } from 'country-flag-emoji-polyfill';
+polyfillCountryFlagEmojis('Twemoji Country Flags');
+
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import ElementPlus from 'element-plus';
@@ -19,10 +22,8 @@ import { useUserStore } from '@/stores/userStore';
 
     const app = createApp(App);
 
-    // 1) Pinia 必须先 use
     app.use(createPinia());
 
-    // 2) ★ 注入 auth + context hooks（让 axios 拦截器拿到 token / lang / currency / tz）
     const userStore = useUserStore();
 
     configureAuth({
@@ -42,12 +43,10 @@ import { useUserStore } from '@/stores/userStore';
         getTimezone: () => userStore.currentTimezone,
     });
 
-    // 3) 其它 plugins
     app.use(router);
     app.use(ElementPlus);
     app.use(i18n);
 
-    // 4) 全局错误
     app.config.globalProperties.$handleError = handleGlobalError;
 
     app.config.errorHandler = (err: unknown, instance: any, info: string) => {
