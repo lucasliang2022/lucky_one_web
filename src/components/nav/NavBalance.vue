@@ -9,7 +9,7 @@
       :hide-after="200"
   >
     <span class="balance-trigger">
-      <span class="cur-label">{{ currentCurrencyLabel }}：</span>
+      <span class="cur-label">{{ currentCurrencyLabel }}</span>
       <span class="balance-value">{{ currentBalanceFormatted }}</span>
       <el-icon class="arrow"><ArrowDown /></el-icon>
       <span class="fresh-icon" :class="{ rotating: refreshing }" @click.stop="onRefresh">
@@ -19,38 +19,34 @@
 
     <template #content>
       <div class="balance-panel">
-        <div class="panel-section">
-          <div class="section-title">
-            <span class="sd-icon icon-sd-wallet"></span>
-            <span>{{ t('components.nav.platformBalance') }}</span>
+        <div
+            v-for="cur in commonStore.currencies"
+            :key="cur.code"
+            class="balance-row"
+            :class="{ 'is-current': cur.code === userStore.currentCurrency }"
+            @click="onSelectCurrency(cur.code)"
+        >
+          <div class="row-main">
+            <span class="row-code">{{ codeOf(cur.code) }}</span>
+            <span class="row-name">{{ cur.label }}</span>
           </div>
-
-          <div
-              v-for="cur in commonStore.currencies"
-              :key="cur.code"
-              class="balance-row"
-              :class="{ 'is-current': cur.code === userStore.currentCurrency }"
-              @click="onSelectCurrency(cur.code)"
+          <div class="row-amount">
+            <span class="amount-symbol">{{ cur.symbol }}</span>
+            <span class="amount-number">{{ formatBalance(cur.code) }}</span>
+          </div>
+          <el-button
+              size="small"
+              text
+              type="primary"
+              class="row-recharge"
+              @click.stop="onRecharge(cur.code)"
           >
-            <div class="row-left">
-              <span class="dot"></span>
-              <span class="row-code">{{ codeOf(cur.code) }}</span>
-              <span class="row-name">{{ cur.label }}</span>
-              <span v-if="cur.code === userStore.currentCurrency" class="current-tag">
-                {{ t('components.nav.current') }}
-              </span>
-            </div>
-            <div class="row-right">
-              <span class="row-amount">{{ formatBalance(cur.code) }}</span>
-              <el-button size="small" link type="primary" @click.stop="onRecharge(cur.code)">
-                {{ t('components.nav.recharge') }}
-              </el-button>
-            </div>
-          </div>
+            {{ t('components.nav.recharge') }}
+          </el-button>
+        </div>
 
-          <div v-if="!commonStore.currencies.length" class="empty">
-            {{ t('components.nav.noCurrencies') }}
-          </div>
+        <div v-if="!commonStore.currencies.length" class="empty">
+          {{ t('components.nav.noCurrencies') }}
         </div>
       </div>
     </template>
@@ -58,7 +54,7 @@
 
   <!-- 单币种：只显示余额，无下拉 -->
   <span v-else class="balance-trigger no-dropdown">
-    <span class="cur-label">{{ currentCurrencyLabel }}：</span>
+    <span class="cur-label">{{ currentCurrencyLabel }}</span>
     <span class="balance-value">{{ currentBalanceFormatted }}</span>
     <span class="fresh-icon" :class="{ rotating: refreshing }" @click.stop="onRefresh">
       <span class="sd-icon icon-sd-fresh"></span>
@@ -96,7 +92,7 @@ const codeOf = (code: string): string => {
 
 const currentBalanceFormatted = computed(() => formatBalance(userStore.currentCurrency));
 
-/** 余额数字部分（按币种 decimal_places 截断，不带符号） */
+/** 余额数字（按币种 decimal_places 截断，不带符号） */
 const formatBalance = (currencyCode: string): string => {
   const wallet = userStore.balance[currencyCode];
   const cur = commonStore.getCurrency(currencyCode);
@@ -134,7 +130,7 @@ const onRefresh = async () => {
 
 const onRecharge = (currency: string) => {
   console.log('recharge', currency);
-  // TODO: 跳到充值页 / 打开充值弹窗
+  // TODO: 跳充值页 / 打开充值弹窗
 };
 </script>
 
@@ -142,13 +138,17 @@ const onRecharge = (currency: string) => {
 .balance-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   height: 30px;
   min-width: 160px;          /* ★ 防 CLS，预留宽度 */
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
+  padding: 0 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s;
 
+  &:hover:not(.no-dropdown) { background-color: rgba(50, 107, 199, 0.06); }
   &.no-dropdown { cursor: default; }
 }
 
@@ -163,18 +163,22 @@ const onRecharge = (currency: string) => {
   font-weight: 600;
   font-size: 14px;
   font-family: 'DINAlternate', -apple-system, monospace;
-  margin-right: 4px;
-  min-width: 70px;           /* ★ 数字部分至少 70px，防止 0.00 → 1,000.00 抖动 */
+  min-width: 70px;
   display: inline-block;
   text-align: left;
 }
 
-.arrow { font-size: 12px; color: #999; margin-right: 4px; }
+.arrow {
+  font-size: 12px;
+  color: #999;
+  transition: transform 0.2s;
+}
 
 .fresh-icon {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  margin-left: 2px;
 
   .sd-icon { font-size: 14px; color: #488ded; }
   &.rotating .sd-icon { animation: spin 0.8s linear infinite; }
@@ -187,68 +191,111 @@ const onRecharge = (currency: string) => {
 </style>
 
 <style lang="scss">
-/* popper 全局样式 —— 宽度按内容自适应 */
+/* popper 全局样式 */
 .nav-balance-popper {
   --el-popper-bg-color: #fff;
-  padding: 0 !important;
+
+  padding: 6px !important;
   width: max-content;
-  min-width: 300px;
-  max-width: 500px;
-  font-size: 12px;
+  min-width: 320px;
+  max-width: 480px;
+  font-size: 13px;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
 
-  .balance-panel { padding: 4px 0; }
-  .panel-section { padding: 8px 12px; }
-
-  .section-title {
+  .balance-panel {
     display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #666;
-    font-weight: 600;
-    padding: 4px 0;
-    white-space: nowrap;
-    .sd-icon { font-size: 14px; color: #488ded; }
+    flex-direction: column;
+    gap: 2px;
   }
 
+  /* —— 每一行 —— */
   .balance-row {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
     align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 6px 4px;
-    border-radius: 4px;
+    gap: 14px;
+    padding: 10px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    white-space: nowrap;
+    position: relative;
     transition: background-color 0.15s;
 
-    &:hover    { background-color: #f5f7fa; }
-    &.is-current { background-color: #f0f7ff; }
+    /* 左侧色条：默认透明，当前币种激活 */
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 8px;
+      width: 3px;
+      border-radius: 2px;
+      background-color: transparent;
+      transition: background-color 0.15s;
+    }
+
+    &:hover { background-color: #f5f7fa; }
+
+    &.is-current {
+      background-color: #f0f7ff;
+      &::before { background-color: #326BC7; }
+
+      .row-code   { color: #326BC7; }
+      .row-amount .amount-number { color: #326BC7; }
+    }
   }
 
-  .row-left  { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-  .row-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; }
+  /* —— 主信息：code + name —— */
+  .row-main {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
 
-  .dot       { width: 4px; height: 4px; border-radius: 2px; background-color: #488ded; flex-shrink: 0; }
-  .row-code  { font-weight: 600; color: #333; min-width: 38px; }
-  .row-name  { color: #999; font-size: 11px; }
+    .row-code {
+      font-weight: 700;
+      color: #333;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+    .row-name {
+      color: #999;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  /* —— 余额 —— */
   .row-amount {
-    font-weight: 600;
-    color: #e4393c;
-    text-align: right;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
     font-family: 'DINAlternate', -apple-system, monospace;
+    color: #333;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+
+    .amount-symbol { font-size: 12px; color: #999; }
+    .amount-number { font-size: 14px; transition: color 0.15s; }
   }
 
-  .current-tag {
-    display: inline-block;
-    margin-left: 4px;
-    padding: 0 4px;
-    border-radius: 2px;
-    font-size: 10px;
-    background-color: #326BC7;
-    color: #fff;
-    flex-shrink: 0;
+  /* —— 充值按钮 —— */
+  .row-recharge {
+    padding: 0 6px;
+    font-size: 12px;
+    opacity: 0.6;
+    transition: opacity 0.15s;
   }
+  .balance-row:hover .row-recharge { opacity: 1; }
 
-  .empty { padding: 12px; text-align: center; color: #999; }
+  /* —— 空状态 —— */
+  .empty {
+    padding: 20px;
+    text-align: center;
+    color: #999;
+  }
 }
 </style>

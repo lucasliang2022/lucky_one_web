@@ -1,5 +1,15 @@
 import type { SupportedLocale } from './i18n';
 
+export type FabButtonKey =
+    | 'support'    // 客服
+    | 'app'        // APP 下载
+    | 'recharge'   // 充值
+    | 'account'    // 我的账户
+    | 'tutorial'   // 教程
+    | 'sound'      // 声音开关
+    | 'promotion'  // 优惠（可选）
+    | 'agent';     // 代理（可选）
+
 export interface PartnerConfig {
     sign: string;
     title: string;
@@ -11,6 +21,7 @@ export interface PartnerConfig {
     default_timezone: string;
     support_url?: string;
     theme_color?: string;
+    fab_buttons: FabButtonKey[];
 }
 
 export interface LanguageOption {

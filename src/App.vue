@@ -4,6 +4,7 @@
       <Header />
       <div class="main-content">
         <router-view />
+        <FloatingActions v-if="commonStore.isLoaded" />
       </div>
     </div>
   </el-config-provider>
@@ -13,6 +14,7 @@
 import { computed, onMounted } from 'vue';
 import { ElConfigProvider } from 'element-plus';
 import Header from '@/components/Header.vue';
+import FloatingActions from '@/components/floating/FloatingActions.vue';
 import { useCommonStore } from '@/stores/commonStore';
 import { useUserStore } from '@/stores/userStore';
 
