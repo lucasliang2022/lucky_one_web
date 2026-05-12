@@ -57,7 +57,7 @@ instance.interceptors.request.use(
 
         const timezone = contextHooks?.getTimezone() ?? '';
         if (timezone) config.headers['X-Timezone'] = timezone;
-
+        config.headers['X-Device']        = 'web';
         return config;
     },
     (error: AxiosError) => Promise.reject(error),

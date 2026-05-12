@@ -3,6 +3,7 @@
   "register": "注册",
   "logout": "退出登录",
   "welcome": "欢迎您",
+  "testUser": "测试",
 
   "myAccount": "我的账户",
   "myProfile": "个人资料",
@@ -11,6 +12,9 @@
   "myFavorites": "我的收藏",
   "gameRecords": "投注记录",
   "transactionHistory": "交易记录",
+  "choosePlatform": "选择平台",
+  "enterGame": "进入游戏",
+  "noPlatform": "暂无可用平台",
 
   "balance": "余额",
   "totalBalance": "总余额",
@@ -58,5 +62,20 @@
 
   "vipLevel": "VIP 等级",
   "userId": "用户 ID",
-  "lastLogin": "上次登录"
+  "lastLogin": "上次登录",
+
+  "menuLottery": "彩票游戏",
+  "menuChess":   "棋牌游戏",
+  "menuSport":   "体育游戏",
+  "menuLive":    "真人视讯",
+  "menuSlot":    "电子游戏",
+  "menuFishing": "捕鱼游戏",
+  "menuEsport":  "电竞游戏",
+  "menuLhc":     "六合彩",
+  "menuPk10":    "赛车",
+  "menuSsc":     "时时彩",
+  "menuKs":      "快三",
+  "menuPromo":   "优惠活动",
+  "menuSupport": "在线客服",
+  "menuApp":     "手机 APP"
 }

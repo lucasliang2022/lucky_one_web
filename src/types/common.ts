@@ -49,6 +49,13 @@ export interface BetConfigPerCurrency {
     amount_options: Array<{ label: string; value: number; order: number }>;
 }
 
+export interface ThirdGameItem {
+    sign: string;
+    account_sign: string;
+    title: string;
+    logo: string | null;
+}
+
 export interface SystemConfig {
     data_version: string;
     partner: PartnerConfig;
@@ -58,7 +65,7 @@ export interface SystemConfig {
     timezones: TimezoneOption[];
     bet_config: { per_currency: Record<string, BetConfigPerCurrency> };
     lottery_list: Record<string, unknown>;
-    third_game_list: Record<string, unknown>;
+    third_game_list: Record<string, ThirdGameItem[]>;
     feature_flags?: Record<string, boolean>;
 }
 

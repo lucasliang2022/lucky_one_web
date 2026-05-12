@@ -9,7 +9,7 @@
       :hide-after="200"
   >
     <span class="balance-trigger">
-      <span class="cur-code">{{ currentCurrencyCode }}：</span>
+      <span class="cur-label">{{ currentCurrencyLabel }}：</span>
       <span class="balance-value">{{ currentBalanceFormatted }}</span>
       <el-icon class="arrow"><ArrowDown /></el-icon>
       <span class="fresh-icon" :class="{ rotating: refreshing }" @click.stop="onRefresh">
@@ -35,7 +35,7 @@
             <div class="row-left">
               <span class="dot"></span>
               <span class="row-code">{{ codeOf(cur.code) }}</span>
-              <span class="cur-label">{{ cur.label }}</span>
+              <span class="row-name">{{ cur.label }}</span>
               <span v-if="cur.code === userStore.currentCurrency" class="current-tag">
                 {{ t('components.nav.current') }}
               </span>
@@ -58,7 +58,7 @@
 
   <!-- 单币种：只显示余额，无下拉 -->
   <span v-else class="balance-trigger no-dropdown">
-    <span class="cur-code">{{ currentCurrencyCode }}：</span>
+    <span class="cur-label">{{ currentCurrencyLabel }}：</span>
     <span class="balance-value">{{ currentBalanceFormatted }}</span>
     <span class="fresh-icon" :class="{ rotating: refreshing }" @click.stop="onRefresh">
       <span class="sd-icon icon-sd-fresh"></span>
@@ -82,17 +82,21 @@ const refreshing = ref(false);
 
 const hasMultipleCurrencies = computed(() => commonStore.currencies.length >= 2);
 
-/** 币种代码大写显示，cny 习惯叫 RMB */
+/** 顶部 trigger 用本地化标签（人民币 / Chinese Yuan / หยวนจีน...） */
+const currentCurrencyLabel = computed(() => {
+  const cur = commonStore.getCurrency(userStore.currentCurrency);
+  return cur?.label || codeOf(userStore.currentCurrency);
+});
+
+/** 下拉里每行用大写代码（RMB / USDT / PHP），更紧凑 */
 const codeOf = (code: string): string => {
   const aliases: Record<string, string> = { cny: 'RMB' };
   return aliases[code] ?? (code || '').toUpperCase();
 };
 
-const currentCurrencyCode = computed(() => codeOf(userStore.currentCurrency));
-
 const currentBalanceFormatted = computed(() => formatBalance(userStore.currentCurrency));
 
-/** 余额数字部分，不带币种符号（符号在 cur-code 已经显示了） */
+/** 余额数字部分（按币种 decimal_places 截断，不带符号） */
 const formatBalance = (currencyCode: string): string => {
   const wallet = userStore.balance[currencyCode];
   const cur = commonStore.getCurrency(currencyCode);
@@ -140,6 +144,7 @@ const onRecharge = (currency: string) => {
   align-items: center;
   gap: 4px;
   height: 30px;
+  min-width: 160px;          /* ★ 防 CLS，预留宽度 */
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
@@ -147,17 +152,21 @@ const onRecharge = (currency: string) => {
   &.no-dropdown { cursor: default; }
 }
 
-.cur-code {
+.cur-label {
   color: #666;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .balance-value {
   color: #e4393c;
   font-weight: 600;
+  font-size: 14px;
   font-family: 'DINAlternate', -apple-system, monospace;
   margin-right: 4px;
+  min-width: 70px;           /* ★ 数字部分至少 70px，防止 0.00 → 1,000.00 抖动 */
+  display: inline-block;
+  text-align: left;
 }
 
 .arrow { font-size: 12px; color: #999; margin-right: 4px; }
@@ -178,12 +187,12 @@ const onRecharge = (currency: string) => {
 </style>
 
 <style lang="scss">
-
+/* popper 全局样式 —— 宽度按内容自适应 */
 .nav-balance-popper {
   --el-popper-bg-color: #fff;
   padding: 0 !important;
   width: max-content;
-  min-width: 280px;
+  min-width: 300px;
   max-width: 500px;
   font-size: 12px;
 
@@ -205,40 +214,28 @@ const onRecharge = (currency: string) => {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 16px;                 /* ★ 左右两块明确间距 */
+    gap: 16px;
     padding: 6px 4px;
     border-radius: 4px;
     cursor: pointer;
+    white-space: nowrap;
     transition: background-color 0.15s;
-    white-space: nowrap;       /* ★ 整行不换行 */
 
-    &:hover { background-color: #f5f7fa; }
+    &:hover    { background-color: #f5f7fa; }
     &.is-current { background-color: #f0f7ff; }
   }
 
-  .row-left {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;            /* ★ 不挤压，让 right 自适应 */
-  }
-  .row-right {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    margin-left: auto;         /* 右对齐 */
-  }
+  .row-left  { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+  .row-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; }
 
   .dot       { width: 4px; height: 4px; border-radius: 2px; background-color: #488ded; flex-shrink: 0; }
   .row-code  { font-weight: 600; color: #333; min-width: 38px; }
-  .cur-label { color: #999; font-size: 11px; }
+  .row-name  { color: #999; font-size: 11px; }
   .row-amount {
     font-weight: 600;
     color: #e4393c;
     text-align: right;
     font-family: 'DINAlternate', -apple-system, monospace;
-    /* ★ 去掉 min-width，让数字自己撑开 */
   }
 
   .current-tag {
@@ -252,10 +249,6 @@ const onRecharge = (currency: string) => {
     flex-shrink: 0;
   }
 
-  .empty {
-    padding: 12px;
-    text-align: center;
-    color: #999;
-  }
+  .empty { padding: 12px; text-align: center; color: #999; }
 }
 </style>

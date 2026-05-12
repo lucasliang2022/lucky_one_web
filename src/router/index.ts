@@ -22,7 +22,36 @@ const routes = [
     { path: '/lottery/sd/:sign', component: Sd, name: 'lotterySd' },
     { path: '/lottery/kl8/:sign', component: Kl8, name: 'lotteryKl8' },
     { path: '/account/:page', component: Account, name: 'account' },
-
+    {
+        path: '/game',
+        component: () => import('@/pages/game/home.vue'),
+        children: [
+            {
+                path: 'sport/fb',
+                name: 'sport-fb',
+                component: () => import('@/pages/game/sport/fb.vue'),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: 'sport/im',
+                name: 'sport-im',
+                component: () => import('@/pages/game/sport/im.vue'),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: 'sport/db',
+                name: 'sport-db',
+                component: () => import('@/pages/game/sport/db.vue'),
+                meta: {requiresAuth: true}
+            },
+            {
+                path: 'sport/shaba',
+                name: 'sport-shaba',
+                component: () => import('@/pages/game/sport/shaba.vue'),
+                meta: {requiresAuth: true}
+            },
+        ]
+    }
 ];
 
 const router = createRouter({

@@ -4,6 +4,7 @@
     <NavTimezone />
     <a class="nav-link" href="/line-test">{{ t('components.nav.lineTest') }}</a>
     <NavBalance />
+
     <div class="user-menu">
       <el-menu
           :default-active="'0'"
@@ -14,8 +15,22 @@
       >
         <el-sub-menu index="0">
           <template #title>
-            <span class="username-wrapper">{{ t('components.nav.welcome') }}，</span>{{ userStore.username }}
+            <span class="user-block">
+              <span class="welcome">{{ t('components.nav.welcome') }}</span>
+              <span class="comma">，</span>
+              <span class="display-name">{{ userStore.username }}</span>
+              <el-tag
+                  v-if="userStore.isTest"
+                  type="warning"
+                  size="small"
+                  effect="plain"
+                  class="test-tag"
+              >
+                {{ t('components.nav.testUser') }}
+              </el-tag>
+            </span>
           </template>
+
           <el-menu-item index="0-1" @click="navToAccount('overview')">
             <span class="sd-icon icon-sd-menu"></span>{{ t('components.nav.myAccount') }}
           </el-menu-item>
@@ -65,8 +80,8 @@ const navToAccount = (page: string) => {
   gap: 0;
 }
 
-/* ★ 关键：非首项前面用 ::before 画分隔符
-   组件 v-if 整体不渲染时不在 DOM 里，::before 选不到，分隔符自动消失 */
+/* 非首项前面用 ::before 画分隔符
+   组件 v-if 不渲染时 DOM 里没该节点，::before 选不到，自动消失 */
 .nav-bar-right > * + * {
   position: relative;
   margin-left: 24px;
@@ -80,7 +95,7 @@ const navToAccount = (page: string) => {
   width: 1px;
   height: 14px;
   background-color: #e0e0e0;
-  pointer-events: none;       /* 防止鼠标移到分隔符上触发下拉 */
+  pointer-events: none;
 }
 
 .nav-link {
@@ -102,30 +117,58 @@ const navToAccount = (page: string) => {
   display: inline-flex;
   align-items: center;
   height: 30px;
+  min-width: 140px;          /* ★ 防 CLS，留好用户名空间 */
+}
+
+/* ★ 用户名块完整样式 */
+.user-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+  font-size: 13px;
+}
+.welcome      { color: #666; }
+.comma        { color: #666; margin: 0 2px; }
+.display-name { color: #e4393c; font-weight: 600; max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
+.test-tag {
+  margin-left: 6px;
+  height: 18px;
+  line-height: 16px;
+  padding: 0 6px;
+  font-size: 11px;
+  --el-tag-bg-color: #fff7e6;
+  --el-tag-border-color: #ffd591;
+  --el-tag-text-color: #d46b08;
 }
 
 .sd-icon { margin-right: 5px; font-size: 16px; color: #326BC7; }
 
-/* el-menu 默认样式覆盖 */
+/* el-menu 默认样式覆盖（让顶部菜单融入背景） */
 :deep(.el-menu--horizontal) {
   border-bottom: none;
   background: transparent;
   --el-menu-bg-color: transparent;
   --el-menu-hover-bg-color: transparent;
+  height: 30px;
 }
 
-:deep(.el-sub-menu__title) {
+:deep(.el-menu--horizontal > .el-sub-menu__title) {
   line-height: 30px !important;
   height: 30px !important;
-  padding: 0 5px !important;
+  padding: 0 6px !important;
   border-bottom: none !important;
-  font-size: 13px;
-  color: #666 !important;
-
-  &:hover { color: #e4393c !important; }
 }
 
-.el-menu-user .el-menu {
+/* 头部用户菜单悬停效果 */
+:deep(.el-sub-menu__title:hover) {
+  background-color: transparent !important;
+
+  .display-name { color: #c81f24; }
+}
+
+/* 下拉菜单 z-index */
+.el-menu-user {
   z-index: 99999;
   min-width: 160px !important;
 }

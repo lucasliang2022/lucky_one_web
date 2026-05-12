@@ -56,6 +56,7 @@ const commonStore = useCommonStore();
   text-decoration: none;
   white-space: nowrap;
   font-size: 13px;
+  min-width: 56px;
 
   &:hover {
     color: #e4393c;
