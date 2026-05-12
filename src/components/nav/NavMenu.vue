@@ -9,7 +9,6 @@
 
       <ul class="nav-menu-list flex items-center height-100">
 
-        <!-- ==================== 彩票游戏 ==================== -->
         <li class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -105,7 +104,6 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 棋牌游戏 ==================== -->
         <li v-if="chessGames.length" class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -140,7 +138,6 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 体育游戏 ==================== -->
         <li v-if="sportGames.length" class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -175,7 +172,6 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 真人视讯 ==================== -->
         <li v-if="liveGames.length" class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -210,7 +206,6 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 电子游戏（slot）==================== -->
         <li v-if="slotGames.length" class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -245,7 +240,6 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 捕鱼游戏 ==================== -->
         <li v-if="fishingGames.length" class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -280,7 +274,6 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 电竞 ==================== -->
         <li v-if="esportGames.length" class="flex items-center height-100">
           <el-dropdown
               placement="bottom"
@@ -315,12 +308,10 @@
           </el-dropdown>
         </li>
 
-        <!-- ==================== 分隔线 ==================== -->
         <li class="flex items-center height-100">
           <el-divider direction="vertical" />
         </li>
 
-        <!-- ==================== 静态入口 ==================== -->
         <li class="flex items-center height-100">
           <span class="nav-menu-item flex items-center height-100 static-item" @click="goPromo">
             {{ t('components.nav.menuPromo') }}
