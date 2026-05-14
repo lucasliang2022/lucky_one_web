@@ -1,0 +1,15 @@
+{
+  "choosePlatform":       "Choose a Platform",
+  "noPlatform":           "No platforms available",
+  "platformNotFound":     "Game not found",
+  "platformNotFoundDesc": "This game may not be enabled, or it has been temporarily disabled.",
+  "backToCategory":       "Back to Category",
+  "enter":                "Enter",
+
+  "descSport":   "Top sports events, live betting, competitive odds",
+  "descChess":   "Classic card games, multiplayer, real cash rewards",
+  "descLive":    "Live dealers, HD streaming, global sync",
+  "descSlot":    "Huge slot selection, high payout rates",
+  "descFishing": "Fun fishing games, big jackpots",
+  "descEsport":  "Esports tournaments, pro markets"
+}

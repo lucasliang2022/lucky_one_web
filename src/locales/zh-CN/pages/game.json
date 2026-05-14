@@ -1,0 +1,15 @@
+{
+  "choosePlatform":       "选择平台",
+  "noPlatform":           "暂无可用平台",
+  "platformNotFound":     "未找到该游戏",
+  "platformNotFoundDesc": "该游戏可能未启用，或者已暂时下线",
+  "backToCategory":       "返回分类",
+  "enter":                "进入",
+
+  "descSport":   "顶级体育赛事，实时滚球，多家高赔率",
+  "descChess":   "经典棋牌，多人对战，赢取真金",
+  "descLive":    "真人荷官，高清直播，全球同步",
+  "descSlot":    "海量电子游戏，超高爆率",
+  "descFishing": "趣味捕鱼，大奖连连",
+  "descEsport":  "热门电竞赛事，专业盘口"
+}

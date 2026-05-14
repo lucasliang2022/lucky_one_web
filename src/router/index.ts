@@ -1,57 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { useUserStore } from '@/stores/userStore';
-import Login from '@/pages/auth/Login.vue';
+
+import Home     from '@/pages/Home.vue';
+import Login    from '@/pages/auth/Login.vue';
 import Register from '@/pages/auth/Register.vue';
-import Home from "@/pages/Home.vue";
-import Ssc from "@/pages/lottery/Ssc.vue";
-import Sd from "@/pages/lottery/Sd.vue";
-import Ks from "@/pages/lottery/Ks.vue";
-import Lhc from "@/pages/lottery/Lhc.vue";
-import Kl8 from "@/pages/lottery/Kl8.vue";
-import Account from "@/pages/Account.vue";
-import Pk10 from "@/pages/lottery/Pk10.vue";
+import Account  from '@/pages/Account.vue';
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/login', component: Login },
-    { path: '/register', component: Register },
-    { path: '/lottery/ssc/:sign', component: Ssc, name: 'lotterySsc' },
-    { path: '/lottery/lhc/:sign', component: Lhc, name: 'lotteryLhc' },
-    { path: '/lottery/pk10/:sign', component: Pk10, name: 'lotteryPk10' },
-    { path: '/lottery/ks/:sign', component: Ks, name: 'lotteryKs' },
-    { path: '/lottery/sd/:sign', component: Sd, name: 'lotterySd' },
-    { path: '/lottery/kl8/:sign', component: Kl8, name: 'lotteryKl8' },
-    { path: '/account/:page', component: Account, name: 'account' },
+    { path: '/',         component: Home,     name: 'home' },
+    { path: '/login',    component: Login,    name: 'login' },
+    { path: '/register', component: Register, name: 'register' },
+
     {
-        path: '/game',
-        component: () => import('@/pages/game/home.vue'),
-        children: [
-            {
-                path: 'sport/fb',
-                name: 'sport-fb',
-                component: () => import('@/pages/game/sport/fb.vue'),
-                meta: {requiresAuth: true}
-            },
-            {
-                path: 'sport/im',
-                name: 'sport-im',
-                component: () => import('@/pages/game/sport/im.vue'),
-                meta: {requiresAuth: true}
-            },
-            {
-                path: 'sport/db',
-                name: 'sport-db',
-                component: () => import('@/pages/game/sport/db.vue'),
-                meta: {requiresAuth: true}
-            },
-            {
-                path: 'sport/shaba',
-                name: 'sport-shaba',
-                component: () => import('@/pages/game/sport/shaba.vue'),
-                meta: {requiresAuth: true}
-            },
-        ]
-    }
+        path: '/lottery/:category/:sign',
+        name: 'lottery',
+        component: () => import('@/pages/lottery/Lottery.vue'),
+        props: true,
+        meta: { requiresAuth: true },
+    },
+
+    { path: '/lottery', redirect: '/' },
+
+    { path: '/account/:page', component: Account, name: 'account' },
+
+    {
+        path: '/game/:category',
+        name: 'gameCategory',
+        component: () => import('@/pages/game/CategoryHome.vue'),
+        props: true,
+    },
+    {
+        path: '/game/:category/:sign',
+        name: 'gamePlay',
+        component: () => import('@/pages/game/GamePlay.vue'),
+        props: true,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: '/game/sport/fb',
+        name: 'sport-fb',
+        component: () => import('@/pages/game/sport/fb.vue'),
+        meta: { requiresAuth: true },
+    },
+
+    { path: '/:pathMatch(.*)*', redirect: '/' },
 ];
 
 const router = createRouter({
@@ -62,8 +54,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     const userStore = useUserStore();
     const token = userStore.token;
-    const publicPaths = ['/login', '/error'];
+    const publicPaths = ['/login', '/register', '/error', '/'];
 
+    if (to.meta.requiresAuth && !token) {
+        return next('/login');
+    }
     if (!token && !publicPaths.includes(to.path)) {
         return next('/login');
     }

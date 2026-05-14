@@ -2,7 +2,6 @@
   <div class="nav-menu-container">
     <div class="nav-menu">
 
-      <!-- Logo -->
       <div class="nav-logo" @click="goHome">
         <img :src="logo" alt="logo" />
       </div>
@@ -25,79 +24,28 @@
             <template #dropdown>
               <el-dropdown-menu>
                 <div class="lottery-list-wrapper">
-
-                  <!-- 六合彩 -->
-                  <div class="lottery-group" v-if="lotteryLhcList.length">
+                  <div
+                      v-for="group in lotteryGroups"
+                      :key="group.sign"
+                      class="lottery-group"
+                  >
                     <div class="lg-title">
-                      <span class="sd-icon icon-sd-icon-lhc" style="color: #488ded;"></span>
-                      {{ t('components.nav.menuLhc') }}
+                      <span class="sd-icon" :class="group.iconClass" :style="{ color: group.color }"></span>
+                      {{ t(group.labelKey) }}
                     </div>
                     <div class="lg-list">
                       <div
-                          v-for="lottery in lotteryLhcList"
+                          v-for="lottery in group.items"
                           :key="lottery.sign"
                           class="lg-list-item"
-                          @click="goLotteryLhc(lottery.sign)"
+                          @click="goLottery(group.sign, lottery.sign)"
                       >
-                        {{ lottery.title }}
+                        <span class="lg-list-item-title">{{ lottery.title }}</span>
+                        <span v-if="lottery.is_hot" class="tag tag-hot">HOT</span>
+                        <span v-if="lottery.is_new" class="tag tag-new">NEW</span>
                       </div>
                     </div>
                   </div>
-
-                  <!-- 赛车 / PK10 -->
-                  <div class="lottery-group" v-if="lotteryPk10List.length">
-                    <div class="lg-title">
-                      <span class="sd-icon icon-sd-pk10" style="color: #67C23A;"></span>
-                      {{ t('components.nav.menuPk10') }}
-                    </div>
-                    <div class="lg-list">
-                      <div
-                          v-for="lottery in lotteryPk10List"
-                          :key="lottery.sign"
-                          class="lg-list-item"
-                          @click="goLotteryPk10(lottery.sign)"
-                      >
-                        {{ lottery.title }}
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 时时彩 -->
-                  <div class="lottery-group" v-if="lotterySscList.length">
-                    <div class="lg-title">
-                      <span class="sd-icon icon-sd-ssc" style="color: #F5A623;"></span>
-                      {{ t('components.nav.menuSsc') }}
-                    </div>
-                    <div class="lg-list">
-                      <div
-                          v-for="lottery in lotterySscList"
-                          :key="lottery.sign"
-                          class="lg-list-item"
-                          @click="goLotterySsc(lottery.sign)"
-                      >
-                        {{ lottery.title }}
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 快三 -->
-                  <div class="lottery-group" v-if="lotteryKsList.length">
-                    <div class="lg-title">
-                      <span class="sd-icon icon-sd-ks" style="color: #FA5555;"></span>
-                      {{ t('components.nav.menuKs') }}
-                    </div>
-                    <div class="lg-list">
-                      <div
-                          v-for="lottery in lotteryKsList"
-                          :key="lottery.sign"
-                          class="lg-list-item"
-                          @click="goLotteryKs(lottery.sign)"
-                      >
-                        {{ lottery.title }}
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
               </el-dropdown-menu>
             </template>
@@ -339,49 +287,82 @@ import { useRouter }     from 'vue-router';
 import { useI18n }       from 'vue-i18n';
 import { useCommonStore } from '@/stores/commonStore';
 
+interface LotteryItem {
+  sign: string;
+  title: string;
+  is_hot?: boolean;
+  is_new?: boolean;
+}
+
+interface LotteryGroup {
+  sign: string;
+  labelKey: string;
+  iconClass: string;
+  color: string;
+  items: LotteryItem[];
+}
+
 const { t }              = useI18n();
 const commonStore        = useCommonStore();
 const router             = useRouter();
 const lotteryDropdownRef = ref<any>(null);
 
-/* ---------- Logo ---------- */
 const logo = computed(() => commonStore.partner?.logo || '/images/logo.png');
 
-/* ---------- 三方游戏按 category 取（[{sign, account_sign, title, logo}]）---------- */
-const chessGames   = computed(() => commonStore.thirdGameList?.chess   ?? []);
-const sportGames   = computed(() => commonStore.thirdGameList?.sport   ?? []);
-const liveGames    = computed(() => commonStore.thirdGameList?.live    ?? []);
-const slotGames    = computed(() => commonStore.thirdGameList?.slot    ?? []);
-const fishingGames = computed(() => commonStore.thirdGameList?.fishing ?? []);
-const esportGames  = computed(() => commonStore.thirdGameList?.e_sport ?? []);
+const chessGames   = computed(() => (commonStore.thirdGameList as any)?.chess   ?? []);
+const sportGames   = computed(() => (commonStore.thirdGameList as any)?.sport   ?? []);
+const liveGames    = computed(() => (commonStore.thirdGameList as any)?.live    ?? []);
+const slotGames    = computed(() => (commonStore.thirdGameList as any)?.slot    ?? []);
+const fishingGames = computed(() => (commonStore.thirdGameList as any)?.fishing ?? []);
+const esportGames  = computed(() => (commonStore.thirdGameList as any)?.e_sport ?? []);
 
-/* ---------- 彩票按 category_sign 分组 ---------- */
-const lotteryLhcList  = computed(() => filterLottery('lhc'));
-const lotteryPk10List = computed(() => filterLottery('pk10'));
-const lotterySscList  = computed(() => filterLottery('ssc'));
-const lotteryKsList   = computed(() => filterLottery('ks'));
+const LOTTERY_CATEGORY_ORDER = [
+  { sign: 'ssc',   labelKey: 'components.nav.menuSsc',   iconClass: 'icon-sd-ssc',      color: '#F5A623' },
+  { sign: 'sd',    labelKey: 'components.nav.menuSd',    iconClass: 'icon-sd-sd',       color: '#5D4FFF' },
+  { sign: 'ks',    labelKey: 'components.nav.menuKs',    iconClass: 'icon-sd-ks',       color: '#FA5555' },
+  { sign: 'lhc',   labelKey: 'components.nav.menuLhc',   iconClass: 'icon-sd-icon-lhc', color: '#488ded' },
+  { sign: 'pk10',  labelKey: 'components.nav.menuPk10',  iconClass: 'icon-sd-pk10',     color: '#67C23A' },
+  { sign: 'lotto', labelKey: 'components.nav.menuLotto', iconClass: 'icon-sd-lotto',    color: '#DC2626' },
+  { sign: 'p3p5',  labelKey: 'components.nav.menuP3p5',  iconClass: 'icon-sd-p3p5',     color: '#7C3AED' },
+  { sign: 'kl28',  labelKey: 'components.nav.menuKl28',  iconClass: 'icon-sd-kl28',     color: '#06B6D4' },
+  { sign: 'hash',  labelKey: 'components.nav.menuHash',  iconClass: 'icon-sd-hash',     color: '#F59E0B' },
+];
 
-function filterLottery(categorySign: string): { sign: string; title: string }[] {
-  const list = commonStore.lotteryList as any[];
-  if (!Array.isArray(list)) return [];
-  return list.filter((l: any) => l.category_sign === categorySign);
-}
+const lotteryGroups = computed<LotteryGroup[]>(() => {
+  const map = commonStore.lotteryList as Record<string, LotteryItem[]> | null | undefined;
+  if (!map || typeof map !== 'object') return [];
+  const result: LotteryGroup[] = [];
+  for (const cat of LOTTERY_CATEGORY_ORDER) {
+    const raw = (map as any)[cat.sign];
+    const items: LotteryItem[] = Array.isArray(raw) ? raw : [];
+    if (items.length === 0) continue;
+    result.push({ ...cat, items });
+  }
+  return result;
+});
 
-/* ---------- 关闭彩票下拉（用于点击具体彩种后） ---------- */
 const closeLotteryMenu = () => lotteryDropdownRef.value?.handleClose?.();
 
-/* ---------- 彩票导航 ---------- */
-const goLotteryHome = () => router.push('/lottery');
-const goLotteryLhc  = (sign: string) => { closeLotteryMenu(); router.push({ name: 'lotteryLhc',  params: { sign } }); };
-const goLotterySsc  = (sign: string) => { closeLotteryMenu(); router.push({ name: 'lotterySsc',  params: { sign } }); };
-const goLotteryKs   = (sign: string) => { closeLotteryMenu(); router.push({ name: 'lotteryKs',   params: { sign } }); };
-const goLotteryPk10 = (sign: string) => { closeLotteryMenu(); router.push({ name: 'lotteryPk10', params: { sign } }); };
+const goLottery = (categorySign: string, lotterySign: string) => {
+  closeLotteryMenu();
+  router.push({
+    name: 'lottery',
+    params: { category: categorySign, sign: lotterySign },
+  });
+};
 
-/* ---------- 三方游戏导航 ---------- */
+const goLotteryHome = () => {
+  const first = lotteryGroups.value[0];
+  if (first && first.items.length) {
+    goLottery(first.sign, first.items[0].sign);
+    return;
+  }
+  router.push('/');
+};
+
 const goCategoryHome = (category: string) => router.push(`/game/${category}`);
 const goGame         = (category: string, sign: string) => router.push(`/game/${category}/${sign}`);
 
-/* ---------- 静态入口 ---------- */
 const goHome    = () => router.push('/');
 const goPromo   = () => router.push('/promo');
 const goSupport = () => router.push('/support');
@@ -389,10 +370,6 @@ const goApp     = () => router.push('/app');
 </script>
 
 <style lang="scss">
-
-/* ========================================================
-   容器
-   ======================================================== */
 .nav-menu-container {
   background-color: var(--hm-bg-color);
 
@@ -411,9 +388,6 @@ const goApp     = () => router.push('/app');
       img { height: 40px; object-fit: contain; }
     }
 
-    /* ========================================================
-       菜单列表
-       ======================================================== */
     .nav-menu-list {
       list-style: none;
       padding: 0;
@@ -442,9 +416,6 @@ const goApp     = () => router.push('/app');
   }
 }
 
-/* ========================================================
-   彩票游戏：全宽下拉
-   ======================================================== */
 .lottery-sub-menu {
   overflow: hidden;
   justify-content: center;
@@ -455,17 +426,22 @@ const goApp     = () => router.push('/app');
     width: 100vw;
     display: flex;
     justify-content: center;
-    overflow-x: hidden;
+    align-items: flex-start;
     box-sizing: border-box;
     overflow-y: auto;
     -ms-overflow-style: none;
     margin: 15px 0;
+    padding: 0 20px;
+    max-height: calc(100vh - 140px);
+    gap: 8px;
 
     &::-webkit-scrollbar { display: none; }
 
     .lottery-group {
+      flex: 0 0 auto;
+      min-width: 150px;
+      padding: 0 12px;
       border-right: 1px dashed var(--color-gray-2);
-      padding: 0 15px;
 
       &:last-child { border-right: none; }
 
@@ -476,7 +452,7 @@ const goApp     = () => router.push('/app');
         gap: 6px;
         font-size: 14px;
         font-weight: 600;
-        margin: 10px 0;
+        margin: 10px 0 12px;
         color: #333;
 
         .sd-icon { font-size: 18px; }
@@ -484,43 +460,61 @@ const goApp     = () => router.push('/app');
 
       .lg-list {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 6px;
         padding-bottom: 10px;
       }
 
       .lg-list-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
         background-color: var(--color-background, #fff);
         border: 1px solid var(--color-gray-3);
         border-radius: 4px;
-        width: 95px;
+        width: 100%;
+        min-width: 120px;
+        height: 32px;
         cursor: pointer;
         text-align: center;
         font-size: 12px;
-        line-height: 26px;
+        line-height: 1;
         transition: all 0.2s;
+        white-space: nowrap;
+
+        .lg-list-item-title { display: inline-block; }
 
         &:hover {
           border-color: var(--color-primary-1, #e4393c);
           background-color: var(--color-primary-lighten-3, #fff1f1);
           color: var(--color-primary-1, #e4393c);
         }
+
+        .tag {
+          padding: 0 4px;
+          height: 14px;
+          line-height: 14px;
+          font-size: 9px;
+          font-weight: 700;
+          color: #fff;
+          border-radius: 7px;
+
+          &.tag-hot { background: #ef4444; }
+          &.tag-new { background: #22c55e; }
+        }
       }
     }
   }
 }
 
-/* ========================================================
-   游戏分类下拉：图标网格
-   结构和彩票完全对称：100vw 外壳 + 居中 max-width 内容 + 两端 padding
-   ======================================================== */
 .game-sub-menu {
   overflow: hidden;
   justify-content: center;
   left: 0 !important;
   top: 100px !important;
 
-  /* ★ 外层：100vw 全宽，flex 居中其内部网格（跟 .lottery-list-wrapper 同套路）*/
   .game-icon-wrapper {
     width: 100vw;
     display: flex;
@@ -534,7 +528,6 @@ const goApp     = () => router.push('/app');
     &::-webkit-scrollbar { display: none; }
   }
 
-  /* ★ 内层：max-width 限制，padding 留两端空白 */
   .game-icon-grid {
     width: 100%;
     max-width: var(--width-container, 1200px);

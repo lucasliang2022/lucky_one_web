@@ -1,5 +1,8 @@
+
 export interface MethodMapItem {
-    [key: string]: Record<string, string>;
+    sd?: string;
+    momo?: string;
+    [key: string]: string | undefined;
 }
 
 export type MethodMapList = Record<string, MethodMapItem>
@@ -98,6 +101,7 @@ export interface MethodDefineItem {
     levels: MethodLevel[];
     template?: string;
     segmentation?: number;
+    example?: string;
 }
 
 export interface MethodDefineList {

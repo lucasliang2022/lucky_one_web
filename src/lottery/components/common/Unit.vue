@@ -5,7 +5,7 @@
       <span
           v-for="(opt, idx) in unitOptions"
           :key="idx"
-          :class="{ active: price === opt.value  }"
+          :class="{ active: price === opt.value }"
           @click="onSelectUnit(opt.value)"
       >
         {{ opt.label }}
@@ -15,27 +15,36 @@
 </template>
 
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useCommonStore } from '@/stores/commonStore.js';
 
 const props = defineProps({
   price: {
     type: Number,
     default: 1,
-  }
+  },
 });
 const emit = defineEmits(['update:price']);
-const commonStore = useCommonStore();
-const unitOptions = computed(() => commonStore.unitOptions);
 
-onMounted(() => {
-  if (unitOptions.value.length > 0 && !unitOptions.value.some(opt => opt.value === props.unit)) {
-    emit("update:price", unitOptions.value[0].value);
+const commonStore = useCommonStore();
+// 防御性兜底：commonStore.unitOptions 在 SystemConfig 未加载时也会返回默认值，
+// 这里再加一层 ?? [] 防止极端情况 store 还没注入。
+const unitOptions = computed(() => commonStore.unitOptions ?? []);
+
+// 选项变化时如果当前 price 不在选项里，回落到第一个
+const ensureValidPrice = () => {
+  const opts = unitOptions.value;
+  if (!opts || !opts.length) return;
+  if (!opts.some(opt => opt.value === props.price)) {
+    emit('update:price', opts[0].value);
   }
-});
+};
+
+onMounted(ensureValidPrice);
+watch(unitOptions, ensureValidPrice);
 
 function onSelectUnit(val) {
-  emit("update:price", val);
+  emit('update:price', val);
 }
 </script>
 
@@ -44,11 +53,13 @@ function onSelectUnit(val) {
   display: flex;
   align-items: center;
   min-height: 40px;
+
   .unit-title {
     font-size: 13px;
     color: #535d76;
     margin-right: 1px;
   }
+
   .unit-selector {
     display: flex;
     width: 260px;
@@ -58,6 +69,7 @@ function onSelectUnit(val) {
     border-radius: 4px;
     background: #fff;
     overflow: hidden;
+
     span {
       position: relative;
       display: inline-block;
@@ -69,6 +81,7 @@ function onSelectUnit(val) {
       cursor: pointer;
       white-space: nowrap;
       line-height: 35px;
+
       &:after {
         position: absolute;
         right: -1px;
@@ -79,6 +92,7 @@ function onSelectUnit(val) {
         height: 17px;
         background-color: #d4d5e7;
       }
+
       &.active {
         background: #1c9eff;
         color: #fff;

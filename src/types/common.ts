@@ -86,3 +86,14 @@ export interface NoticeItem {
     content: string;
     created_at: string;
 }
+
+export interface LotteryListItem {
+    sign: string;
+    title: string;
+    is_hot: boolean;
+    is_new: boolean;
+    odds?: number;
+    sort?: number;
+}
+
+export type LotteryListMap = Record<string, LotteryListItem[]>;

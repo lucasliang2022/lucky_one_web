@@ -1,46 +1,40 @@
 <template>
-  <div class="sport-fb-page">
-    <ThirdGameFrame
-        v-if="fbGame"
-        :platform-sign="fbGame.sign"
-        :account-sign="fbGame.account_sign"
-    />
+  <ThirdGameFrame
+      v-if="fbGame"
+      platform-sign="fb"
+      :account-sign="fbGame.account_sign"
+  />
+
+  <div v-else-if="commonStore.isLoaded" class="fb-not-enabled">
+    <el-result icon="warning" :title="t('pages.game.platformNotFound')">
+      <template #extra>
+        <el-button type="primary" @click="$router.push('/game/sport')">
+          {{ t('pages.game.backToCategory') }}
+        </el-button>
+      </template>
+    </el-result>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useCommonStore } from '@/stores/commonStore';
 import ThirdGameFrame from '@/components/game/ThirdGameFrame.vue';
 
+const { t } = useI18n();
 const commonStore = useCommonStore();
+
 const fbGame = computed(() =>
     commonStore.thirdGameList?.sport?.find(g => g.sign === 'fb')
 );
 </script>
 
 <style lang="scss" scoped>
-.sport-fb-page { display: flex; flex-direction: column; }
-
-.sport-sub-nav {
+.fb-not-enabled {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 8px 20px;
-  background-color: #1a1a2e;
-  border-bottom: 1px solid #333;
-
-  .sub-nav-item {
-    padding: 6px 16px;
-    border-radius: 4px;
-    color: #ccc;
-    text-decoration: none;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-
-    &:hover  { color: #fff; background-color: #326BC7; }
-    &.active { color: #fff; background-color: #326BC7; font-weight: 600; }
-  }
+  justify-content: center;
+  min-height: calc(100vh - 200px);
 }
 </style>
