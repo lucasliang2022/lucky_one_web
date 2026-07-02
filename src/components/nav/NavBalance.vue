@@ -27,7 +27,6 @@
             @click="onSelectCurrency(cur.code)"
         >
           <div class="row-main">
-            <span class="row-code">{{ codeOf(cur.code) }}</span>
             <span class="row-name">{{ cur.label }}</span>
           </div>
           <div class="row-amount">
@@ -52,10 +51,10 @@
     </template>
   </el-tooltip>
 
-  <!-- 单币种：只显示余额，无下拉 -->
+  <!-- 单币种：不显示下拉，只显示「余额：xxx」 -->
   <span v-else class="balance-trigger no-dropdown">
-    <span class="cur-label">{{ currentCurrencyLabel }}</span>
-    <span class="balance-value">{{ currentBalanceFormatted }}</span>
+    <span class="cur-label">{{ t('components.nav.balance') }}：</span>
+    <span class="balance-value">{{ currentSymbol }}{{ currentBalanceFormatted }}</span>
     <span class="fresh-icon" :class="{ rotating: refreshing }" @click.stop="onRefresh">
       <span class="sd-icon icon-sd-fresh"></span>
     </span>
@@ -84,10 +83,12 @@ const currentCurrencyLabel = computed(() => {
   return cur?.label || codeOf(userStore.currentCurrency);
 });
 
-/** 下拉里每行用大写代码（RMB / USDT / PHP），更紧凑 */
+/** 当前币种符号（单币种「余额：」展示用） */
+const currentSymbol = computed(() => commonStore.getCurrency(userStore.currentCurrency)?.symbol ?? '');
+
+/** 下拉里每行用短码（RMB / USDT / PHP），短码由后端 currency.alias 提供，回退到大写 code */
 const codeOf = (code: string): string => {
-  const aliases: Record<string, string> = { cny: 'RMB' };
-  return aliases[code] ?? (code || '').toUpperCase();
+  return commonStore.getCurrency(code)?.alias || (code || '').toUpperCase();
 };
 
 const currentBalanceFormatted = computed(() => formatBalance(userStore.currentCurrency));
@@ -140,8 +141,7 @@ const onRecharge = (currency: string) => {
   align-items: center;
   gap: 6px;
   height: 30px;
-  min-width: 160px;          /* ★ 防 CLS，预留宽度 */
-  white-space: nowrap;
+  white-space: nowrap;       /* 宽度自适应内容(不再固定 160px) */
   cursor: pointer;
   user-select: none;
   padding: 0 8px;
@@ -163,9 +163,7 @@ const onRecharge = (currency: string) => {
   font-weight: 600;
   font-size: 14px;
   font-family: 'DINAlternate', -apple-system, monospace;
-  min-width: 70px;
-  display: inline-block;
-  text-align: left;
+  /* 宽度随数字自适应,不再预留固定 70px */
 }
 
 .arrow {
@@ -196,9 +194,8 @@ const onRecharge = (currency: string) => {
   --el-popper-bg-color: #fff;
 
   padding: 6px !important;
-  width: max-content;
-  min-width: 320px;
-  max-width: 480px;
+  width: max-content;        /* 宽度随内容自适应:长小数余额也能完整显示 */
+  min-width: 260px;
   font-size: 13px;
   border-radius: 8px !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
@@ -240,29 +237,21 @@ const onRecharge = (currency: string) => {
       background-color: #f0f7ff;
       &::before { background-color: #326BC7; }
 
-      .row-code   { color: #326BC7; }
+      .row-name { color: #326BC7; }
       .row-amount .amount-number { color: #326BC7; }
     }
   }
 
-  /* —— 主信息：code + name —— */
+  /* —— 主信息：币种名称 —— */
   .row-main {
     display: flex;
     align-items: baseline;
     gap: 8px;
     min-width: 0;
 
-    .row-code {
-      font-weight: 700;
-      color: #333;
-      font-size: 14px;
-      letter-spacing: 0.3px;
-    }
     .row-name {
-      color: #999;
-      font-size: 12px;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      color: #333;
+      font-size: 13px;
       white-space: nowrap;
     }
   }

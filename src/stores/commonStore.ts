@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import * as systemService from '@/api/systemService';
 import { storage, STORAGE_KEYS } from '@/utils/storage';
+import { useUserStore } from '@/stores/userStore';
 import type {
     BetConfigPerCurrency,
     CountryOption,
@@ -9,6 +10,7 @@ import type {
     LanguageOption,
     LotteryListMap,
     PartnerConfig,
+    SystemConfig,
     TimezoneOption,
 } from '@/types/common';
 
@@ -77,13 +79,9 @@ export const useCommonStore = defineStore('common', () => {
      *   / OfficialBetCart.vue 直接消费）
      * ========================================================= */
 
-    // 当前货币：优先 localStorage，再 partner 默认，再第一个可用货币
-    const currentCurrency = computed<string>(() =>
-        storage.get(STORAGE_KEYS.CURRENCY)
-        ?? partner.value?.default_currency
-        ?? currencies.value[0]?.code
-        ?? '',
-    );
+    // 当前货币：单一来源 —— 统一走 userStore（已综合 用户/匿名 偏好 + 后端支持列表收敛）。
+    // 延迟 useUserStore() 到 getter 内调用,避免两个 store 循环初始化。
+    const currentCurrency = computed<string>(() => useUserStore().currentCurrency);
 
     // 货币下拉项 - [{label, value, symbol}]
     const currencyOptions = computed<Array<{ label: string; value: string; symbol: string }>>(() => {
@@ -165,11 +163,8 @@ export const useCommonStore = defineStore('common', () => {
         }
     };
 
-    async function initMainConfig(force = false): Promise<void> {
-        if (isLoaded.value && !force) return;
-
-        const cfg = await systemService.fetchSystemConfig();
-
+    // 把一份 config 落进 store（首拉与刷新共用）
+    function applyConfig(cfg: SystemConfig): void {
         dataVersion.value   = cfg.data_version;
         partner.value       = cfg.partner;
         languages.value     = cfg.languages   ?? [];
@@ -193,8 +188,24 @@ export const useCommonStore = defineStore('common', () => {
             }
             link.href = cfg.partner.favicon;
         }
+    }
 
+    async function initMainConfig(force = false): Promise<void> {
+        if (isLoaded.value && !force) return;
+        applyConfig(await systemService.fetchSystemConfig());
         isLoaded.value = true;
+    }
+
+    /**
+     * 重新拉取配置:仅当 data_version 变化(总后台改过商户配置/支持项)时才应用,返回是否变化。
+     * 供「回到页面 / 定时」时调用,让用户端不刷新也能同步总后台的最新支持语言/币种/国家。
+     */
+    async function refreshConfig(): Promise<boolean> {
+        if (!isLoaded.value) return false;
+        const cfg = await systemService.fetchSystemConfig();
+        if (cfg.data_version === dataVersion.value) return false;
+        applyConfig(cfg);
+        return true;
     }
 
     return {
@@ -209,6 +220,7 @@ export const useCommonStore = defineStore('common', () => {
         isLanguageSupported, isCurrencySupported, isTimezoneSupported, isCountrySupported,
         formatMoney,
         initMainConfig,
+        refreshConfig,
 
         // === 彩票模块依赖（新增）===
         currentCurrency,

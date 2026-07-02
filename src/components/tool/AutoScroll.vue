@@ -45,9 +45,7 @@
 </template>
 <script setup>
 import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
-import api from "@/api/index.ts";
 import * as systemService from '@/api/systemService';
-import {fetchNoticeList} from "@/api/systemService";
 
 const props = defineProps({
   speed: {
@@ -66,8 +64,9 @@ let animationFrameId = null;
 
 const fetchNotices = async () => {
   try {
-    const data = systemService.fetchNoticeList()
-    noticeList.value = data || [];
+    const res = await systemService.fetchNoticeList();
+    // 后端返回 { items, total };取 items
+    noticeList.value = res?.items ?? (Array.isArray(res) ? res : []);
     startScroll();
   } catch (error) {
     console.error('获取公告失败:', error);
@@ -109,7 +108,7 @@ const openNoticeDialog = (index) => {
 };
 
 onMounted(() => {
-  fetchNoticeList();
+  fetchNotices();
 });
 
 onBeforeUnmount(() => {

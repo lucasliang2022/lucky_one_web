@@ -26,6 +26,41 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     border-style: solid;
     border-color: currentColor;
 }
+/* 预留纵向滚动条空间:内容加载后出现滚动条时视口宽度保持不变,
+   避免 position:fixed 头部 + margin:auto 居中栏发生左右抖动(CLS)。 */
+html {
+    scrollbar-gutter: stable;
+}
+
+/* =========================================================
+ *  主题结构钩子:根元素带 data-layout / data-skin(由 App.vue 挂载)
+ *  组件本身对主题无感知,差异只在这里(结构)和皮肤 token(下方)收口。
+ * ========================================================= */
+/* 左右结构(lr):游戏导航在左侧栏,由横向改为纵向。
+   用 html[data-layout] 提升优先级,压过组件 scoped 样式;仅 lr 生效,不影响 ud。 */
+html[data-layout='lr'] {
+    /* lr 用独立 logo 区块,隐藏 NavMenu 内置 logo,避免重复 */
+    .nav-logo { display: none; }
+    .nav-menu-container { width: 100%; }
+    .nav-menu {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        padding: 8px 0;
+    }
+    .nav-menu-list {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        width: 100%;
+    }
+    .nav-menu-list > li { width: 100%; height: auto; }
+    .nav-menu-item { justify-content: space-between; padding: 10px 16px; height: auto; }
+}
+
+/* 皮肤 token 不写在这里:改放各主题的 src/theme/themes/<name>/index.ts 的 tokens,
+ * 运行时由 applyThemeTokens 注入 :root(见 src/theme/registry.ts)。
+ * 这里只留「结构性」CSS(如上面的 lr 布局钩子)。 */
 *:focus-visible {
     outline: none;
 }

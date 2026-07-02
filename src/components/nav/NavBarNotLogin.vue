@@ -28,7 +28,9 @@ const commonStore = useCommonStore();
 .nav-bar-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;   /* 右对齐:异步切换器出现时填充左侧预留空位,右侧可见项不动 */
   height: 30px;
+  min-width: 460px;            /* 预留语言/时区切换器空间,避免其加载后出现造成头部左右回流(CLS) */
   gap: 0;
 }
 

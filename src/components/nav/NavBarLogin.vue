@@ -76,7 +76,9 @@ const navToAccount = (page: string) => {
 .nav-bar-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;   /* 右对齐:异步切换器出现时填充左侧预留空位,右侧可见项不动 */
   height: 30px;
+  min-width: 640px;            /* 预留语言/时区切换器 + 余额空间,避免加载后头部左右回流(CLS) */
   gap: 0;
 }
 

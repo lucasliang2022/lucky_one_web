@@ -21,6 +21,7 @@ export interface PartnerConfig {
     default_timezone: string;
     support_url?: string;
     theme_color?: string;
+    theme?: string;        // 主题:<结构>-<皮肤>,如 ud-default / lr-default / ud-star
     fab_buttons: FabButtonKey[];
 }
 
@@ -33,6 +34,7 @@ export interface LanguageOption {
 
 export interface CurrencyOption {
     code: string;
+    alias?: string;   // 展示用短码(如 cny -> RMB),后端提供
     label: string;
     symbol: string;
     decimal_places: number;

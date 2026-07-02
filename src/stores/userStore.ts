@@ -21,6 +21,27 @@ const ENV_DEFAULTS = {
     country:  import.meta.env.VITE_DEFAULT_COUNTRY  || '',
 };
 
+/**
+ * 把一个偏好值收敛到「后端(总后台)支持列表」内。
+ *  - 后端列表尚未加载(空)→ 无法校验,原样返回(best-effort,配置到位后会再次收敛);
+ *  - 传入值仍受支持 → 保留;
+ *  - 否则依次回退:partner 默认 → 列表首个 → env 默认。
+ * 用途:总后台调整了支持的语言/币种/国家后,用它覆盖掉本地(localStorage/历史用户)里已失效的默认值。
+ */
+function resolveSupported(
+    raw: string | undefined,
+    list: ReadonlyArray<unknown>,
+    isSupported: (code: string) => boolean,
+    partnerDefault: string | undefined,
+    firstCode: string | undefined,
+    envDefault: string,
+): string {
+    if (!list.length) return raw || partnerDefault || envDefault;
+    if (raw && isSupported(raw)) return raw;
+    if (partnerDefault && isSupported(partnerDefault)) return partnerDefault;
+    return firstCode || envDefault;
+}
+
 const emptyBalance = (): UserBalance => ({});
 
 export const useUserStore = defineStore('user', () => {
@@ -45,36 +66,41 @@ export const useUserStore = defineStore('user', () => {
     const vipLevel      = computed(() => userInfo.value?.vip_level ?? 0);
     const isTest        = computed(() => userInfo.value?.is_test ?? false);
 
+    // 生效值 = 用户/匿名偏好,但一律收敛到后端支持列表:失效的历史值会被 partner 默认覆盖。
     const currentLanguage = computed<string>(() => {
         const cs = useCommonStore();
-        return userInfo.value?.language
-            || anonLanguage.value
-            || cs.partner?.default_language
-            || ENV_DEFAULTS.language;
+        return resolveSupported(
+            userInfo.value?.language || anonLanguage.value,
+            cs.languages, cs.isLanguageSupported,
+            cs.partner?.default_language, cs.languages[0]?.code, ENV_DEFAULTS.language,
+        );
     });
 
     const currentCurrency = computed<string>(() => {
         const cs = useCommonStore();
-        return userInfo.value?.currency
-            || anonCurrency.value
-            || cs.partner?.default_currency
-            || ENV_DEFAULTS.currency;
+        return resolveSupported(
+            userInfo.value?.currency || anonCurrency.value,
+            cs.currencies, cs.isCurrencySupported,
+            cs.partner?.default_currency, cs.currencies[0]?.code, ENV_DEFAULTS.currency,
+        );
     });
 
     const currentTimezone = computed<string>(() => {
         const cs = useCommonStore();
-        return userInfo.value?.timezone
-            || anonTimezone.value
-            || cs.partner?.default_timezone
-            || ENV_DEFAULTS.timezone;
+        return resolveSupported(
+            userInfo.value?.timezone || anonTimezone.value,
+            cs.timezones, cs.isTimezoneSupported,
+            cs.partner?.default_timezone, cs.timezones[0]?.code, ENV_DEFAULTS.timezone,
+        );
     });
 
     const currentCountry = computed<string>(() => {
         const cs = useCommonStore();
-        return userInfo.value?.country
-            || anonCountry.value
-            || cs.partner?.country
-            || ENV_DEFAULTS.country;
+        return resolveSupported(
+            userInfo.value?.country || anonCountry.value,
+            cs.countries, cs.isCountrySupported,
+            cs.partner?.country, cs.countries[0]?.code, ENV_DEFAULTS.country,
+        );
     });
 
     function setTokens(access: string, refresh: string): void {
@@ -165,67 +191,49 @@ export const useUserStore = defineStore('user', () => {
         }
     }
 
-    /* ---------- 首次进入：浏览器探测偏好 ---------- */
+    /* ---------- 首次进入 / 配置变更：收敛匿名偏好 ---------- */
     /**
      * 调用时机：commonStore.initMainConfig() 之后、用户交互之前。
-     * - 已有 anon* 值（localStorage 残留）则保留
-     * - 否则从浏览器探测；探测值不在 partner 支持列表内时 fallback 到 partner default → env default
-     * - 币种特殊：不走浏览器探测，直接 partner default → env default
+     * 对每一项:空值先走浏览器探测,然后统一收敛到「后端支持列表」并回写 localStorage——
+     * 所以总后台移除了某语言/币种/国家后,本地残留的失效默认值会被后端默认覆盖(自愈)。
+     * 币种特殊:不走浏览器探测。
      */
     async function initAnonPreferences(): Promise<void> {
         const cs = useCommonStore();
 
-        // 1. Language —— 浏览器探测优先
-        if (!anonLanguage.value) {
-            const detected = detectBrowserLanguage();
-            const candidate =
-                (detected && cs.isLanguageSupported(detected) && detected) ||
-                cs.partner?.default_language ||
-                ENV_DEFAULTS.language;
-            anonLanguage.value = candidate;
-            storage.set(STORAGE_KEYS.LANGUAGE, candidate);
+        // 1. Language —— 空则浏览器探测,再收敛到支持列表
+        const langRaw = anonLanguage.value || detectBrowserLanguage() || '';
+        anonLanguage.value = resolveSupported(
+            langRaw, cs.languages, cs.isLanguageSupported,
+            cs.partner?.default_language, cs.languages[0]?.code, ENV_DEFAULTS.language,
+        );
+        storage.set(STORAGE_KEYS.LANGUAGE, anonLanguage.value);
+
+        // 2. Country（允许为空）—— 空则浏览器探测,再收敛
+        const ctyRaw = anonCountry.value || detectBrowserCountry() || '';
+        const country = resolveSupported(
+            ctyRaw, cs.countries, cs.isCountrySupported,
+            cs.partner?.country, cs.countries[0]?.code, ENV_DEFAULTS.country,
+        );
+        if (country) {
+            anonCountry.value = country;
+            storage.set(STORAGE_KEYS.COUNTRY, country);
         }
 
-        // 2. Country —— 浏览器探测优先
-        if (!anonCountry.value) {
-            const detected = detectBrowserCountry();
-            const candidate =
-                (detected && cs.isCountrySupported(detected) && detected) ||
-                cs.partner?.country ||
-                ENV_DEFAULTS.country;
-            if (candidate) {
-                anonCountry.value = candidate;
-                storage.set(STORAGE_KEYS.COUNTRY, candidate);
-            }
-        }
+        // 3. Timezone —— 空则浏览器探测,再收敛
+        const tzRaw = anonTimezone.value || detectBrowserTimezone() || '';
+        anonTimezone.value = resolveSupported(
+            tzRaw, cs.timezones, cs.isTimezoneSupported,
+            cs.partner?.default_timezone, cs.timezones[0]?.code, ENV_DEFAULTS.timezone,
+        );
+        storage.set(STORAGE_KEYS.TIMEZONE, anonTimezone.value);
 
-        // 3. Timezone —— 浏览器探测优先
-        if (!anonTimezone.value) {
-            const detected = detectBrowserTimezone();
-            const candidate =
-                (detected && cs.isTimezoneSupported(detected) && detected) ||
-                cs.partner?.default_timezone ||
-                ENV_DEFAULTS.timezone;
-            anonTimezone.value = candidate;
-            storage.set(STORAGE_KEYS.TIMEZONE, candidate);
-        }
-
-        // 4. Currency —— ★ 不走浏览器探测，partner -> env 兜底
-        if (!anonCurrency.value) {
-            const fromPartner = cs.partner?.default_currency;
-            const candidate = fromPartner || ENV_DEFAULTS.currency;
-
-            if (cs.isCurrencySupported(candidate)) {
-                anonCurrency.value = candidate;
-            } else if (cs.currencies.length > 0) {
-                // partner 默认值非法（极少见），用 partner 支持列表第一个
-                anonCurrency.value = cs.currencies[0].code;
-            } else {
-                // partner 配置还没加载完时先用 env 顶着，稍后会被 partner 数据覆盖
-                anonCurrency.value = candidate;
-            }
-            storage.set(STORAGE_KEYS.CURRENCY, anonCurrency.value);
-        }
+        // 4. Currency —— 不走浏览器探测,直接收敛(失效值被 partner 默认覆盖)
+        anonCurrency.value = resolveSupported(
+            anonCurrency.value, cs.currencies, cs.isCurrencySupported,
+            cs.partner?.default_currency, cs.currencies[0]?.code, ENV_DEFAULTS.currency,
+        );
+        storage.set(STORAGE_KEYS.CURRENCY, anonCurrency.value);
 
         // 5. 应用 language 副作用（切 i18n + html lang）
         await applyLanguageSideEffect(currentLanguage.value);
