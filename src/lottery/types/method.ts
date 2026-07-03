@@ -29,7 +29,7 @@ export interface MethodRowNumber {
     value: any;
     count?: number;
     color?: string;
-    extra_content?: ExtraContent[];
+    extra_content?: string[];
     animating?: boolean;
     selected?: boolean;
     hot_cold?: number|null;
