@@ -27,6 +27,7 @@ export interface ExtraContent {
 export interface MethodRowNumber {
     title: string;
     value: any;
+    count?: number;
     color?: string;
     extra_content?: ExtraContent[];
     animating?: boolean;
@@ -37,6 +38,7 @@ export interface MethodRowNumber {
 }
 
 export interface MethodRow {
+    type?: string;
     title?: string;
     position?: number[];
     min_selected?: number;
@@ -57,7 +59,7 @@ export interface MethodLayout {
         min_checked: number;
         max_checked: number;
     },
-    rows: MethodRow[];
+    rows?: MethodRow[];
     row_separator?: string;
     row_repeat?: boolean;
     unit_repeat?: boolean;
@@ -65,6 +67,19 @@ export interface MethodLayout {
     opposition?: [number, number][];
     code_total_count?: { min: number; max: number };
     tips?: string;
+
+    // 「单行简写」布局:无 rows 时,直接把一行的字段挂在 layout 上(见 officialLogic initRows)
+    number?: MethodRowNumber[] | Record<string, string>;
+    ordered_keys?: string[];
+    title?: string;
+    position?: number[];
+    min_selected?: number;
+    max_selected?: number;
+    shape?: string;
+    buttons?: boolean;
+    length?: number;
+    allowed_numbers?: (number | string)[];
+    stat_big_min?: number;
 }
 
 export interface MethodDesc {
@@ -83,7 +98,8 @@ export interface MethodLevel {
 export interface MethodCalc {
     type: string,
     base?: number|Record<number, number>,
-    totalPositions?: number
+    totalPositions?: number,
+    position?: number[]
 }
 
 export interface MethodDefineItem {
@@ -91,7 +107,7 @@ export interface MethodDefineItem {
     sign?: string;
     sdk_sign?: string;
     title: string;
-    desc: MethodDesc;
+    desc: string | MethodDesc;
     lr_status: boolean;
     yl_status: boolean;
     random_bet?: boolean;
