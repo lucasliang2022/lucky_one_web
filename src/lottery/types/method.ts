@@ -198,20 +198,26 @@ export interface OsList {
 
 export interface OmsGroup {
     title: string;
-    methods: MethodDefineItem[];
+    methods: Record<string, MethodDefineItem>;
 }
 
 export interface OmsCategoryWithGroups {
     title: string;
-    groups: OmsGroup[];
+    groups: Record<string, OmsGroup>;
 }
 
 export interface OmsDirectMethods {
     title: string;
-    methods: MethodDefineItem[];
+    methods: Record<string, MethodDefineItem>;
 }
 
-export type OmsCategory = OmsCategoryWithGroups | OmsDirectMethods;
+/** 一个分类:要么带 groups(分组玩法),要么直接 methods(无分组);officialBase 运行时二选一判别。
+ *  用可选字段而非联合,便于消费方直接读 .groups / .methods。 */
+export interface OmsCategory {
+    title: string;
+    groups?: Record<string, OmsGroup>;
+    methods?: Record<string, MethodDefineItem>;
+}
 
 export interface OmsList {
     [category: string]: OmsCategory

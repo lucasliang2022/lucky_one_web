@@ -64,12 +64,13 @@ export function useOfficialBase(common: CommonBase): OfficialBase {
             }
         }
 
-        officialGroupCurrent.value = firstGroupToSet;
+        // 无分组时 firstGroupToSet 为 null;ref 用 {} 空哨兵(与初始值一致,消费方均以 ?./?.sign 判存在)
+        officialGroupCurrent.value = firstGroupToSet ?? ({} as OmsGroup);
 
         if (firstMethodToSet) {
             setMethodOfficialCurrent(firstMethodToSet);
         } else {
-            officialMethodCurrent.value = null;
+            officialMethodCurrent.value = {} as MethodDefineItem;
         }
     };
 
