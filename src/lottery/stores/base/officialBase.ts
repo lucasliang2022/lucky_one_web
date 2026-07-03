@@ -11,9 +11,9 @@ import {
     OmsGroup,
     OmsList,
     OrderData,
-    OrderProject,
-    RespLotteryBet
+    OrderProject
 } from '@/types';
+import type { RespLotteryBet } from '@/api/lotteryService';
 import { CommonBase } from '@lottery/types/store';
 
 export function useOfficialBase(common: CommonBase): OfficialBase {

@@ -2,8 +2,9 @@ import { computed, ref, ComputedRef } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import { useUserStore } from '@/stores/userStore';
 import { AxiosError } from 'axios';
-import {CmsGroup, CmsList, MethodDefineItem, RespLotteryBet, CommonBase, CreditBase} from "@/types";
+import {CmsGroup, CmsList, MethodDefineItem, CommonBase, CreditBase} from "@/types";
 import * as lotteryService from "@/api/lotteryService";
+import type { RespLotteryBet } from "@/api/lotteryService";
 
 export function useCreditBase(common: CommonBase): CreditBase {
     const creditBetCount = ref<number>(0);
@@ -102,11 +103,11 @@ export function useCreditBase(common: CommonBase): CreditBase {
         try {
             const data: RespLotteryBet = await lotteryService.postLotteryBet(betData);
             if (data) {
-                ElMessage({ message: response.data.msg, type: 'success' });
+                ElMessage({ message: "投注成功", type: 'success' });
                 creditBetList.value = [];
             }
             await useUserStore().fetchBalance();
-            await common.fetchOrderList();
+            await common.fetchOrderList({ lottery_id: common.sign.value });
         } catch (error) {
             const err = error as AxiosError;
             console.error("投注异常：", err.message);
