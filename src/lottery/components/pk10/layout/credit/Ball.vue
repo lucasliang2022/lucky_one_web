@@ -12,12 +12,13 @@
 <script lang="ts" setup>
 import ItemDefault from "./items/ItemDefault.vue";
 import { storeToRefs } from "pinia";
-import { Ref } from 'vue';
+import { Ref, type PropType } from 'vue';
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import {HotCold, Omission, IssueItem} from "@/types";
 
 const props = defineProps({
   store: {
-    type: Object,
+    type: Object as PropType<LotteryStore>,
     required: true
   },
   methodCurrent: {

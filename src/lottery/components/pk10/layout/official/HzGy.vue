@@ -64,6 +64,8 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import { useOfficialLogic } from '@lottery/components/pk10/layout/logic/useOfficialLogic';
 import styles from '@/assets/scss/lottery/pk10.module.scss';
 
@@ -71,7 +73,7 @@ const $style = styles;
 
 const props = defineProps({
   store: {
-    type: Object,
+    type: Object as PropType<LotteryStore>,
     required: true
   }
 });

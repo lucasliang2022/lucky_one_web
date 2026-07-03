@@ -17,6 +17,8 @@ export interface IssueCodeArr {
 
 export interface Options {
     calculateChmFn?: (issue: IssueItem, ball: MethodRowNumber, positions: number[]) => boolean;
+    calculateHotColdFn?: (issueCount: number, history: IssueItem[], ballsData: MethodRowNumber[], positions: number[]) => Record<string | number, number>;
+    calculateOmissionFn?: (history: IssueItem[], ballsData: MethodRowNumber[], positions: number[]) => Record<string | number, number>;
     randomOneBetFn?: (rowsData: MethodRow[], currentMethod: MethodDefineItem) => SelectedUnit[][];
     calculateCountFn?: (tickets: SelectedUnit[][], currentMethod: MethodDefineItem) => number;
 }

@@ -1,8 +1,9 @@
 import {ref, Ref, watch, WatchSource} from 'vue';
 import {storeToRefs} from 'pinia';
 import {MethodDefineItem, MethodRow, MethodRowNumber, Options,SelectedUnit} from "@/types";
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 
-export function useOfficialLogic(store: any, options: Options = {}) {
+export function useOfficialLogic(store: LotteryStore, options: Options = {}) {
     const {
         calculateHotColdFn,
         calculateOmissionFn,
@@ -19,16 +20,7 @@ export function useOfficialLogic(store: any, options: Options = {}) {
         showOmission,
         selectedRange,
         issueHistory
-    } = storeToRefs(store) as {
-        officialMethodCurrent: Ref<MethodDefineItem>;
-        reset: Ref<boolean>;
-        officialSelectedBalls: Ref<SelectedUnit[][]>;
-        officialBetCount: Ref<number>;
-        showColdHot: Ref<boolean>;
-        showOmission: Ref<boolean>;
-        selectedRange: Ref<number>;
-        issueHistory: Ref<any[]>;
-    };
+    } = storeToRefs(store);
 
     const rows: Ref<MethodRow[]> = ref([]);
 

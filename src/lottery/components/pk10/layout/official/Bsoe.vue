@@ -60,6 +60,7 @@
 </template>
 
 <script setup lang="ts">
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import { useOfficialLogic } from '@lottery/components/pk10/layout/logic/useOfficialLogic';
 import styles from '@/assets/scss/lottery/pk10.module.scss';
 import {
@@ -72,7 +73,7 @@ import {
 
 const $style = styles;
 const props = defineProps<{
-  store: any;
+  store: LotteryStore;
 }>();
 
 function calculateHotCold(issueCount: number, history: IssueItem[], ballsData: MethodRowNumber[], positions: number[]): Record<string, number> {
