@@ -8,6 +8,8 @@ export interface IssueItem {
     sale_end_time?: number;
     lock_time?: number;
     open_code?: string;
+    /** open_code 的别名:归一化时镜像填充,兼容各游戏组件里读 issue.code 的写法(值同 open_code) */
+    code?: string;
     status?: number;
 }
 

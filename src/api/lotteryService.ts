@@ -79,10 +79,13 @@ const toNum = (v: unknown): number | undefined => {
 
 const normalizeIssue = (raw: RawIssue | null | undefined): IssueItem => {
     if (!raw || typeof raw !== 'object') return {} as IssueItem;
+    const openCode = (raw.open_code ?? raw.code ?? '') as string;
     return {
         lottery_id: String(raw.lottery_id ?? raw.lottery_sign ?? ''),
         issue_no: String(raw.issue_no ?? ''),
-        open_code: (raw.open_code ?? raw.code ?? '') as string,
+        open_code: openCode,
+        // 镜像到 code:pk10/lhc/部分 ssc 组件的冷热/遗漏逻辑读 issue.code,归一化后原本丢了该字段(冷热统计一直失效)
+        code: openCode,
         sale_start_time: toNum(raw.sale_start_time),
         sale_end_time: toNum(raw.sale_end_time),
         lock_time: toNum(raw.lock_time),
