@@ -58,6 +58,8 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import { officialLogic } from '@lottery/logic/officialLogic';
 import {MethodDefineItem, MethodRowNumber, SelectedUnit} from "@/types";
 import Buttons from "@lottery/components/common/Buttons.vue";
@@ -72,7 +74,7 @@ import {combination} from "@lottery/utils/common";
 const $style = styles;
 const props = defineProps({
   store: {
-    type: Object,
+    type: Object as PropType<LotteryStore>,
     required: true
   }
 });

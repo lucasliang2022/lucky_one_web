@@ -47,6 +47,8 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import { officialLogic } from '@lottery/logic/officialLogic';
 import RowRender from "@lottery/components/ssc/layout/official/render/RowRender.vue";
 import RowTitle from "@lottery/components/ssc/layout/official/render/RowTitle.vue";
@@ -61,7 +63,7 @@ const $style = styles;
 
 const props = defineProps({
   store: {
-    type: Object,
+    type: Object as PropType<LotteryStore>,
     required: true
   }
 });

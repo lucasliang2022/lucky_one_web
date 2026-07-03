@@ -361,7 +361,7 @@ export function officialLogic(store: LotteryStore, options: Options = {}) {
     }
 
     // ======================### calculate chm function ###=========================
-    function defaultCalculateChmFn(issue: IssueItem, ball: MethodRowNumber, positions: number[]): Record<string | number, number> {
+    function defaultCalculateChmFn(issue: IssueItem, ball: MethodRowNumber, positions: number[]): boolean {
         return false;
     }
 

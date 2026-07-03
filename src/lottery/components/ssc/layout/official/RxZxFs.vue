@@ -35,6 +35,8 @@
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import { officialLogic } from '@lottery/logic/officialLogic';
 import {IssueItem, MethodDefineItem, MethodRowNumber, SelectedUnit} from "@/types";
 import Buttons from "@lottery/components/common/Buttons.vue";
@@ -118,7 +120,7 @@ function calculateCountRxZx(tickets: SelectedUnit[][], currentMethod: MethodDefi
 
 const props = defineProps({
   store: {
-    type: Object,
+    type: Object as PropType<LotteryStore>,
     required: true
   }
 });

@@ -2,12 +2,14 @@
   <ManualInputLayout :store="store" ref="manualInputLayoutRef" />
 </template>
 <script setup lang="ts">
+import type { PropType } from 'vue';
+import type { LotteryStore } from '@lottery/stores/storeTypes';
 import {ref} from 'vue';
 import ManualInputLayout from './render/InputRender.vue';
 
 const props = defineProps({
   store: {
-    type: Object,
+    type: Object as PropType<LotteryStore>,
     required: true
   }
 });
