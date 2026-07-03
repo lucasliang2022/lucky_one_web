@@ -1,4 +1,4 @@
-export function combination(n, r) {
+export function combination(n: number, r: number): number {
     if (n < r) return 0;
     let numerator = 1, denominator = 1;
     for (let i = 0; i < r; i++) {
@@ -39,15 +39,15 @@ export const getSdkSignKey = (): 'momo' | 'sd' => {
     return (sdkSign === 'momo') ? 'momo' : 'sd';
 };
 
-export function getZjhType(openNumber) {
+export function getZjhType(openNumber: number[]) {
     if (openNumber.length !== 3) {
         return null;
     }
 
-    openNumber.sort((a, b) => a - b);
+    openNumber.sort((a: number, b: number) => a - b);
 
-    const counts = {};
-    openNumber.forEach(num => {
+    const counts: Record<number, number> = {};
+    openNumber.forEach((num: number) => {
         counts[num] = (counts[num] || 0) + 1;
     });
     const countValues = Object.values(counts);
@@ -78,7 +78,7 @@ export function getZjhType(openNumber) {
     return 3;
 }
 
-export function getNiuNiuTypes(openNumber) {
+export function getNiuNiuTypes(openNumber: number[]) {
     if (openNumber.length !== 5) {
         return null;
     }
@@ -94,10 +94,10 @@ export function getNiuNiuTypes(openNumber) {
 
     let result = 0;
     for (const combo of combinations) {
-        const sumCombo = combo.reduce((sum, num) => sum + num, 0);
+        const sumCombo = combo.reduce((sum: number, num: number) => sum + num, 0);
         if (sumCombo % 10 === 0) {
-            const remaining = openNumber.filter(num => !combo.includes(num));
-            const sumRemaining = remaining.reduce((sum, num) => sum + num, 0);
+            const remaining = openNumber.filter((num: number) => !combo.includes(num));
+            const sumRemaining = remaining.reduce((sum: number, num: number) => sum + num, 0);
             const tailPoint = sumRemaining % 10;
             result = tailPoint === 0 ? 10 : tailPoint;
         }
@@ -131,15 +131,15 @@ export function getNiuNiuTypes(openNumber) {
     return data;
 }
 
-export function getSuoHaType(openNumber) {
+export function getSuoHaType(openNumber: number[]) {
     if (openNumber.length !== 5) {
         return null;
     }
 
-    const sortedCodes = [...openNumber].sort((a, b) => a - b);
+    const sortedCodes = [...openNumber].sort((a: number, b: number) => a - b);
 
-    const counts = {};
-    sortedCodes.forEach(code => {
+    const counts: Record<number, number> = {};
+    sortedCodes.forEach((code: number) => {
         counts[code] = (counts[code] || 0) + 1;
     });
     const countValues = Object.values(counts);

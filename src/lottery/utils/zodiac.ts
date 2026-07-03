@@ -80,6 +80,6 @@ export function getLunarYear(date = new Date()) {
  * @param year
  * @returns {*|*[]}
  */
-export function getZodiacNumberByYear(year) {
-    return yearZodiacNumbers[year] || [];
+export function getZodiacNumberByYear(year: number) {
+    return yearZodiacNumbers[year as keyof typeof yearZodiacNumbers] || [];
 }
