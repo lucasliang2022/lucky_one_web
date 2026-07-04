@@ -58,6 +58,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZxDs: {
         title: '五星直选单式',
+        title_sign: 'lottery.ssc.method.WxZxDs',
         desc: '录入1个5位数的号码组成1注。录入的号码与开奖号码相同，且顺序一致，即中奖。',
         example: '投注方案：12345；开奖号码：1,2,3,4,5，即中奖。',
         lr_status: false,
@@ -86,6 +87,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZxZh: {
         title: '五星直选组合',
+        title_sign: 'lottery.ssc.method.WxZxZh',
         desc: '从万位、千位、百位、十位、个位上各选1个号码组成1~5星的组合，共5注。所选号码的个位与开奖号码的个位相同，则中个位定位胆；所选号码的十位、个位与开奖号码的十位、个位相同，则中个位定位胆及后二直选。依此类推，最多可同时中5个奖。',
         example: '投注方案：6,6,8,8,9；开奖号码：6,6,8,8,9，即中-,-,-,-,9、-,-,-,8,9、-,-,8,8,9、-,6,8,8,9、6,6,8,8,9,各一注。',
         lr_status: true,
@@ -121,6 +123,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZu120: {
         title: '五星组选120',
+        title_sign: 'lottery.ssc.method.WxZu120',
         desc: '选择5个号码组成1注，所选号码与开奖号码相同(顺序不限)，即为中奖。',
         example: '投注方案：6,2,1,8,9；开奖号码：9,8,6,2,1，即中奖。',
         calc: {
@@ -157,6 +160,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZu60: {
         title: '五星组选60',
+        title_sign: 'lottery.ssc.method.WxZu60',
         desc: '选择1个二重号和3个单号组成1注。开奖号码包含所选3个单号，且所选二重号在开奖号码中出现了2次，即中奖。',
         example: '投注方案：二重号：6，单号：3,7,8；开奖号码：6,7,3,8,6，即中奖。',
         calc: {
@@ -202,6 +206,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZu30: {
         title: '五星组选30',
+        title_sign: 'lottery.ssc.method.WxZu30',
         desc: '选择2个二重号和1个单号组成1注。开奖号码包含所选单号，且所选2个二重号在开奖号码中各出现2次，即中奖。',
         example: '投注方案：二重号：6,8，单号：0；开奖号码：6,8,1,8,6，即中奖。',
         calc: {
@@ -237,6 +242,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZu20: {
         title: '五星组选20',
+        title_sign: 'lottery.ssc.method.WxZu20',
         desc: '选择1个三重号和2个单号组成1注。开奖号码包含所选2个单号，且所选三重号在开奖号码中出现3次，即中奖。',
         example: '投注方案：三重号：8，单号：1,6；开奖号码：6,8,1,8,8，即中奖。',
         calc: {
@@ -270,6 +276,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZu10: {
         title: '五星组选10',
+        title_sign: 'lottery.ssc.method.WxZu10',
         desc: '选择1个三重号和1个二重号组成1注。开奖号码中所选三重号出现3次，且所选二重号出现2次，即中奖。',
         example: '投注方案：三重号：8，二重号：6；开奖号码：6,8,6,8,8，即中奖。',
         calc: {
@@ -307,6 +314,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     WxZu5: {
         title: '五星组选5',
+        title_sign: 'lottery.ssc.method.WxZu5',
         desc: '选择1个四重号和1个单号组成1注。开奖号码包含所选单号，且所选四重号在开奖号码中出现4次，即中奖。',
         example: '投注方案：四重号：8，单号：6；开奖号码：8,8,6,8,8，即中奖。',
         calc: {
@@ -344,6 +352,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZx: {
         title: '前四直选复式',
+        title_sign: 'lottery.ssc.method.QsiZx',
         desc: '从49个号码中选择1个号码形成1注，所选号码与开奖的特码相同，即中奖。',
         example: '投注方案：01；开奖特码：01，即中奖。',
         calc: {
@@ -379,6 +388,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZxDs: {
         title: '前四直选单式',
+        title_sign: 'lottery.ssc.method.QsiZxDs',
         desc: '录入1个4位数的号码组成1注。录入的号码与开奖号码的万位、千位、百位、十位相同，且顺序一致，即中奖。',
         example: '投注方案：1234；开奖号码：1,2,3,4,*，即中奖。',
         lr_status: false,
@@ -407,6 +417,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZxZh: {
         title: '前四直选组合',
+        title_sign: 'lottery.ssc.method.QsiZxZh',
         desc: '从万位、千位、百位、十位上各选择1个号码组成1~4星的组合，共4注。所选号码的十位与开奖号码的十位相同，则中十位定位胆；所选号码的百位、十位与开奖号码的百位、十位相同，则中十位定位胆及百十位直选。依此类推，最多可同时中4个奖。',
         example: '投注方案：1,2,3,4；开奖号码：1,2,3,4,*，即中-,-,-,4,*、-,-,3,4,*、-,2,3,4,*、1,2,3,4,*,各一注。',
         lr_status: true,
@@ -437,6 +448,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZu24: {
         title: '前四组选24',
+        title_sign: 'lottery.ssc.method.QsiZu24',
         desc: '选择4个号码组成1注，所选号码与开奖号码的万位、千位、百位、十位相同(顺序不限），即为中奖。',
         example: '投注方案：6,8,3,1；开奖号码：4,1,6,8,*，即中奖。',
         calc: {
@@ -473,6 +485,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZu12: {
         title: '前四组选12',
+        title_sign: 'lottery.ssc.method.QsiZu12',
         desc: '选择1个二重号和2个单号组成1注。开奖号码的万位、千位、百位、十位包含所选2个单号，且所选二重号在开奖号码的万位、千位、百位、十位中出现2次，即中奖。',
         example: '投注方案：二重号：6，单号：8,9；开奖号码：6,8,9,6,*,即中奖。',
         calc: {
@@ -518,6 +531,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZu6: {
         title: '前四组选6',
+        title_sign: 'lottery.ssc.method.QsiZu6',
         desc: '选择2个二重号组成1注。所选2个二重号在开奖号码的万位、千位、百位、十位各出现2次，即中奖。',
         example: '投注方案：6,8；开奖号码：6,8,6,8,*,即中奖。',
         calc: {
@@ -554,6 +568,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsiZu4: {
         title: '前四组选4',
+        title_sign: 'lottery.ssc.method.QsiZu4',
         desc: '选择1个三重号和1个单号组成1注。开奖号码的万位、千位、百位、十位包含所选单号，且所选三重号在开奖号码的万位、千位、百位、十位出现3次，即中奖。',
         example: '投注方案：三重号：1，单号：2；开奖号码：1,2,1,1,*，即中奖。',
         calc: {
@@ -599,6 +614,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZx: {
         title: '后四直选复式',
+        title_sign: 'lottery.ssc.method.HsiZx',
         desc: '从千位、百位、十位、个位上各选择1个号码组成1注。所选号码与开奖号码的千位、百位、十位、个位相同，且顺序一致，即中奖。',
         example: '投注方案：6,2,8,5；开奖号码：*,6,2,5,8，即中奖。',
         calc: {
@@ -634,6 +650,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZxDs: {
         title: '后四直选单式',
+        title_sign: 'lottery.ssc.method.HsiZxDs',
         desc: '录入1个4位数的号码组成1注。录入的号码与开奖号码的千位、百位、十位、个位相同，且顺序一致，即中奖。',
         example: '投注方案：1638；开奖号码：*,1,8,3,6，即中奖。',
         lr_status: false,
@@ -663,6 +680,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZxZh: {
         title: '后四直选组合',
+        title_sign: 'lottery.ssc.method.HsiZxZh',
         desc: '从万位、千位、百位、十位上各选择1个号码组成1~4星的组合，共4注。所选号码的十位与开奖号码的十位相同，则中十位定位胆；所选号码的百位、十位与开奖号码的百位、十位相同，则中十位定位胆及百十位直选。依此类推，最多可同时中4个奖。',
         example: '投注方案：1,2,3,4；开奖号码：1,2,3,4,*，即中-,-,-,4,*、-,-,3,4,*、-,2,3,4,*、1,2,3,4,*,各一注。',
         lr_status: true,
@@ -693,6 +711,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZu24: {
         title: '后四组选24',
+        title_sign: 'lottery.ssc.method.HsiZu24',
         desc: '选择4个号码组成1注，所选号码与开奖号码的千位、百位、十位、个位相同(顺序不限)，即为中奖。',
         example: '投注方案：1,2,3,4；开奖号码：*,4,3,2,1,即中奖。',
         calc: {
@@ -729,6 +748,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZu12: {
         title: '后四组选12',
+        title_sign: 'lottery.ssc.method.HsiZu12',
         desc: '选择1个二重号和2个单号组成1注。开奖号码的千位、百位、十位、个位包含所选2个单号，且所选二重号在开奖号码的千位、百位、十位、个位中出现2次，即中奖。',
         example: '投注方案：二重号：3，单号：1,2；开奖号码：*,3,1,2,3,即中奖。',
         calc: {
@@ -766,6 +786,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZu6: {
         title: '后四组选6',
+        title_sign: 'lottery.ssc.method.HsiZu6',
         desc: '选择2个二重号组成1注。所选2个二重号在开奖号码的千位、百位、十位、个位各出现2次，即中奖。',
         example: '投注方案：6,8； 开奖号码：*,6,8,6,8,即中奖。',
         calc: {
@@ -802,6 +823,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsiZu4: {
         title: '后四组选4',
+        title_sign: 'lottery.ssc.method.HsiZu4',
         desc: '选择1个三重号和1个单号组成1注。开奖号码的千位、百位、十位、个位包含所选单号，且所选三重号在开奖号码的千位、百位、十位、个位出现3次，即中奖。',
         example: '投注方案：三重号：1，单号：2；开奖号码：*,1,2,1,1，即中奖。',
         calc: {
@@ -840,6 +862,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     QsZx: {
         title: '前三直选复式',
+        title_sign: 'lottery.ssc.method.QsZx',
         desc: '从万位、千位、百位中各选择1个号码组成1注，所选号码与开奖号码的万位、千位、百位相同，且顺序一致，即为中奖。',
         example: '投注方案：6,6,8；开奖号码：6,6,8,*,*，即中奖。',
         lr_status: true,
@@ -873,6 +896,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZxDs: {
         title: '前三直选单式',
+        title_sign: 'lottery.ssc.method.QsZxDs',
         desc: '录入1个3位数的号码组成1注。录入的号码与开奖号码的万位、千位、百位相同，且顺序一致，即中奖。',
         example: '投注方案：678；开奖号码：6,7,8,*,*，即中奖。',
         lr_status: false,
@@ -901,6 +925,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZxZh: {
         title: '前三直选组合',
+        title_sign: 'lottery.ssc.method.QsZxZh',
         desc: '从万位、千位、百位、十位上各选择1个号码组成1~4星的组合，共4注。所选号码的十位与开奖号码的十位相同，则中十位定位胆；所选号码的百位、十位与开奖号码的百位、十位相同，则中十位定位胆及百十位直选。依此类推，最多可同时中4个奖。',
         example: '投注方案：1,2,3,4；开奖号码：1,2,3,4,*，即中-,-,-,4,*、-,-,3,4,*、-,2,3,4,*、1,2,3,4,*,各一注。',
         lr_status: true,
@@ -932,6 +957,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZxHz: {
         title: '前三直选和值',
+        title_sign: 'lottery.ssc.method.QsZxHz',
         desc: '选择1个数值，与开奖号码的万位、千位、百位3个号码之和相同，即中奖。',
         example: '投注方案：3；开奖号码：1,2,0,*,*，即中奖。',
         calc: {
@@ -967,6 +993,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZxKd: {
         title: '前三直选跨度',
+        title_sign: 'lottery.ssc.method.QsZxKd',
         desc: '选择1个数值，与开奖号码的万位、千位、百位中最大与最小数字相减之差相同，即中奖。',
         example: '投注方案：6；开奖号码：1,2,7,*,*，即中奖。',
         lr_status: false,
@@ -1003,6 +1030,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     QsZu3: {
         title: '前三组选三',
+        title_sign: 'lottery.ssc.method.QsZu3',
         desc: '选择2个号码组成2注，任意1个号码在开奖号码的万位、千位、百位上出现2次，另外1个号码出现1次（顺序不限），即中奖。',
         example: '投注方案：1,8；开奖号码：1,8,8,*,*,即中奖。',
         lr_status: false,
@@ -1038,6 +1066,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZu3Ds: {
         title: '前三组选三单式',
+        title_sign: 'lottery.ssc.method.QsZu3Ds',
         desc: '录入2个相同的号码和1个不同的号码组成1注。录入号码与开奖号码的万位、千位、百位相同（顺序不限），即中奖。',
         example: '投注方案：188；开奖号码：8,8,1,*,*,即中奖。',
         lr_status: false,
@@ -1067,6 +1096,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZu6: {
         title: '前三组选六',
+        title_sign: 'lottery.ssc.method.QsZu6',
         desc: '选择3个号码组成1注。所选号码与开奖号码的万位、千位、百位相同(顺序不限)，即中奖。',
         example: '投注方案：1,6,8；开奖号码：1,8,6,*,*,即中奖。。',
         lr_status: true,
@@ -1103,6 +1133,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZu6Ds: {
         title: '前三组选六单式',
+        title_sign: 'lottery.ssc.method.QsZu6Ds',
         desc: '录入3个不相同的号码组成1注。录入号码与开奖号码的万位、千位、百位相同，且顺序不限，即中奖。',
         example: '投注方案：168；开奖号码：1,8,6,*,*,即中前三组六。',
         lr_status: false,
@@ -1132,6 +1163,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZuHz: {
         title: '前三组选和值',
+        title_sign: 'lottery.ssc.method.QsZuHz',
         desc: '选择1个数值，所选数值等于开奖号码的万位、千位、百位3个号码之和（不含豹子号），且万位、千位、百位有对子，即中前三组选和值组三，若万位、千位、百位为单号，即中前三组选和值组六；',
         example: '投注方案；6；开奖号码A：3,3,0,*,*,即中前三组选和值组三；开奖号码B：1,2,3,*,*,即中前三组选和值组六。',
         lr_status: false,
@@ -1161,6 +1193,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsZuBd: {
         title: '前三组选包胆',
+        title_sign: 'lottery.ssc.method.QsZuBd',
         desc: '选择1个号码，当开奖号码的万位、千位、百位中任意1位和所选号码相同（不含豹子号），且万位、千位、百位有对子，即中前三组选包胆组三，且万位、千位、百位为单号，即中前三组选包胆组六；',
         example: '投注方案：8；开奖号码A：1,8,8,*,*,即中前三组选包胆组三；开奖号码B：1,2,8,*,*,即中前三组选包胆组六。',
         lr_status: true,
@@ -1200,6 +1233,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QsHzWs: {
         title: '前三和值尾数',
+        title_sign: 'lottery.ssc.method.QsHzWs',
         desc: '选择1个数值，与开奖号码的万位、千位、百位3个号码之和的尾数相同，即中奖。',
         example: '投注方案：6；开奖号码：3,2,1,*,*,即中奖。',
         lr_status: false,
@@ -1232,6 +1266,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     ZsZx: {
         title: '中三直选复式',
+        title_sign: 'lottery.ssc.method.ZsZx',
         desc: '从千位、百位、十位中各选择1个号码组成1注，所选号码与开奖号码的千位、百位、十位相同，且顺序一致，即为中奖。',
         example: '投注方案：6,6,8；开奖号码：*,6,6,8,*，即中奖。',
         calc: {
@@ -1266,6 +1301,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZxDs: {
         title: '中三直选单式',
+        title_sign: 'lottery.ssc.method.ZsZxDs',
         desc: '录入1个3位数的号码组成1注。录入的号码与开奖号码的千位、百位、十位 相同，且顺序一致，即中奖。',
         example: '投注方案：678；开奖号码：*,6,7,8,*，即中奖。',
         lr_status: false,
@@ -1294,6 +1330,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZxZh: {
         title: '中三直选组合',
+        title_sign: 'lottery.ssc.method.ZsZxZh',
         desc: '从千位、百位、十位中各选择1个号码组成1~3星的组合，共3注。所选号码的十位与开奖号码的十位相同，则中十位定位胆；所选号码的百位、十位与开奖号码的百位、十位相同，则中十位定位胆及百十位直选。依此类推，最多可同时中3个奖。',
         example: '投注方案：1,2,3；开奖号码：*,1,2,3,*，即中*,-,-,3,*、*,-,2,3,*、*,1,2,3,*，各一注。',
         lr_status: true,
@@ -1325,6 +1362,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZxHz: {
         title: '中三直选和值',
+        title_sign: 'lottery.ssc.method.ZsZxHz',
         calc: {
             type: 'map',
         },
@@ -1359,6 +1397,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZxKd: {
         title: '中三直选跨度',
+        title_sign: 'lottery.ssc.method.ZsZxKd',
         desc: '选择1个数值，与开奖号码的千位、百位、十位中最大与最小数字相减之差相同，即中奖。',
         example: '投注方案：8；开奖号码：*,1,2,9,*，即中奖。',
         lr_status: false,
@@ -1395,6 +1434,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     ZsZu3: {
         title: '中三组选三',
+        title_sign: 'lottery.ssc.method.ZsZu3',
         desc: '选择2个号码组成2注，任意1个号码在开奖号码的千位、百位、十位上出现2次，另外1个号码出现1次（顺序不限），即中奖。',
         example: '投注方案：1,8；开奖号码：*,1,8,8,*，即中奖。',
         lr_status: false,
@@ -1430,6 +1470,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZu3Ds: {
         title: '中三组选三单式',
+        title_sign: 'lottery.ssc.method.ZsZu3Ds',
         desc: '录入2个相同的号码和1个不同的号码组成1注。录入号码与开奖号码的千位、百位、十位相同（顺序不限），即中奖。',
         example: '投注方案：188；开奖号码：*,8,1,8,*，即中奖。',
         lr_status: false,
@@ -1459,6 +1500,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZu6: {
         title: '中三组选六',
+        title_sign: 'lottery.ssc.method.ZsZu6',
         desc: '选择3个号码组成1注。所选号码与开奖号码的千位、百位、十位相同(顺序不限)，即中奖。',
         example: '投注方案：1,6,8；开奖号码：*,1,8,6,*,即中奖。。',
         lr_status: true,
@@ -1495,6 +1537,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZu6Ds: {
         title: '中三组选六单式',
+        title_sign: 'lottery.ssc.method.ZsZu6Ds',
         desc: '录入3个不相同的号码组成1注。录入号码与开奖号码的千位、百位、十位相同，且顺序不限，即中奖。',
         example: '投注方案：168；开奖号码：*,6,1,8,*，即中奖。',
         lr_status: false,
@@ -1524,6 +1567,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZuHz: {
         title: '中三组选和值',
+        title_sign: 'lottery.ssc.method.ZsZuHz',
         desc: '选择1个数值，所选数值等于开奖号码的千位、百位、十位3个号码之和（不含豹子号），且千位、百位、十位有对子，即中中三组选和值组三，若千位、百位、十位为单号，即中中三组选和值组六；',
         example: '投注方案：8；开奖号码A：*,4,4,0,*，即中中三组选和值组三；开奖号码B：*,1,2,5,*，即中中三组选和值组六。',
         lr_status: false,
@@ -1558,6 +1602,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZsZuBd: {
         title: '中三组选包胆',
+        title_sign: 'lottery.ssc.method.ZsZuBd',
         desc: '选择1个号码，当开奖号码的万位、千位、百位中任意1位和所选号码相同（不含豹子号），且万位、千位、百位有对子，即中前三组选包胆组三，且万位、千位、百位为单号，即中前三组选包胆组六；',
         example: '投注方案：8；开奖号码A：*,1,8,8,*,即中前三组选包胆组三；开奖号码B：*,1,2,8,*,即中前三组选包胆组六。',
         lr_status: true,
@@ -1598,6 +1643,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     ZsHzWs: {
         title: '中三和值尾数',
+        title_sign: 'lottery.ssc.method.ZsHzWs',
         desc: '选择1个数值，与开奖号码的千位、百位、十位3个号码之和的尾数相同，即中奖。',
         example: '投注方案：8；开奖号码：*,1,2,5,*，即中奖。',
         lr_status: false,
@@ -1630,6 +1676,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     HsZx: {
         title: '后三直选复式',
+        title_sign: 'lottery.ssc.method.HsZx',
         desc: '从百位、十位、个位中各选择1个号码组成1注，所选号码与开奖号码的百位、十位、个位相同，且顺序一致，即为中奖。',
         example: '投注方案：6,6,8；开奖号码：*,*,6,6,8，即中奖。',
         calc: {
@@ -1664,6 +1711,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZxDs: {
         title: '后三直选单式',
+        title_sign: 'lottery.ssc.method.HsZxDs',
         desc: '录入1个3位数的号码组成1注。录入的号码与开奖号码的 百位、十位、个位 相同，且顺序一致，即中奖。',
         example: '投注方案：678；开奖号码：*,*,6,7,8 即中奖。',
         lr_status: false,
@@ -1692,6 +1740,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZxZh: {
         title: '后三直选组合',
+        title_sign: 'lottery.ssc.method.HsZxZh',
         desc: '从百位、十位、个位中各选择1个号码组成1~3星的组合，共3注。所选号码的个位与开奖号码的个位相同，则中个位定位胆；所选号码的十位、个位与开奖号码的十位、个位相同，则中个位定位胆及后二直选。依此类推，最多可同时中3个奖。',
         example: '投注方案：5,6,7；开奖号码：*,*,5,6,7，即中*,*,-,-,7、*,*,-,6,7、*,*,5,6,7，各一注。',
         lr_status: true,
@@ -1723,6 +1772,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZxHz: {
         title: '后三直选和值',
+        title_sign: 'lottery.ssc.method.HsZxHz',
         desc: '选择1个数值，与开奖号码的百位、十位、个位3个号码之和相同，即中奖。',
         example: '投注方案：8； 开奖号码：*,*,2,3,5，即中奖。',
         lr_status: false,
@@ -1757,6 +1807,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZxKd: {
         title: '后三直选跨度',
+        title_sign: 'lottery.ssc.method.HsZxKd',
         desc: '选择1个数值，与开奖号码的百位、十位、个位中最大与最小数字相减之差相同，即中奖。',
         example: '投注方案：8；开奖号码：*,*,1,2,9，即中奖。',
         lr_status: false,
@@ -1793,6 +1844,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     HsZu3: {
         title: '后三组选三',
+        title_sign: 'lottery.ssc.method.HsZu3',
         desc: '选择2个号码组成2注，任意1个号码在开奖号码的百位、十位、个位上出现2次，另外1个号码出现1次（顺序不限），即中奖。',
         example: '投注方案：1,6；开奖号码：*,*,1,6,6，即中奖。',
         lr_status: false,
@@ -1828,6 +1880,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZu3Ds: {
         title: '后三组选三单式',
+        title_sign: 'lottery.ssc.method.HsZu3Ds',
         desc: '录入2个相同的号码和1个不同的号码组成1注。录入号码与开奖号码的百位、十位、个位相同（顺序不限），即中奖。',
         example: '投注方案：188；开奖号码：*,*,8,1,8，即中奖。',
         lr_status: false,
@@ -1857,6 +1910,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZu6: {
         title: '后三组选六',
+        title_sign: 'lottery.ssc.method.HsZu6',
         desc: '选择3个号码组成1注。所选号码与开奖号码的百位、十位、个位相同(顺序不限)，即中奖。',
         example: '投注方案：1,2,8；开奖号码：*,*,1,8,2，即中奖。',
         lr_status: true,
@@ -1893,6 +1947,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZu6Ds: {
         title: '后三组选六单式',
+        title_sign: 'lottery.ssc.method.HsZu6Ds',
         desc: '录入3个不相同的号码。录入号码与开奖号码的百位、十位、个位相同，且顺序不限，即中奖。',
         example: '投注方案：168；开奖号码：*,*,1,8,6，即中奖。',
         lr_status: false,
@@ -1922,6 +1977,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZuHz: {
         title: '后三组选和值',
+        title_sign: 'lottery.ssc.method.HsZuHz',
         desc: '选择1个数值，所选数值等于开奖号码的百位、十位、个位3个号码之和（不含豹子号），且百位、十位、个位有对子，即中后三组选和值组三，若百位、十位、个位为单号，即中后三组选和值组六；',
         example: '投注方案；8；开奖号码A：*,*,4,4,0，即中后三组选和值组三；开奖号码B：*,*,1,2,5，即中后三组选和值组六。',
         lr_status: false,
@@ -1956,6 +2012,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsZuBd: {
         title: '后三组选包胆',
+        title_sign: 'lottery.ssc.method.HsZuBd',
         desc: '选择1个号码，当开奖号码的百位、十位、个位中任意1位和所选号码相同（不含豹子号），且百位、十位、个位有对子，即中后三组选包胆组三，若百位、十位、个位为单号，即中后三组选包胆组六；',
         example: '投注方案：3；开奖号码A：*,*,1,8,8，即中后三组选包胆组三；开奖号码B：*,*,1,6,8，即中后三组选包胆组六。',
         lr_status: true,
@@ -1990,6 +2047,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HsHzWs: {
         title: '后三和值尾数',
+        title_sign: 'lottery.ssc.method.HsHzWs',
         desc: '选择1个数值，与开奖号码的百位、十位、个位3个号码之和的尾数相同，即中奖。',
         example: '投注方案：8；开奖号码：*,*,1,2,5，即中奖。',
         lr_status: false,
@@ -2022,6 +2080,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     QeZx: {
         title: '前二直选复式',
+        title_sign: 'lottery.ssc.method.QeZx',
         desc: '从万位、千位上各选择1个号码组成1注。所选号码与开奖号码的万位、千位相同，且顺序一致，即中奖。',
         example: '投注方案：6,7；开奖号码：6,7,*,*,*，即中奖。',
         calc: {
@@ -2055,6 +2114,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZxDs: {
         title: '前二直选单式',
+        title_sign: 'lottery.ssc.method.QeZxDs',
         desc: '录入1个2位数的号码组成1注。录入的号码与开奖号码的万位、千位相同，且顺序一致，即中奖。',
         example: '投注方案：68；开奖号码：6,8,*,*,*，即中奖。',
         lr_status: false,
@@ -2083,6 +2143,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZxHz: {
         title: '前二直选和值',
+        title_sign: 'lottery.ssc.method.QeZxHz',
         desc: '选择1个数值，与开奖号码的万位、千位2个号码之和相同，即中奖。',
         example: '投注方案：8；开奖号码：6,2,*,*,*，即中奖。',
         lr_status: false,
@@ -2118,6 +2179,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZxKd: {
         title: '前二直选跨度',
+        title_sign: 'lottery.ssc.method.QeZxKd',
         desc: '选择1个数值，与开奖号码的万位、千位中相减之差相同，即中奖。',
         example: '投注方案：6；开奖号码：1,9,*,*,*，即中奖。',
         lr_status: false,
@@ -2153,6 +2215,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZu: {
         title: '前二组选复式',
+        title_sign: 'lottery.ssc.method.QeZu',
         desc: '选择2个号码组成1注。所选号码与开奖号码的万位、千位相同（顺序不限），即中奖。',
         example: '投注方案：6,8；开奖号码：8,6,*,*,*，即中奖。',
         calc: {
@@ -2188,6 +2251,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZuDs: {
         title: '前二组选单式',
+        title_sign: 'lottery.ssc.method.QeZuDs',
         desc: '录入2个不相同的号码组成1注。录入号码与开奖号码万位、千位相同（顺序不限），即中奖。',
         example: '投注方案：68；开奖号码：8,6,*,*,*，即中奖。',
         lr_status: false,
@@ -2217,6 +2281,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZuHz: {
         title: '前二组选和值',
+        title_sign: 'lottery.ssc.method.QeZuHz',
         desc: '选择1个数值，所选数值等于开奖号码的万位、千位2个号码之和（不含对子号），即中奖。',
         example: '投注方案：8；开奖号码：6,2,*,*,*，即中奖。',
         lr_status: false,
@@ -2252,6 +2317,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QeZuBd: {
         title: '前二组选包胆',
+        title_sign: 'lottery.ssc.method.QeZuBd',
         desc: '选择1个号码，开奖号码的万位、千位中任意一位和所选号码相同（不含对子号），即中奖。',
         example: '投注方案：3；开奖号码：1,3,*,*,*，即中奖。',
         lr_status: true,
@@ -2287,6 +2353,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     HeZx: {
         title: '后二直选复式',
+        title_sign: 'lottery.ssc.method.HeZx',
         desc: '从十位、个位上各选择1个号码组成1注。所选号码与开奖号码的十位、个位相同，且顺序一致，即中奖。',
         example: '投注方案：6,8；开奖号码：*,*,*,6,8，即中奖。',
         calc: {
@@ -2320,6 +2387,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZxDs: {
         title: '后二直选单式',
+        title_sign: 'lottery.ssc.method.HeZxDs',
         desc: '录入1个2位数的号码组成1注。录入的号码与开奖号码的十位、个位相同，且顺序一致，即中奖。',
         example: '投注方案：68；开奖号码：*,*,*,6,8，即中奖。',
         lr_status: false,
@@ -2348,6 +2416,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZxHz: {
         title: '后二直选和值',
+        title_sign: 'lottery.ssc.method.HeZxHz',
         desc: '选择1个数值，与开奖号码的十位、个位2个号码之和相同，即中奖。',
         example: '投注方案：8；开奖号码：*,*,*,6,2，即中奖。',
         lr_status: false,
@@ -2383,6 +2452,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZxKd: {
         title: '后二直选跨度',
+        title_sign: 'lottery.ssc.method.HeZxKd',
         desc: '选择1个数值，与开奖号码的十位、个位中相减之差相同，即中奖。',
         example: '投注方案：6；开奖号码：*,*,*，1,9，即中奖。',
         lr_status: false,
@@ -2418,6 +2488,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZu: {
         title: '后二组选复式',
+        title_sign: 'lottery.ssc.method.HeZu',
         desc: '选择2个号码组成1注。所选号码与开奖号码的十位、个位相同（顺序不限），即中奖。',
         example: '投注方案：6,7；开奖号码：*,*,*,6,7，即中奖。',
         calc: {
@@ -2453,6 +2524,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZuDs: {
         title: '后二组选单式',
+        title_sign: 'lottery.ssc.method.HeZuDs',
         desc: '录入2个不相同的号码组成1注。录入号码与开奖号码十位、个位相同（顺序不限），即中奖。',
         example: '投注方案：68；开奖号码：*,*,*,6,8，即中奖。',
         lr_status: false,
@@ -2482,6 +2554,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZuHz: {
         title: '后二组选和值',
+        title_sign: 'lottery.ssc.method.HeZuHz',
         desc: '选择1个数值，所选数值等于开奖号码的十位、个位2个号码之和（不含对子号），即中奖。',
         example: '投注方案：8；开奖号码：*,*,*,6,2，即中奖。',
         lr_status: false,
@@ -2517,6 +2590,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     HeZuBd: {
         title: '后二组选包胆',
+        title_sign: 'lottery.ssc.method.HeZuBd',
         desc: '选择1个号码，开奖号码的十位、个位中任意一位和所选号码相同（不含对子号），即中奖。',
         example: '投注方案：6；开奖号码：*,*,*,1,7，即中奖。',
         lr_status: true,
@@ -2552,6 +2626,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     Dwd: {
         title: '定位胆',
+        title_sign: 'lottery.ssc.method.Dwd',
         desc: '从万位、千位、百位、十位、个位任意位置选择1个号码组成1注，所选号码与相同位置上的开奖号码一致，即中奖。',
         example: '投注方案：8,-,-,-,-；开奖号码：8,*,*,*,* ，即中奖。',
         lr_status: true,
@@ -2584,6 +2659,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     BdwQsYm: {
         title: '前三一码不定胆',
+        title_sign: 'lottery.ssc.method.BdwQsYm',
         desc: '选择1个号码组成1注。开奖号码的万位、千位、百位中包含所选号码，即中奖。',
         example: '投注方案：3；开奖号码：1,3,2,*,*，即中奖。',
         lr_status: true,
@@ -2616,6 +2692,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwQsEm: {
         title: '前三二码不定胆',
+        title_sign: 'lottery.ssc.method.BdwQsEm',
         desc: '选择2个号码组成1注。开奖号码的万位、千位、百位中包含所选2个号码，即中奖。',
         example: '投注方案：6,8；开奖号码：8,6,2,*,*，即中奖。',
         lr_status: true,
@@ -2652,6 +2729,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwZsYm: {
         title: '中三一码不定胆',
+        title_sign: 'lottery.ssc.method.BdwZsYm',
         desc: '选择1个号码组成1注。开奖号码的千位、百位、十位中包含所选号码，即中奖。',
         example: '投注方案：3；开奖号码：*,1,3,2,*，即中奖。',
         lr_status: true,
@@ -2684,6 +2762,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwZsEm: {
         title: '中三二码不定胆',
+        title_sign: 'lottery.ssc.method.BdwZsEm',
         desc: '选择2个号码组成1注。开奖号码的千位、百位、十位中包含所选2个号码，即中奖。',
         example: '投注方案：6,8；开奖号码：*,6,3,8,*，即中奖。',
         lr_status: true,
@@ -2720,6 +2799,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwHsYm: {
         title: '后三一码不定胆',
+        title_sign: 'lottery.ssc.method.BdwHsYm',
         desc: '选择1个号码组成1注。开奖号码的百位、十位、个位中包含所选号码，即中奖。',
         example: '投注方案：6；开奖号码：*,*,1,6,2，即中奖。。',
         lr_status: true,
@@ -2752,6 +2832,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwHsEm: {
         title: '后三二码不定胆',
+        title_sign: 'lottery.ssc.method.BdwHsEm',
         desc: '选择2个号码组成1注。开奖号码的百位、十位、个位中包含所选2个号码，即中奖。',
         example: '投注方案：6,8；开奖号码：*,*,6,8,2，即中奖。',
         lr_status: true,
@@ -2789,6 +2870,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     BdwQsiYm: {
         title: '前四一码不定胆',
+        title_sign: 'lottery.ssc.method.BdwQsiYm',
         desc: '选择1个号码组成1注。开奖号码的万位、千位、百位、十位中包含所选号码，即中奖。',
         example: '投注方案：6；开奖号码：1,2,6,8,*，即中奖。',
         lr_status: true,
@@ -2821,6 +2903,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwQsiEm: {
         title: '前四二码不定胆',
+        title_sign: 'lottery.ssc.method.BdwQsiEm',
         desc: '选择2个号码组成1注。开奖号码的万位、千位、百位、十位中包含所选2个号码，即中奖。',
         example: '投注方案：6,7；开奖号码：8,2,6,4,*，即中奖。',
         lr_status: true,
@@ -2857,6 +2940,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwQsiSm: {
         title: '前四三码不定胆',
+        title_sign: 'lottery.ssc.method.BdwQsiSm',
         desc: '选择3个号码组成1注。开奖号码的万位、千位、百位、十位中包含所选3个号码，即中奖。',
         example: '投注方案：6,8,5；开奖号码：5,2,8,6,*，即中奖。',
         lr_status: true,
@@ -2893,6 +2977,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwHsiYm: {
         title: '后四一码不定胆',
+        title_sign: 'lottery.ssc.method.BdwHsiYm',
         desc: '选择1个号码组成1注。开奖号码的千位、百位、十位、个位中包含所选号码，即中奖。',
         example: '投注方案：8；开奖号码：*,1,2,8,6，即中奖。',
         lr_status: true,
@@ -2925,6 +3010,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwHsiEm: {
         title: '后四二码不定胆',
+        title_sign: 'lottery.ssc.method.BdwHsiEm',
         desc: '选择2个号码组成1注。开奖号码的千位、百位、十位、个位中包含所选2个号码，即中奖。',
         example: '投注方案：6,8；开奖号码：*,1,2,6,8，即中奖。',
         lr_status: true,
@@ -2961,6 +3047,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwHsiSm: {
         title: '后四三码不定胆',
+        title_sign: 'lottery.ssc.method.BdwHsiSm',
         desc: '选择3个号码组成1注。开奖号码的千位、百位、十位、个位中包含所选3个号码，即中奖。',
         example: '投注方案：6,8,1；开奖号码：*,1,2,6,8，即中奖。',
         lr_status: true,
@@ -2997,6 +3084,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwWuYm: {
         title: '五星一码不定胆',
+        title_sign: 'lottery.ssc.method.BdwWuYm',
         desc: '选择1个号码组成1注。开奖号码的万位、千位、百位、十位、个位中包含所选号码，即中奖。',
         example: '投注方案：8；开奖号码：1,2,8,6,9，即中奖。',
         lr_status: true,
@@ -3029,6 +3117,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwWuEm: {
         title: '五星二码不定胆',
+        title_sign: 'lottery.ssc.method.BdwWuEm',
         desc: '选择2个号码组成1注。开奖号码的万位、千位、百位、十位、个位中包含所选2个号码，即中奖。',
         example: '投注方案：2,3；开奖号码：1,2,3,4,5，即中奖。',
         lr_status: true,
@@ -3065,6 +3154,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BdwWuSm: {
         title: '五星三码不定胆',
+        title_sign: 'lottery.ssc.method.BdwWuSm',
         desc: '选择3个号码组成1注。开奖号码的万位、千位、百位、十位、个位中包含所选3个号码，即中奖。',
         example: '投注方案：2,6,8；开奖号码：1,2,6,8,5，即中奖。',
         lr_status: true,
@@ -3102,6 +3192,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     BsoeQeZh: {
         title: '前二大小单双组合',
+        title_sign: 'lottery.ssc.method.BsoeQeZh',
         desc: '分别选择万位和千位的1个形态（大：5-9；小：0-4；单：1,3,5,7,9； 双：0,2,4,6,8)，组成1注。所选位置的形态与开奖号码的位置与形态相同，即中奖。',
         example: '投注方案：万位：大，千位：小；开奖号码：9,4,*,*,*，即中奖。',
         lr_status: true,
@@ -3133,6 +3224,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BsoeQsZh: {
         title: '前三大小单双组合',
+        title_sign: 'lottery.ssc.method.BsoeQsZh',
         desc: '分别选择万位、千位和百位的1个形态（大：5-9；小：0-4；单：1,3,5,7,9； 双：0,2,4,6,8)，组成1注，所选位置的形态与开奖号码的位置与形态相同，即中奖。',
         example: '投注方案：万位：大,千位：小,百位：单；开奖号码：9,4,5,*,*，即中奖。',
         lr_status: true,
@@ -3165,6 +3257,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BsoeHeZh: {
         title: '后二大小单双组合',
+        title_sign: 'lottery.ssc.method.BsoeHeZh',
         desc: '分别选择十位和个位的1个形态（大：5-9；小：0-4；单：1,3,5,7,9； 双：0,2,4,6,8),组成1注，所选位置的形态与开奖号码的位置与形态相同，即中奖。',
         example: '投注方案：十位：大,个位：小；开奖号码：*,*,*,9,4，即中奖。',
         lr_status: true,
@@ -3196,6 +3289,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BsoeHsZh: {
         title: '后三大小单双组合',
+        title_sign: 'lottery.ssc.method.BsoeHsZh',
         desc: '分别选择百位、十位和个位的1个形态（大：5-9；小：0-4；单：1,3,5,7,9； 双：0,2,4,6,8)，组成1注，所选位置的形态与开奖号码的位置与形态相同，即中奖。',
         example: '投注方案：百位：大,十位：小,个位：单；开奖号码：*,*,9,4,5，即中奖。',
         lr_status: true,
@@ -3229,6 +3323,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     BsoeWxHz: {
         title: '五星和值大小单双',
+        title_sign: 'lottery.ssc.method.BsoeWxHz',
         desc: '选择1个形态（大：23-45；小：0-22；单：个位数1,3,5,7,9；双：个位数0,2,4,6,8），与开奖的5个号码的和值的形态相同，即中奖。',
         example: '投注方案：大；开奖号码：9,8,7,6,9，即中奖。',
         lr_status: true,
@@ -3260,6 +3355,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BsoeQsHz: {
         title: '前三和值大小单双',
+        title_sign: 'lottery.ssc.method.BsoeQsHz',
         desc: '选择前三的1个形态（大：14-27；小：0-13；单：个位数1,3,5,7,9；双：个位数0,2,4,6,8），所选位置的形态与开奖号码对应位置的和值的形态相同，即中奖。',
         example: '投注方案：万位：大,千位：小,百位：单；开奖号码：9,4,5,*,*，即中奖。',
         lr_status: true,
@@ -3291,6 +3387,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BsoeZsHz: {
         title: '中三和值大小单双',
+        title_sign: 'lottery.ssc.method.BsoeZsHz',
         desc: '选择中三的1个形态（大：14-27；小：0-13；单：个位数1,3,5,7,9；双：个位数0,2,4,6,8），所选位置的形态与开奖号码对应位置的和值的形态相同，即中奖。',
         example: '投注方案：千位：小,百位：单,十位：大；开奖号码：*,9,4,6,*，即中奖。',
         lr_status: true,
@@ -3322,6 +3419,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     BsoeHsHz: {
         title: '后三和值大小单双',
+        title_sign: 'lottery.ssc.method.BsoeHsHz',
         desc: '选择后三的1个形态（大：14-27；小：0-13；单：个位数1,3,5,7,9；双：个位数0,2,4,6,8），所选位置的形态与开奖号码对应位置的和值的形态相同，即中奖。',
         example: '投注方案：百位：单,十位：大,个位：小,；开奖号码：*,*,9,4,2，即中奖。',
         lr_status: true,
@@ -3350,6 +3448,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     ReZx: {
         title: '任二直选复式',
+        title_sign: 'lottery.ssc.method.ReZx',
         desc: '从万位、千位、百位、十位、个位中任意选择2个位置，在这2个位置上各选择1个号码组成1注。开奖号码与所选2个位置的号码相同，且顺序一致，即中奖。',
         example: '投注方案：1,2,-,-,-；开奖号码：1,2,*,*,*，即中奖。',
         lr_status: true,
@@ -3386,6 +3485,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ReZxDs: {
         title: '任二直选单式',
+        title_sign: 'lottery.ssc.method.ReZxDs',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置。录入1个2位数的号码组成1注。被勾选2个位置上的开奖号码与所录入号码相同，且顺序一致，即中奖',
         example: '投注方案：(万千)12；开奖号码：1,2,*,*,*，即中奖。',
         lr_status: true,
@@ -3419,6 +3519,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ReZxHz: {
         title: '任二直选和值',
+        title_sign: 'lottery.ssc.method.ReZxHz',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择1个数值。被勾选2个位置上的开奖号码之和与所选和值相同，即中奖。',
         example: '投注方案：(万千)3；开奖号码：1,2,*,*,*，即中奖。',
         lr_status: true,
@@ -3459,6 +3560,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ReZu: {
         title: '任二组选复式',
+        title_sign: 'lottery.ssc.method.ReZu',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择2个号码组成1注。被勾选2个位置的开奖号码与所选号码相同（顺序不限），即中奖。',
         example: '投注方案：(万千)1,2；开奖号码：2,1,*,*,*，即中奖。',
         lr_status: true,
@@ -3496,6 +3598,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ReZuDs: {
         title: '任二组选单式',
+        title_sign: 'lottery.ssc.method.ReZuDs',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置。录入2个不相同的码号。被勾选2个位置的开奖号码与录入号码相同（顺序不限），即中奖。',
         example: '投注方案：(万千)12；开奖号码：2,1,*,*,*，即中奖。',
         lr_status: true,
@@ -3529,6 +3632,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ReZuHz: {
         title: '任二组选和值',
+        title_sign: 'lottery.ssc.method.ReZuHz',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择1个数值。被勾选2个位置上的开奖号码（不含对子号）之和与所选号和值一致，即中奖。',
         example: '投注方案：(万千)3；开奖号码：1,2,*,*,*，即中奖。',
         lr_status: true,
@@ -3569,6 +3673,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ReZuBd: {
         title: '任二组选包胆',
+        title_sign: 'lottery.ssc.method.ReZuBd',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择1个号码。被勾选2个位置上的开奖号码（不含对子号）中任意1位与所选号码相同，即中奖。',
         example: '投注方案：(万千)3；开奖号码：1,3,*,*,*，即中奖。',
         lr_status: true,
@@ -3607,6 +3712,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     RsZx: {
         title: '任三直选复式',
+        title_sign: 'lottery.ssc.method.RsZx',
         desc: '从万位、千位、百位、十位、个位中任意选择3个位置，在这3个位置上各选择1个号码组成1注。开奖号码与所选3个位置的号码相同，且顺序一致，即中奖。。',
         example: '投注方案：1,2,3,-,-；开奖号码：1,2,3,*,*，即中奖。',
         lr_status: true,
@@ -3643,6 +3749,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     RsZxDs: {
         title: '任三直选单式',
+        title_sign: 'lottery.ssc.method.RsZxDs',
         desc: '从万位、千位、百位、十位、个位中任意勾选3个位置。录入1个3位数的号码组成1注。被勾选3个位置上的开奖号码与所录入号码相同，且顺序一致，即中奖。',
         example: '投注方案：(万千百)123；开奖号码：1,2,3*,*，即中奖。',
         lr_status: true,
@@ -3676,6 +3783,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     RsZxHz: {
         title: '任二直选和值',
+        title_sign: 'lottery.ssc.method.RsZxHz',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择1个数值。被勾选2个位置上的开奖号码之和与所选和值相同，即中奖。',
         example: '投注方案：(万千)3；开奖号码：1,2,*,*,*，即中奖。',
         lr_status: true,
@@ -3716,6 +3824,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     RsZu: {
         title: '任二组选复式',
+        title_sign: 'lottery.ssc.method.RsZu',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择2个号码组成1注。被勾选2个位置的开奖号码与所选号码相同（顺序不限），即中奖。',
         example: '投注方案：(万千)1,2；开奖号码：2,1,*,*,*，即中奖。',
         lr_status: true,
@@ -3753,6 +3862,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     RsZuDs: {
         title: '任二组选单式',
+        title_sign: 'lottery.ssc.method.RsZuDs',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置。录入2个不相同的码号。被勾选2个位置的开奖号码与录入号码相同（顺序不限），即中奖。',
         example: '投注方案：(万千)12；开奖号码：2,1,*,*,*，即中奖。',
         lr_status: true,
@@ -3785,6 +3895,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     RsZuHz: {
         title: '任二组选和值',
+        title_sign: 'lottery.ssc.method.RsZuHz',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择1个数值。被勾选2个位置上的开奖号码（不含对子号）之和与所选号和值一致，即中奖。',
         example: '投注方案：(万千)3；开奖号码：1,2,*,*,*，即中奖。',
         lr_status: true,
@@ -3825,6 +3936,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     RsZuBd: {
         title: '任二组选包胆',
+        title_sign: 'lottery.ssc.method.RsZuBd',
         desc: '从万位、千位、百位、十位、个位中任意勾选2个位置，选择1个号码。被勾选2个位置上的开奖号码（不含对子号）中任意1位与所选号码相同，即中奖。',
         example: '投注方案：(万千)3；开奖号码：1,3,*,*,*，即中奖。',
         lr_status: true,
@@ -3863,6 +3975,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     QwYffs: {
         title: '一帆风顺',
+        title_sign: 'lottery.ssc.method.QwYffs',
         desc: '选择1个号码组成1注。开奖号码的万位、千位、百位、十位、个位中包含所选号码，即中奖。',
         example: '投注方案：8；开奖号码：1,9,6,5,8，即中奖。',
         lr_status: true,
@@ -3895,6 +4008,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QwHscs: {
         title: '好事成双',
+        title_sign: 'lottery.ssc.method.QwHscs',
         desc: '选择1个号码组成1注。所选号码在开奖号码的万位、千位、百位、十位、个位中出现2次或以上，即为中奖。',
         example: '投注方案：6；开奖号码：9,8,6,2,6，即中奖。',
         lr_status: true,
@@ -3927,6 +4041,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QwSxbx: {
         title: '三星报喜',
+        title_sign: 'lottery.ssc.method.QwSxbx',
         desc: '选择1个号码组成1注。所选号码在开奖号码的万位、千位、百位、十位、个位中出现3次或以上，即为中奖。',
         example: '投注方案：6；开奖号码：6,6,6,1,8，即中奖。',
         lr_status: true,
@@ -3959,6 +4074,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     QwSjfc: {
         title: '四季发财',
+        title_sign: 'lottery.ssc.method.QwSjfc',
         desc: '选择1个号码组成1注。所选号码在开奖号码的万位、千位、百位、十位、个位中出现4次或以上，即为中奖。',
         example: '投注方案：6；开奖号码：6,6,8,6,6，即中奖。',
         lr_status: true,
@@ -3992,6 +4108,7 @@ const sscOfficialDefine: MethodDefineList = {
 
     LhWq: {
         title: '万千',
+        title_sign: 'lottery.ssc.method.LhWq',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：万千和；开奖号码：6,6,*,*,*，即中奖。',
         lr_status: true,
@@ -4028,6 +4145,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhWb: {
         title: '万百',
+        title_sign: 'lottery.ssc.method.LhWb',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：万百和；开奖号码：6,*,6,*,*，即中奖。',
         lr_status: true,
@@ -4064,6 +4182,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhWs: {
         title: '万十',
+        title_sign: 'lottery.ssc.method.LhWs',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：万十和；开奖号码：6,*,*,6,*，即中奖。',
         lr_status: true,
@@ -4100,6 +4219,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhWg: {
         title: '万个',
+        title_sign: 'lottery.ssc.method.LhWg',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：万个和；开奖号码：6,*,*,*,6，即中奖。',
         lr_status: true,
@@ -4136,6 +4256,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhQb: {
         title: '千百',
+        title_sign: 'lottery.ssc.method.LhQb',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：万百和；开奖号码：*,6,6,*,*，即中奖。',
         lr_status: true,
@@ -4172,6 +4293,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhQs: {
         title: '千十',
+        title_sign: 'lottery.ssc.method.LhQs',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：千十和；开奖号码：*,6,*,6,*，即中奖。',
         lr_status: true,
@@ -4208,6 +4330,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhQg: {
         title: '千个',
+        title_sign: 'lottery.ssc.method.LhQg',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：千个和；开奖号码：*,6,*,*,6，即中奖。',
         lr_status: true,
@@ -4244,6 +4367,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhBs: {
         title: '百十',
+        title_sign: 'lottery.ssc.method.LhBs',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：百十和；开奖号码：*,*,6,6,*，即中奖。',
         lr_status: true,
@@ -4280,6 +4404,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhBg: {
         title: '百个',
+        title_sign: 'lottery.ssc.method.LhBg',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：百个和；开奖号码：*,*,6,*,6，即中奖。',
         lr_status: true,
@@ -4316,6 +4441,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     LhSg: {
         title: '十个',
+        title_sign: 'lottery.ssc.method.LhSg',
         desc: '从1组位置中选择1个形态组成1注，1组位置中的开奖号码比较大小，前者大于后者为龙，反之为虎，号码相同则为和。所选形态与开奖形态一致，即中奖。',
         example: '投注方案：十个和；开奖号码：*,*,*,6,6，即中奖。',
         lr_status: true,
@@ -4352,6 +4478,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     Sh: {
         title: '梭哈',
+        title_sign: 'lottery.ssc.method.Sh',
         desc: '选择1个形态为1注，所选形态和开奖形态相同，顺序不限，即中奖。 四条：开奖号码中1个号码出现1次，另1个号码出现4次； 葫芦：开奖号码中1个号码出现2次，另1个号码出现3次； 顺子：开奖号码为5个顺序相连的号码；9与0相连，0与1相连； 三条：开奖号码中1个数字出现3次，其余2个号码不相同； 两对：开奖号码中出现两对二重号； 一对：开奖号码中出现二重号，而另外3个号码不相同； 单牌：开奖号码的5个数字各不相同且不为顺子。',
         example: '投注方案：顺子；开奖号码：0,1,6,7,8，即中奖。',
         lr_status: true,
@@ -4413,6 +4540,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZjhQs: {
         title: '前三扎金花',
+        title_sign: 'lottery.ssc.method.ZjhQs',
         desc: '选择1个形态为1注，所选形态和开奖号码对应位置的3个数字的形态相同，顺序不限，即中奖。 豹子：3个号码相同； 顺子：3个顺序相连的号码；9与0相连，0与1相连； 对子：3个数字中有1个数字出现2次，另1个数字出现1次（如：151、887）； 半顺：3个数字各不相同，且其中只有2个数字相连（如：238、769）； 杂六：3个数字各不相同且互不相连（如：357、962）。。',
         example: '前三：顺子；开奖号码：1,2,3,*,*，即中奖。',
         lr_status: true,
@@ -4464,6 +4592,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZjhZs: {
         title: '中三扎金花',
+        title_sign: 'lottery.ssc.method.ZjhZs',
         desc: '选择1个形态为1注，所选形态和开奖号码对应位置的3个数字的形态相同，顺序不限，即中奖。 豹子：3个号码相同； 顺子：3个顺序相连的号码；9与0相连，0与1相连； 对子：3个数字中有1个数字出现2次，另1个数字出现1次（如：151、887）； 半顺：3个数字各不相同，且其中只有2个数字相连（如：238、769）； 杂六：3个数字各不相同且互不相连（如：357、962）。。',
         example: '中三：顺子；开奖号码：*,1,2,3,*，即中奖。',
         lr_status: true,
@@ -4515,6 +4644,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     ZjhHs: {
         title: '后三扎金花',
+        title_sign: 'lottery.ssc.method.ZjhHs',
         desc: '选择1个形态为1注，所选形态和开奖号码对应位置的3个数字的形态相同，顺序不限，即中奖。 豹子：3个号码相同； 顺子：3个顺序相连的号码；9与0相连，0与1相连； 对子：3个数字中有1个数字出现2次，另1个数字出现1次（如：151、887）； 半顺：3个数字各不相同，且其中只有2个数字相连（如：238、769）； 杂六：3个数字各不相同且互不相连（如：357、962）。。',
         example: '后三：顺子；开奖号码：*,*,1,2,3，即中奖。',
         lr_status: true,
@@ -4566,6 +4696,7 @@ const sscOfficialDefine: MethodDefineList = {
     },
     Nn: {
         title: '牛牛',
+        title_sign: 'lottery.ssc.method.Nn',
         desc: '选择1个形态为1注，所选形态与开奖形态相同，即中奖。 1、无牛：开奖号码中任意3位数相加都无法是0或10的倍数； 2、牛牛：开奖号码中任意3位数相加可以为0或10的倍数，另外2个数字相加的个位数为0； 3、牛1-牛9：开奖号码中任意3位数相加可以为0或10的倍数，另外2个数字相加的个位数为所选号码； 4、牛大：牛牛，牛9、牛8、牛7、牛6； 5、牛小：牛5、牛4、牛3、牛2、牛1； 6、牛单：牛1、牛3、牛5、牛7、牛9； 7、牛双：牛2、牛4、牛6、牛8、牛牛',
         example: '投注方案：牛8；开奖号码：8,6,3,1,0，即中奖。',
         lr_status: true,
