@@ -22,6 +22,7 @@ import {
 const sscOfficialDefine: MethodDefineList = {
     WxZx: {
         title: '五星直选复式',
+        title_sign: 'lottery.ssc.method.WxZx',
         desc: '从万位、千位、百位、十位、个位上各选1个号码组成1注。所选号码与开奖号码相同，且顺序一致，即中奖。',
         example: '投注方案：1,2,3,4,5；开奖号码：1,2,3,4,5，即中奖。',
         calc: {

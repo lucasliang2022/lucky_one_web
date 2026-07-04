@@ -1,7 +1,7 @@
 <template>
   <div class="method-info">
     <div class="info-left">
-      <div class="method-name">{{ officialMethodCurrent?.title || "" }}</div>
+      <div class="method-name">{{ resolveMethodTitle(officialMethodCurrent, t, te) }}</div>
       <div class="method-prize">
         <span class="prize-info">
           <span>
@@ -61,6 +61,8 @@
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { formatPrize } from '@/utils/common.ts';
+import { useI18n } from 'vue-i18n';
+import { resolveMethodTitle } from '@lottery/utils/common';
 
 const props = defineProps({
   store: {
@@ -80,6 +82,7 @@ const {
 } = storeToRefs(props.store);
 
 const { toggleDesc, toggleColdHot, toggleOmission, setSelectedRange } = props.store;
+const { t, te } = useI18n();
 
 const hasLrStatus = computed(() => officialMethodCurrent.value?.lr_status === true);
 const hasYlStatus = computed(() => officialMethodCurrent.value?.yl_status === true);

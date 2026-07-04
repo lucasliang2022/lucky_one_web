@@ -107,6 +107,8 @@ export interface MethodDefineItem {
     sign?: string;
     sdk_sign?: string;
     title: string;
+    /** 需要翻译时才加:title 的 i18n key。默认用中文 title;当前语言有该 key 的翻译时用翻译。 */
+    title_sign?: string;
     desc: string | MethodDesc;
     lr_status: boolean;
     yl_status: boolean;

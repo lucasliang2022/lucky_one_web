@@ -3,6 +3,8 @@ import { formatPrize } from '@/utils/common';
 import { ElMessage } from 'element-plus';
 import { useUserStore } from '@/stores/userStore';
 import * as lotteryService from "@/api/lotteryService";
+import i18n from '@/i18n';
+import { resolveMethodTitle } from '@lottery/utils/common';
 import {
     CartItem,
     OrderIssueInfo,
@@ -94,7 +96,7 @@ export function useOfficialBase(common: CommonBase): OfficialBase {
     const officialBetItemBuild = (): CartItem => {
         const { codes, codesDisplay } = formatSelectedBalls(officialSelectedBalls.value);
         return {
-            methodTitle: officialMethodCurrent.value.title,
+            methodTitle: resolveMethodTitle(officialMethodCurrent.value, i18n.global.t, i18n.global.te),
             methodSign: officialMethodCurrent.value.sign ?? '',
             methodSdkSign: officialMethodCurrent.value.sdk_sign ?? '',
             codes: codes,
@@ -157,7 +159,7 @@ export function useOfficialBase(common: CommonBase): OfficialBase {
 
         const { codes, codesDisplay } = formatSelectedBalls(randomBetData);
         const newBet = {
-            methodTitle: officialMethodCurrent.value.title,
+            methodTitle: resolveMethodTitle(officialMethodCurrent.value, i18n.global.t, i18n.global.te),
             methodSign: officialMethodCurrent.value.sign,
             methodSdkSign: officialMethodCurrent.value.sdk_sign ?? '',
             codes: codes,

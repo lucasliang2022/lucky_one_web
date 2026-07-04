@@ -23,7 +23,7 @@
                   :class="{ active: officialMethodCurrent.sign === method.sign }"
                   @click="handleMethodClick(method)"
               >
-                {{ method.title }}
+                {{ resolveMethodTitle(method, t, te) }}
               </div>
             </div>
           </li>
@@ -105,7 +105,8 @@ import OfficialBetConfirmDialog from "@lottery/components/common/official/Offici
 import {ElMessage} from "element-plus";
 import {useI18n} from 'vue-i18n';
 import {formatPrize} from "@/utils/common.ts";
-const {t} = useI18n();
+import { resolveMethodTitle } from "@lottery/utils/common";
+const {t, te} = useI18n();
 
 const props = defineProps({
   store: {

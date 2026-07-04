@@ -1,3 +1,16 @@
+/**
+ * 解析方法标题:默认用中文 title;若配了 title_sign 且当前语言存在该翻译,则用翻译。
+ * t/te 由调用方传入(组件传 useI18n 的,保证语言切换响应式;非组件处传 i18n.global)。
+ */
+export function resolveMethodTitle(
+    m: { title?: string; title_sign?: string } | null | undefined,
+    t: (key: string) => string,
+    te: (key: string) => boolean,
+): string {
+    if (m?.title_sign && te(m.title_sign)) return t(m.title_sign);
+    return m?.title ?? '';
+}
+
 export function combination(n: number, r: number): number {
     if (n < r) return 0;
     let numerator = 1, denominator = 1;
