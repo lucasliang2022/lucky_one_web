@@ -7,7 +7,11 @@ export function resolveMethodTitle(
     t: (key: string) => string,
     te: (key: string) => boolean,
 ): string {
-    if (m?.title_sign && te(m.title_sign)) return t(m.title_sign);
+    if (m?.title_sign && te(m.title_sign)) {
+        const v = t(m.title_sign);
+        // 翻译为空(脚手架占位)或原样返回 key 时,回退中文 title
+        if (v && v !== m.title_sign) return v;
+    }
     return m?.title ?? '';
 }
 
