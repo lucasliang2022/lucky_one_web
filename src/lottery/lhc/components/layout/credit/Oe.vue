@@ -11,6 +11,7 @@
 
 <script setup>
 import ItemDefault from "./items/ItemDefault.vue";
+import { computeHotCold, computeOmission } from "@lottery/base/logic/hotColdOmission";
 import { storeToRefs } from "pinia";
 
 const props = defineProps({
@@ -32,35 +33,22 @@ const {
   issueHistory,
 } = storeToRefs(props.store);
 
+function ballKeys() {
+  return props.methodCurrent.layout.rows.number.map(ball => ball.value);
+}
+
+function matchFn(issue) {
+  const stat = getNumber(issue);
+  if (!stat) return null;
+  return Object.keys(stat).filter(key => stat[key]);
+}
+
 function calculateHotCold(issueCount, hotColdData) {
   if (!issueHistory.value?.length) {
     hotColdData.value = {};
     return;
   }
-  const recentIssues = issueHistory.value.slice(0, issueCount);
-  const hotCold = {};
-
-  props.methodCurrent.layout.rows.number.forEach(ball => {
-    hotCold[ball.value] = 0;
-  });
-
-  recentIssues.forEach(issue => {
-    const stat = getNumber(issue);
-    if (!stat) return;
-
-    const matchForms = {
-      0: stat[0],
-      1: stat[1],
-    };
-
-    for (let key in matchForms) {
-      if (matchForms[key]) {
-        hotCold[key] += 1;
-      }
-    }
-  });
-
-  hotColdData.value = hotCold;
+  hotColdData.value = computeHotCold(issueHistory.value, issueCount, ballKeys(), matchFn);
 }
 
 function calculateOmission(omissionData) {
@@ -68,40 +56,7 @@ function calculateOmission(omissionData) {
     omissionData.value = {};
     return;
   }
-
-  const omission = {};
-  props.methodCurrent.layout.rows.number.forEach(ball => {
-    omission[ball.value] = -1;
-  });
-
-  for (let index = 0; index < issueHistory.value.length; index++) {
-    const issue = issueHistory.value[index];
-    const stat = getNumber(issue);
-    if (!stat) continue;
-
-    const matchForms = {
-      0: stat[0],
-      1: stat[1],
-    };
-
-    for (let key in matchForms) {
-      if (matchForms[key] && omission[key] === -1) {
-        omission[key] = index;
-      }
-    }
-
-    if (!Object.values(omission).includes(-1)) {
-      break;
-    }
-  }
-
-  for (let key in omission) {
-    if (omission[key] === -1) {
-      omission[key] = issueHistory.value.length;
-    }
-  }
-
-  omissionData.value = omission;
+  omissionData.value = computeOmission(issueHistory.value, ballKeys(), matchFn);
 }
 
 function getNumber(issue) {
