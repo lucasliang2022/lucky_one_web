@@ -42,12 +42,12 @@
 <script lang="ts" setup>
 import { computed, ref, watch, shallowRef, onMounted, onBeforeUnmount, ComputedRef, Ref, ShallowRef } from "vue";
 import { useRoute, RouteLocationNormalizedLoaded } from "vue-router";
-import { usePk10Store } from "@/lottery/stores/pk10Store";
-import Issue from "@/lottery/components/pk10/Issue.vue";
-import Official from "@/lottery/components/pk10/Official.vue";
-import Credit from "@/lottery/components/pk10/Credit.vue";
-import History from "@/lottery/components/pk10/History.vue";
-import OrderList from "@/lottery/components/common/OrderList.vue";
+import { usePk10Store } from "@/lottery/pk10/store";
+import Issue from "@/lottery/pk10/components/Issue.vue";
+import Official from "@/lottery/pk10/components/Official.vue";
+import Credit from "@/lottery/pk10/components/Credit.vue";
+import History from "@/lottery/pk10/components/History.vue";
+import OrderList from "@/lottery/base/components/OrderList.vue";
 import Footer from "@/components/Footer.vue";
 import { ElTabs, ElTabPane } from "element-plus";
 

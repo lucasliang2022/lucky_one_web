@@ -42,13 +42,13 @@
 <script setup>
 import { computed, ref, watch, shallowRef, onMounted, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
-import { useSscStore } from "@/lottery/stores/sscStore";
-import Issue from "@/lottery/components/ssc/Issue.vue";
+import { useSscStore } from "@/lottery/ssc/store";
+import Issue from "@/lottery/ssc/components/Issue.vue";
 import Footer from "@/components/Footer.vue";
-import Official from "@/lottery/components/ssc/Official.vue";
-import Credit from "@/lottery/components/ssc/Credit.vue";
-import History from "@/lottery/components/ssc/History.vue";
-import OrderList from "@/lottery/components/common/OrderList.vue";
+import Official from "@/lottery/ssc/components/Official.vue";
+import Credit from "@/lottery/ssc/components/Credit.vue";
+import History from "@/lottery/ssc/components/History.vue";
+import OrderList from "@/lottery/base/components/OrderList.vue";
 import {useI18n} from 'vue-i18n';
 const {t} = useI18n();
 

@@ -42,13 +42,13 @@
 <script lang="ts" setup>
 import { computed, ref, watch, shallowRef, onMounted, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
-import { useLhcStore } from "@/lottery/stores/lhcStore";
-import Issue from "@/lottery/components/lhc/Issue.vue";
+import { useLhcStore } from "@/lottery/lhc/store";
+import Issue from "@/lottery/lhc/components/Issue.vue";
 import Footer from "@/components/Footer.vue";
-import Official from "@/lottery/components/lhc/Official.vue";
-import Credit from "@/lottery/components/lhc/Credit.vue";
-import History from "@/lottery/components/lhc/History.vue";
-import OrderList from "@/lottery/components/common/OrderList.vue";
+import Official from "@/lottery/lhc/components/Official.vue";
+import Credit from "@/lottery/lhc/components/Credit.vue";
+import History from "@/lottery/lhc/components/History.vue";
+import OrderList from "@/lottery/base/components/OrderList.vue";
 import "@/assets/scss/lottery/lhc.scss";
 
 const route = useRoute();
