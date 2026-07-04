@@ -4,6 +4,7 @@ import {MethodDefineList} from "@/types";
 const sscCreditDefine: MethodDefineList = {
     BallOneBs: {
         title: '第一球&大小',
+        title_sign: 'lottery.ssc.method.BallOneBs',
         desc: {
             title: '大小',
             content: [
@@ -28,6 +29,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallOneOe: {
         title: '第一球&单双',
+        title_sign: 'lottery.ssc.method.BallOneOe',
         desc: {
             title: '单双',
             content: [
@@ -52,6 +54,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallOnePs: {
         title: '第一球&质合',
+        title_sign: 'lottery.ssc.method.BallOnePs',
         desc: {
             title: '质合',
             content: [
@@ -76,6 +79,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallOne: {
         title: '第一球',
+        title_sign: 'lottery.ssc.method.BallOne',
         desc: {
             title: '第一球',
             content: [
@@ -99,6 +103,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallTwoBs: {
         title: '第二球&大小',
+        title_sign: 'lottery.ssc.method.BallTwoBs',
         desc: {
             title: '大小',
             content: [
@@ -123,6 +128,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallTwoOe: {
         title: '第二球&单双',
+        title_sign: 'lottery.ssc.method.BallTwoOe',
         desc: {
             title: '单双',
             content: [
@@ -147,6 +153,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallTwoPs: {
         title: '第二球&质合',
+        title_sign: 'lottery.ssc.method.BallTwoPs',
         desc: {
             title: '质合',
             content: [
@@ -171,6 +178,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallTwo: {
         title: '第二球',
+        title_sign: 'lottery.ssc.method.BallTwo',
         desc: {
             title: '第二球',
             content: [
@@ -194,6 +202,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallThreeBs: {
         title: '第三球&大小',
+        title_sign: 'lottery.ssc.method.BallThreeBs',
         desc: {
             title: '大小',
             content: [
@@ -218,6 +227,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallThreeOe: {
         title: '第三球&单双',
+        title_sign: 'lottery.ssc.method.BallThreeOe',
         desc: {
             title: '单双',
             content: [
@@ -242,6 +252,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallThreePs: {
         title: '第三球&质合',
+        title_sign: 'lottery.ssc.method.BallThreePs',
         desc: {
             title: '质合',
             content: [
@@ -266,6 +277,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallThree: {
         title: '第三球',
+        title_sign: 'lottery.ssc.method.BallThree',
         desc: {
             title: '第三球',
             content: [
@@ -289,6 +301,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFourBs: {
         title: '第四球&大小',
+        title_sign: 'lottery.ssc.method.BallFourBs',
         desc: {
             title: '大小',
             content: [
@@ -313,6 +326,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFourOe: {
         title: '第四球&单双',
+        title_sign: 'lottery.ssc.method.BallFourOe',
         desc: {
             title: '单双',
             content: [
@@ -337,6 +351,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFourPs: {
         title: '第四球&质合',
+        title_sign: 'lottery.ssc.method.BallFourPs',
         desc: {
             title: '质合',
             content: [
@@ -361,6 +376,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFour: {
         title: '第四球',
+        title_sign: 'lottery.ssc.method.BallFour',
         desc: {
             title: '第四球',
             content: [
@@ -384,6 +400,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFiveBs: {
         title: '第五球&大小',
+        title_sign: 'lottery.ssc.method.BallFiveBs',
         desc: {
             title: '大小',
             content: [
@@ -408,6 +425,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFiveOe: {
         title: '第五球&单双',
+        title_sign: 'lottery.ssc.method.BallFiveOe',
         desc: {
             title: '单双',
             content: [
@@ -432,6 +450,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFivePs: {
         title: '第五球&质合',
+        title_sign: 'lottery.ssc.method.BallFivePs',
         desc: {
             title: '质合',
             content: [
@@ -456,6 +475,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     BallFive: {
         title: '第五球',
+        title_sign: 'lottery.ssc.method.BallFive',
         desc: {
             title: '第五球',
             content: [
@@ -479,6 +499,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     SumBs: {
         title: '总和大小',
+        title_sign: 'lottery.ssc.method.SumBs',
         desc: {
             title: '大小',
             content: [
@@ -503,6 +524,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     SumOe: {
         title: '总和单双',
+        title_sign: 'lottery.ssc.method.SumOe',
         desc: {
             title: '单双',
             content: [
@@ -527,6 +549,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     LhWg: {
         title: '龙虎和',
+        title_sign: 'lottery.ssc.method.LhWg',
         desc: {
             title: '龙虎和(万个)',
             content: [
@@ -555,6 +578,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     ZjhQs: {
         title: '扎金花前三',
+        title_sign: 'lottery.ssc.method.ZjhQs',
         desc: {
             title: '扎金花前三',
             content: [
@@ -602,6 +626,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     ZjhZs: {
         title: '扎金花中三',
+        title_sign: 'lottery.ssc.method.ZjhZs',
         desc: {
             title: '扎金花中三',
             content: [
@@ -649,6 +674,7 @@ const sscCreditDefine: MethodDefineList = {
     },
     ZjhHs: {
         title: '扎金花后三',
+        title_sign: 'lottery.ssc.method.ZjhHs',
         desc: {
             title: '扎金花后三',
             content: [
