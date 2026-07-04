@@ -59,6 +59,10 @@
 import { ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { formatPrize } from '@/utils/common.ts';
+import { resolveMethodTitle } from '@lottery/utils/common';
+import { useI18n } from 'vue-i18n';
+
+const { t, te } = useI18n();
 import { MethodNumberItem } from "@/types";
 const props = defineProps({
   store: {
@@ -242,7 +246,7 @@ function updateCreditSelectedBalls(ball) {
   }
 
   const newItem = {
-    methodTitle: props.methodCurrent.title,
+    methodTitle: resolveMethodTitle(props.methodCurrent, t, te),
     methodSign: props.methodCurrent.sign,
     value: ball.value,
     title: ball.title,
