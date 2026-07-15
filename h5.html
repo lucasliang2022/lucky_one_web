@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>春晓 H5</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // 入口 URL 规范化:直接落在 /h5.html 时(index 分流重定向 / dev 直开)把它换成 /,
+      // 否则 vue-router 的 history 会把 /h5.html 当路径、匹配不到 '/' → 首页"不存在"。
+      if (/\/h5\.html$/.test(location.pathname)) {
+        history.replaceState(history.state, '', location.pathname.replace(/\/h5\.html$/, '/') + location.search + location.hash);
+      }
+    </script>
+    <script type="module" src="/src/h5/main.ts"></script>
+  </body>
+</html>

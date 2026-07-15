@@ -1,0 +1,33 @@
+/*
+ * h5 默认皮肤(打底)。定义 h5 端语义 CSS 变量;骨架/区块/页面统一引用这些变量,
+ * 换肤 = 某 sign 的 skins/{sign}/main.css 覆盖同名变量(或用 [data-sign] 作用域改具体块)。
+ * 同时对齐 Vant 主题变量(--van-*),让 Vant 组件跟随皮肤。
+ */
+:root {
+  /* h5 语义变量 */
+  --h5-color-primary: #e53935;
+  --h5-color-bg: #f7f8fa;
+  --h5-color-text: #323233;
+
+  /* 对齐 Vant 主题变量 */
+  --van-primary-color: var(--h5-color-primary);
+  --van-background-2: #ffffff;
+  --van-background: var(--h5-color-bg);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--h5-color-bg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+#app {
+  min-height: 100vh;
+}

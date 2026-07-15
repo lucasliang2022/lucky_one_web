@@ -1,0 +1,43 @@
+{
+  "lottery": {
+    "title": "Lottery Hall",
+    "placeholder": "Lottery games coming soon",
+    "loading": "Loading…",
+    "empty": "No lotteries available",
+    "hot": "HOT",
+    "new": "NEW",
+    "category": {
+      "ssc": "Lottery SSC",
+      "sd": "Fast 3D",
+      "ks": "Kuai 3",
+      "lhc": "Mark Six",
+      "pk10": "Racing",
+      "kl28": "Lucky 28"
+    },
+    "bet": {
+      "title": "Bet",
+      "developing": "{sign} · SSC betting UI under development (P2)"
+    }
+  },
+  "mine": {
+    "title": "Mine",
+    "notLoggedIn": "Log in to see more",
+    "placeholder": "More features coming soon"
+  },
+  "activity": {
+    "title": "Activity",
+    "placeholder": "Exciting activities coming soon"
+  },
+  "join": {
+    "title": "Join",
+    "placeholder": "Agent partnership program coming soon"
+  },
+  "recharge": {
+    "title": "Deposit",
+    "placeholder": "Deposit feature coming soon"
+  },
+  "sports": {
+    "title": "Sports",
+    "placeholder": "Sports events coming soon"
+  }
+}

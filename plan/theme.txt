@@ -1,0 +1,11 @@
+1. 框架包含页面，页面包含区域
+   frame/page/region
+2. frame/{theme_sign} 来命名，没有就用默认
+
+3. page/{theme_sign}/index 为首页 ，默认就是 page/default/index
+4. css/{theme_sign}/mail.css 默认 css/default/mail.css
+5. 区域
+   公告滚动/多语言/线路测试/余额/欢迎信息/彩票导航/游戏区域导航/活动按钮/客服/app/logo/轮播区域/右侧悬浮功能按钮/页尾
+   首页-重要彩票入口， 首页-体育入口， 首页真人入口，首日电子入口， 首页-棋牌入口
+
+6. 其它内部页面如何解耦兼容呢， 听听你的意见

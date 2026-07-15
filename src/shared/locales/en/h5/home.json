@@ -1,0 +1,40 @@
+{
+  "title": "Home",
+  "loggedIn": "Logged in",
+  "notLoggedIn": "Not logged in",
+  "username": "Username",
+  "language": "Language",
+  "currency": "Currency",
+  "balance": "Balance",
+  "noBalance": "No balance",
+  "goLogin": "Go to login",
+  "logout": "Log out",
+  "welcome": "Welcome {name}",
+  "welcomeGuest": "Welcome, please log in",
+  "quick": {
+    "recharge": "Deposit",
+    "withdraw": "Withdraw",
+    "transfer": "Transfer",
+    "service": "Support"
+  },
+  "banner": {
+    "slide1": "Welcome to Lucky One",
+    "slide2": "Daily deposit rewards",
+    "slide3": "Invite friends, share rewards"
+  },
+  "game": {
+    "tab": {
+      "hot": "Hot",
+      "fav": "Favorites",
+      "recent": "Recent"
+    },
+    "more": "More >",
+    "category": {
+      "slots": "Slots",
+      "live": "Live",
+      "chess": "Chess",
+      "lottery": "Lottery",
+      "fishing": "Fishing"
+    }
+  }
+}

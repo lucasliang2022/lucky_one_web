@@ -1,0 +1,26 @@
+/*
+ * 默认皮肤(打底)。定义全站语义 CSS 变量;所有页面/骨架/区块都引用这些变量,
+ * 换肤 = 某 sign 的 css/{sign}/main.css 覆盖同名变量(或用 [data-sign] 作用域改具体块)。
+ * 组件里请统一用 var(--token),不要写死颜色,否则主题够不着。
+ */
+:root {
+  /* 品牌 / 强调 */
+  --color-primary: #e53935;
+
+  /* 背景 */
+  --color-background: #ffffff;
+  --color-gray-4: #f5f5f5;
+  --sd-color-bg-top: #f8f8f8;
+  --sd-color-bg-main: #ffffff;
+  --sd-color-bg-secondary: #ffffff;
+  --sd-color-bg-cover: #ffffff;
+
+  /* 文字 */
+  --sd-color-txt-main: #2c3e50;
+  --sd-color-txt-primary: #2c3e50;
+  --sd-color-txt-secondary: #666666;
+  --sd-color-txt-tertiary: #999999;
+
+  /* 描边 */
+  --color-border: #eeeeee;
+}

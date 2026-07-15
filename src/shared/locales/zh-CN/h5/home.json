@@ -1,0 +1,40 @@
+{
+  "title": "首页",
+  "loggedIn": "已登录",
+  "notLoggedIn": "未登录",
+  "username": "用户名",
+  "language": "语言",
+  "currency": "币种",
+  "balance": "余额",
+  "noBalance": "暂无余额",
+  "goLogin": "去登录",
+  "logout": "退出登录",
+  "welcome": "欢迎 {name}",
+  "welcomeGuest": "欢迎,请登录",
+  "quick": {
+    "recharge": "充值",
+    "withdraw": "提款",
+    "transfer": "转账",
+    "service": "客服"
+  },
+  "banner": {
+    "slide1": "欢迎来到 Lucky One",
+    "slide2": "首存好礼 天天派送",
+    "slide3": "邀请好友 共享收益"
+  },
+  "game": {
+    "tab": {
+      "hot": "热门",
+      "fav": "收藏",
+      "recent": "最近"
+    },
+    "more": "查看更多 >",
+    "category": {
+      "slots": "电子",
+      "live": "真人",
+      "chess": "棋牌",
+      "lottery": "彩票",
+      "fishing": "捕鱼"
+    }
+  }
+}

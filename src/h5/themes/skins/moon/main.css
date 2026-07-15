@@ -1,0 +1,17 @@
+/*
+ * moon —— 「月夜」深色皮肤占位(sign='moon')。叠加在 default 之上,只写覆盖项。
+ * 预览:URL 加 ?theme=moon(?theme=reset 还原)。moon 没有自己的 frame/pages,
+ * 因此骨架与页面都回落 default,仅本 main.css 覆盖变量,证明「多皮肤 + CSS 叠加 + 回落」。
+ */
+:root {
+  --h5-color-primary: #7c83ff;
+  --h5-color-bg: #0b0c22;
+  --h5-color-text: #e8ecff;
+
+  --van-primary-color: var(--h5-color-primary);
+  --van-background-2: #171a3a;
+  --van-background: var(--h5-color-bg);
+}
+
+/* 例:内页在 moon 皮肤下的定制入口 */
+/* [data-sign="moon"] .page-h5-home { background: var(--h5-color-bg); } */

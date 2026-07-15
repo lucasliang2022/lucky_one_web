@@ -1,0 +1,496 @@
+src/components/nav/NavCountry.vue(16,43): error TS2339: Property 'flag' does not exist on type '{ code: string; label: string; dial_code?: string | undefined; }'.
+src/components/nav/NavCountry.vue(39,62): error TS2339: Property 'flag' does not exist on type '{ code: string; label: string; dial_code?: string | undefined; }'.
+src/pages/game/CategoryHome.vue(51,15): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(getter: ComputedGetter<ThirdGameItem[]>, debugOptions?: DebuggerOptions | undefined): ComputedRef<ThirdGameItem[]>', gave the following error.
+    Type '{}' is missing the following properties from type 'ThirdGameItem[]': length, pop, push, concat, and 35 more.
+  Overload 2 of 2, '(options: WritableComputedOptions<ThirdGameItem[], ThirdGameItem[]>, debugOptions?: DebuggerOptions | undefined): WritableComputedRef<...>', gave the following error.
+    Argument of type '() => {}' is not assignable to parameter of type 'WritableComputedOptions<ThirdGameItem[], ThirdGameItem[]>'.
+src/pages/game/GamePlay.vue(48,50): error TS2339: Property 'find' does not exist on type '{}'.
+src/pages/game/GamePlay.vue(48,55): error TS7006: Parameter 'g' implicitly has an 'any' type.
+src/pages/game/home.vue(50,15): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(getter: ComputedGetter<ThirdGameItem[]>, debugOptions?: DebuggerOptions | undefined): ComputedRef<ThirdGameItem[]>', gave the following error.
+    Type '{}' is missing the following properties from type 'ThirdGameItem[]': length, pop, push, concat, and 35 more.
+  Overload 2 of 2, '(options: WritableComputedOptions<ThirdGameItem[], ThirdGameItem[]>, debugOptions?: DebuggerOptions | undefined): WritableComputedRef<...>', gave the following error.
+    Argument of type '() => {}' is not assignable to parameter of type 'WritableComputedOptions<ThirdGameItem[], ThirdGameItem[]>'.
+src/pages/game/sport/db.vue(4,31): error TS2339: Property 'length' does not exist on type '{}'.
+src/pages/game/sport/db.vue(7,19): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/db.vue(8,33): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/db.vue(10,31): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/db.vue(12,14): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/game/sport/db.vue(17,6): error TS2345: Argument of type '{ sign: "fb"; }' is not assignable to parameter of type '{ readonly platformSign: string; readonly accountSign: string; } & VNodeProps & AllowedComponentProps & ComponentCustomProps & Record<...>'.
+  Type '{ sign: "fb"; }' is missing the following properties from type '{ readonly platformSign: string; readonly accountSign: string; }': platformSign, accountSign
+src/pages/game/sport/fb.vue(29,39): error TS2339: Property 'find' does not exist on type '{}'.
+src/pages/game/sport/fb.vue(29,44): error TS7006: Parameter 'g' implicitly has an 'any' type.
+src/pages/game/sport/im.vue(4,31): error TS2339: Property 'length' does not exist on type '{}'.
+src/pages/game/sport/im.vue(7,19): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/im.vue(8,33): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/im.vue(10,31): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/im.vue(12,14): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/game/sport/im.vue(17,6): error TS2345: Argument of type '{ sign: "fb"; }' is not assignable to parameter of type '{ readonly platformSign: string; readonly accountSign: string; } & VNodeProps & AllowedComponentProps & ComponentCustomProps & Record<...>'.
+  Type '{ sign: "fb"; }' is missing the following properties from type '{ readonly platformSign: string; readonly accountSign: string; }': platformSign, accountSign
+src/pages/game/sport/shaba.vue(4,31): error TS2339: Property 'length' does not exist on type '{}'.
+src/pages/game/sport/shaba.vue(7,19): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/shaba.vue(8,33): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/shaba.vue(10,31): error TS2339: Property 'sign' does not exist on type 'never'.
+src/pages/game/sport/shaba.vue(12,14): error TS2339: Property 'title' does not exist on type 'never'.
+src/pages/game/sport/shaba.vue(17,6): error TS2345: Argument of type '{ sign: "fb"; }' is not assignable to parameter of type '{ readonly platformSign: string; readonly accountSign: string; } & VNodeProps & AllowedComponentProps & ComponentCustomProps & Record<...>'.
+  Type '{ sign: "fb"; }' is missing the following properties from type '{ readonly platformSign: string; readonly accountSign: string; }': platformSign, accountSign
+src/pages/lottery/Lhc.vue(75,27): error TS7006: Parameter 'val' implicitly has an 'any' type.
+src/pages/lottery/Lhc.vue(86,40): error TS2339: Property 'getBoundingClientRect' does not exist on type 'never'.
+src/pages/lottery/Lhc.vue(88,42): error TS2339: Property 'offsetWidth' does not exist on type 'never'.
+src/pages/lottery/Lhc.vue(97,29): error TS2345: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.
+  Type 'string[]' is not assignable to type 'string'.
+src/pages/lottery/Lhc.vue(104,44): error TS2339: Property 'offsetWidth' does not exist on type 'never'.
+src/pages/lottery/Lhc.vue(105,23): error TS18047: 'issueWrapper.value' is possibly 'null'.
+src/pages/lottery/Pk10.vue(14,80): error TS2322: Type '(tab: { paneName: string; }) => void' is not assignable to type '(pane: { uid: number; getVnode: () => VNode<RendererNode, RendererElement, { [key: string]: any; }>; slots: Readonly<InternalSlots>; ... 5 more ...; isFocusInsidePane: () => boolean | undefined; }, ev: Event) => any'.
+  Types of parameters 'tab' and 'pane' are incompatible.
+    Type '{ uid: number; getVnode: () => VNode<RendererNode, RendererElement, { [key: string]: any; }>; slots: Readonly<InternalSlots>; ... 5 more ...; isFocusInsidePane: () => boolean | undefined; }' is not assignable to type '{ paneName: string; }'.
+      Types of property 'paneName' are incompatible.
+        Type 'TabPaneName | undefined' is not assignable to type 'string'.
+          Type 'undefined' is not assignable to type 'string'.
+src/shared/lottery/base/components/official/OfficialMethodDesc.vue(63,29): error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.
+src/shared/lottery/base/components/official/OfficialMethodDesc.vue(82,17): error TS2345: Argument of type 'Record<string, any>' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Record<string, any>' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/base/logic/officialLogic.ts(4,78): error TS2305: Module '"@shared/types"' has no exported member 'Level'.
+src/shared/lottery/base/logic/officialLogic.ts(47,64): error TS7006: Parameter 'code' implicitly has an 'any' type.
+src/shared/lottery/base/logic/officialLogic.ts(53,48): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'number'.
+  Type 'string' is not assignable to type 'number'.
+src/shared/lottery/base/logic/officialLogic.ts(101,49): error TS7006: Parameter 'key' implicitly has an 'any' type.
+src/shared/lottery/base/logic/officialLogic.ts(180,72): error TS2339: Property 'small' does not exist on type 'MethodLayout'.
+src/shared/lottery/base/logic/officialLogic.ts(247,57): error TS2345: Argument of type 'MethodDefineItem | null' is not assignable to parameter of type 'MethodDefineItem'.
+  Type 'null' is not assignable to type 'MethodDefineItem'.
+src/shared/lottery/base/logic/officialLogic.ts(261,34): error TS18048: 'currentMethod.layout.rows' is possibly 'undefined'.
+src/shared/lottery/base/logic/officialLogic.ts(268,26): error TS18048: 'code_total_count' is possibly 'undefined'.
+src/shared/lottery/base/logic/officialLogic.ts(269,26): error TS18048: 'code_total_count' is possibly 'undefined'.
+src/shared/lottery/base/logic/officialLogic.ts(273,15): error TS2322: Type '(number | undefined)[]' is not assignable to type 'number[]'.
+  Type 'number | undefined' is not assignable to type 'number'.
+    Type 'undefined' is not assignable to type 'number'.
+src/shared/lottery/base/logic/officialLogic.ts(284,17): error TS18048: 'row.min_selected' is possibly 'undefined'.
+src/shared/lottery/base/logic/officialLogic.ts(300,17): error TS2345: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/shared/lottery/base/logic/officialLogic.ts(317,47): error TS2345: Argument of type 'MethodDefineItem | null' is not assignable to parameter of type 'MethodDefineItem'.
+  Type 'null' is not assignable to type 'MethodDefineItem'.
+src/shared/lottery/base/logic/officialLogic.ts(323,25): error TS2304: Cannot find name 'NumberBall'.
+src/shared/lottery/base/logic/officialLogic.ts(496,39): error TS2345: Argument of type 'number | Record<number, number>' is not assignable to parameter of type 'number'.
+  Type 'Record<number, number>' is not assignable to type 'number'.
+src/shared/lottery/base/logic/officialLogic.ts(502,33): error TS7053: Element implicitly has an 'any' type because expression of type '"2"' can't be used to index type 'number | Record<number, number>'.
+  Property '2' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(503,33): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type 'number | Record<number, number>'.
+  Property '1' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(519,33): error TS7053: Element implicitly has an 'any' type because expression of type '"2"' can't be used to index type 'number | Record<number, number>'.
+  Property '2' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(520,33): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type 'number | Record<number, number>'.
+  Property '1' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(537,33): error TS7053: Element implicitly has an 'any' type because expression of type '"3"' can't be used to index type 'number | Record<number, number>'.
+  Property '3' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(538,33): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type 'number | Record<number, number>'.
+  Property '1' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(554,33): error TS7053: Element implicitly has an 'any' type because expression of type '"3"' can't be used to index type 'number | Record<number, number>'.
+  Property '3' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(555,33): error TS7053: Element implicitly has an 'any' type because expression of type '"2"' can't be used to index type 'number | Record<number, number>'.
+  Property '2' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(569,33): error TS7053: Element implicitly has an 'any' type because expression of type '"4"' can't be used to index type 'number | Record<number, number>'.
+  Property '4' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(570,33): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type 'number | Record<number, number>'.
+  Property '1' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(584,33): error TS7053: Element implicitly has an 'any' type because expression of type '"2"' can't be used to index type 'number | Record<number, number>'.
+  Property '2' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(585,33): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type 'number | Record<number, number>'.
+  Property '1' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(601,36): error TS7053: Element implicitly has an 'any' type because expression of type '"3"' can't be used to index type 'number | Record<number, number>'.
+  Property '3' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(602,36): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type 'number | Record<number, number>'.
+  Property '1' does not exist on type 'number | Record<number, number>'.
+src/shared/lottery/base/logic/officialLogic.ts(723,46): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type '(newConfig: MethodDefineItem | undefined) => void' is not assignable to parameter of type 'WatchCallback<() => MethodDefineItem | null, (() => MethodDefineItem | null) | undefined>'.
+      Types of parameters 'newConfig' and 'value' are incompatible.
+        Type '() => MethodDefineItem | null' is not assignable to type 'MethodDefineItem'.
+src/shared/lottery/base/logic/officialLogic.ts(739,23): error TS2339: Property 'setReset' does not exist on type 'Store<"ssc", Pick<{ onStoreReset: () => void; onLotteryChange: (newSign: string) => Promise<void>; onModeChange: (mode: string) => Promise<void>; clearSelectedBalls: () => void; ... 85 more ...; addRandomBet: () => void; }, "mode" | ... 42 more ... | "officialMethodCurrent">, Pick<...>, Pick<...>>'.
+src/shared/lottery/base/logic/officialLogic.ts(740,23): error TS2339: Property 'setReset' does not exist on type 'Store<"ssc", Pick<{ onStoreReset: () => void; onLotteryChange: (newSign: string) => Promise<void>; onModeChange: (mode: string) => Promise<void>; clearSelectedBalls: () => void; ... 85 more ...; addRandomBet: () => void; }, "mode" | ... 42 more ... | "officialMethodCurrent">, Pick<...>, Pick<...>>'.
+src/shared/lottery/base/logic/OfficialLogicInput.ts(8,9): error TS2339: Property 'officialMethodCurrent' does not exist on type '({} | ToRefs<any>) & (ToRefs<PiniaCustomStateProperties<any>> & _ToComputedRefs<{} | _StoreWithGetters<unknown> | Pick<any, string | number>>)'.
+src/shared/lottery/base/logic/OfficialLogicInput.ts(9,9): error TS2339: Property 'reset' does not exist on type '({} | ToRefs<any>) & (ToRefs<PiniaCustomStateProperties<any>> & _ToComputedRefs<{} | _StoreWithGetters<unknown> | Pick<any, string | number>>)'.
+src/shared/lottery/base/logic/OfficialLogicInput.ts(10,9): error TS2339: Property 'officialSelectedBalls' does not exist on type '({} | ToRefs<any>) & (ToRefs<PiniaCustomStateProperties<any>> & _ToComputedRefs<{} | _StoreWithGetters<unknown> | Pick<any, string | number>>)'.
+src/shared/lottery/base/logic/OfficialLogicInput.ts(11,9): error TS2339: Property 'officialBetCount' does not exist on type '({} | ToRefs<any>) & (ToRefs<PiniaCustomStateProperties<any>> & _ToComputedRefs<{} | _StoreWithGetters<unknown> | Pick<any, string | number>>)'.
+src/shared/lottery/lhc/components/History.vue(82,17): error TS2304: Cannot find name 'Ref'.
+src/shared/lottery/lhc/components/History.vue(90,38): error TS2345: Argument of type 'Store' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Store' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/lhc/components/History.vue(98,12): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/History.vue(101,41): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/History.vue(104,15): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/History.vue(105,15): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(85,21): error TS2345: Argument of type 'LhcStore' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'LhcStore' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(85,21): error TS2352: Conversion of type 'Store<"lhc">' to type 'LhcStore' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '_StoreWithState<"lhc", {}, {}, {}> & _StoreWithGetters_Readonly<{}> & _StoreWithGetters_Writable<{}> & PiniaCustomProperties<...> & PiniaCustomStateProperties<...>' is missing the following properties from type 'LhcStore': officialMethodCurrent, reset, officialSelectedBalls, officialBetCount, and 9 more.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(133,53): error TS7006: Parameter 'l' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(136,53): error TS7006: Parameter 'l' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(155,74): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(361,64): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(366,39): error TS7006: Parameter 'code' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(369,79): error TS7006: Parameter 'val' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(373,10): error TS2352: Conversion of type 'Store<"lhc">' to type 'LhcStore' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type '_StoreWithState<"lhc", {}, {}, {}> & _StoreWithGetters_Readonly<{}> & _StoreWithGetters_Writable<{}> & PiniaCustomProperties<...> & PiniaCustomStateProperties<...>' is missing the following properties from type 'LhcStore': officialMethodCurrent, reset, officialSelectedBalls, officialBetCount, and 9 more.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(409,55): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(438,80): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts(469,83): error TS2345: Argument of type 'undefined' is not assignable to parameter of type 'number | number[]'.
+src/shared/lottery/lhc/components/layout/official/render/InputRender.vue(45,20): error TS2440: Import declaration conflicts with local declaration of 'defineProps'.
+src/shared/lottery/lhc/components/layout/official/render/InputRender.vue(45,33): error TS2440: Import declaration conflicts with local declaration of 'defineExpose'.
+src/shared/lottery/lhc/config/define/officialDefine.ts(467,17): error TS2353: Object literal may only specify known properties, and 'unit_separator' does not exist in type 'MethodRow'.
+src/shared/lottery/pk10/components/History.vue(81,17): error TS2304: Cannot find name 'Ref'.
+src/shared/lottery/pk10/components/History.vue(89,38): error TS2345: Argument of type 'Store' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Store' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/pk10/components/History.vue(97,12): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/History.vue(100,41): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/History.vue(103,15): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/History.vue(104,15): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(57,18): error TS2305: Module '"@shared/types"' has no exported member 'MethodNumberItem'.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(103,17): error TS2345: Argument of type 'Record<string, any>' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Record<string, any>' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(105,7): error TS2322: Type 'Ref<{}, {}>' is not assignable to type 'HotCold'.
+  Index signature for type 'string' is missing in type 'Ref<{}, {}>'.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(106,7): error TS2322: Type 'Ref<{}, {}>' is not assignable to type 'Omission'.
+  Index signature for type 'string' is missing in type 'Ref<{}, {}>'.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(119,26): error TS7006: Parameter 'ballValue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(123,29): error TS7006: Parameter 'l' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(128,26): error TS7006: Parameter 'prize' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(136,15): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(157,39): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(164,9): error TS2322: Type '{}' is not assignable to type 'number'.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(165,9): error TS2322: Type '{}' is not assignable to type 'number'.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(176,29): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(193,29): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(201,22): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(207,27): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(214,23): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(227,27): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(233,36): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(259,9): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(263,25): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(273,7): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(289,28): error TS7006: Parameter 'creditSelected' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(290,71): error TS18046: 'arr' is of type 'unknown'.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(293,26): error TS7006: Parameter 'count' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/credit/items/ItemDefault.vue(301,27): error TS7006: Parameter 'omission' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/logic/useOfficialLogic.ts(145,79): error TS2345: Argument of type 'MethodDefineItem | null' is not assignable to parameter of type 'MethodDefineItem'.
+  Type 'null' is not assignable to type 'MethodDefineItem'.
+src/shared/lottery/pk10/components/layout/logic/useOfficialLogic.ts(155,47): error TS2345: Argument of type 'MethodDefineItem | null' is not assignable to parameter of type 'MethodDefineItem'.
+  Type 'null' is not assignable to type 'MethodDefineItem'.
+src/shared/lottery/pk10/components/layout/logic/useOfficialLogic.ts(242,46): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type '(newConfig: MethodDefineItem | undefined) => void' is not assignable to parameter of type 'WatchCallback<() => MethodDefineItem | null, (() => MethodDefineItem | null) | undefined>'.
+      Types of parameters 'newConfig' and 'value' are incompatible.
+        Type '() => MethodDefineItem | null' is not assignable to type 'MethodDefineItem'.
+src/shared/lottery/pk10/components/layout/official/BsoeGyh.vue(85,19): error TS18048: 'issue.code' is possibly 'undefined'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(36,65): error TS2339: Property 'hotCount' does not exist on type 'MethodRowNumber'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(39,25): error TS2339: Property 'hotCount' does not exist on type 'MethodRowNumber'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(42,62): error TS2345: Argument of type 'number | null | undefined' is not assignable to parameter of type 'number | null'.
+  Type 'undefined' is not assignable to type 'number | null'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(78,27): error TS7006: Parameter 'issueCount' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(78,39): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(78,48): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(78,59): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(80,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(80,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(84,24): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(86,23): error TS7006: Parameter 'pos' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(88,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(89,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(97,28): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(97,37): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(97,48): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(99,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(99,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(103,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(103,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(109,23): error TS7006: Parameter 'pos' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(111,19): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(112,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(113,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(120,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(121,10): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(122,7): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(129,26): error TS7006: Parameter 'rowsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(129,36): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(157,31): error TS7006: Parameter 'tickets' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(161,26): error TS7006: Parameter 'sum' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Dwd.vue(161,31): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(14,39): error TS2339: Property 'balls' does not exist on type 'MethodRow'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(81,27): error TS7006: Parameter 'issueCount' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(81,39): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(81,48): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(81,59): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(83,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(83,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(87,24): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(93,9): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(94,7): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(101,28): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(101,37): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(101,48): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(103,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(103,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(107,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(107,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(117,10): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(118,7): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(119,7): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(125,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(125,31): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(131,27): error TS7006: Parameter 'rowsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(131,37): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(152,32): error TS7006: Parameter 'tickets' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(152,41): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(158,37): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(158,42): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(161,25): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(167,25): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(176,18): error TS2304: Cannot find name 'officialMethodCurrent'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(178,7): error TS2304: Cannot find name 'officialSelectedBalls'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(178,45): error TS2304: Cannot find name 'officialSelectedBalls'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(179,36): error TS7006: Parameter 'level' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(180,9): error TS2304: Cannot find name 'officialSelectedBalls'.
+src/shared/lottery/pk10/components/layout/official/HzGy.vue(180,45): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(14,39): error TS2339: Property 'balls' does not exist on type 'MethodRow'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(81,27): error TS7006: Parameter 'issueCount' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(81,39): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(81,48): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(81,59): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(83,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(83,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(87,24): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(93,9): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(94,7): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(101,28): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(101,37): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(101,48): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(103,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(103,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(107,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(107,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(117,10): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(118,7): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(119,7): error TS7053: Element implicitly has an 'any' type because expression of type 'number' can't be used to index type '{}'.
+  No index signature with a parameter of type 'number' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(125,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(125,31): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(131,27): error TS7006: Parameter 'rowsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(131,37): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(152,32): error TS7006: Parameter 'tickets' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(152,41): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(158,37): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(158,42): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(161,25): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(167,25): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(176,18): error TS2304: Cannot find name 'officialMethodCurrent'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(178,7): error TS2304: Cannot find name 'officialSelectedBalls'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(178,45): error TS2304: Cannot find name 'officialSelectedBalls'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(179,36): error TS7006: Parameter 'level' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(180,9): error TS2304: Cannot find name 'officialSelectedBalls'.
+src/shared/lottery/pk10/components/layout/official/HzQs.vue(180,45): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(33,60): error TS2345: Argument of type 'number | null | undefined' is not assignable to parameter of type 'number | null'.
+  Type 'undefined' is not assignable to type 'number | null'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(39,62): error TS2345: Argument of type 'number | null | undefined' is not assignable to parameter of type 'number | null'.
+  Type 'undefined' is not assignable to type 'number | null'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(67,27): error TS7006: Parameter 'issueCount' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(67,39): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(67,48): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(67,59): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(69,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(69,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(73,24): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(78,22): error TS7053: Element implicitly has an 'any' type because expression of type '"0"' can't be used to index type '{}'.
+  Property '0' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(79,22): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type '{}'.
+  Property '1' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(85,28): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(85,37): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(85,48): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(87,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(87,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(91,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(91,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(100,25): error TS7053: Element implicitly has an 'any' type because expression of type '"0"' can't be used to index type '{}'.
+  Property '0' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(101,7): error TS7053: Element implicitly has an 'any' type because expression of type '"0"' can't be used to index type '{}'.
+  Property '0' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(102,7): error TS7053: Element implicitly has an 'any' type because expression of type '"0"' can't be used to index type '{}'.
+  Property '0' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(104,25): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type '{}'.
+  Property '1' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(105,7): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type '{}'.
+  Property '1' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(106,7): error TS7053: Element implicitly has an 'any' type because expression of type '"1"' can't be used to index type '{}'.
+  Property '1' does not exist on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(112,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(112,31): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(118,25): error TS7006: Parameter 'rowsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(118,35): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(136,30): error TS7006: Parameter 'tickets' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/Lh.vue(136,39): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/render/InputRender.vue(45,20): error TS2440: Import declaration conflicts with local declaration of 'defineProps'.
+src/shared/lottery/pk10/components/layout/official/render/InputRender.vue(45,33): error TS2440: Import declaration conflicts with local declaration of 'defineExpose'.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(74,95): error TS2345: Argument of type 'Record<string, any>' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Record<string, any>' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(142,26): error TS7006: Parameter 'text' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(142,32): error TS7006: Parameter 'rowSeparator' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(152,70): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(152,92): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(159,59): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(159,85): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(168,39): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(173,22): error TS7006: Parameter 'n' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(207,21): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(216,27): error TS7006: Parameter 'file' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(223,19): error TS7006: Parameter 'file' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(226,5): error TS2322: Type 'string | ArrayBuffer | null' is not assignable to type 'string'.
+  Type 'null' is not assignable to type 'string'.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(226,23): error TS18047: 'e.target' is possibly 'null'.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(249,28): error TS7006: Parameter 'tickets' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(253,20): error TS7006: Parameter 't' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(254,108): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxDs.vue(277,3): error TS2322: Type 'string[]' is not assignable to type 'never[]'.
+  Type 'string' is not assignable to type 'never'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(14,39): error TS2339: Property 'balls' does not exist on type 'MethodRow'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(78,27): error TS7006: Parameter 'issueCount' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(78,39): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(78,48): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(78,59): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(80,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(80,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(84,24): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(89,20): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(90,11): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(95,18): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(96,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(104,28): error TS7006: Parameter 'history' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(104,37): error TS7006: Parameter 'ballsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(104,48): error TS7006: Parameter 'positions' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(106,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(106,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(110,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(110,29): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(119,21): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(120,11): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(121,11): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(126,19): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(127,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(128,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(135,21): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(136,10): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(137,7): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(144,27): error TS7006: Parameter 'rowsData' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(144,37): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(146,9): error TS7034: Variable 'result' implicitly has type 'any[]' in some locations where its type cannot be determined.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(147,21): error TS7006: Parameter 'rowConfig' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(147,32): error TS7006: Parameter 'rowIndex' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(161,10): error TS7005: Variable 'result' implicitly has an 'any[]' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(164,32): error TS7006: Parameter 'tickets' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(164,41): error TS7006: Parameter 'currentMethod' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(170,37): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(170,42): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(173,25): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(179,25): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(183,33): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/RxFs.vue(183,40): error TS7006: Parameter 'currentCombination' implicitly has an 'any' type.
+src/shared/lottery/pk10/components/layout/official/ZxFs.vue(49,8): error TS2307: Cannot find module '@types' or its corresponding type declarations.
+src/shared/lottery/ssc/components/History.vue(81,17): error TS2304: Cannot find name 'Ref'.
+src/shared/lottery/ssc/components/History.vue(89,38): error TS2345: Argument of type 'Store' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Store' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/ssc/components/History.vue(97,12): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/History.vue(100,46): error TS7006: Parameter 'num' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/History.vue(103,15): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/History.vue(104,15): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(45,39): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(46,14): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(50,40): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(51,14): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(61,29): error TS5097: An import path can only end with a '.ts' extension when 'allowImportingTsExtensions' is enabled.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(66,10): error TS2305: Module '"@shared/types"' has no exported member 'MethodNumberItem'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(99,17): error TS2345: Argument of type 'Record<string, any>' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Record<string, any>' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(108,60): error TS2363: The right-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(117,26): error TS7006: Parameter 'ballValue' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(120,29): error TS7006: Parameter 'l' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(125,26): error TS7006: Parameter 'prize' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(132,59): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(134,15): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(159,39): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(179,29): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(196,29): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(204,22): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(214,27): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(221,23): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(234,27): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(240,36): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(264,9): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(267,25): error TS7006: Parameter 'b' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(276,7): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(292,28): error TS7006: Parameter 'creditSelected' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(293,71): error TS18046: 'arr' is of type 'unknown'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(296,27): error TS7006: Parameter 'issueCount' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(296,39): error TS7006: Parameter 'hotColdData' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(304,53): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(305,5): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(308,24): error TS7006: Parameter 'issue' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(310,28): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(311,7): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(318,28): error TS7006: Parameter 'omissionData' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(325,53): error TS7006: Parameter 'ball' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(326,5): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(332,28): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(333,7): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(341,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(342,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(349,26): error TS7006: Parameter 'count' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(352,24): error TS2345: Argument of type '{} | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(353,24): error TS2345: Argument of type '{} | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(357,27): error TS7006: Parameter 'omission' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(360,24): error TS2345: Argument of type '{} | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/shared/lottery/ssc/components/layout/credit/items/ItemDefault.vue(361,24): error TS2345: Argument of type '{} | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(4,25): error TS2365: Operator '>' cannot be applied to types 'string | number' and 'number'.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(8,20): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ Ball: DefineComponent<{}, {}, any>; Bs: DefineComponent<{}, {}, any>; Oe: DefineComponent<{}, {}, any>; SumBs: DefineComponent<{}, {}, any>; SumOe: DefineComponent<...>; Ps: DefineComponent<...>; Zjh: DefineComponent<...>; Lh: DefineComponent<...>; }'.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(49,69): error TS2345: Argument of type 'Record<string, any>' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Record<string, any>' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(51,18): error TS7006: Parameter 'methodKey' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(51,29): error TS7006: Parameter 'rowIndex' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(59,65): error TS7006: Parameter 'row' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(61,47): error TS18046: 'methodConfig' is of type 'unknown'.
+src/shared/lottery/ssc/components/layout/group/DefaultGroup.vue(64,18): error TS7006: Parameter 'item' implicitly has an 'any' type.
+src/shared/lottery/ssc/components/layout/official/BsoeHz.vue(67,10): error TS18047: 'outcomes' is possibly 'null'.
+src/shared/lottery/ssc/components/layout/official/BsoeZx.vue(65,10): error TS18047: 'outcomes' is possibly 'null'.
+src/shared/lottery/ssc/components/layout/official/Nn.vue(67,10): error TS18047: 'outcomes' is possibly 'null'.
+src/shared/lottery/ssc/components/layout/official/render/InputRender.vue(11,20): error TS2339: Property 'togglePosition' does not exist on type '{ positionsConfig: any; $style: CSSModuleClasses; selectedPositions: any; inputText: string; handleInput: () => void; handleBlur: () => void; handleDrop: (event: DragEvent) => void; ... 34 more ...; $tm<Key extends string, DefinedLocaleMessage extends RemovedIndexResources<DefineLocaleMessage> = RemoveIndexSignature...'.
+src/shared/lottery/ssc/components/layout/official/render/InputRender.vue(60,20): error TS2440: Import declaration conflicts with local declaration of 'defineProps'.
+src/shared/lottery/ssc/components/layout/official/render/InputRender.vue(60,33): error TS2440: Import declaration conflicts with local declaration of 'defineExpose'.
+src/shared/lottery/ssc/components/layout/official/render/InputRender.vue(85,67): error TS2345: Argument of type 'Record<string, any>' is not assignable to parameter of type 'StoreGeneric'.
+  Type 'Record<string, any>' is missing the following properties from type '_StoreWithState<string, StateTree, _GettersTree<StateTree>, _ActionsTree>': $state, $patch, $reset, $subscribe, and 4 more.
+src/shared/lottery/ssc/components/layout/official/RxBd.vue(12,22): error TS2339: Property 'togglePosition' does not exist on type '{ $style: CSSModuleClasses; selectedPositions: any[]; positionsConfig: { options: Record<number, string>; min_checked: number; max_checked: number; }; rows: MethodRow[]; ... 34 more ...; $tm<Key extends string, DefinedLocaleMessage extends RemovedIndexResources<DefineLocaleMessage> = RemoveIndexSignature<...>, Keys ...'.
+src/shared/lottery/ssc/components/layout/official/RxSum.vue(12,37): error TS2554: Expected 0 arguments, but got 1.
+src/shared/lottery/ssc/components/layout/official/RxZxFs.vue(68,19): error TS2365: Operator '<' cannot be applied to types 'number' and 'number | number[]'.
+src/shared/lottery/ssc/components/layout/official/RxZxFs.vue(91,7): error TS2365: Operator '<' cannot be applied to types 'number' and 'number | number[]'.
+src/shared/lottery/ssc/components/layout/official/RxZxFs.vue(133,3): error TS2339: Property 'calculateHotCold' does not exist on type '{ rows: Ref<MethodRow[], MethodRow[]>; toggleBall: (rowIndex: number, ball: MethodRowNumber) => void; togglePosition: () => void; handleQuick: (rowIndex: number, type: string) => void; ... 5 more ...; showOmission: Ref<...>; }'.
+src/shared/lottery/ssc/components/layout/official/RxZxFs.vue(134,3): error TS2339: Property 'calculateOmission' does not exist on type '{ rows: Ref<MethodRow[], MethodRow[]>; toggleBall: (rowIndex: number, ball: MethodRowNumber) => void; togglePosition: () => void; handleQuick: (rowIndex: number, type: string) => void; ... 5 more ...; showOmission: Ref<...>; }'.
+src/shared/lottery/ssc/components/layout/official/ZxFs.vue(71,3): error TS2339: Property 'calculateHotCold' does not exist on type '{ rows: Ref<MethodRow[], MethodRow[]>; toggleBall: (rowIndex: number, ball: MethodRowNumber) => void; togglePosition: () => void; handleQuick: (rowIndex: number, type: string) => void; ... 5 more ...; showOmission: Ref<...>; }'.
+src/shared/lottery/ssc/components/layout/official/ZxFs.vue(72,3): error TS2339: Property 'calculateOmission' does not exist on type '{ rows: Ref<MethodRow[], MethodRow[]>; toggleBall: (rowIndex: number, ball: MethodRowNumber) => void; togglePosition: () => void; handleQuick: (rowIndex: number, type: string) => void; ... 5 more ...; showOmission: Ref<...>; }'.

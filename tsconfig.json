@@ -2,17 +2,19 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "strict": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@lottery/*": ["src/lottery/*"]
+      "@/*": ["./src/*"],
+      "@web/*": ["./src/web/*"],
+      "@h5/*": ["./src/h5/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@lottery/*": ["./src/shared/lottery/*"]
     },
     "types": ["vite/client"]
   },

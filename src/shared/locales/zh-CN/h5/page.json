@@ -1,0 +1,43 @@
+{
+  "lottery": {
+    "title": "彩票大厅",
+    "placeholder": "彩票玩法即将上线",
+    "loading": "加载中…",
+    "empty": "暂无可玩彩种",
+    "hot": "热",
+    "new": "新",
+    "category": {
+      "ssc": "时时彩",
+      "sd": "急速3D",
+      "ks": "快三",
+      "lhc": "六合彩",
+      "pk10": "极速赛车",
+      "kl28": "快乐28"
+    },
+    "bet": {
+      "title": "投注",
+      "developing": "{sign} · 时时彩投注界面开发中(P2)"
+    }
+  },
+  "mine": {
+    "title": "我的",
+    "notLoggedIn": "登录后查看更多",
+    "placeholder": "更多功能敬请期待"
+  },
+  "activity": {
+    "title": "活动",
+    "placeholder": "精彩活动即将上线"
+  },
+  "join": {
+    "title": "加盟",
+    "placeholder": "代理加盟计划敬请期待"
+  },
+  "recharge": {
+    "title": "充值",
+    "placeholder": "充值功能即将上线"
+  },
+  "sports": {
+    "title": "体育",
+    "placeholder": "体育赛事即将上线"
+  }
+}

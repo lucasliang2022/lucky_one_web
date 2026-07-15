@@ -1,0 +1,25 @@
+/*
+ * moon —— 「月夜」深色皮肤示例(sign='moon')。叠加在 default 之上,只写覆盖项。
+ * 预览:URL 加 ?theme=moon(?theme=reset 还原)。
+ * 内页样式也可在这里按 [data-sign="moon"] .page-xxx 定制,无需改内页组件。
+ */
+:root {
+  --color-primary: #7c83ff;
+  --color-background: #0b0c22;
+  --color-gray-4: #0b0c22;
+
+  --sd-color-bg-top: #0e1030;
+  --sd-color-bg-main: #0b0c22;
+  --sd-color-bg-secondary: #171a3a;
+  --sd-color-bg-cover: #171a3a;
+
+  --sd-color-txt-main: #e8ecff;
+  --sd-color-txt-primary: #e8ecff;
+  --sd-color-txt-secondary: #aab3e0;
+  --sd-color-txt-tertiary: #7f88bf;
+
+  --color-border: #2a2f5a;
+}
+
+/* 例:内页(彩票下注页)在 moon 皮肤下的定制入口(等内页补上 .page-lottery 钩子即可生效) */
+/* [data-sign="moon"] .page-lottery { background: var(--sd-color-bg-main); } */

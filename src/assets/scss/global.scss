@@ -32,6 +32,15 @@ html {
     scrollbar-gutter: stable;
 }
 
+/* Element Plus 弹窗锁滚动(el-popup-parent--hidden)会给 body 设内联
+   width: calc(100% - 滚动条宽) 来补偿被隐藏的滚动条。但我们已用上面的
+   scrollbar-gutter: stable 恒定预留滚动条空间,EP 这个补偿是多余的:
+   它让 body 比 position:fixed 的顶部窄一条,且开/关弹窗时反复加减这条宽度,
+   造成「顶部与下方宽度不一致 + 关弹窗时下方左右抖动」。强制 100% 覆盖内联样式消除。 */
+body.el-popup-parent--hidden {
+    width: 100% !important;
+}
+
 /* =========================================================
  *  主题结构钩子:根元素带 data-layout / data-skin(由 App.vue 挂载)
  *  组件本身对主题无感知,差异只在这里(结构)和皮肤 token(下方)收口。

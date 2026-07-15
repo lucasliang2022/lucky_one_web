@@ -1,0 +1,13 @@
+{
+  "title": "登陆",
+  "username": "用户名",
+  "password": "密码",
+  "submit": "登陆",
+  "register": "注册",
+  "enterUsername": "Please enter your username",
+  "enterPassword": "Please enter your password",
+  "usernameRule": "用户名须以字母开头,仅含字母和数字,长度6-32位",
+  "passwordRule": "密码长度为6-32位",
+  "passwordSecDiff": "登录密码不能与资金密码相同",
+  "failed": "Login failed. Please check your credentials."
+}

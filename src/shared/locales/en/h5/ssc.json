@@ -1,0 +1,125 @@
+{
+  "loading": "Loading…",
+  "invalidSign": "Invalid or unloaded lottery",
+  "switcher": {
+    "title": "Switch Lottery",
+    "empty": "No lotteries available"
+  },
+  "notLoggedIn": "Please log in before betting",
+  "mode": {
+    "official": "Official",
+    "credit": "Credit"
+  },
+  "tab": {
+    "official": "Official",
+    "credit": "Credit",
+    "draws": "Recent Draws",
+    "history": "Bet History"
+  },
+  "draws": {
+    "issue": "Issue",
+    "code": "Result",
+    "empty": "No draw data",
+    "loading": "Loading…"
+  },
+  "history": {
+    "method": "Play",
+    "code": "Bet",
+    "count": "Bets",
+    "amount": "Amount",
+    "status": "Status",
+    "prize": "Payout",
+    "time": "Time",
+    "empty": "No bet records",
+    "loading": "Loading…",
+    "error": "Failed to load bet history",
+    "notLoggedIn": "Please log in to view bet history",
+    "statusCancelled": "Cancelled",
+    "statusNormal": "Accepted",
+    "modeOfficial": "Official",
+    "modeCredit": "Credit"
+  },
+  "issue": {
+    "current": "Current Issue",
+    "no": "Issue {no}",
+    "closed": "Closed",
+    "selling": "On Sale",
+    "countdown": "Closes in"
+  },
+  "method": {
+    "empty": "No methods available"
+  },
+  "selectLabel": "Select",
+  "unsupported": "This play type uses manual entry and is not yet supported on mobile",
+  "pos": {
+    "1": "Ten-K",
+    "2": "Thousand",
+    "3": "Hundred",
+    "4": "Ten",
+    "5": "Unit"
+  },
+  "quick": {
+    "all": "All",
+    "big": "Big",
+    "small": "Small",
+    "odd": "Odd",
+    "even": "Even",
+    "clear": "Clear"
+  },
+  "bar": {
+    "price": "Price",
+    "times": "Times",
+    "amount": "Amount",
+    "count": "{count} bets",
+    "submit": "Bet Now",
+    "tier_yuan": "Yuan",
+    "tier_jiao": "Jiao",
+    "tier_fen": "Fen",
+    "tier_li": "Li"
+  },
+  "credit": {
+    "empty": "No methods available",
+    "amount": "Amount"
+  },
+  "tip": {
+    "selectFirst": "Please select numbers first",
+    "success": "Bet placed successfully",
+    "failed": "Bet failed"
+  },
+  "cart": {
+    "add": "Add to Cart",
+    "added": "Added to cart",
+    "title": "Bet Slip",
+    "empty": "No bets in the cart yet",
+    "clear": "Clear",
+    "total": "Total",
+    "submit": "Confirm Bet",
+    "countLabel": "{count} bets",
+    "timesLabel": "x{times}"
+  },
+  "chm": {
+    "entry": "Hot/Cold",
+    "title": "Hot / Cold / Omission",
+    "unsupported": "Hot/Cold/Omission is not available for this play type",
+    "noHistory": "No draw history yet",
+    "hotCold": "Hot/Cold",
+    "omission": "Omission",
+    "legendHot": "Hot",
+    "legendCold": "Cold",
+    "legendMiss": "Max omission"
+  },
+  "trace": {
+    "entry": "Trace",
+    "entryOn": "Trace {count}",
+    "title": "Trace Settings",
+    "intro": "Pick how many upcoming issues to trace; can auto-stop after a win. Trace is submitted together with this bet slip.",
+    "noIssues": "No upcoming issues to trace",
+    "count": "Issues to trace",
+    "winStop": "Stop after win",
+    "previewLabel": "Tracing the following {count} issues",
+    "cancel": "Cancel trace",
+    "confirm": "Confirm trace",
+    "set": "Trace set for {count} issues",
+    "cleared": "Trace cancelled"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "loading": "加载中…",
+  "invalidSign": "彩种无效或未加载",
+  "switcher": {
+    "title": "切换彩种",
+    "empty": "暂无可玩彩种"
+  },
+  "notLoggedIn": "请先登录后再投注",
+  "mode": {
+    "official": "官方彩",
+    "credit": "信用盘"
+  },
+  "tab": {
+    "official": "官方彩",
+    "credit": "信用彩",
+    "draws": "近期开奖",
+    "history": "投注历史"
+  },
+  "draws": {
+    "issue": "期号",
+    "code": "开奖号码",
+    "empty": "暂无开奖数据",
+    "loading": "加载中…"
+  },
+  "history": {
+    "method": "玩法",
+    "code": "投注内容",
+    "count": "注数",
+    "amount": "金额",
+    "status": "状态",
+    "prize": "派奖",
+    "time": "时间",
+    "empty": "暂无投注记录",
+    "loading": "加载中…",
+    "error": "获取投注记录失败",
+    "notLoggedIn": "请先登录后查看投注历史",
+    "statusCancelled": "已撤单",
+    "statusNormal": "已受理",
+    "modeOfficial": "官方",
+    "modeCredit": "信用"
+  },
+  "issue": {
+    "current": "当前期号",
+    "no": "第 {no} 期",
+    "closed": "已封盘",
+    "selling": "销售中",
+    "countdown": "距封盘"
+  },
+  "method": {
+    "empty": "暂无可用玩法"
+  },
+  "selectLabel": "选号",
+  "unsupported": "该玩法为单式录入，暂不支持移动端投注",
+  "pos": {
+    "1": "万位",
+    "2": "千位",
+    "3": "百位",
+    "4": "十位",
+    "5": "个位"
+  },
+  "quick": {
+    "all": "全",
+    "big": "大",
+    "small": "小",
+    "odd": "奇",
+    "even": "偶",
+    "clear": "清"
+  },
+  "bar": {
+    "price": "单价",
+    "times": "倍数",
+    "amount": "金额",
+    "count": "共 {count} 注",
+    "submit": "立即投注",
+    "tier_yuan": "元",
+    "tier_jiao": "角",
+    "tier_fen": "分",
+    "tier_li": "厘"
+  },
+  "credit": {
+    "empty": "暂无可用玩法",
+    "amount": "金额"
+  },
+  "tip": {
+    "selectFirst": "请先完成选号",
+    "success": "投注成功",
+    "failed": "投注失败"
+  },
+  "cart": {
+    "add": "加入购物车",
+    "added": "已加入购物车",
+    "title": "注单预览",
+    "empty": "购物车还没有注单",
+    "clear": "清空",
+    "total": "合计",
+    "submit": "确认投注",
+    "countLabel": "{count} 注",
+    "timesLabel": "{times} 倍"
+  },
+  "chm": {
+    "entry": "冷热遗漏",
+    "title": "冷热遗漏",
+    "unsupported": "该玩法暂不支持冷热遗漏",
+    "noHistory": "暂无开奖历史数据",
+    "hotCold": "冷热",
+    "omission": "遗漏",
+    "legendHot": "热号",
+    "legendCold": "冷号",
+    "legendMiss": "最大遗漏"
+  },
+  "trace": {
+    "entry": "追号",
+    "entryOn": "追号 {count} 期",
+    "title": "追号设置",
+    "intro": "选择连续追号的期数,可设中奖后自动停止。追号将随本次注单一并提交。",
+    "noIssues": "暂无可追期号",
+    "count": "追号期数",
+    "winStop": "中奖后停止",
+    "previewLabel": "将追以下 {count} 期",
+    "cancel": "取消追号",
+    "confirm": "确认追号",
+    "set": "已设置追号 {count} 期",
+    "cleared": "已取消追号"
+  }
+}
