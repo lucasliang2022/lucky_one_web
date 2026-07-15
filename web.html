@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>春晓</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // 入口 URL 规范化:直接落在 /web.html 时把它换成 /,否则 vue-router 会把 /web.html 当路径匹配不到 '/'。
+      if (/\/web\.html$/.test(location.pathname)) {
+        history.replaceState(history.state, '', location.pathname.replace(/\/web\.html$/, '/') + location.search + location.hash);
+      }
+    </script>
+    <script type="module" src="/src/web/main.ts"></script>
+  </body>
+</html>

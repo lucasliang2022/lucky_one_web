@@ -5,9 +5,31 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>春晓</title>
+    <script>
+      // 落地页:根据分辨率自动分流 —— 窄屏(≤768) → h5.html,宽屏 → web.html。
+      // 手动覆盖:?v=web / ?v=h5 切换并记住(localStorage lc_view);?v=auto 清除、恢复自动。
+      (function () {
+        try {
+          var qs = new URLSearchParams(location.search);
+          var KEY = 'lc_view';
+          var forced = qs.get('v');
+          if (forced === 'web' || forced === 'h5') localStorage.setItem(KEY, forced);
+          else if (forced === 'auto') localStorage.removeItem(KEY);
+
+          var pref = localStorage.getItem(KEY) || '';
+          var target;
+          if (pref === 'web' || pref === 'h5') {
+            target = pref;
+          } else {
+            var w = Math.min(window.innerWidth || 9999, (window.screen && window.screen.width) || 9999);
+            target = w <= 768 ? 'h5' : 'web';
+          }
+          location.replace('/' + target + '.html' + location.hash);
+        } catch (e) {
+          location.replace('/web.html' + location.hash);
+        }
+      })();
+    </script>
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+  <body></body>
 </html>
