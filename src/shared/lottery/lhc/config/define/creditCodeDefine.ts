@@ -196,3 +196,78 @@ export const tail = [
     { title: '8尾', value: 8 },
     { title: '9尾', value: 9 },
 ];
+/* ========== 特码族:后端下注码盘面(value = 后端 code,title = i18n key) ========== */
+const KC = 'lottery.lhc.credit.code';
+// 号码 01-49
+export const teNumbers = Array.from({ length: 49 }, (_, i) => { const v = String(i + 1).padStart(2, '0'); return { value: v, title: v }; });
+// 生肖 1-12(鼠…猪)
+export const zodiac12 = Array.from({ length: 12 }, (_, i) => ({ value: String(i + 1), title: `${KC}.zodiac${i + 1}` }));
+// 波色 红/蓝/绿
+export const sebo = [
+    { value: 'r', title: `${KC}.hongbo` },
+    { value: 'b', title: `${KC}.lanbo` },
+    { value: 'g', title: `${KC}.lvbo` },
+];
+// 半波 = 色(红r/蓝b/绿g) × 大小单双(b/s/o/e)
+const _COLOR: Array<[string, string]> = [['r', 'hong'], ['b', 'lan'], ['g', 'lv']];
+const _ATTR: Array<[string, string]> = [['b', 'da'], ['s', 'xiao'], ['o', 'dan'], ['e', 'shuang']];
+export const banbo = _COLOR.flatMap(([c, cn]) => _ATTR.map(([a, an]) => ({ value: c + a, title: `${KC}.${cn}${an}` })));
+// 半半波 = 色 × 大小(b/s) × 单双(o/e)
+export const banbanbo = _COLOR.flatMap(([c, cn]) =>
+    ([['b', 'da'], ['s', 'xiao']] as Array<[string, string]>).flatMap(([bs, bsn]) =>
+        ([['o', 'dan'], ['e', 'shuang']] as Array<[string, string]>).map(([oe, oen]) =>
+            ({ value: c + bs + oe, title: `${KC}.${cn}${bsn}${oen}` }))));
+// 特码形态:大/小/单/双 + 组合
+export const temaXt = [
+    { value: 'b', title: `${KC}.da` }, { value: 's', title: `${KC}.xiao` },
+    { value: 'o', title: `${KC}.dan` }, { value: 'e', title: `${KC}.shuang` },
+    { value: 'bo', title: `${KC}.dadan` }, { value: 'so', title: `${KC}.xiaodan` },
+    { value: 'be', title: `${KC}.dashuang` }, { value: 'se', title: `${KC}.xiaoshuang` },
+];
+// 大小单双(合/尾 形态用)
+export const dxds4 = [
+    { value: 'b', title: `${KC}.da` }, { value: 's', title: `${KC}.xiao` },
+    { value: 'o', title: `${KC}.dan` }, { value: 'e', title: `${KC}.shuang` },
+];
+// 特肖形态:天地前后家野肖
+export const teXiaoXt = [
+    { value: '1', title: `${KC}.tianxiao` }, { value: '2', title: `${KC}.dixiao` },
+    { value: '3', title: `${KC}.qianxiao` }, { value: '4', title: `${KC}.houxiao` },
+    { value: '5', title: `${KC}.jiaxiao` }, { value: '6', title: `${KC}.yexiao` },
+];
+// 头尾数:头0-4 + 尾0-9
+export const touwei = [
+    ...Array.from({ length: 5 }, (_, i) => ({ value: `t${i}`, title: `${KC}.tou${i}` })),
+    ...Array.from({ length: 10 }, (_, i) => ({ value: `w${i}`, title: `${KC}.wei${i}` })),
+];
+
+/* ========== 正码族新增盘面 ========== */
+// 七色波:红/蓝/绿/和
+export const qisebo = [
+    { value: 'r', title: `${KC}.hongbo` },
+    { value: 'b', title: `${KC}.lanbo` },
+    { value: 'g', title: `${KC}.lvbo` },
+    { value: 'h', title: `${KC}.bohe` },
+];
+// 合数大小单双:合大/合小/合单/合双
+export const heDxds = [
+    { value: 'hb', title: `${KC}.heda` },
+    { value: 'hs', title: `${KC}.hexiao` },
+    { value: 'ho', title: `${KC}.hedan` },
+    { value: 'he', title: `${KC}.heshuang` },
+];
+// 尾大小:尾大/尾小
+export const weiBs = [
+    { value: 'wb', title: `${KC}.weida` },
+    { value: 'ws', title: `${KC}.weixiao` },
+];
+
+/* ========== 一总平/综合新增盘面 ========== */
+// 平特尾数:0-9 尾
+export const pingWei = Array.from({ length: 10 }, (_, i) => ({ value: String(i), title: `${KC}.wei${i}` }));
+// 总肖:二肖~七肖
+export const zongXiao = [
+    { value: '1', title: `${KC}.erxiao` }, { value: '2', title: `${KC}.sanxiao` },
+    { value: '3', title: `${KC}.sixiao` }, { value: '4', title: `${KC}.wuxiao` },
+    { value: '5', title: `${KC}.liuxiao` }, { value: '6', title: `${KC}.qixiao` },
+];

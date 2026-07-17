@@ -36,12 +36,16 @@
       <el-table-column label="内容">
         <template #default="{ row }">
           <div v-for="(item, index) in row.content" :key="index" class="content-item">
-            <span v-if="item.title" class="content-title" style="color: #409eff">{{ item.title }}：</span>
-            <span>{{ item.content }}</span>
+            <span v-if="item.title" class="content-title" style="color: #409eff">{{ t(item.title) }}：</span>
+            <span>{{ t(item.content) }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="example" label="示例" width="320"></el-table-column>
+      <el-table-column label="示例" width="320">
+        <template #default="{ row }">
+          <span>{{ t(row.example) }}</span>
+        </template>
+      </el-table-column>
     </el-table>
   </el-dialog>
 </template>
@@ -87,9 +91,10 @@ const methodDescData = computed(() => {
   if (!creditGroupCurrent.value?.methods) return [];
   return Object.entries(creditGroupCurrent.value.methods).map(([sign, method]) => ({
     sign,
-    title: method.desc?.title,
-    content: method.desc?.content || [{ title: '暂无标题', content: '暂无内容' }],
-    example: method.desc?.example || '暂无示例'
+    // 玩法名用后端翻译好的 title(合并时已覆盖);内容/示例是本地 i18n key,渲染时 t() 翻译。
+    title: method.title || method.desc?.title || sign,
+    content: method.desc?.content || [],
+    example: method.desc?.example || ''
   }));
 });
 

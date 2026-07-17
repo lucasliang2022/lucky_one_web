@@ -1,16 +1,18 @@
 <template>
   <div class="method-display-container">
-    <template v-for="(row, rowIndex) in creditGroupCurrent.layout" :key="rowIndex">
-      <el-divider v-if="rowIndex > 0" border-style="dashed" />
-      <div class="ball-row" :class="{ 'ball-row-column': row.direction === 'column' }">
-        <template v-for="(methodConfig, methodKey) in row.methods" :key="methodKey">
-          <component
-              :is="componentMap[methodConfig.layout]"
-              :sort="getSort(methodKey, rowIndex)"
-              :method-current="creditGroupCurrent['methods'][methodConfig.target]"
-              :store="store"
-          />
-        </template>
+    <template v-for="(method, methodKey, idx) in (creditGroupCurrent?.methods || {})" :key="methodKey">
+      <!-- 组内多玩法同页展示:每个玩法块用带标题的分割线区隔(单玩法时也显示,作小节标题)。 -->
+      <el-divider v-if="multiMethod || idx > 0" content-position="center" border-style="dashed">
+        {{ resolveMethodTitle(method, t, te) }}
+      </el-divider>
+      <div class="ball-row">
+        <component
+            v-if="componentMap[method.layout.type]"
+            :is="componentMap[method.layout.type]"
+            :sort="idx + 1"
+            :method-current="method"
+            :store="store"
+        />
       </div>
     </template>
   </div>
@@ -18,15 +20,12 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
-import { watch } from "vue";
+import { computed, watch } from "vue";
+import { useI18n } from "vue-i18n";
+import { resolveMethodTitle } from "@lottery/base/utils/common";
 import Ball from "@shared/lottery/ssc/components/layout/credit/Ball.vue";
-import Bs from "@shared/lottery/ssc/components/layout/credit/Bs.vue";
-import Oe from "@shared/lottery/ssc/components/layout/credit/Oe.vue";
-import SumBs from "@shared/lottery/ssc/components/layout/credit/SumBs.vue";
-import SumOe from "@shared/lottery/ssc/components/layout/credit/SumOe.vue";
-import Ps from "@shared/lottery/ssc/components/layout/credit/Ps.vue";
-import Lh from "@shared/lottery/ssc/components/layout/credit/Lh.vue";
-import Zjh from "@shared/lottery/ssc/components/layout/credit/Zjh.vue";
+import Form from "@shared/lottery/ssc/components/layout/credit/Form.vue";
+import Combo from "@shared/lottery/ssc/components/layout/credit/Combo.vue";
 
 const props = defineProps({
   store: {
@@ -35,36 +34,27 @@ const props = defineProps({
   }
 });
 
+// 信用盘每个玩法按自身 layout.type 取渲染组件;所有组件都是 ItemDefault 的薄封装(仅 calculateChm 不同)。
 const componentMap = {
   Ball: Ball,
-  Bs: Bs,
-  Oe: Oe,
-  SumBs: SumBs,
-  SumOe: SumOe,
-  Ps: Ps,
-  Zjh: Zjh,
-  Lh: Lh,
+  Form: Form,
+  Combo: Combo,  // 组合玩法(连码/连肖连尾/自选/不中):多选 + 统一金额 + 注数=C(n,k)
 };
 
+const { t, te } = useI18n();
 const { creditGroupCurrent, creditDisplayMethodDesc } = storeToRefs(props.store);
 
-const getSort = (methodKey, rowIndex) => {
-  return Object.keys(creditGroupCurrent.value.layout[rowIndex].methods).indexOf(methodKey) + 1 + rowIndex * creditGroupCurrent.value.layout[0].methods.length;
-};
+// 组内是否多于一个玩法:多玩法时每块都带标题分割线;单玩法也显示一条(小节标题)。
+const multiMethod = computed(() => Object.keys(creditGroupCurrent.value?.methods || {}).length > 1);
 
 watch(
     () => creditGroupCurrent.value,
     (newGroup) => {
-      if (newGroup && newGroup.layout) {
-        creditDisplayMethodDesc.value = newGroup.layout.flatMap(row =>
-            Object.values(row.methods).map(methodConfig => {
-              const method = newGroup.methods[methodConfig.target];
-              return method && method.desc ? { sign: method.sign, desc: method.desc } : null;
-            })
-        ).filter(item => item);
-      } else {
-        creditDisplayMethodDesc.value = [];
-      }
+      creditDisplayMethodDesc.value = newGroup && newGroup.methods
+          ? Object.values(newGroup.methods)
+              .map((method: any) => (method && method.desc ? { sign: method.sign, desc: method.desc } : null))
+              .filter((item) => item)
+          : [];
     },
     { immediate: true }
 );
@@ -73,13 +63,5 @@ watch(
 <style lang="scss" scoped>
 .method-display-container {
   padding: 10px;
-  .ball-row-column {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    width: calc(20% - 12px);
-    gap: 12px;
-    max-height: calc(60px * 10 + 12px * 9);
-  }
 }
 </style>

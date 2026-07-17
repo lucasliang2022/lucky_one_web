@@ -126,6 +126,8 @@ export interface MethodDefineItem {
     template?: string;
     segmentation?: number;
     example?: string;
+    // 组合玩法(连码/连肖连尾/自选/不中):多选 + 统一金额,注数 = C(选中数, groupSize)。
+    combo?: { groupSize: number; minSelected?: number };
 }
 
 export interface MethodDefineList {
@@ -137,10 +139,12 @@ export interface MethodDefineList {
 
 
 // ===================== credit structure / merged ===================
+// 迁移中:新结构与官方盘同构(category → groups → methods 扁平,method 只写 target);
+// 旧结构(pk10/lhc 尚未迁移)仍是 groups → layout[] 盘面块。两者并存,逐步淘汰 layout。
 export interface CsMethodItem {
     target: string;
-    layout: string;
-    segmentation: number;
+    layout?: string;
+    segmentation?: number;
 }
 
 export interface CsLayoutItem {
@@ -151,8 +155,11 @@ export interface CsLayoutItem {
 
 export interface CsGroupItem {
     title: string;
-    sign: string;
-    layout: CsLayoutItem[];
+    sign?: string;
+    // 新:扁平玩法表(ssc 已迁移)
+    methods?: Record<string, { target: string }>;
+    // 旧:盘面块(pk10/lhc 待迁移)
+    layout?: CsLayoutItem[];
 }
 
 export interface CsCategory {
@@ -167,9 +174,10 @@ export interface CsList {
 
 export interface CmsGroup {
     title: string;
-    sign: string;
-    layout: CsLayoutItem[];
-    methods: Record<string,MethodDefineItem>
+    sign?: string;
+    methods: Record<string, MethodDefineItem>;
+    // 旧渲染器(pk10/lhc)仍读 layout;ssc 新渲染器只读 methods。
+    layout?: CsLayoutItem[];
 }
 
 export interface CmsCategory {
@@ -178,7 +186,7 @@ export interface CmsCategory {
 }
 
 export interface CmsList {
-    [category: string]: CmsCategory                          ;
+    [category: string]: CmsCategory;
 }
 
 // ================== official structure / merged   =================

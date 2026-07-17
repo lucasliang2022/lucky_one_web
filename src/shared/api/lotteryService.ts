@@ -56,18 +56,7 @@ interface RawHistoryData {
 /* =========================================================
  *  前端对外类型
  * ========================================================= */
-/** 盘面按钮:code 是下注码(如 'b'/'0'),label 是显示(如 '大'/'0')。 */
-export interface ServerBoardCell {
-    code: string;
-    label: string;
-}
-/** 盘面一档:title(如「大小单双质和」)+ 按钮列表;赔率按 level 对应 method.levels[level]。 */
-export interface ServerBoardLevel {
-    level: number;
-    title: string;
-    cells: ServerBoardCell[];
-}
-/** 后端结构树里的单个玩法节点(赔率/盘面内联;leaf 用于匹配前端 define)。 */
+/** 后端结构树里的单个玩法节点(赔率内联;leaf 用于匹配前端 define)。仅官方盘下发。 */
 export interface ServerStructMethod {
     sign: string;   // 后端复合唯一 sign(mode_dir1_dir2_leaf),下注即用它
     leaf: string;   // 末段类名,匹配本地 define(layout/calc)
@@ -75,7 +64,6 @@ export interface ServerStructMethod {
     name?: string;
     odds?: any;
     levels?: Record<string, number | string> | any;   // 每档赔率(bind)
-    board?: ServerBoardLevel[];                        // 通用盘面(后端逻辑类 $levels 派生)
     sort?: number;
     [k: string]: any;
 }

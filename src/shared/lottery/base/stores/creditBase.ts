@@ -13,9 +13,30 @@ export function useCreditBase(common: CommonBase): CreditBase {
     const creditSelectedBalls = ref<Record<string, any[]>>({});
     const creditBetList = ref<any[]>([]);
 
-    const creditBetCost: ComputedRef<number> = computed(() =>
-        Object.values(creditSelectedBalls.value).flat().reduce((sum, ball) => sum + (ball.amount || 0), 0)
-    );
+    // 组合数 C(n,k):连码/连肖连尾等「组合玩法」的注数。
+    const combinations = (n: number, k: number): number => {
+        if (k > n || k < 0) return 0;
+        if (k === 0 || k === n) return 1;
+        k = Math.min(k, n - k);
+        let r = 1;
+        for (let i = 1; i <= k; i++) r = (r * (n - k + i)) / i;
+        return Math.round(r);
+    };
+
+    const creditBetCost: ComputedRef<number> = computed(() => {
+        let total = 0;
+        for (const balls of Object.values(creditSelectedBalls.value)) {
+            if (!balls.length) continue;
+            const first = balls[0];
+            if (first.combo) {
+                // 组合玩法:一个统一金额 × 组合数(C(选中数, 组合大小))。
+                total += (first.amount || 0) * combinations(balls.length, first.combo.groupSize);
+            } else {
+                total += balls.reduce((sum, b) => sum + (b.amount || 0), 0);
+            }
+        }
+        return total;
+    });
 
     const creditTotalAmount: ComputedRef<number> = computed(() =>
         creditBetList.value.reduce((sum, bet) => sum + (Number(bet.amount) || 0), 0)
@@ -29,21 +50,21 @@ export function useCreditBase(common: CommonBase): CreditBase {
 
     const setCategoryCreditCurrent = (category: string): void => {
         creditCategoryCurrent.value = category;
-        const currentCategory = creditMethodStructure.value[creditCategoryCurrent.value];
+        const currentCategory = creditMethodStructure.value[category];
+        if (!currentCategory || !currentCategory.groups) return;
         const firstGroupKey = Object.keys(currentCategory.groups)[0];
-        if (firstGroupKey && currentCategory.groups[firstGroupKey].layout.length > 0) {
+        if (firstGroupKey) {
             setGroupCreditCurrent(currentCategory.groups[firstGroupKey]);
         }
     };
 
     const setGroupCreditCurrent = (group: CmsGroup): void => {
         if (creditGroupCurrent.value.sign !== group.sign) {
-            const firstMethodTarget = group.layout[0]?.methods
-                ? Object.values(group.layout[0].methods)[0].target
-                : null;
             creditGroupCurrent.value = group;
-            if (firstMethodTarget && group.methods[firstMethodTarget]) {
-                setMethodCreditCurrent(group.methods[firstMethodTarget]);
+            // updateCreditMethod 已把新旧两种结构都合并进 group.methods,首个玩法直接取它。
+            const firstMethod = group.methods ? Object.values(group.methods)[0] : undefined;
+            if (firstMethod) {
+                setMethodCreditCurrent(firstMethod);
             }
         }
     };
@@ -63,24 +84,44 @@ export function useCreditBase(common: CommonBase): CreditBase {
 
     const creditBetItemBuild = (): any[] => {
         const betItems: any[] = [];
-        for (const [layoutType, balls] of Object.entries(creditSelectedBalls.value)) {
-            balls.forEach((ball: any) => {
+        for (const balls of Object.values(creditSelectedBalls.value)) {
+            if (!balls.length) continue;
+            const first = balls[0];
+            if (first.combo) {
+                // 组合玩法:所有选中码合成「一注多组合」——code=全部选中,count=C(n,k),金额统一。
+                const cnt = combinations(balls.length, first.combo.groupSize);
+                if (cnt <= 0) continue;
                 betItems.push({
-                    methodTitle: ball.methodTitle,
-                    methodSign: ball.methodSign,
-                    balls: [{ value: ball.value, title: ball.title }],
+                    methodTitle: first.methodTitle,
+                    methodSign: first.methodSign,
+                    balls: balls.map((b: any) => ({ value: b.value, title: b.title })),
                     unit: 1,
                     times: 1,
-                    amount: ball.amount,
-                    prize: ball.prize,
-                    count: 1,
+                    amount: first.amount,
+                    prize: first.prize,
+                    count: cnt,
                     currency: common.currency.value,
                     mode: 'credit',
                     confirmed: true
                 });
-            });
+            } else {
+                balls.forEach((ball: any) => {
+                    betItems.push({
+                        methodTitle: ball.methodTitle,
+                        methodSign: ball.methodSign,
+                        balls: [{ value: ball.value, title: ball.title }],
+                        unit: 1,
+                        times: 1,
+                        amount: ball.amount,
+                        prize: ball.prize,
+                        count: 1,
+                        currency: common.currency.value,
+                        mode: 'credit',
+                        confirmed: true
+                    });
+                });
+            }
         }
-        console.log('当前所选', betItems);
         return betItems;
     };
 

@@ -14,7 +14,7 @@
               :key="groupKey"
               class="method-group-item"
           >
-            <span class="group-title">{{ resolveStructTitle(group.title, t, te) }}:</span>
+            <span class="group-title" v-if="Object.keys(category.groups).length > 1">{{ resolveStructTitle(group.title, t, te) }}:</span>
             <div class="group-method-wrapper">
               <div
                   class="group-method-item"

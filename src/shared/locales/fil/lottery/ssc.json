@@ -154,5 +154,56 @@
     "ZsZxHz": "",
     "ZsZxKd": "",
     "ZsZxZh": ""
+  },
+  "credit": {
+    "cat": {
+      "danhao": "Isang Bola",
+      "longhu": "Dragon/Tigre",
+      "zjh": "Zha Jin Hua",
+      "suoha": "Showhand",
+      "danma": "Isang Numero",
+      "douniu": "Bull Bull",
+      "kuadu": "Saklaw",
+      "heshuo": "Kabuuan"
+    },
+    "method": {
+      "form": "Anyo",
+      "number": "Numero"
+    },
+    "group": {
+      "erxing": "2-Bituin",
+      "sanxing": "3-Bituin",
+      "wuxing": "5-Bituin",
+      "zonghe": "Kabuuan"
+    },
+    "code": {
+      "sitiao": "Four of a Kind",
+      "hulu": "Full House",
+      "santiao": "Three of a Kind",
+      "liangdui": "Two Pair",
+      "yidui": "One Pair",
+      "danpai": "High Card",
+      "dadan": "Big/Odd",
+      "xiaodan": "Small/Odd",
+      "dashuang": "Big/Even",
+      "xiaoshuang": "Small/Even",
+      "niuniu": "Niu Niu",
+      "meiniu": "No Bull",
+      "niu1": "Niu 1",
+      "niu2": "Niu 2",
+      "niu3": "Niu 3",
+      "niu4": "Niu 4",
+      "niu5": "Niu 5",
+      "niu6": "Niu 6",
+      "niu7": "Niu 7",
+      "niu8": "Niu 8",
+      "niu9": "Niu 9",
+      "niuda": "Bull Big",
+      "niuxiao": "Bull Small",
+      "niudan": "Bull Odd",
+      "niushuang": "Bull Even",
+      "niuzhi": "Bull Prime",
+      "niuhe": "Bull Comp"
+    }
   }
 }

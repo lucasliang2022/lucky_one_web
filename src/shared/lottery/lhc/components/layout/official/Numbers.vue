@@ -68,7 +68,7 @@
 import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { redWave, greenWave, blueWave } from "@shared/utils/common.ts";
-import { officialLogic } from '@lottery/base/logic/officialLogic';
+import { useOfficialLayoutLogic } from '@shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts';
 
 const props = defineProps({
   store: {
@@ -131,7 +131,7 @@ const {
   showOmission,
   updateSelectedBalls,
   getLayoutConfig
-} = officialLogic(props.store, {
+} = useOfficialLayoutLogic(props.store, {
   calculateHotColdFn: calculateSpecificHotCold,
   calculateOmissionFn: calculateSpecificOmission
 });

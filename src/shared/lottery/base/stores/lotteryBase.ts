@@ -110,13 +110,13 @@ export function useLotteryBase(): LotteryBase {
                 if (!g?.sign) continue;
                 const groupNode: any = { title: g.title || g.sign, methods: {} };
                 for (const m of (g.methods || [])) {
-                    const leaf = m?.leaf ?? '';
-                    const def = officialDefine[leaf];
+                    // 官方盘 define 已按完整后端 sign 为 key(和信用盘一致,零转换);兼容个别仍按 leaf 的旧条目。
+                    const def = officialDefine[m?.sign ?? ''] ?? officialDefine[m?.leaf ?? ''];
                     if (!def) continue;
                     const merged: any = JSON.parse(JSON.stringify(def));
                     merged.sign = m.sign;        // 后端复合 sign
                     merged.sdk_sign = m.sign;    // 官方盘下注发送 sdk_sign
-                    merged.target = leaf;
+                    merged.target = m.sign;
                     if (m.title) { merged.title = m.title; merged.title_sign = undefined; } // 用后端翻译标题
                     injectServerLevels(merged, m.levels);
                     groupNode.methods[m.sign] = merged;
@@ -129,53 +129,33 @@ export function useLotteryBase(): LotteryBase {
     };
 
     /**
-     * 用后端结构树 + 通用盘面(method.board)构建信用盘 CmsList,复用现有渲染组件(ItemDefault)。
-     * 后端一个方法可能有多档盘面(如第一球:号码 + 大小单双质和)→ 拆成多"行",共享同一 method.sign,
-     * 每行的按钮 = 该档 cells(value=code、title=label),赔率取 method.levels[level]。
+     * 用后端结构树(分类→分组→玩法)构建信用盘 CmsList。与官方盘同理,但:
+     *  - 每个玩法按「完整 sign」匹配本地 creditDefine(盘面/布局/desc),后端只出拓扑+翻译标题+赔率;
+     *  - 结构是「组 → methods 扁平表」,DefaultGroup 会把组内所有玩法渲染在一页;
+     *  - 本地无 define 的玩法跳过(无盘面无法渲染/下注)。
      */
-    const buildCreditFromServer = (cats: any[]): CmsList => {
+    const buildCreditFromServer = (cats: any[], creditDefine: MethodDefineList): CmsList => {
         const out: Record<string, any> = {};
         for (const cat of (cats || [])) {
             if (!cat?.sign) continue;
-            const groups: Record<string, any> = {};
+            const catNode: any = { title: cat.title || cat.sign, groups: {} };
             for (const g of (cat.groups || [])) {
                 if (!g?.sign) continue;
-                const methods: Record<string, any> = {};
-                const layoutBlock: any = { title: '', methods: {} };
+                const groupNode: any = { title: g.title || g.sign, sign: g.sign, methods: {} };
                 for (const m of (g.methods || [])) {
-                    const board = Array.isArray(m.board) ? m.board : [];
-                    const odds = m.levels || {};
-                    board.forEach((lv: any) => {
-                        const cells = Array.isArray(lv.cells) ? lv.cells : [];
-                        if (!cells.length) return;
-                        const key = `${m.leaf}_L${lv.level}`;
-                        const seg = Math.min(cells.length, 6);
-                        methods[key] = {
-                            sign: m.sign,                // 后端复合 sign,下注即用它
-                            title: lv.title || m.title,
-                            title_sign: undefined,
-                            desc: { title: m.title, content: [] },
-                            lr_status: false,
-                            yl_status: false,
-                            segmentation: seg,
-                            layout: {
-                                type: 'Ball',
-                                rows: [{
-                                    number: cells.map((c: any) => ({ value: String(c.code), title: String(c.label) })),
-                                    position: [],
-                                    shape: '',
-                                }],
-                            },
-                            levels: [{ prize: Number(odds[lv.level] ?? 0), title: lv.title || '', codes: [] }],
-                        };
-                        layoutBlock.methods[key] = { target: key, layout: 'Ball', segmentation: seg };
-                    });
+                    const sign = m?.sign ?? '';
+                    const def = creditDefine[sign];
+                    if (!def) continue;
+                    const merged: any = JSON.parse(JSON.stringify(def));
+                    merged.sign = sign;          // 后端复合 sign,下注即用它
+                    merged.target = sign;
+                    if (m.title) { merged.title = m.title; merged.title_sign = undefined; } // 后端翻译标题
+                    injectServerLevels(merged, m.levels);
+                    groupNode.methods[sign] = merged;
                 }
-                if (Object.keys(methods).length) {
-                    groups[g.sign] = { title: g.title || g.sign, sign: g.sign, layout: [layoutBlock], methods };
-                }
+                if (Object.keys(groupNode.methods).length) catNode.groups[g.sign] = groupNode;
             }
-            if (Object.keys(groups).length) out[cat.sign] = { title: cat.title || cat.sign, groups };
+            if (Object.keys(catNode.groups).length) out[cat.sign] = catNode;
         }
         return out as CmsList;
     };
@@ -193,9 +173,11 @@ export function useLotteryBase(): LotteryBase {
         }
 
         return Promise.all([
-            import(`@lottery/${type}/config/officialStructure.ts`).then((module) => module.default || module),
+            // officialStructure 同 creditStructure:仅未迁移彩种(lhc)的本地兜底;ssc/pk10 已删,import 失败回落空对象。
+            import(`@lottery/${type}/config/officialStructure.ts`).then((module) => module.default || module).catch(() => ({})),
             import(`@lottery/${type}/config/define/officialDefine.ts`).then((module) => module.default || module),
-            import(`@lottery/${type}/config/creditStructure.ts`).then((module) => module.default || module),
+            // creditStructure 只是「未迁移彩种」的本地兜底;已迁移的(ssc)该文件已删除,import 失败即回落空对象。
+            import(`@lottery/${type}/config/creditStructure.ts`).then((module) => module.default || module).catch(() => ({})),
             import(`@lottery/${type}/config/define/creditDefine.ts`).then((module) => module.default || module),
         ]).then(
             ([
@@ -216,7 +198,7 @@ export function useLotteryBase(): LotteryBase {
                 // ---- 官方盘:优先后端结构树(拓扑+翻译好的标题+赔率),本地 define 只出 layout/calc ----
                 // 失败或后端未下发时回落旧硬编码结构,保证不空屏。
                 // 逐彩种灰度:已适配组件标题渲染(resolveStructTitle)的类型才切后端结构;其余仍走旧路径。
-                const MIGRATED_OFFICIAL_TYPES = ['ssc', 'pk10'];
+                const MIGRATED_OFFICIAL_TYPES = ['ssc', 'pk10', 'ks'];
                 const serverStructure = common.methodStructureServer?.value;
                 let officialFromServer = false;
                 if (MIGRATED_OFFICIAL_TYPES.includes(type)
@@ -235,12 +217,18 @@ export function useLotteryBase(): LotteryBase {
                     official.officialMethodStructure.value = officialStructureCopy as OmsList;
                 }
 
-                // ---- 信用盘:优先后端结构树 + 通用盘面(method.board);失败/缺失回落旧硬编码 ----
+                // ---- 信用盘:拓扑来自后端 struct(category/group/method + 翻译标题 + levels 赔率),
+                // 盘面来自本地 creditDefine(按完整 sign 匹配);组内所有玩法同页展示。
+                // 已迁移彩种(ssc:creditDefine 用后端 sign 为 key)→ buildCreditFromServer 有内容;
+                // 未迁移彩种(pk10/lhc:creditDefine 仍是旧本地 key)→ 匹配不到、结果为空 → 回落本地 creditStructure。
                 let creditFromServer = false;
                 if (Array.isArray(serverStructure?.credit) && serverStructure!.credit.length > 0) {
                     try {
-                        credit.creditMethodStructure.value = buildCreditFromServer(serverStructure!.credit);
-                        creditFromServer = true;
+                        const built = buildCreditFromServer(serverStructure!.credit, creditDefineCopy);
+                        if (Object.keys(built).length > 0) {
+                            credit.creditMethodStructure.value = built;
+                            creditFromServer = true;
+                        }
                     } catch (e) {
                         handleGlobalError(e, "credit structure from server failed, fallback (0X20005)", "initMethodStructure");
                     }
@@ -438,39 +426,45 @@ export function useLotteryBase(): LotteryBase {
             for (const groupKey in groups) {
                 if (!Object.prototype.hasOwnProperty.call(groups, groupKey)) continue;
 
-                const group = groups[groupKey];
-                if (!group || !Array.isArray(group.layout)) continue;
+                const group = groups[groupKey] as any;
+                if (!group) continue;
 
-                (group as any).methods = {};
-                // 注意：去掉了原来的 `layout?: string`。
-                // MethodDefineItem.layout 是 MethodLayout（必填），
-                // 跟 string 交叉会变成 never，导致下面的赋值永远不通过。
-                const targetGroupMethods = (group as any).methods as Record<
-                    string,
-                    MethodDefineItem & { target?: string; segmentation?: number }
-                >;
+                const merged: Record<string, MethodDefineItem & { target?: string; segmentation?: number }> = {};
 
-                for (const layoutItem of group.layout) {
-                    if (!layoutItem || typeof layoutItem !== 'object' || !layoutItem.methods || typeof layoutItem.methods !== 'object') continue;
-
-                    const methodsInLayout = layoutItem.methods;
-                    for (const methodKey in methodsInLayout) {
-                        if (!Object.prototype.hasOwnProperty.call(methodsInLayout, methodKey)) continue;
-                        if (!Object.prototype.hasOwnProperty.call(defineData, methodKey)) continue;
-
-                        const methodNodeFromStructure = methodsInLayout[methodKey];
-                        const methodDefinition = defineData[methodKey];
-
-                        if (methodDefinition && typeof methodNodeFromStructure === 'object' && methodNodeFromStructure !== null) {
-                            targetGroupMethods[methodKey] = {
-                                ...methodDefinition,
-                                target: methodNodeFromStructure.target || methodKey,
-                                segmentation: methodNodeFromStructure.segmentation,
-                                sign: methodDefinition.sign || methodKey,
-                            };
+                if (group.methods && typeof group.methods === 'object' && !Array.isArray(group.layout)) {
+                    // 新:扁平玩法表(ssc)。就地合并 define;sign 取 methodKey(=后端复合 sign),供下注/注赔率用。
+                    const src = group.methods as Record<string, { target?: string }>;
+                    for (const methodKey in src) {
+                        if (!Object.prototype.hasOwnProperty.call(src, methodKey)) continue;
+                        const target = src[methodKey]?.target || methodKey;
+                        const methodDefinition = defineData[target] || defineData[methodKey];
+                        if (!methodDefinition) continue;
+                        merged[methodKey] = { ...methodDefinition, target, sign: methodDefinition.sign || methodKey };
+                    }
+                } else if (Array.isArray(group.layout)) {
+                    // 旧:盘面块(pk10/lhc 待迁移)。保持原行为不变。
+                    for (const layoutItem of group.layout) {
+                        if (!layoutItem || typeof layoutItem !== 'object' || !layoutItem.methods || typeof layoutItem.methods !== 'object') continue;
+                        for (const methodKey in layoutItem.methods) {
+                            if (!Object.prototype.hasOwnProperty.call(layoutItem.methods, methodKey)) continue;
+                            if (!Object.prototype.hasOwnProperty.call(defineData, methodKey)) continue;
+                            const node = layoutItem.methods[methodKey];
+                            const methodDefinition = defineData[methodKey];
+                            if (methodDefinition && node && typeof node === 'object') {
+                                merged[methodKey] = {
+                                    ...methodDefinition,
+                                    target: node.target || methodKey,
+                                    segmentation: node.segmentation,
+                                    sign: methodDefinition.sign || methodKey,
+                                };
+                            }
                         }
                     }
+                } else {
+                    continue;
                 }
+
+                group.methods = merged;
             }
         }
     };

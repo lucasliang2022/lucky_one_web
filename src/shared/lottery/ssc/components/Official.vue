@@ -14,7 +14,8 @@
               :key="groupKey"
               class="method-group-item"
           >
-            <span class="group-title">{{ resolveStructTitle(group.title, t, te) }}:</span>
+            <!-- 分类下只有一个组时不显示组名(直接列玩法);多组才显示组标题。 -->
+            <span class="group-title" v-if="Object.keys(category.groups).length > 1">{{ resolveStructTitle(group.title, t, te) }}:</span>
             <div class="group-method-wrapper">
               <div
                   class="group-method-item"

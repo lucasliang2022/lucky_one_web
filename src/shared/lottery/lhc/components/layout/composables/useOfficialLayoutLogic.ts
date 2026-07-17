@@ -51,7 +51,8 @@ interface LhcStore {
     showOmission: Ref<boolean>;
     selectedRange: Ref<number>;
     issueHistory: Ref<any[]>;
-    unit: Ref<number>;
+    // store 里单注金额档位叫 price(commonBase),这里原来错写成 unit → undefined 崩溃。
+    price: Ref<number>;
     zodiacMap: Ref<Record<string, any>>;
     zodiacFirst: Ref<number | null>;
     setDisplayPrize: (levels: any[]) => void;
@@ -79,7 +80,7 @@ export function useOfficialLayoutLogic(
         showOmission,
         selectedRange,
         issueHistory,
-        unit,
+        price,
         zodiacMap,
         zodiacFirst,
     } = storeToRefs(store as LhcStore);
@@ -95,6 +96,8 @@ export function useOfficialLayoutLogic(
         for (const key of keys) {
             if (current && typeof current === 'object' && key in current) {
                 current = current[key];
+                // rows 是数组形态([{number,position,...}]):取第一行,兼容 rows.X 路径写法。
+                if (key === 'rows' && Array.isArray(current)) current = current[0];
             } else {
                 return defaultValue;
             }
@@ -104,7 +107,8 @@ export function useOfficialLayoutLogic(
 
     function initBalls(): void {
         const layout = officialMethodCurrent.value?.layout;
-        const rowsConfig = layout?.rows;
+        // rows 数组形态([{number,...}])取第一行;对象形态直接用。
+        const rowsConfig = Array.isArray(layout?.rows) ? layout!.rows[0] : layout?.rows;
         const numberConfig = rowsConfig?.number;
         currentLayoutType = layout?.type || '';
         const currentPrizeLevels = officialMethodCurrent.value?.levels ?? [];
@@ -140,7 +144,7 @@ export function useOfficialLayoutLogic(
                 prizeValue = 0;
             }
 
-            const rawPrize = prizeValue * (unit.value || 1);
+            const rawPrize = prizeValue * (price.value || 1);
 
             const ball: Ball = {
                 ...item,
@@ -394,7 +398,7 @@ export function useOfficialLayoutLogic(
     }
 
     watch(
-        () => [officialMethodCurrent.value, officialSelectedBalls.value, unit.value],
+        () => [officialMethodCurrent.value, officialSelectedBalls.value, price.value],
         () => {
             updateDisplayPrize();
         },
@@ -432,7 +436,7 @@ export function useOfficialLayoutLogic(
     );
 
     watch(
-        () => unit.value,
+        () => price.value,
         () => {
             if (officialMethodCurrent.value?.sign) {
                 const currentSelectionValues = officialSelectedBalls.value.map(b => b.value);

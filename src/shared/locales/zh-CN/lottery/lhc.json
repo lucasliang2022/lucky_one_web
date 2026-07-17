@@ -1,5 +1,5 @@
 {
-  "cat" : {
+  "cat": {
     "tm": "特码",
     "tx": "特肖",
     "sb": "色波",
@@ -18,7 +18,7 @@
     "ziXuan": "自选",
     "zxbz": "自选不中"
   },
-  "group" : {
+  "group": {
     "zm1": "正码一",
     "zm2": "正码二",
     "zm3": "正码三",
@@ -50,7 +50,212 @@
     "halfWave": "半波",
     "halfHalfWave": "半半波"
   },
-  "method": {
-
+  "method": {},
+  "credit": {
+    "code": {
+      "zodiac1": "鼠",
+      "zodiac2": "牛",
+      "zodiac3": "虎",
+      "zodiac4": "兔",
+      "zodiac5": "龙",
+      "zodiac6": "蛇",
+      "zodiac7": "马",
+      "zodiac8": "羊",
+      "zodiac9": "猴",
+      "zodiac10": "鸡",
+      "zodiac11": "狗",
+      "zodiac12": "猪",
+      "hongbo": "红波",
+      "lanbo": "蓝波",
+      "lvbo": "绿波",
+      "da": "大",
+      "xiao": "小",
+      "dan": "单",
+      "shuang": "双",
+      "dadan": "大单",
+      "xiaodan": "小单",
+      "dashuang": "大双",
+      "xiaoshuang": "小双",
+      "tianxiao": "天肖",
+      "dixiao": "地肖",
+      "qianxiao": "前肖",
+      "houxiao": "后肖",
+      "jiaxiao": "家肖",
+      "yexiao": "野肖",
+      "hongda": "红大",
+      "hongxiao": "红小",
+      "hongdan": "红单",
+      "hongshuang": "红双",
+      "hongdadan": "红大单",
+      "hongdashuang": "红大双",
+      "hongxiaodan": "红小单",
+      "hongxiaoshuang": "红小双",
+      "landa": "蓝大",
+      "lanxiao": "蓝小",
+      "landan": "蓝单",
+      "lanshuang": "蓝双",
+      "landadan": "蓝大单",
+      "landashuang": "蓝大双",
+      "lanxiaodan": "蓝小单",
+      "lanxiaoshuang": "蓝小双",
+      "lvda": "绿大",
+      "lvxiao": "绿小",
+      "lvdan": "绿单",
+      "lvshuang": "绿双",
+      "lvdadan": "绿大单",
+      "lvdashuang": "绿大双",
+      "lvxiaodan": "绿小单",
+      "lvxiaoshuang": "绿小双",
+      "tou0": "0头",
+      "tou1": "1头",
+      "tou2": "2头",
+      "tou3": "3头",
+      "tou4": "4头",
+      "wei0": "0尾",
+      "wei1": "1尾",
+      "wei2": "2尾",
+      "wei3": "3尾",
+      "wei4": "4尾",
+      "wei5": "5尾",
+      "wei6": "6尾",
+      "wei7": "7尾",
+      "wei8": "8尾",
+      "wei9": "9尾",
+      "bohe": "和",
+      "heda": "合大",
+      "hexiao": "合小",
+      "hedan": "合单",
+      "heshuang": "合双",
+      "weida": "尾大",
+      "weixiao": "尾小",
+      "erxiao": "二肖",
+      "sanxiao": "三肖",
+      "sixiao": "四肖",
+      "wuxiao": "五肖",
+      "liuxiao": "六肖",
+      "qixiao": "七肖"
+    },
+    "desc": {
+      "haoma": {
+        "title": "特码号码",
+        "r1": "特码号码",
+        "eg": "特码号码"
+      },
+      "hexiao": {
+        "title": "合肖",
+        "r1": "合肖",
+        "eg": "合肖"
+      },
+      "texiao": {
+        "title": "特肖",
+        "r1": "特肖",
+        "eg": "特肖"
+      },
+      "sebo": {
+        "title": "波色",
+        "r1": "波色",
+        "eg": "波色"
+      },
+      "banbo": {
+        "title": "半波",
+        "r1": "半波",
+        "eg": "半波"
+      },
+      "banbanbo": {
+        "title": "半半波",
+        "r1": "半半波",
+        "eg": "半半波"
+      },
+      "temaxt": {
+        "title": "特码形态",
+        "r1": "特码形态",
+        "eg": "特码形态"
+      },
+      "hexingtai": {
+        "title": "特合形态",
+        "r1": "特合形态",
+        "eg": "特合形态"
+      },
+      "weixingtai": {
+        "title": "特尾形态",
+        "r1": "特尾形态",
+        "eg": "特尾形态"
+      },
+      "xiaoxingtai": {
+        "title": "特肖形态",
+        "r1": "特肖形态",
+        "eg": "特肖形态"
+      },
+      "touwei": {
+        "title": "头尾数",
+        "r1": "头尾数",
+        "eg": "头尾数"
+      },
+      "rxy": {
+        "title": "任选一",
+        "r1": "任选一",
+        "eg": "任选一"
+      },
+      "zmte": {
+        "title": "正码特",
+        "r1": "正码特",
+        "eg": "正码特"
+      },
+      "qisebo": {
+        "title": "七色波",
+        "r1": "七色波",
+        "eg": "七色波"
+      },
+      "zhengxiao": {
+        "title": "正肖",
+        "r1": "正肖",
+        "eg": "正肖"
+      },
+      "statcode": {
+        "title": "正码大小单双",
+        "r1": "正码大小单双",
+        "eg": "正码大小单双"
+      },
+      "statsum": {
+        "title": "正码合大小单双",
+        "r1": "正码合大小单双",
+        "eg": "正码合大小单双"
+      },
+      "stattail": {
+        "title": "正码尾大小",
+        "r1": "正码尾大小",
+        "eg": "正码尾大小"
+      },
+      "statwave": {
+        "title": "正码波色",
+        "r1": "正码波色",
+        "eg": "正码波色"
+      },
+      "pingwei": {
+        "title": "平特尾数",
+        "r1": "平特尾数",
+        "eg": "平特尾数"
+      },
+      "yixiao": {
+        "title": "一肖",
+        "r1": "一肖",
+        "eg": "一肖"
+      },
+      "zongxiao": {
+        "title": "总肖",
+        "r1": "总肖",
+        "eg": "总肖"
+      },
+      "zonghe": {
+        "title": "综合",
+        "r1": "综合",
+        "eg": "综合"
+      },
+      "quanzhong": {
+        "title": "连码全中",
+        "r1": "选N个号码,任意组合全部命中即中,注数按组合数计。",
+        "eg": "投注3个号码(三全中),需该3号全开出。"
+      }
+    }
   }
 }

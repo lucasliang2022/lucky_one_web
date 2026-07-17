@@ -1,5 +1,5 @@
 {
-  "cat" : {
+  "cat": {
     "tm": "特码",
     "tx": "特肖",
     "sb": "色波",
@@ -18,7 +18,7 @@
     "ziXuan": "自选",
     "zxbz": "自选不中"
   },
-  "group" : {
+  "group": {
     "zm1": "正码一",
     "zm2": "正码二",
     "zm3": "正码三",
@@ -50,7 +50,212 @@
     "halfWave": "半波",
     "halfHalfWave": "半半波"
   },
-  "method": {
-
+  "method": {},
+  "credit": {
+    "code": {
+      "zodiac1": "Rat",
+      "zodiac2": "Ox",
+      "zodiac3": "Tiger",
+      "zodiac4": "Rabbit",
+      "zodiac5": "Dragon",
+      "zodiac6": "Snake",
+      "zodiac7": "Horse",
+      "zodiac8": "Goat",
+      "zodiac9": "Monkey",
+      "zodiac10": "Rooster",
+      "zodiac11": "Dog",
+      "zodiac12": "Pig",
+      "hongbo": "Red",
+      "lanbo": "Blue",
+      "lvbo": "Green",
+      "da": "Big",
+      "xiao": "Small",
+      "dan": "Odd",
+      "shuang": "Even",
+      "dadan": "Big-Odd",
+      "xiaodan": "Small-Odd",
+      "dashuang": "Big-Even",
+      "xiaoshuang": "Small-Even",
+      "tianxiao": "Sky",
+      "dixiao": "Earth",
+      "qianxiao": "Front",
+      "houxiao": "Back",
+      "jiaxiao": "Domestic",
+      "yexiao": "Wild",
+      "hongda": "Red-Big",
+      "hongxiao": "Red-Small",
+      "hongdan": "Red-Odd",
+      "hongshuang": "Red-Even",
+      "hongdadan": "Red-Big-Odd",
+      "hongdashuang": "Red-Big-Even",
+      "hongxiaodan": "Red-Small-Odd",
+      "hongxiaoshuang": "Red-Small-Even",
+      "landa": "Blue-Big",
+      "lanxiao": "Blue-Small",
+      "landan": "Blue-Odd",
+      "lanshuang": "Blue-Even",
+      "landadan": "Blue-Big-Odd",
+      "landashuang": "Blue-Big-Even",
+      "lanxiaodan": "Blue-Small-Odd",
+      "lanxiaoshuang": "Blue-Small-Even",
+      "lvda": "Green-Big",
+      "lvxiao": "Green-Small",
+      "lvdan": "Green-Odd",
+      "lvshuang": "Green-Even",
+      "lvdadan": "Green-Big-Odd",
+      "lvdashuang": "Green-Big-Even",
+      "lvxiaodan": "Green-Small-Odd",
+      "lvxiaoshuang": "Green-Small-Even",
+      "tou0": "Head-0",
+      "tou1": "Head-1",
+      "tou2": "Head-2",
+      "tou3": "Head-3",
+      "tou4": "Head-4",
+      "wei0": "Tail-0",
+      "wei1": "Tail-1",
+      "wei2": "Tail-2",
+      "wei3": "Tail-3",
+      "wei4": "Tail-4",
+      "wei5": "Tail-5",
+      "wei6": "Tail-6",
+      "wei7": "Tail-7",
+      "wei8": "Tail-8",
+      "wei9": "Tail-9",
+      "bohe": "Tie",
+      "heda": "Sum-Big",
+      "hexiao": "Sum-Small",
+      "hedan": "Sum-Odd",
+      "heshuang": "Sum-Even",
+      "weida": "Tail-Big",
+      "weixiao": "Tail-Small",
+      "erxiao": "2-Zodiac",
+      "sanxiao": "3-Zodiac",
+      "sixiao": "4-Zodiac",
+      "wuxiao": "5-Zodiac",
+      "liuxiao": "6-Zodiac",
+      "qixiao": "7-Zodiac"
+    },
+    "desc": {
+      "haoma": {
+        "title": "Number",
+        "r1": "Number",
+        "eg": "Number"
+      },
+      "hexiao": {
+        "title": "Combined Zodiac",
+        "r1": "Combined Zodiac",
+        "eg": "Combined Zodiac"
+      },
+      "texiao": {
+        "title": "Special Zodiac",
+        "r1": "Special Zodiac",
+        "eg": "Special Zodiac"
+      },
+      "sebo": {
+        "title": "Wave Color",
+        "r1": "Wave Color",
+        "eg": "Wave Color"
+      },
+      "banbo": {
+        "title": "Half Wave",
+        "r1": "Half Wave",
+        "eg": "Half Wave"
+      },
+      "banbanbo": {
+        "title": "Quarter Wave",
+        "r1": "Quarter Wave",
+        "eg": "Quarter Wave"
+      },
+      "temaxt": {
+        "title": "Number Form",
+        "r1": "Number Form",
+        "eg": "Number Form"
+      },
+      "hexingtai": {
+        "title": "Sum Form",
+        "r1": "Sum Form",
+        "eg": "Sum Form"
+      },
+      "weixingtai": {
+        "title": "Tail Form",
+        "r1": "Tail Form",
+        "eg": "Tail Form"
+      },
+      "xiaoxingtai": {
+        "title": "Zodiac Form",
+        "r1": "Zodiac Form",
+        "eg": "Zodiac Form"
+      },
+      "touwei": {
+        "title": "Head/Tail",
+        "r1": "Head/Tail",
+        "eg": "Head/Tail"
+      },
+      "rxy": {
+        "title": "Any 1",
+        "r1": "Any 1",
+        "eg": "Any 1"
+      },
+      "zmte": {
+        "title": "Regular Special",
+        "r1": "Regular Special",
+        "eg": "Regular Special"
+      },
+      "qisebo": {
+        "title": "7-Color Wave",
+        "r1": "7-Color Wave",
+        "eg": "7-Color Wave"
+      },
+      "zhengxiao": {
+        "title": "Regular Zodiac",
+        "r1": "Regular Zodiac",
+        "eg": "Regular Zodiac"
+      },
+      "statcode": {
+        "title": "Big/Small Odd/Even",
+        "r1": "Big/Small Odd/Even",
+        "eg": "Big/Small Odd/Even"
+      },
+      "statsum": {
+        "title": "Sum Big/Small Odd/Even",
+        "r1": "Sum Big/Small Odd/Even",
+        "eg": "Sum Big/Small Odd/Even"
+      },
+      "stattail": {
+        "title": "Tail Big/Small",
+        "r1": "Tail Big/Small",
+        "eg": "Tail Big/Small"
+      },
+      "statwave": {
+        "title": "Wave Color",
+        "r1": "Wave Color",
+        "eg": "Wave Color"
+      },
+      "pingwei": {
+        "title": "Flat Tail",
+        "r1": "Flat Tail",
+        "eg": "Flat Tail"
+      },
+      "yixiao": {
+        "title": "Zodiac",
+        "r1": "Zodiac",
+        "eg": "Zodiac"
+      },
+      "zongxiao": {
+        "title": "Total Zodiac",
+        "r1": "Total Zodiac",
+        "eg": "Total Zodiac"
+      },
+      "zonghe": {
+        "title": "Total",
+        "r1": "Total",
+        "eg": "Total"
+      },
+      "quanzhong": {
+        "title": "All Hit",
+        "r1": "Pick N numbers; win if a combination all appear. Bets = combinations.",
+        "eg": "Pick 3 (3-All-Hit); all 3 must be drawn."
+      }
+    }
   }
 }

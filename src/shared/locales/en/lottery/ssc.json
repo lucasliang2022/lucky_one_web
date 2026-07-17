@@ -219,7 +219,117 @@
       "shunzi": "Straight",
       "duizi": "Pair",
       "zaliu": "Misc",
-      "banshun": "Half-Straight"
+      "banshun": "Half-Straight",
+      "sitiao": "Four of a Kind",
+      "hulu": "Full House",
+      "santiao": "Three of a Kind",
+      "liangdui": "Two Pair",
+      "yidui": "One Pair",
+      "danpai": "High Card",
+      "dadan": "Big/Odd",
+      "xiaodan": "Small/Odd",
+      "dashuang": "Big/Even",
+      "xiaoshuang": "Small/Even",
+      "niuniu": "Niu Niu",
+      "meiniu": "No Bull",
+      "niu1": "Niu 1",
+      "niu2": "Niu 2",
+      "niu3": "Niu 3",
+      "niu4": "Niu 4",
+      "niu5": "Niu 5",
+      "niu6": "Niu 6",
+      "niu7": "Niu 7",
+      "niu8": "Niu 8",
+      "niu9": "Niu 9",
+      "niuda": "Bull Big",
+      "niuxiao": "Bull Small",
+      "niudan": "Bull Odd",
+      "niushuang": "Bull Even",
+      "niuzhi": "Bull Prime",
+      "niuhe": "Bull Comp"
+    },
+    "cat": {
+      "danhao": "Single Ball",
+      "longhu": "Dragon/Tiger",
+      "zjh": "Zha Jin Hua",
+      "suoha": "Showhand",
+      "danma": "Single Number",
+      "douniu": "Bull Bull",
+      "kuadu": "Span",
+      "heshuo": "Sum"
+    },
+    "method": {
+      "form": "Form",
+      "number": "Number"
+    },
+    "group": {
+      "erxing": "2-Star",
+      "sanxing": "3-Star",
+      "wuxing": "5-Star",
+      "zonghe": "Total"
+    },
+    "desc": {
+      "form": {
+        "title": "Form",
+        "r1": "Draw ≥5 is Big, ≤4 is Small.",
+        "r2": "Odd: 1/3/5/7/9; Even: 0/2/4/6/8.",
+        "r3": "Prime: 1/2/3/5/7; Composite: 0/4/6/8/9.",
+        "eg": "Bet Big; the ball draws 8 → win."
+      },
+      "number": {
+        "title": "Number",
+        "r1": "Pick a number 0-9; match the ball's draw to win.",
+        "eg": "Bet 8; the ball draws 8 → win."
+      },
+      "longhu": {
+        "title": "Dragon-Tiger",
+        "r1": "Compare two positions: front > back = Dragon, front < back = Tiger, equal = Tie.",
+        "eg": "Bet Dragon; front > back → win."
+      },
+      "zjh": {
+        "title": "Zha Jin Hua",
+        "baozi": "Bao Zi: three identical numbers.",
+        "shunzi": "Shun Zi: three consecutive numbers (any order).",
+        "duizi": "Dui Zi: a pair plus one different.",
+        "zaliu": "Za Liu: three different, non-consecutive.",
+        "banshun": "Ban Shun: three different, two consecutive.",
+        "eg": "Bet Bao Zi; the three balls draw three identical numbers → win."
+      },
+      "suoha": {
+        "title": "Showhand",
+        "r1": "Bet on the five-ball hand: Four of a Kind / Full House / Straight / Three of a Kind / Two Pair / One Pair / High Card.",
+        "eg": "Bet Four of a Kind; the five balls show four identical numbers → win."
+      },
+      "danma": {
+        "title": "Single Number",
+        "r1": "Pick numbers 0-9; win if they appear in the draw (tiers by hit count).",
+        "eg": "Bet 8; the draw contains 8 → win."
+      },
+      "kuadu": {
+        "title": "Span",
+        "r1": "Max minus min of the selected positions (span 0-9).",
+        "eg": "Bet 3; the span equals 3 → win."
+      },
+      "zonghe": {
+        "title": "Total Big/Small",
+        "r1": "Sum of five balls: ≥23 Big, ≤22 Small; units odd/even; and their combinations.",
+        "eg": "Bet Big; the sum ≥23 → win."
+      },
+      "zonghewei": {
+        "title": "Total Odd/Even",
+        "r1": "The units digit of the sum: Big/Small/Odd/Even/Prime/Composite.",
+        "eg": "Bet Odd; the sum's units digit is odd → win."
+      },
+      "sum": {
+        "title": "Sum",
+        "r1": "Sum of the selected positions; symmetric sums (e.g. 0 and 18) share odds.",
+        "eg": "Bet 9; the selected sum equals 9 → win."
+      },
+      "douniu": {
+        "title": "Bull Bull",
+        "r1": "Five balls form a bull type: Niu Niu / Niu 1-9 / No Bull, plus Bull Big/Small/Odd/Even/Prime/Composite.",
+        "eg": "Bet Niu Niu; the five balls form Niu Niu → win."
+      }
     }
   },
   "official": {

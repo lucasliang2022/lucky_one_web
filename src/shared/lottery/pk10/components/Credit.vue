@@ -8,7 +8,7 @@
           :name="cSign"
           class="method-category-item"
       >
-        <ul class="method-menu-item-list">
+        <ul class="method-menu-item-list" v-if="Object.keys(category.groups).length > 1">
           <li>
             <div class="method-menu-item-wrapper">
               <div

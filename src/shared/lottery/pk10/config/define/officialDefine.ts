@@ -2,7 +2,7 @@ import { numbers, lh, bsoe, dsNumbers, gyHz, qsHz, positions } from "@shared/lot
 import { MethodDefineList } from "@shared/types";
 
 const officialDefine: MethodDefineList = {
-    CaiGj: {
+    official_CaiMingCi_CaiGj_CaiGj: {
         title: '猜冠军',
         desc: {
             title: '',
@@ -37,7 +37,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianErFs: {
+    official_CaiMingCi_CaiQianEr_CaiQianErFs: {
         title: '猜前二复式',
         desc: {
             title: '',
@@ -73,7 +73,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianErDs: {
+    official_CaiMingCi_CaiQianEr_CaiQianErDs: {
         title: '猜前二单式',
         desc: {
             title: '',
@@ -103,7 +103,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianSanFs: {
+    official_CaiMingCi_CaiQianSan_CaiQianSanFs: {
         title: '猜前三复式',
         desc: {
             title: '',
@@ -140,7 +140,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianSanDs: {
+    official_CaiMingCi_CaiQianSan_CaiQianSanDs: {
         title: '猜前三单式',
         desc: {
             title: '',
@@ -173,7 +173,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianSiFs: {
+    official_CaiMingCi_CaiQianSi_CaiQianSiFs: {
         title: '猜前四复式',
         desc: {
             title: '',
@@ -210,7 +210,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianSiDs: {
+    official_CaiMingCi_CaiQianSi_CaiQianSiDs: {
         title: '猜前四单式',
         desc: {
             title: '',
@@ -243,7 +243,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianWuFs: {
+    official_CaiMingCi_CaiQianWu_CaiQianWuFs: {
         title: '猜前五复式',
         desc: {
             title: '',
@@ -282,7 +282,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    CaiQianWuDs: {
+    official_CaiMingCi_CaiQianWu_CaiQianWuDs: {
         title: '猜前五单式',
         desc: {
             title: '',
@@ -315,21 +315,20 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    DwdQw: {
-        title: '前五定位胆',
+    // 定位胆:后端是单个 Dwd(10 个名次一盘),前端合并原前五/后五为一条(key = 完整后端 sign)。
+    official_Dwd_Dwd_Dwd: {
+        title: '定位胆',
         desc: {
             title: '',
             content: [
-                { title: '', content: '在冠军、亚军、第三名、第四名、第五名中的任意位置上选择1个号码。所选号码与相同位置上的开奖号码一致，即中奖。' },
+                { title: '', content: '在冠军~第十名的任意位置上选择号码，所选号码与相同位置上的开奖号码一致，即中奖。' },
             ],
             example: '投注方案：冠军1；开奖号码：1,*,*,*,*,*,*,*,*,*,即中奖。',
         },
         lr_status: true,
         yl_status: true,
         random_bet: true,
-        calc: {
-            type: 'dwd',
-        },
+        calc: { type: 'dwd' },
         layout: {
             type: 'Dwd',
             rows: [
@@ -338,21 +337,58 @@ const officialDefine: MethodDefineList = {
                 { title: '第三名', number: numbers, min_selected: 0, max_selected: 10, position: [3], buttons: true },
                 { title: '第四名', number: numbers, min_selected: 0, max_selected: 10, position: [4], buttons: true },
                 { title: '第五名', number: numbers, min_selected: 0, max_selected: 10, position: [5], buttons: true },
+                { title: '第六名', number: numbers, min_selected: 0, max_selected: 10, position: [6], buttons: true },
+                { title: '第七名', number: numbers, min_selected: 0, max_selected: 10, position: [7], buttons: true },
+                { title: '第八名', number: numbers, min_selected: 0, max_selected: 10, position: [8], buttons: true },
+                { title: '第九名', number: numbers, min_selected: 0, max_selected: 10, position: [9], buttons: true },
+                { title: '第十名', number: numbers, min_selected: 0, max_selected: 10, position: [10], buttons: true },
             ],
             row_separator: ',',
             row_repeat: false,
             unit_repeat: false,
-            unit_separator: '&', 
-            code_total_count: { min: 1, max: 50 },
+            unit_separator: '&',
+            code_total_count: { min: 1, max: 100 },
             tips: "至少选择<b>1</b>个号码",
         },
-        levels: [
-            {
-                prize: "N/A",
-                title: '一等奖',
-                codes: [],
-            },
-        ],
+        levels: [{ prize: "N/A", title: '一等奖', codes: [] }],
+    },
+
+    // 趣味(冠军 / 前三家 / 头三家):按位置选车号(best-effort,语义以后端判奖为准)。
+    official_QuWei_QuWei_ChiGj: {
+        title: '趣味冠军',
+        desc: { title: '', content: [{ title: '', content: '在冠军位置上选择车号投注。' }], example: '' },
+        lr_status: true, yl_status: true, random_bet: true,
+        calc: { type: 'dwd' },
+        layout: {
+            type: 'Dwd',
+            rows: [{ title: '冠军', number: numbers, min_selected: 0, max_selected: 10, position: [1], buttons: true }],
+            row_separator: ',', unit_separator: '&', code_total_count: { min: 1, max: 10 }, tips: "至少选择<b>1</b>个号码",
+        },
+        levels: [{ prize: "N/A", title: '一等奖', codes: [] }],
+    },
+    official_QuWei_QuWei_ChiSanJia: {
+        title: '趣味前三',
+        desc: { title: '', content: [{ title: '', content: '在前三名(冠/亚/季)范围内选择车号投注。' }], example: '' },
+        lr_status: true, yl_status: true, random_bet: true,
+        calc: { type: 'dwd' },
+        layout: {
+            type: 'Dwd',
+            rows: [{ title: '前三名', number: numbers, min_selected: 0, max_selected: 10, position: [1, 2, 3], buttons: true }],
+            row_separator: ',', unit_separator: '&', code_total_count: { min: 1, max: 10 }, tips: "至少选择<b>1</b>个号码",
+        },
+        levels: [{ prize: "N/A", title: '一等奖', codes: [] }],
+    },
+    official_QuWei_QuWei_TouSanJia: {
+        title: '趣味头三',
+        desc: { title: '', content: [{ title: '', content: '在头三名范围内选择车号投注。' }], example: '' },
+        lr_status: true, yl_status: true, random_bet: true,
+        calc: { type: 'dwd' },
+        layout: {
+            type: 'Dwd',
+            rows: [{ title: '头三名', number: numbers, min_selected: 0, max_selected: 10, position: [1, 2, 3], buttons: true }],
+            row_separator: ',', unit_separator: '&', code_total_count: { min: 1, max: 10 }, tips: "至少选择<b>1</b>个号码",
+        },
+        levels: [{ prize: "N/A", title: '一等奖', codes: [] }],
     },
     DwdHw: {
         title: '后五定位胆',
@@ -392,7 +428,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    Lh1V10: {
+    official_Lh_Lh_Lh1V10: {
         title: '龙虎1V10',
         desc: {
             title: '',
@@ -421,7 +457,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    Lh2V9: {
+    official_Lh_Lh_Lh2V9: {
         title: '龙虎2V9',
         desc: {
             title: '',
@@ -452,7 +488,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    Lh3V8: {
+    official_Lh_Lh_Lh3V8: {
         title: '龙虎3V8',
         desc: {
             title: '',
@@ -489,7 +525,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    Lh4V7: {
+    official_Lh_Lh_Lh4V7: {
         title: '龙虎4V7',
         desc: {
             title: '',
@@ -526,7 +562,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    Lh5V6: {
+    official_Lh_Lh_Lh5V6: {
         title: '龙虎5V6',
         desc: {
             title: '',
@@ -719,7 +755,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    DxDsQw: {
+    official_DxDs_DxDs_DxDsQw: {
         title: '前五大小单双',
         desc: {
             title: '',
@@ -754,7 +790,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    DxDsGyh: {
+    official_DxDs_DxDs_DxDsGyh: {
         title: '冠亚和大小单双',
         desc: {
             title: '',
@@ -796,7 +832,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    HzGy: {
+    official_Hz_Hz_HzGy: {
         title: '冠亚和值',
         desc: {
             title: '',
@@ -853,7 +889,7 @@ const officialDefine: MethodDefineList = {
             },
         ],
     },
-    HzQs: {
+    official_Hz_Hz_HzQs: {
         title: '前三和值',
         desc: {
             title: '',

@@ -1,6 +1,7 @@
 import type { useSscStore } from '@lottery/ssc/store';
 import type { usePk10Store } from '@lottery/pk10/store';
 import type { useLhcStore } from '@lottery/lhc/store';
+import type { useKsStore } from '@lottery/ks/store';
 
 /**
  * 各彩种 store 的「实例类型」——从实现(defineStore 的返回)推导。
@@ -10,6 +11,7 @@ import type { useLhcStore } from '@lottery/lhc/store';
 export type SscStore  = ReturnType<typeof useSscStore>;
 export type Pk10Store = ReturnType<typeof usePk10Store>;
 export type LhcStore  = ReturnType<typeof useLhcStore>;
+export type KsStore   = ReturnType<typeof useKsStore>;
 
 /**
  * 共享逻辑 / 布局组件用的「基类面」类型。

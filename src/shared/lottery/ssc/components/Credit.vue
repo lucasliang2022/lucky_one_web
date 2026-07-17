@@ -8,7 +8,8 @@
           :name="cSign"
           class="method-category-item"
       >
-        <ul class="method-menu-item-list">
+        <!-- 分类下只有一个组时不显示组选择(已自动选中该组);多组才显示。 -->
+        <ul class="method-menu-item-list" v-if="Object.keys(category.groups).length > 1">
           <li>
             <div class="method-menu-item-wrapper">
               <div

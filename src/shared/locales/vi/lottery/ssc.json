@@ -203,5 +203,56 @@
     "ZsZxHz": "",
     "ZsZxKd": "",
     "ZsZxZh": ""
+  },
+  "credit": {
+    "cat": {
+      "danhao": "Bóng Đơn",
+      "longhu": "Rồng/Hổ",
+      "zjh": "Zha Jin Hua",
+      "suoha": "Showhand",
+      "danma": "Số Đơn",
+      "douniu": "Đấu Bò",
+      "kuadu": "Khoảng Cách",
+      "heshuo": "Tổng"
+    },
+    "method": {
+      "form": "Hình thái",
+      "number": "Số"
+    },
+    "group": {
+      "erxing": "2 Sao",
+      "sanxing": "3 Sao",
+      "wuxing": "5 Sao",
+      "zonghe": "Tổng"
+    },
+    "code": {
+      "sitiao": "Tứ Quý",
+      "hulu": "Cù Lũ",
+      "santiao": "Xám Chi",
+      "liangdui": "Thú",
+      "yidui": "Đôi",
+      "danpai": "Mậu Thầu",
+      "dadan": "Big/Odd",
+      "xiaodan": "Small/Odd",
+      "dashuang": "Big/Even",
+      "xiaoshuang": "Small/Even",
+      "niuniu": "Niu Niu",
+      "meiniu": "No Bull",
+      "niu1": "Niu 1",
+      "niu2": "Niu 2",
+      "niu3": "Niu 3",
+      "niu4": "Niu 4",
+      "niu5": "Niu 5",
+      "niu6": "Niu 6",
+      "niu7": "Niu 7",
+      "niu8": "Niu 8",
+      "niu9": "Niu 9",
+      "niuda": "Bull Big",
+      "niuxiao": "Bull Small",
+      "niudan": "Bull Odd",
+      "niushuang": "Bull Even",
+      "niuzhi": "Bull Prime",
+      "niuhe": "Bull Comp"
+    }
   }
 }

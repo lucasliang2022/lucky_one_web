@@ -83,7 +83,7 @@
 
 <script setup>
 import { computed } from "vue";
-import { officialLogic } from '@shared/lottery/base/logic/officialLogic.js';
+import { useOfficialLayoutLogic } from '@shared/lottery/lhc/components/layout/composables/useOfficialLayoutLogic.ts';
 
 const props = defineProps({
   store: {
@@ -190,7 +190,7 @@ const {
   getOmissionClass,
   showColdHot,
   showOmission
-} = officialLogic(props.store, {
+} = useOfficialLayoutLogic(props.store, {
   calculateHotColdFn: calculateSpecificHotCold,
   calculateOmissionFn: calculateSpecificOmission
 });

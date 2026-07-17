@@ -180,15 +180,21 @@ export function useOfficialBase(common: CommonBase): OfficialBase {
         const rowSeparator = officialMethodCurrent.value.layout.row_separator ?? ',';
         // 默认拼接(unit=''),与多数官方玩法(如 ssc BaseSscOfficial)一致;需要分隔符的玩法在 define 里显式声明
         const unitSeparator = officialMethodCurrent.value.layout.unit_separator ?? '';
+        // 兼容两种结构:嵌套 [[ball,...],...](按位置分组,ssc/pk10)照用;
+        // 扁平 [ball,...](lhc composable,单行多选、各自独立成注)→ 每球单独一组,用 row 分隔拼成 "07,08"。
+        const rows: Array<Array<{ value: string; title: string }>> =
+            Array.isArray(randomBetData?.[0])
+                ? (randomBetData as any)
+                : ((randomBetData as any) ?? []).map((b: any) => [b]);
         // 拼码后 trim 去首尾空格(空格分隔的玩法如和值/牛牛的防御;单数字无害)
-        const codes = randomBetData
+        const codes = rows
             .map(group => group.map(ball => ball.value).join(unitSeparator))
             .join(rowSeparator[0])
             .trim();
 
         // 展示码:与机器码分离 —— 用可读分隔符(位置内逗号、位置间 " | "),取球的 title
         // (标签类玩法显示 龙/虎/大/小 等;数字类玩法 title==value)。
-        const codesDisplay = randomBetData
+        const codesDisplay = rows
             .map(group => group.map(ball => i18n.global.t(ball.title)).join(','))
             .join(' | ');
 
