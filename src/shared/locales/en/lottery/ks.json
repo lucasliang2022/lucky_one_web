@@ -1,0 +1,217 @@
+{
+  "ks": {
+    "credit": {
+      "code": {
+        "hongma": "Red",
+        "baozi": "Triple",
+        "heima": "Black",
+        "banshun": "Half Straight",
+        "quanshun": "Full Straight",
+        "yu": "Fish",
+        "xia": "Prawn",
+        "hulu": "Gourd",
+        "qian": "Coin",
+        "xie": "Crab",
+        "ji": "Rooster",
+        "hong": "Red",
+        "lv": "Green",
+        "lan": "Blue",
+        "da": "Big",
+        "xiao": "Small",
+        "dan": "Odd",
+        "shuang": "Even",
+        "zhi": "Prime",
+        "he": "Composite",
+        "dadan": "Big Odd",
+        "xiaoshuang": "Small Even",
+        "xiaodan": "Small Odd",
+        "dashuang": "Big Even",
+        "hou1": "Monkey 1",
+        "hou2": "Monkey 2",
+        "hou3": "Monkey 3",
+        "hou4": "Monkey 4",
+        "hou5": "Monkey 5",
+        "hou6": "Monkey 6",
+        "tianhou": "Sky Monkey",
+        "dihou": "Earth Monkey",
+        "wuhou": "No Monkey"
+      },
+      "desc": {
+        "bichu": {
+          "title": "Must Appear",
+          "r1": "Bet on Must Appear; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Must Appear; win when the draw qualifies."
+        },
+        "buchu": {
+          "title": "Not Appear",
+          "r1": "Bet on Not Appear; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Not Appear; win when the draw qualifies."
+        },
+        "ertong": {
+          "title": "Two Same",
+          "r1": "Bet on Two Same; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Two Same; win when the draw qualifies."
+        },
+        "santong": {
+          "title": "Three Same",
+          "r1": "Bet on Three Same; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Three Same; win when the draw qualifies."
+        },
+        "danse": {
+          "title": "Single Color",
+          "r1": "Bet on Single Color; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Single Color; win when the draw qualifies."
+        },
+        "shuangse": {
+          "title": "Double Color",
+          "r1": "Bet on Double Color; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Double Color; win when the draw qualifies."
+        },
+        "sanse": {
+          "title": "Three Color",
+          "r1": "Bet on Three Color; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Three Color; win when the draw qualifies."
+        },
+        "yuxiaxie": {
+          "title": "Fish-Prawn-Crab",
+          "r1": "Bet on Fish-Prawn-Crab; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Fish-Prawn-Crab; win when the draw qualifies."
+        },
+        "erlian": {
+          "title": "Two Consecutive",
+          "r1": "Bet on Two Consecutive; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Two Consecutive; win when the draw qualifies."
+        },
+        "sanbutong": {
+          "title": "Three Different",
+          "r1": "Bet on Three Different; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Three Different; win when the draw qualifies."
+        },
+        "sanlian": {
+          "title": "Three Consecutive",
+          "r1": "Bet on Three Consecutive; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Three Consecutive; win when the draw qualifies."
+        },
+        "erbutong": {
+          "title": "Two Different",
+          "r1": "Bet on Two Different; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Two Different; win when the draw qualifies."
+        },
+        "hzlm": {
+          "title": "Sum Two-Side",
+          "r1": "Bet on Sum Two-Side; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Sum Two-Side; win when the draw qualifies."
+        },
+        "hzds": {
+          "title": "Sum Points",
+          "r1": "Bet on Sum Points; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Sum Points; win when the draw qualifies."
+        },
+        "liuhou": {
+          "title": "Liu Hou",
+          "r1": "Bet on Liu Hou; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Liu Hou; win when the draw qualifies."
+        },
+        "pdlm": {
+          "title": "Row Two-Side",
+          "r1": "Bet on Row Two-Side; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Row Two-Side; win when the draw qualifies."
+        },
+        "pdds": {
+          "title": "Row Points",
+          "r1": "Bet on Row Points; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Row Points; win when the draw qualifies."
+        },
+        "kdlm": {
+          "title": "Span Two-Side",
+          "r1": "Bet on Span Two-Side; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Span Two-Side; win when the draw qualifies."
+        },
+        "kdds": {
+          "title": "Span Points",
+          "r1": "Bet on Span Points; win if the draw matches the selected cell.",
+          "eg": "e.g. bet Span Points; win when the draw qualifies."
+        }
+      }
+    },
+    "official": {
+      "code": {
+        "tongxuan": "Any",
+        "pair": "Pair",
+        "single": "Single"
+      },
+      "desc": {
+        "caiygh": {
+          "title": "Guess One",
+          "r1": "Bet on Guess One; win if the draw matches.",
+          "eg": "e.g. bet Guess One; win when it qualifies."
+        },
+        "hz": {
+          "title": "Sum",
+          "r1": "Bet on Sum; win if the draw matches.",
+          "eg": "e.g. bet Sum; win when it qualifies."
+        },
+        "dxds": {
+          "title": "Big/Small Odd/Even",
+          "r1": "Bet on Big/Small Odd/Even; win if the draw matches.",
+          "eg": "e.g. bet Big/Small Odd/Even; win when it qualifies."
+        },
+        "ebtdx": {
+          "title": "2-Different Single",
+          "r1": "Bet on 2-Different Single; win if the draw matches.",
+          "eg": "e.g. bet 2-Different Single; win when it qualifies."
+        },
+        "ebtfx": {
+          "title": "2-Different Multiple",
+          "r1": "Bet on 2-Different Multiple; win if the draw matches.",
+          "eg": "e.g. bet 2-Different Multiple; win when it qualifies."
+        },
+        "ethfx": {
+          "title": "2-Same Any",
+          "r1": "Bet on 2-Same Any; win if the draw matches.",
+          "eg": "e.g. bet 2-Same Any; win when it qualifies."
+        },
+        "ethdxds": {
+          "title": "2-Same Single",
+          "r1": "Bet on 2-Same Single; win if the draw matches.",
+          "eg": "e.g. bet 2-Same Single; win when it qualifies."
+        },
+        "ethdxfs": {
+          "title": "2-Same Multiple",
+          "r1": "Bet on 2-Same Multiple; win if the draw matches.",
+          "eg": "e.g. bet 2-Same Multiple; win when it qualifies."
+        },
+        "sth": {
+          "title": "3-Same",
+          "r1": "Bet on 3-Same; win if the draw matches.",
+          "eg": "e.g. bet 3-Same; win when it qualifies."
+        },
+        "zl": {
+          "title": "Mixed Six",
+          "r1": "Bet on Mixed Six; win if the draw matches.",
+          "eg": "e.g. bet Mixed Six; win when it qualifies."
+        },
+        "bs": {
+          "title": "Half Straight",
+          "r1": "Bet on Half Straight; win if the draw matches.",
+          "eg": "e.g. bet Half Straight; win when it qualifies."
+        },
+        "slh": {
+          "title": "3-Straight Any",
+          "r1": "Bet on 3-Straight Any; win if the draw matches.",
+          "eg": "e.g. bet 3-Straight Any; win when it qualifies."
+        },
+        "sbtdx": {
+          "title": "3-Different Single",
+          "r1": "Bet on 3-Different Single; win if the draw matches.",
+          "eg": "e.g. bet 3-Different Single; win when it qualifies."
+        },
+        "sbtfx": {
+          "title": "3-Different Multiple",
+          "r1": "Bet on 3-Different Multiple; win if the draw matches.",
+          "eg": "e.g. bet 3-Different Multiple; win when it qualifies."
+        }
+      }
+    }
+  }
+}
