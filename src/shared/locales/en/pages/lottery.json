@@ -1,8 +1,9 @@
 {
   "navTop": {
-    "credit": "Two–Sided Play",
-    "official": "Official Play",
-    "history": "Draw History"
+    "credit": "Credit",
+    "official": "Official",
+    "history": "History",
+    "roadmap": "Roadmap"
   },
   "methodShow": {
     "tips1": "You have selected",
@@ -30,7 +31,8 @@
         "count": "Bets",
         "times": "Multiplier",
         "cost": "Amount",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "unit": "Unit Price"
       },
       "tips": {
         "total_1": "Total",
@@ -43,5 +45,63 @@
         "confirm": "Confirm"
       }
     }
+  },
+  "trend": {
+    "posTrend": "Position Trend",
+    "refresh": "Refresh",
+    "line": "Line",
+    "omission": "Missing",
+    "total": "Today Total",
+    "suffix": "Trend",
+    "range": {
+      "i30": "Last 30",
+      "today": "Today",
+      "d2": "2 Days",
+      "d5": "5 Days"
+    },
+    "swing": "Swing",
+    "swingBack": "Down",
+    "swingSame": "Same",
+    "swingFwd": "Up",
+    "statType": "Type"
+  },
+  "roadmap": {
+    "refresh": "Refresh",
+    "todayTotal": "Today",
+    "sum": "Sum",
+    "empty": "No data",
+    "attr": {
+      "lhh": "D/T/Tie",
+      "bs": "Big/Small",
+      "oe": "Odd/Even"
+    },
+    "dragon": "Dragon",
+    "tiger": "Tiger",
+    "tie": "Tie",
+    "big": "Big",
+    "small": "Small",
+    "odd": "Odd",
+    "even": "Even",
+    "road": {
+      "big": "Big Road",
+      "eye": "Big Eye",
+      "small": "Small Road",
+      "cockroach": "Cockroach",
+      "bead": "Bead Plate"
+    }
+  },
+  "common": {
+    "refresh": "Refresh",
+    "empty": "No data",
+    "big": "Big",
+    "small": "Small",
+    "odd": "Odd",
+    "even": "Even",
+    "dragon": "Dragon",
+    "tiger": "Tiger",
+    "tie": "Tie",
+    "sum": "Sum",
+    "bigSmall": "Big/Small",
+    "oddEven": "Odd/Even"
   }
 }

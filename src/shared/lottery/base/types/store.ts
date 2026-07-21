@@ -5,7 +5,6 @@ import {
     MethodDefineItem,
     MethodLevel,
     MethodServerList,
-    UnitMode,
     OmsGroup,
     OmsList,
     ReqBetHistory,
@@ -22,12 +21,17 @@ export interface CommonBase {
     avatar: Ref<string>;
     preBetCount: Ref<number>;
     reset: Ref<boolean>;
+    // 单价(每注下多少钱):可自由输入,clamp 到 [unitMin, unitMax];unitOptions 为快捷档位。
     price: Ref<number>;
-    unitModes: ComputedRef<UnitMode[]>;
+    unitMin: ComputedRef<number>;
+    unitMax: ComputedRef<number>;
+    unitOptions: ComputedRef<number[]>;
+    // 倍数已下线,恒为 1(保留以兼容成本/派彩公式)。
     times: Ref<number>;
     currency: Ref<string>;
     amount: Ref<number>;
     preIssueList: Ref<any[]>;
+    loading: Ref<boolean>;
     displayPrize: Ref<MethodLevel[]>;
     selectedPositions: Ref<any[]>;
     methodServerList: Ref<MethodServerList>;
@@ -57,6 +61,7 @@ export interface CommonBase {
     setDisplayPrize: (levels: MethodLevel[]) => void;
     setIssueCurrent: (issue: IssueItem) => void;
     setIssueLast: (issue: IssueItem) => void;
+    rollToNextIssue: () => boolean;
     setIssueHistory: (history: IssueItem[]) => void;
     fetchIssueCurrent: (initBetHistory: boolean) => void;
     fetchIssueLast: () => Promise<void>;

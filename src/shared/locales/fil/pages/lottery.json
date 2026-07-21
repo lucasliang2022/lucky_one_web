@@ -1,0 +1,73 @@
+{
+  "navTop": {
+    "roadmap": "Roadmap",
+    "credit": "Credit",
+    "official": "Opisyal",
+    "history": "History"
+  },
+  "trend": {
+    "posTrend": "Trend",
+    "refresh": "Refresh",
+    "line": "Linya",
+    "omission": "Missing",
+    "total": "Kabuuan Ngayon",
+    "suffix": "Trend",
+    "range": {
+      "i30": "Huling 30",
+      "today": "Ngayon",
+      "d2": "2 Araw",
+      "d5": "5 Araw"
+    },
+    "swing": "Swing",
+    "swingBack": "Pababa",
+    "swingSame": "Pareho",
+    "swingFwd": "Pataas",
+    "statType": "Uri"
+  },
+  "roadmap": {
+    "refresh": "Refresh",
+    "todayTotal": "Ngayon",
+    "sum": "Kabuuan",
+    "empty": "Walang data",
+    "attr": {
+      "lhh": "D/T/Tie",
+      "bs": "Malaki/Maliit",
+      "oe": "Gansal/Pantay"
+    },
+    "dragon": "Dragon",
+    "tiger": "Tigre",
+    "tie": "Tie",
+    "big": "Malaki",
+    "small": "Maliit",
+    "odd": "Gansal",
+    "even": "Pantay",
+    "road": {
+      "big": "Big Road",
+      "eye": "Big Eye",
+      "small": "Small Road",
+      "cockroach": "Cockroach",
+      "bead": "Bead Plate"
+    }
+  },
+  "common": {
+    "refresh": "Refresh",
+    "empty": "Walang data",
+    "big": "Malaki",
+    "small": "Maliit",
+    "odd": "Gansal",
+    "even": "Pantay",
+    "dragon": "Dragon",
+    "tiger": "Tigre",
+    "tie": "Tie",
+    "sum": "Kabuuan",
+    "bigSmall": "Malaki/Maliit",
+    "oddEven": "Gansal/Pantay"
+  },
+  "bet": {
+    "dialog": {
+      "label": {
+        "unit": "Presyo kada Taya"
+      }
+    }
+  }
+}

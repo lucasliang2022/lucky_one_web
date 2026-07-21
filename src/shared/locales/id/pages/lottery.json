@@ -1,8 +1,9 @@
 {
   "navTop": {
-    "credit": "两面玩法",
-    "official": "官方玩法",
-    "history": "开奖历史"
+    "credit": "Kredit",
+    "official": "Resmi",
+    "history": "Riwayat",
+    "roadmap": "Roadmap"
   },
   "methodShow": {
     "tips1": "您选择了",
@@ -30,7 +31,8 @@
         "count": "注数",
         "times": "倍数",
         "cost": "金额",
-        "confirm": "确认"
+        "confirm": "确认",
+        "unit": "Harga Satuan"
       },
       "tips": {
         "total_1": "共",
@@ -43,5 +45,63 @@
         "confirm": "确认"
       }
     }
+  },
+  "trend": {
+    "posTrend": "Tren Posisi",
+    "refresh": "Segarkan",
+    "line": "Garis",
+    "omission": "Absen",
+    "total": "Total Hari Ini",
+    "suffix": "Tren",
+    "range": {
+      "i30": "30 Terakhir",
+      "today": "Hari Ini",
+      "d2": "2 Hari",
+      "d5": "5 Hari"
+    },
+    "swing": "Ayun",
+    "swingBack": "Turun",
+    "swingSame": "Sama",
+    "swingFwd": "Naik",
+    "statType": "Tipe"
+  },
+  "roadmap": {
+    "refresh": "Segarkan",
+    "todayTotal": "Hari Ini",
+    "sum": "Jumlah",
+    "empty": "Tidak ada data",
+    "attr": {
+      "lhh": "N/H/Seri",
+      "bs": "Besar/Kecil",
+      "oe": "Ganjil/Genap"
+    },
+    "dragon": "Naga",
+    "tiger": "Harimau",
+    "tie": "Seri",
+    "big": "Besar",
+    "small": "Kecil",
+    "odd": "Ganjil",
+    "even": "Genap",
+    "road": {
+      "big": "Jalan Besar",
+      "eye": "Mata Besar",
+      "small": "Jalan Kecil",
+      "cockroach": "Kecoa",
+      "bead": "Papan Manik"
+    }
+  },
+  "common": {
+    "refresh": "Segarkan",
+    "empty": "Tidak ada data",
+    "big": "Besar",
+    "small": "Kecil",
+    "odd": "Ganjil",
+    "even": "Genap",
+    "dragon": "Naga",
+    "tiger": "Harimau",
+    "tie": "Seri",
+    "sum": "Jumlah",
+    "bigSmall": "Besar/Kecil",
+    "oddEven": "Ganjil/Genap"
   }
 }

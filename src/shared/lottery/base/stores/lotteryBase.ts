@@ -47,11 +47,16 @@ export function useLotteryBase(): LotteryBase {
 
     const onLotteryChange = async (newSign: string): Promise<void> => {
         onStoreReset();
+        common.loading.value = true;
         common.setSignCurrent(newSign);
-        await common.fetchLotteryConfig();
-        common.fetchIssueCurrent(true);
-        await initMethodStructure();
-        await onModeChange('official');
+        try {
+            await common.fetchLotteryConfig();
+            common.fetchIssueCurrent(true);
+            await initMethodStructure();
+            await onModeChange('official');
+        } finally {
+            common.loading.value = false;
+        }
     };
 
     /**
@@ -198,7 +203,7 @@ export function useLotteryBase(): LotteryBase {
                 // ---- 官方盘:优先后端结构树(拓扑+翻译好的标题+赔率),本地 define 只出 layout/calc ----
                 // 失败或后端未下发时回落旧硬编码结构,保证不空屏。
                 // 逐彩种灰度:已适配组件标题渲染(resolveStructTitle)的类型才切后端结构;其余仍走旧路径。
-                const MIGRATED_OFFICIAL_TYPES = ['ssc', 'pk10', 'ks'];
+                const MIGRATED_OFFICIAL_TYPES = ['ssc', 'pk10', 'ks', 'hash'];
                 const serverStructure = common.methodStructureServer?.value;
                 let officialFromServer = false;
                 if (MIGRATED_OFFICIAL_TYPES.includes(type)

@@ -19,10 +19,10 @@
         role="button"
         tabindex="0"
         :aria-pressed="optionData.selected ? 'true' : 'false'"
-        :aria-label="`选择 ${optionData.title ? t(optionData.title) : optionData.value}`"
+        :aria-label="`选择 ${dispTitle}`"
     >
       <div :class="$style.showNumber">
-        <b>{{ optionData.title ? t(optionData.title) : optionData.value }}</b>
+        <b>{{ dispTitle }}</b>
       </div>
       <slot name="afterTitle"></slot>
       <div
@@ -49,13 +49,13 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
+import { PropType, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { MethodRowNumber } from "@shared/types"
 import styles from '@/assets/scss/lottery/lottery.module.scss';
 
 const $style = styles;
-const { t } = useI18n();
+const { t, te } = useI18n();
 
 const props = defineProps({
   optionData: {
@@ -87,6 +87,13 @@ const props = defineProps({
 const emit = defineEmits<{
   (e: 'select', value: MethodRowNumber): void
 }>();
+
+// 号码类格子 title 就是数字("8"/"9"),不是 i18n key;仅当确有翻译时才走 t(),否则原样显示,避免 [intlify] 找不到 key 的告警。
+const dispTitle = computed(() => {
+  const title = props.optionData?.title as unknown as string;
+  if (!title) return props.optionData?.value;
+  return te(title) ? t(title) : title;
+});
 
 const handleClick = () => {
   emit('select', props.optionData);

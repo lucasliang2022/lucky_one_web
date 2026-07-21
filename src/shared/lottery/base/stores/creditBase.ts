@@ -131,9 +131,10 @@ export function useCreditBase(common: CommonBase): CreditBase {
             code: item.balls.map((ball: any) => ball.value).join(','),
             // 展示码:与 code 结构对齐,取 title(标签类玩法显示 龙/虎/大/小 等)
             code_display: item.balls.map((ball: any) => i18n.global.t(ball.title)).join(','),
-            times: item.amount || 1,
-            // 每注钱的档位:1=元 / 0.1=角 / 0.01=分 / 0.001=厘(取共享 price 档位选择器)
-            unit: common.price.value,
+            // 信用盘:每注金额直接作为单价(unit),count 为注数/组合数;倍数已下线恒 1。
+            // 与官方盘统一为 cost = unit × count(官方盘 unit=单价,信用盘 unit=每注金额)。
+            unit: item.amount || 1,
+            times: 1,
             mode: common.mode.value,
             count: item.count,
         }));

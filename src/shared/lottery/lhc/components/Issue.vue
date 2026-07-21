@@ -99,6 +99,7 @@
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { storeToRefs } from "pinia";
 import { getBallColor } from "@shared/utils/common.ts";
+import { useIssueRollover } from "@lottery/base/composables/useIssueRollover";
 
 const props = defineProps({
   store: {
@@ -114,15 +115,15 @@ const {
   name,
 } = storeToRefs(props.store);
 
-const { fetchIssueCurrent, fetchIssueLast, setIssueLast, getZodiacName } = props.store;
+const { fetchIssueLast, getZodiacName } = props.store;
 
-const saleRemainingTime = ref(0);
-let saleIntervalId = null;
+// 滚期(倒计时 + 封盘 + 轮询拉下一期)统一走共享 composable;与右侧「本期倒计时」共用同一 tick,不再各跑定时器差 1 秒。
+const { countdownMs, isClosed } = useIssueRollover(props.store);
 
 const waitRemainingTime = ref(0);
 const isWaiting = ref(false);
 const isOpening = ref(false);
-const isLocked = ref(false);
+const isLocked = isClosed; // 封盘态由 composable 提供
 let waitIntervalId = null;
 let historyPollId = null;
 
@@ -159,62 +160,25 @@ const shuffledBallData = computed(() => {
 
 const zodiacDisplay = ref(['?', '?', '?', '?', '?', '?', '?']);
 
-const saleCountdown = computed(() => ({
-  hours: Math.floor(saleRemainingTime.value / 3600).toString().padStart(2, '0'),
-  minutes: Math.floor((saleRemainingTime.value % 3600) / 60).toString().padStart(2, '0'),
-  seconds: (saleRemainingTime.value % 60).toString().padStart(2, '0'),
-}));
+const saleCountdown = computed(() => {
+  const totalSec = Math.floor(countdownMs.value / 1000);
+  return {
+    hours: Math.floor(totalSec / 3600).toString().padStart(2, '0'),
+    minutes: Math.floor((totalSec % 3600) / 60).toString().padStart(2, '0'),
+    seconds: (totalSec % 60).toString().padStart(2, '0'),
+  };
+});
 
 const waitCountdown = computed(() => waitRemainingTime.value);
 
-function updateSaleCountdown() {
-  if (!issueCurrent.value.end_time) return;
-  const now = Math.floor(Date.now() / 1000);
-  saleRemainingTime.value = Math.max(0, issueCurrent.value.end_time - now);
-  if (issueCurrent.value.end_time) {
-    const lockRemaining = Math.max(0, issueCurrent.value.end_time - now);
-    isLocked.value = lockRemaining <= 0;
-  } else {
-    isLocked.value = false;
-  }
-  if (saleRemainingTime.value === 0) {
-    stopSaleCountdown();
-    handleSaleCountdownEnd();
-  }
-}
-
-function startSaleCountdown() {
-  if (!saleIntervalId) {
-    updateSaleCountdown();
-    saleIntervalId = setInterval(updateSaleCountdown, 1000);
-  }
-}
-
-function stopSaleCountdown() {
-  if (saleIntervalId) {
-    clearInterval(saleIntervalId);
-    saleIntervalId = null;
-  }
-}
-
-async function fetchNextIssue() {
-  try {
-    await fetchIssueCurrent();
-    startSaleCountdown();
-  } catch (error) {
-    console.error("获取新奖期失败:", error);
-  }
-}
-
-async function handleSaleCountdownEnd() {
-  setIssueLast({ ...issueCurrent.value });
-  await fetchNextIssue();
-  startWaitCountdown();
-}
+// 封盘瞬间(sale → close 翻转)启动「等待开奖」动画并轮询上一期结果;倒计时/滚期由 composable 驱动。
+watch(isClosed, (closed, prev) => {
+  if (closed && !prev) startWaitCountdown();
+});
 
 function startWaitCountdown() {
-  if (issueCurrent.value.wait_time) {
-    waitRemainingTime.value = issueCurrent.value.wait_time;
+  if (issueCurrent.value.lock_time) {
+    waitRemainingTime.value = issueCurrent.value.lock_time;
     isWaiting.value = true;
     if (!waitIntervalId) {
       waitIntervalId = setInterval(() => {
@@ -285,9 +249,9 @@ async function pollIssueLast() {
 
 function checkInitialWaitTime() {
   const now = Math.floor(Date.now() / 1000);
-  if (issueCurrent.value.end_time && issueCurrent.value.wait_time) {
-    const endTime = issueCurrent.value.end_time;
-    const waitEndTime = endTime + issueCurrent.value.wait_time;
+  if (issueCurrent.value.sale_end_time && issueCurrent.value.lock_time) {
+    const endTime = issueCurrent.value.sale_end_time;
+    const waitEndTime = endTime + issueCurrent.value.lock_time;
     if (now >= endTime && now < waitEndTime) {
       waitRemainingTime.value = Math.max(0, waitEndTime - now);
       isWaiting.value = true;
@@ -301,7 +265,7 @@ function checkInitialWaitTime() {
 }
 
 function triggerLotteryChange() {
-  startSaleCountdown();
+  // 倒计时/滚期由 composable 自动驱动;这里只处理初始「是否已在等待开奖窗口」+ 上一期结果。
   checkInitialWaitTime();
 }
 
@@ -322,7 +286,7 @@ watch(
 );
 
 onBeforeUnmount(() => {
-  stopSaleCountdown();
+  // sale 倒计时/滚期定时器由 composable 自身 onUnmounted 清理;这里只清理等待/轮询定时器。
   stopWaitCountdown();
   if (historyPollId) {
     clearTimeout(historyPollId);

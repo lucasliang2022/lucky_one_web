@@ -37,7 +37,7 @@
 import type { PropType } from 'vue';
 import type { LotteryStore } from '@lottery/base/stores/storeTypes';
 import { officialLogic } from '@lottery/base/logic/officialLogic';
-import { IssueItem, MethodRowNumber } from "@shared/types";
+import { IssueItem, MethodRowNumber, SelectedUnit, MethodDefineItem } from "@shared/types";
 import Buttons from "@lottery/base/components/Buttons.vue";
 import RowRender from "@lottery/ssc/components/layout/official/render/RowRender.vue";
 import RowTitle from "@lottery/ssc/components/layout/official/render/RowTitle.vue";
@@ -64,6 +64,19 @@ function calculateChmZu3(issue: IssueItem, ball: MethodRowNumber, positions: num
   return codes[positionIndex]?.trim() === ball.value.toString();
 }
 
+// 组三 = 选一对号(a,b)对应「2 注」:(a,a,b) 与 (b,b,a),对子数字有序。
+// 故注数 = C(n,2) × 2 = n(n-1)(全包 10 选 = 90 注)。通用 'combination' 只算 C(n,2) 少一半,
+// 会与后端 getBetCount(= C(n,2)×2)对不上被校验拦截。与后端一致必须自己算。
+function calculateBetCountZu3(tickets: SelectedUnit[][], currentMethod: MethodDefineItem): number {
+  const row = tickets?.[0] || [];
+  const layoutRow = currentMethod?.layout?.rows?.[0];
+  const min = layoutRow?.min_selected || 2;
+  const codeTotal = currentMethod?.layout?.code_total_count || { min: 2, max: Infinity };
+  const n = row.length;
+  if (n < min || n < codeTotal.min || n > codeTotal.max) return 0;
+  return n * (n - 1);
+}
+
 const {
   rows,
   toggleBall,
@@ -73,7 +86,7 @@ const {
   getOmissionClass,
   showColdHot,
   showOmission
-} = officialLogic(props.store, {calculateChmFn: calculateChmZu3,});
+} = officialLogic(props.store, {calculateChmFn: calculateChmZu3, calculateCountFn: calculateBetCountZu3});
 
 defineExpose({
   randomOneBet

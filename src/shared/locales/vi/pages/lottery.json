@@ -1,8 +1,9 @@
 {
   "navTop": {
-    "credit": "两面玩法",
-    "official": "官方玩法",
-    "history": "开奖历史"
+    "credit": "Tín dụng",
+    "official": "Chính thức",
+    "history": "Lịch sử",
+    "roadmap": "Đường châu"
   },
   "methodShow": {
     "tips1": "您选择了",
@@ -30,7 +31,8 @@
         "count": "注数",
         "times": "倍数",
         "cost": "金额",
-        "confirm": "确认"
+        "confirm": "确认",
+        "unit": "Đơn giá"
       },
       "tips": {
         "total_1": "共",
@@ -43,5 +45,63 @@
         "confirm": "确认"
       }
     }
+  },
+  "trend": {
+    "posTrend": "Xu hướng vị trí",
+    "refresh": "Làm mới",
+    "line": "Đường",
+    "omission": "Bỏ lỡ",
+    "total": "Tổng hôm nay",
+    "suffix": "Xu hướng",
+    "range": {
+      "i30": "30 kỳ",
+      "today": "Hôm nay",
+      "d2": "2 ngày",
+      "d5": "5 ngày"
+    },
+    "swing": "Dao động",
+    "swingBack": "Xuống",
+    "swingSame": "Bằng",
+    "swingFwd": "Lên",
+    "statType": "Loại"
+  },
+  "roadmap": {
+    "refresh": "Làm mới",
+    "todayTotal": "Tích lũy hôm nay",
+    "sum": "Tổng",
+    "empty": "Chưa có dữ liệu",
+    "attr": {
+      "lhh": "Rồng Hổ Hòa",
+      "bs": "Lớn Nhỏ",
+      "oe": "Chẵn Lẻ"
+    },
+    "dragon": "Rồng",
+    "tiger": "Hổ",
+    "tie": "Hòa",
+    "big": "Lớn",
+    "small": "Nhỏ",
+    "odd": "Lẻ",
+    "even": "Chẵn",
+    "road": {
+      "big": "Đường lớn",
+      "eye": "Mắt lớn",
+      "small": "Đường nhỏ",
+      "cockroach": "Gián",
+      "bead": "Bàn hạt"
+    }
+  },
+  "common": {
+    "refresh": "Làm mới",
+    "empty": "Chưa có dữ liệu",
+    "big": "Lớn",
+    "small": "Nhỏ",
+    "odd": "Lẻ",
+    "even": "Chẵn",
+    "dragon": "Rồng",
+    "tiger": "Hổ",
+    "tie": "Hòa",
+    "sum": "Tổng",
+    "bigSmall": "Lớn Nhỏ",
+    "oddEven": "Chẵn Lẻ"
   }
 }

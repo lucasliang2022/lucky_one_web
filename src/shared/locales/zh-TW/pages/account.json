@@ -1,0 +1,100 @@
+{
+  "menu": {
+    "overview": "帳號總覽",
+    "profile": "個人資料",
+    "security": "安全中心",
+    "bank": "銀行帳戶",
+    "settings": "帳號設置",
+    "points": "積分記錄",
+    "follow": "我的關注",
+    "recharge": "充值",
+    "vip": "VIP特權",
+    "gameRecord": "遊戲記錄",
+    "lotteryRecord": "彩票記錄",
+    "traceRecord": "追號記錄",
+    "report": "個人報表",
+    "message": "站內消息",
+    "notice": "系統公告"
+  },
+  "record": {
+    "title": "彩票記錄",
+    "refresh": "刷新",
+    "all": "全部",
+    "allGames": "全部遊戲",
+    "detail": "詳情",
+    "empty": "沒有相關記錄喔～",
+    "fetchFail": "獲取彩票記錄失敗",
+    "filter": {
+      "time": "時間",
+      "game": "遊戲",
+      "currency": "幣種",
+      "status": "狀態"
+    },
+    "time": {
+      "today": "當天",
+      "week": "近一週",
+      "month": "近一個月",
+      "year": "近一年"
+    },
+    "status": {
+      "pending": "待開獎",
+      "win": "已中獎",
+      "lose": "未中獎",
+      "cancel": "已撤單"
+    },
+    "col": {
+      "status": "狀態 / 幣種",
+      "game": "遊戲 / 模式",
+      "method": "玩法 / 期數",
+      "content": "投注內容 / 時間",
+      "amount": "注額 / 派彩",
+      "action": "操作",
+      "gameType": "遊戲類型/遊戲",
+      "modeMethod": "模式/玩法",
+      "issueOpen": "期數/開獎號碼",
+      "contentTime": "投注內容/時間",
+      "currencyAmount": "幣種/金額",
+      "statusPrize": "狀態/派彩"
+    },
+    "stats": {
+      "title": "本頁統計",
+      "count": "筆數",
+      "amount": "注額",
+      "prize": "派彩",
+      "pending": "未結"
+    },
+    "dialog": {
+      "title": "投注詳情",
+      "count": "注數",
+      "time": "投注時間",
+      "content": "投注內容",
+      "unit": "單價",
+      "open": "開獎號碼"
+    },
+    "mode": {
+      "credit": "信用",
+      "official": "官方",
+      "creditFull": "信用盤",
+      "officialFull": "官方盤"
+    },
+    "game": {
+      "ssc": "時時彩",
+      "pk10": "PK10",
+      "lhc": "六合彩",
+      "ks": "快三",
+      "hash": "哈希",
+      "sd": "骰寶",
+      "kl8": "快樂8"
+    },
+    "label": {
+      "mode": "模式",
+      "method": "玩法",
+      "issue": "期數",
+      "game": "遊戲"
+    },
+    "cancel": "撤單",
+    "cancelConfirm": "確認撤銷該注單?撤銷後將退還投注額。",
+    "cancelOk": "撤單成功",
+    "cancelFail": "撤單失敗"
+  }
+}

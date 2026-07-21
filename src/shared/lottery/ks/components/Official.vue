@@ -50,16 +50,15 @@
     <div class="display-options">
       <Currency v-model:currency="currency"/>
       <div class="method-middle-right">
-        <Unit v-model:price="price" :options="unitModes"/>
-        <Times v-model:times="times"/>
+        <Unit v-model:price="price" :min="unitMin" :max="unitMax" :options="unitOptions" :currency="currency"/>
       </div>
     </div>
     <div class="display-buttons">
       <div class="tips">
         <template v-if="officialBetCount > 0">
-          您选择了 <span class="tip-count">{{ officialBetCount }}</span> 注，共计
-          <span class="tip-amount">{{ formatPrize(officialBetCost) }}</span> 元，
-          余额：<span class="tip-balance">0.0000</span>
+          {{ t('pages.lottery.methodShow.tips1') }} <span class="tip-count">{{ officialBetCount }}</span> {{ t('pages.lottery.methodShow.tips2') }}，{{ t('pages.lottery.methodShow.tips3') }}
+          <span class="tip-amount">{{ formatPrize(officialBetCost) }}</span> {{ t('pages.lottery.methodShow.tips4') }}，
+          {{ t('pages.lottery.methodShow.tips5') }}：<span class="tip-balance">0.0000</span>
         </template>
         <template v-else>
           <i class="icon-sd-info1" style="margin-right: 3px;font-size: 12px;"></i>
@@ -68,11 +67,11 @@
       </div>
       <div class="btn">
         <el-button :disabled="isDisabled" @click="handleToCart">
-          <i class="icon-sd-cart_empty" style="margin-right: 3px;font-size: 14px"></i>加入购彩栏
+          <i class="icon-sd-cart_empty" style="margin-right: 3px;font-size: 14px"></i>{{ t('pages.lottery.button.addToCart') }}
         </el-button>
-        <el-button>追号</el-button>
+        <el-button>{{ t('pages.lottery.button.trace') }}</el-button>
         <el-button type="danger" :disabled="isDisabled" @click="handleFastBet">
-          立刻投注
+          {{ t('pages.lottery.button.submit') }}
         </el-button>
       </div>
     </div>
@@ -96,7 +95,6 @@
 import {computed, ref, watch, defineAsyncComponent, onMounted, nextTick} from "vue";
 import {storeToRefs} from 'pinia';
 import Unit from "@shared/lottery/base/components/Unit.vue";
-import Times from "@shared/lottery/base/components/Times.vue";
 import Currency from "@shared/lottery/base/components/Currency.vue";
 import Loading from "@shared/lottery/base/components/Loading.vue";
 import OfficialBetCart from "@shared/lottery/base/components/official/OfficialBetCart.vue";
@@ -119,8 +117,9 @@ const store = props.store;
 const {
   currency,
   price,
-  unitModes,
-  times,
+  unitMin,
+  unitMax,
+  unitOptions,
   officialCategoryCurrent,
   officialMethodStructure,
   officialMethodCurrent,

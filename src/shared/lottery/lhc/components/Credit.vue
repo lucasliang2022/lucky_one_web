@@ -40,21 +40,21 @@
     <div class="display-options">
       <Currency v-model:currency="currency" />
       <div class="method-middle-right">
-        <Amount :store="store" />
+        <Unit v-model:price="amount" :min="unitMin" :max="unitMax" :options="unitOptions" :currency="currency"/>
       </div>
     </div>
     <div class="display-buttons">
       <div class="tips">
-        共计<span class="tip-amount">{{ formatPrize(creditBetCost) }}</span> 元，
-        余额：<span class="tip-balance">{{ balance }}</span>
+        {{ t('pages.lottery.methodShow.tips3') }}<span class="tip-amount">{{ formatPrize(creditBetCost) }}</span> {{ t('pages.lottery.methodShow.tips4') }}，
+        {{ t('pages.lottery.methodShow.tips5') }}：<span class="tip-balance">{{ balance }}</span>
       </div>
       <div class="btn">
         <el-button :disabled="isDisabled" @click="handleToCart">
-          <i class="icon-sd-cart_empty" style="margin-right: 3px;font-size: 14px"></i>加入购彩栏
+          <i class="icon-sd-cart_empty" style="margin-right: 3px;font-size: 14px"></i>{{ t('pages.lottery.button.addToCart') }}
         </el-button>
-        <el-button>追号</el-button>
+        <el-button>{{ t('pages.lottery.button.trace') }}</el-button>
         <el-button type="danger" :disabled="isDisabled" @click="handleFastBet">
-          立刻投注
+          {{ t('pages.lottery.button.submit') }}
         </el-button>
       </div>
     </div>
@@ -81,7 +81,7 @@ import { notify } from '@shared/notify';
 import {useI18n} from "vue-i18n";
 import {formatPrize} from "@shared/utils/common.ts";
 import {useUserStore} from '@shared/stores/userStore.ts';
-import Amount from "@lottery/base/components/Amount.vue";
+import Unit from "@lottery/base/components/Unit.vue";
 import Currency from "@lottery/base/components/Currency.vue";
 import CreditBetConfirmDialog from "@lottery/base/components/credit/CreditBetConfirmDialog.vue";
 import CreditBetCart from "@lottery/base/components/credit/CreditBetCart.vue";
@@ -101,6 +101,10 @@ const {
   creditCategoryCurrent,
   creditGroupCurrent,
   currency,
+  amount,
+  unitMin,
+  unitMax,
+  unitOptions,
   creditBetCount,
   creditBetCost,
   creditBetList,

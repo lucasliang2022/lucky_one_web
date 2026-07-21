@@ -1,0 +1,99 @@
+{
+  "menu": {
+    "overview": "Visão Geral",
+    "profile": "Perfil",
+    "security": "Segurança",
+    "bank": "Conta Bancária",
+    "settings": "Configurações",
+    "points": "Registro de Pontos",
+    "follow": "Seguindo",
+    "recharge": "Recarregar",
+    "gameRecord": "Registros de Jogo",
+    "lotteryRecord": "Registros de Loteria",
+    "traceRecord": "Registros de Rastreio",
+    "report": "Meu Relatório",
+    "message": "Mensagens",
+    "notice": "Anúncios"
+  },
+  "record": {
+    "title": "Registros de Loteria",
+    "refresh": "Atualizar",
+    "all": "Todos",
+    "allGames": "Todos os Jogos",
+    "detail": "Detalhes",
+    "empty": "Nenhum registro",
+    "fetchFail": "Falha ao carregar",
+    "filter": {
+      "time": "Tempo",
+      "game": "Jogo",
+      "currency": "Moeda",
+      "status": "Status"
+    },
+    "time": {
+      "today": "Hoje",
+      "week": "Última Semana",
+      "month": "Último Mês",
+      "year": "Último Ano"
+    },
+    "status": {
+      "pending": "Pendente",
+      "win": "Ganhou",
+      "lose": "Perdeu",
+      "cancel": "Cancelado"
+    },
+    "col": {
+      "status": "Status / Moeda",
+      "game": "Jogo / Modo",
+      "method": "Aposta / Rodada",
+      "content": "Conteúdo / Tempo",
+      "amount": "Valor / Prêmio",
+      "action": "Ação",
+      "gameType": "Tipo/Jogo",
+      "modeMethod": "Modo/Jogada",
+      "issueOpen": "Emissão/Sorteio",
+      "contentTime": "Aposta/Hora",
+      "currencyAmount": "Moeda/Valor",
+      "statusPrize": "Status/Prêmio"
+    },
+    "stats": {
+      "title": "Total da Página",
+      "count": "Qtd",
+      "amount": "Valor",
+      "prize": "Prêmio",
+      "pending": "Pendente"
+    },
+    "dialog": {
+      "title": "Detalhes da Aposta",
+      "count": "Apostas",
+      "time": "Hora da Aposta",
+      "content": "Conteúdo",
+      "unit": "Preço Unitário",
+      "open": "Sorteio"
+    },
+    "mode": {
+      "credit": "Crédito",
+      "official": "Oficial",
+      "creditFull": "Crédito",
+      "officialFull": "Oficial"
+    },
+    "game": {
+      "ssc": "SSC",
+      "pk10": "PK10",
+      "lhc": "Mark Six",
+      "ks": "K3",
+      "hash": "Hash",
+      "sd": "Sic Bo",
+      "kl8": "Keno"
+    },
+    "label": {
+      "mode": "Modo",
+      "method": "Aposta",
+      "issue": "Rodada",
+      "game": "Jogo"
+    },
+    "cancel": "Cancelar",
+    "cancelConfirm": "Cancelar esta aposta? O valor será reembolsado.",
+    "cancelOk": "Cancelado",
+    "cancelFail": "Falha ao cancelar"
+  }
+}

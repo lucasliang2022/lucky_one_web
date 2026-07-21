@@ -248,7 +248,6 @@ export function useOfficialLogic(store: any, options: Options = {}) {
     }
 
     watch(() => officialMethodCurrent.value, (newConfig: MethodDefineItem | undefined) => {
-        console.log(33, officialMethodCurrent.value);
         if (newConfig) {
             initRows();
         }

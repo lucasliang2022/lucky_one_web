@@ -2,10 +2,11 @@
   <div class="method-display-container">
     <template v-for="(row, rowIndex) in creditGroupCurrent.layout" :key="rowIndex">
       <el-divider v-if="rowIndex > 0" border-style="dashed">
-        <span>
+        <span class="method-title">
           <span class="icon-sd-check_02" style="margin-right: 2px; color: #999;font-size: 10px;"></span>
           <span style="color: #000; font-size: 14px;">{{row.title}}</span>
-          <span class="icon-sd-check_02" style="margin-left: 3px; color: #999;font-size: 10px;"></span></span>
+          <el-icon class="method-title-arrow"><ArrowDown /></el-icon>
+        </span>
       </el-divider>
       <div class="ball-row" :class="{ 'ball-row-column': row.direction === 'column' }">
         <template v-for="(methodConfig, methodKey) in row.methods" :key="methodKey">
@@ -24,6 +25,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { watch } from "vue";
+import { ArrowDown } from '@element-plus/icons-vue';
 import Number from "../credit/Number.vue";
 import Bs from "../credit/Bs.vue";
 import Oe from "../credit/Oe.vue";
@@ -104,6 +106,18 @@ watch(
 </script>
 
 <style lang="scss" scoped>
+// 玩法标题右侧的向下标识图标
+.method-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  .method-title-arrow {
+    font-size: 12px;
+    color: var(--el-text-color-secondary, #909399);
+  }
+}
+
 .method-display-container {
   padding: 10px;
   .ball-row-column {

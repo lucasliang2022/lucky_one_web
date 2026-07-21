@@ -1,8 +1,9 @@
 {
   "navTop": {
-    "credit": "两面玩法",
-    "official": "官方玩法",
-    "history": "开奖历史"
+    "credit": "Crédito",
+    "official": "Oficial",
+    "history": "Histórico",
+    "roadmap": "Roadmap"
   },
   "methodShow": {
     "tips1": "您选择了",
@@ -30,7 +31,8 @@
         "count": "注数",
         "times": "倍数",
         "cost": "金额",
-        "confirm": "确认"
+        "confirm": "确认",
+        "unit": "Preço Unitário"
       },
       "tips": {
         "total_1": "共",
@@ -43,5 +45,63 @@
         "confirm": "确认"
       }
     }
+  },
+  "trend": {
+    "posTrend": "Tendência",
+    "refresh": "Atualizar",
+    "line": "Linha",
+    "omission": "Ausência",
+    "total": "Total Hoje",
+    "suffix": "Tendência",
+    "range": {
+      "i30": "Últimos 30",
+      "today": "Hoje",
+      "d2": "2 Dias",
+      "d5": "5 Dias"
+    },
+    "swing": "Oscilação",
+    "swingBack": "Baixa",
+    "swingSame": "Igual",
+    "swingFwd": "Alta",
+    "statType": "Tipo"
+  },
+  "roadmap": {
+    "refresh": "Atualizar",
+    "todayTotal": "Hoje",
+    "sum": "Soma",
+    "empty": "Sem dados",
+    "attr": {
+      "lhh": "D/T/Empate",
+      "bs": "Grande/Pequeno",
+      "oe": "Ímpar/Par"
+    },
+    "dragon": "Dragão",
+    "tiger": "Tigre",
+    "tie": "Empate",
+    "big": "Grande",
+    "small": "Pequeno",
+    "odd": "Ímpar",
+    "even": "Par",
+    "road": {
+      "big": "Estrada Grande",
+      "eye": "Olho Grande",
+      "small": "Estrada Pequena",
+      "cockroach": "Barata",
+      "bead": "Placa de Contas"
+    }
+  },
+  "common": {
+    "refresh": "Atualizar",
+    "empty": "Sem dados",
+    "big": "Grande",
+    "small": "Pequeno",
+    "odd": "Ímpar",
+    "even": "Par",
+    "dragon": "Dragão",
+    "tiger": "Tigre",
+    "tie": "Empate",
+    "sum": "Soma",
+    "bigSmall": "Grande/Pequeno",
+    "oddEven": "Ímpar/Par"
   }
 }

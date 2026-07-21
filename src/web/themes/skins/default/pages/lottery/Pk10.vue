@@ -1,7 +1,7 @@
 <template>
   <div class="lottery-page lottery-pk10">
     <div class="lottery-container">
-      <div class="game-container" ref="gameContainer">
+      <div class="game-container" ref="gameContainer" v-loading="lotteryStore.loading" element-loading-text="加载中...">
         <div ref="issueWrapper" class="issue-wrapper">
           <Issue
               :store="lotteryStore"
@@ -12,22 +12,24 @@
         </div>
         <div class="menu-container">
           <el-tabs v-model="menuCurrent" class="main-menu" type="border-card" @tab-click="handleMenuChange">
-            <el-tab-pane label="信用玩法" name="credit" />
-            <el-tab-pane label="官方玩法" name="official" />
-            <el-tab-pane label="开奖历史" name="history" />
+            <el-tab-pane :label="t('pages.lottery.navTop.credit')" name="credit" />
+            <el-tab-pane :label="t('pages.lottery.navTop.official')" name="official" />
+            <el-tab-pane :label="t('pages.lottery.navTop.history')" name="history" />
+            <el-tab-pane :label="t('pages.lottery.navTop.roadmap')" name="roadmap" />
           </el-tabs>
         </div>
         <div class="method-container">
           <Official v-if="menuCurrent === 'official'" ref="methodRef" :store="lotteryStore" />
           <Credit v-if="menuCurrent === 'credit'" ref="methodRef" :store="lotteryStore" />
           <History v-if="menuCurrent === 'history'" :store="lotteryStore" />
+          <Roadmap v-if="menuCurrent === 'roadmap'" :store="lotteryStore" :ball-names="RM_BALLS" :big-min="RM_BIG" :sum-big-min="55" />
         </div>
         <div class="order-container">
           <el-tabs v-model="orderMenuCurrent" class="order-menu">
-            <el-tab-pane label="历史订单" name="orderHistory">
+            <el-tab-pane :label="t('pages.lottery.navBottom.orderHistory')" name="orderHistory">
               <OrderList :store="lotteryStore" />
             </el-tab-pane>
-            <el-tab-pane label="追号计划" name="tracePlan" />
+            <el-tab-pane :label="t('pages.lottery.navBottom.taskPlan')" name="tracePlan" />
           </el-tabs>
         </div>
       </div>
@@ -47,11 +49,16 @@ import Issue from "@shared/lottery/pk10/components/Issue.vue";
 import Official from "@shared/lottery/pk10/components/Official.vue";
 import Credit from "@shared/lottery/pk10/components/Credit.vue";
 import History from "@shared/lottery/pk10/components/History.vue";
+import Roadmap from "@shared/lottery/base/components/Roadmap.vue";
+const RM_BALLS = ['冠军','亚军','第三名','第四名','第五名','第六名','第七名','第八名','第九名','第十名'];
+const RM_BIG = 6;
 import OrderList from "@shared/lottery/base/components/OrderList.vue";
 import Footer from "@web/common/Footer.vue";
 import { ElTabs, ElTabPane } from "element-plus";
+import { useI18n } from "vue-i18n";
 
 const route: RouteLocationNormalizedLoaded = useRoute();
+const { t } = useI18n();
 const lotterySign = computed<string>(() => {
   const signParam = route.params.sign;
   if (Array.isArray(signParam)) {
@@ -64,7 +71,7 @@ const lotteryStore = usePk10Store();
 const { onLotteryChange, onModeChange } = lotteryStore;
 
 const methodRef: ShallowRef<any> = shallowRef(null);
-const menuCurrent: Ref<'official' | 'credit' | 'history'> = ref('official');
+const menuCurrent: Ref<'official' | 'credit' | 'history' | 'roadmap'> = ref('official');
 const orderMenuCurrent: Ref<'orderHistory' | 'tracePlan'> = ref('orderHistory');
 const issueWrapper: Ref<HTMLElement | null> = ref(null);
 const gameContainer: Ref<HTMLElement | null> = ref(null);
@@ -82,7 +89,7 @@ const handleMenuChange = (tab: { paneName: string }) => {
   if (tab.paneName === 'credit' || tab.paneName === 'official') {
     onModeChange(tab.paneName);
   }
-  menuCurrent.value = tab.paneName as 'official' | 'credit' | 'history';
+  menuCurrent.value = tab.paneName as 'official' | 'credit' | 'history' | 'roadmap';
 };
 
 const handleScroll = (): void => {

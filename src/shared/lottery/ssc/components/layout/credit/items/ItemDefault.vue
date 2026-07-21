@@ -14,14 +14,14 @@
     <div class="ball-wrapper">
       <div class="show-number">
         <div class="display-left">
-          <span :class="['ball-title', { 'ball-circle': ball.isCircle, [ball.color + '-bg']: ball.color }]">{{ t(ball.title) }}</span>
+          <span :class="['ball-title', { 'ball-circle': ball.isCircle, [ball.color + '-bg']: ball.color }]">{{ tt(ball.title) }}</span>
           <div class="extend-content" v-if="ball.extraContent && ball.extraContent.length > 0">
           <span
               v-for="(item, index) in ball.extraContent"
               :key="index"
               class="extra-ball"
               :class="[item.color + '-bg']"
-          >{{ t(item.title) }}</span>
+          >{{ tt(item.title) }}</span>
           </div>
         </div>
         <div class="display-right">
@@ -63,6 +63,8 @@ import { resolveMethodTitle } from '@lottery/base/utils/common';
 import { useI18n } from 'vue-i18n';
 
 const { t, te } = useI18n();
+// 数字格子(如 0-9)title 就是数字,不是 i18n key;仅有翻译时才 t(),否则原样显示,避免告警。
+const tt = (k: any) => (k && te(k) ? t(k) : k);
 import { MethodNumberItem } from "@shared/types";
 const props = defineProps({
   store: {
@@ -192,11 +194,6 @@ watch(
       if (newHistory && newHistory.length) {
         if (newColdHot) calculateHotCold(newRange, hotColdData);
         if (newOmission) calculateOmission(omissionData);
-      } else {
-        balls.value.forEach(ball => {
-          if (!newColdHot) ball.hotCount = null;
-          if (!newOmission) ball.omission = null;
-        });
       }
     }
 );
@@ -306,10 +303,10 @@ function calculateHotCold(issueCount, hotColdData) {
   });
 
   recentIssues.forEach(issue => {
-    const number = props.calculateChm(issue);
-    if (number !== null && hotCold[number] !== undefined) {
-      hotCold[number] += 1;
-    }
+    // calculateChm 可返回单值或「一期命中多个码」的数组(如大小单双质合、单码多位置)。
+    const res = props.calculateChm(issue);
+    const vals = (Array.isArray(res) ? res : [res]).filter(v => v !== null && v !== undefined);
+    vals.forEach(v => { if (hotCold[v] !== undefined) hotCold[v] += 1; });
   });
 
   hotColdData.value = hotCold;
@@ -328,10 +325,9 @@ function calculateOmission(omissionData) {
 
   for (let index = 0; index < issueHistory.value.length; index++) {
     const issue = issueHistory.value[index];
-    const number = props.calculateChm(issue);
-    if (number !== null && omission[number] === -1) {
-      omission[number] = index;
-    }
+    const res = props.calculateChm(issue);
+    const vals = (Array.isArray(res) ? res : [res]).filter(v => v !== null && v !== undefined);
+    vals.forEach(v => { if (omission[v] === -1) omission[v] = index; });
     if (!Object.values(omission).includes(-1)) {
       break;
     }

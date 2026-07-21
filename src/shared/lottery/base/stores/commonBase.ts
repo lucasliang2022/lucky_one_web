@@ -1,5 +1,5 @@
 import { computed, ref, shallowRef, watch, ComputedRef } from 'vue';
-import { CommonBase, MethodServerList, IssueItem, IssueCodeArr, ReqBetHistory, RespBetHistoryItem, UnitMode} from "@shared/types";
+import { CommonBase, MethodServerList, IssueItem, IssueCodeArr, ReqBetHistory, RespBetHistoryItem, UnitPriceConfig} from "@shared/types";
 import * as lotteryService from "@shared/api/lotteryService";
 
 export function useCommonBase(): CommonBase {
@@ -12,26 +12,36 @@ export function useCommonBase(): CommonBase {
     const preBetCount = ref<number>(50);
     const reset = ref<boolean>(false);
 
+    // 单价(每注下多少钱):可自由输入,clamp 到 [unitMin, unitMax]。默认 1。
     const price = ref<number>(1);
-    // 单注钱档位:后端 config 下发「按币种的 map」(currency → 档位[]);兜底仅「元」。
-    const unitModesByCurrency = ref<Record<string, UnitMode[]>>({});
+    // 单价配置:后端 config 下发「按币种的 map」(currency → {min,max,options});兜底默认区间+六快捷。
+    const DEFAULT_UNIT_CFG: UnitPriceConfig = { min: 1, max: 100000, options: [1, 2, 5, 10, 50, 100] };
+    const unitConfigByCurrency = ref<Record<string, UnitPriceConfig>>({});
+    // 倍数已下线,恒为 1(成本/派彩公式仍乘 times,值恒 1 不影响)。
     const times = ref<number>(1);
     const currency = ref<string>('cny');
-    // 对外的档位列表:跟随当前币种从 map 里取;缺省回落「元」。
-    const unitModes = computed<UnitMode[]>(() => {
+    // 当前币种的单价配置;缺省回落默认。
+    const unitConfigCurrent = computed<UnitPriceConfig>(() => {
         const key = (currency.value || '').toLowerCase();
-        const modes = unitModesByCurrency.value[key];
-        return modes && modes.length > 0 ? modes : [{ value: 1 }];
+        return unitConfigByCurrency.value[key] ?? DEFAULT_UNIT_CFG;
     });
+    const unitMin = computed<number>(() => unitConfigCurrent.value.min);
+    const unitMax = computed<number>(() => unitConfigCurrent.value.max);
+    const unitOptions = computed<number[]>(() => unitConfigCurrent.value.options);
     const amount = ref<number>(1);
-    // 切币种后:若当前 price 不在新币种档位集里,回落到「元」(1)。
-    watch(currency, () => {
-        if (!unitModes.value.some((m) => m.value === price.value)) {
-            price.value = 1;
+    // 当前单价 clamp 到 [min,max];越界回落到 min。
+    const clampPrice = (): void => {
+        const { min, max } = unitConfigCurrent.value;
+        if (!(price.value >= min && price.value <= max)) {
+            price.value = min;
         }
-    });
+    };
+    // 切币种后:按新币种区间校正单价。
+    watch(currency, clampPrice);
     const preIssueList = ref<any[]>([]);
     const displayPrize = ref<any[]>([]);
+    // 进入/切换彩种时,配置与玩法结构拉取完成前为 true,页面据此显示 loading。
+    const loading = ref<boolean>(true);
     const selectedPositions = ref<any[]>([]);
 
     const methodServerList = ref<MethodServerList>(<MethodServerList>{
@@ -111,6 +121,19 @@ export function useCommonBase(): CommonBase {
         issueLast.value = issue;
     };
 
+    // 无缝滚期:封盘瞬间直接切到预取的下一期(零网络延迟);随后 fetchIssueCurrent 后台刷新。
+    // 返回是否切换成功(下一期存在且封盘时间在未来)。
+    const rollToNextIssue = (): boolean => {
+        const nx = issueNext.value;
+        if (nx?.sale_end_time && nx.sale_end_time * 1000 > Date.now()
+            && nx.issue_no && nx.issue_no !== issueCurrent.value?.issue_no) {
+            issueCurrent.value = nx;
+            issueNext.value = {} as IssueItem; // 已消费,待后台刷新补上下一期
+            return true;
+        }
+        return false;
+    };
+
     const setIssueHistory = (history: IssueItem[]): void => {
         issueHistory.value = history;
     };
@@ -145,8 +168,15 @@ export function useCommonBase(): CommonBase {
 
     const fetchIssueCurrent = async (initBetHistory: boolean): Promise<void> => {
         try {
-            const issue = await lotteryService.fetchIssueCurrent(sign.value);
-            issueCurrent.value = issue || {};
+            const { current, next } = await lotteryService.fetchIssueCurrentAndNext(sign.value);
+            // 防回退:封盘瞬间已本地滚到下一期时,服务端可能还没滚 —— 不要用旧的当前期把它盖回去。
+            const cur = issueCurrent.value;
+            if (current?.sale_end_time
+                ? (!cur?.sale_end_time || current.sale_end_time >= cur.sale_end_time)
+                : !cur?.sale_end_time) {
+                issueCurrent.value = current || ({} as IssueItem);
+            }
+            issueNext.value = next || ({} as IssueItem);
             if (initBetHistory) {
                 // 不按当前期号过滤:ssc 等每分钟滚期,过滤当前期会让刚下的注很快"消失";
                 // 显示玩家近期订单(当月),下注后一直可见。
@@ -194,12 +224,9 @@ export function useCommonBase(): CommonBase {
             preBetCount.value = data.pre_bet_count || preBetCount.value;
             methodServerList.value = data.methods || methodServerList.value;
             methodStructureServer.value = data.structure || methodStructureServer.value;
-            // 档位选择器 config 驱动:后端下发「按币种的 map」,unitModes(computed)跟随当前币种取值。
-            // 切彩种后若当前 price 不在(当前币种)新档位集里,重置为元(1)。
-            unitModesByCurrency.value = data.unit_modes ?? {};
-            if (!unitModes.value.some((m) => m.value === price.value)) {
-                price.value = 1;
-            }
+            // 单价 config 驱动:后端下发「按币种的 map」{min,max,options};clamp 校正当前单价。
+            unitConfigByCurrency.value = data.unit_modes ?? {};
+            clampPrice();
         } catch (error) {
             throw error
         }
@@ -231,13 +258,16 @@ export function useCommonBase(): CommonBase {
         preBetCount,
         reset,
         price,
-        unitModes,
+        unitMin,
+        unitMax,
+        unitOptions,
         times,
         currency,
         amount,
         preIssueList,
         displayPrize,
         selectedPositions,
+        loading,
         methodServerList,
         methodStructureServer,
         issueCurrent,
@@ -264,6 +294,7 @@ export function useCommonBase(): CommonBase {
         setDisplayPrize,
         setIssueCurrent,
         setIssueLast,
+        rollToNextIssue,
         setIssueHistory,
         fetchIssueCurrent,
         fetchIssueLast,

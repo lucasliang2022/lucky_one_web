@@ -17,8 +17,9 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { computed } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useIssueRollover } from '@lottery/base/composables/useIssueRollover';
 
 const props = defineProps({
   store: {
@@ -27,64 +28,20 @@ const props = defineProps({
   }
 });
 
-const { issueCurrent, sign, name } = storeToRefs(props.store);
-const { fetchIssueCurrent } = props.store;
+const { name } = storeToRefs(props.store);
 
-const countdownTime = ref('00:00');
-const remainingSeconds = ref(0);
-const isBetting = ref(true);
-let countdownTimer = null;
+// 与开奖区共用同一滚期 controller(同一 store 共享 tick + 轮询) → 「本期倒计时」与「开奖倒计时」严格同步,
+// 不再各自跑一个 setInterval(两个独立定时器 floor 秒会错开 1 秒,即之前看到的差 1 秒)。
+const { countdownMs, isClosed, issueNo } = useIssueRollover(props.store);
 
-const issueNo = computed(() => issueCurrent.value?.issue_no);
-
-const updateCountdown = async () => {
-  if (!issueCurrent.value || !issueCurrent.value.sale_end_time) {
-    countdownTime.value = '00:00';
-    isBetting.value = false;
-    await fetchIssueCurrent(sign.value);
-    return;
-  }
-
-  const now = Math.floor(Date.now() / 1000);
-  const endTime = issueCurrent.value.sale_end_time;
-  const remaining = Math.max(0, endTime - now);
-
-  if (remaining <= 0) {
-    isBetting.value = false;
-    countdownTime.value = '00:00';
-    await fetchIssueCurrent(sign.value);
-    console.log('Issue updated to:', issueCurrent.value?.issue_no);
-    return;
-  }
-
-  const minutes = Math.floor(remaining / 60).toString().padStart(2, '0');
-  const seconds = (remaining % 60).toString().padStart(2, '0');
-  countdownTime.value = `${minutes}:${seconds}`;
-  remainingSeconds.value = remaining;
-  isBetting.value = true;
-};
-
-const startCountdown = () => {
-  updateCountdown();
-  countdownTimer = setInterval(async () => {
-    await updateCountdown();
-  }, 1000);
-};
-
-const stopCountdown = () => {
-  if (countdownTimer) {
-    clearInterval(countdownTimer);
-    countdownTimer = null;
-  }
-};
-
-onMounted(() => {
-  startCountdown();
+const remainingSeconds = computed(() => Math.floor(countdownMs.value / 1000));
+const countdownTime = computed(() => {
+  const r = remainingSeconds.value;
+  const minutes = Math.floor(r / 60).toString().padStart(2, '0');
+  const seconds = (r % 60).toString().padStart(2, '0');
+  return `${minutes}:${seconds}`;
 });
-
-onUnmounted(() => {
-  stopCountdown();
-});
+const isBetting = computed(() => !isClosed.value && remainingSeconds.value > 0);
 </script>
 
 <style lang="scss" scoped>

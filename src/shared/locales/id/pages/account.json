@@ -1,0 +1,99 @@
+{
+  "menu": {
+    "overview": "Ikhtisar",
+    "profile": "Profil",
+    "security": "Keamanan",
+    "bank": "Rekening Bank",
+    "settings": "Pengaturan",
+    "points": "Log Poin",
+    "follow": "Mengikuti",
+    "recharge": "Isi Ulang",
+    "gameRecord": "Riwayat Game",
+    "lotteryRecord": "Riwayat Lotere",
+    "traceRecord": "Riwayat Lacak",
+    "report": "Laporan Saya",
+    "message": "Pesan",
+    "notice": "Pengumuman"
+  },
+  "record": {
+    "title": "Riwayat Lotere",
+    "refresh": "Segarkan",
+    "all": "Semua",
+    "allGames": "Semua Game",
+    "detail": "Detail",
+    "empty": "Tidak ada catatan",
+    "fetchFail": "Gagal memuat",
+    "filter": {
+      "time": "Waktu",
+      "game": "Game",
+      "currency": "Mata Uang",
+      "status": "Status"
+    },
+    "time": {
+      "today": "Hari Ini",
+      "week": "Minggu Lalu",
+      "month": "Bulan Lalu",
+      "year": "Tahun Lalu"
+    },
+    "status": {
+      "pending": "Menunggu",
+      "win": "Menang",
+      "lose": "Kalah",
+      "cancel": "Dibatalkan"
+    },
+    "col": {
+      "status": "Status / Mata Uang",
+      "game": "Game / Mode",
+      "method": "Cara / Periode",
+      "content": "Konten / Waktu",
+      "amount": "Jumlah / Bayaran",
+      "action": "Aksi",
+      "gameType": "Tipe/Game",
+      "modeMethod": "Mode/Cara",
+      "issueOpen": "Periode/Hasil",
+      "contentTime": "Taruhan/Waktu",
+      "currencyAmount": "Mata Uang/Jumlah",
+      "statusPrize": "Status/Bayaran"
+    },
+    "stats": {
+      "title": "Total Halaman",
+      "count": "Jumlah",
+      "amount": "Jumlah",
+      "prize": "Bayaran",
+      "pending": "Belum"
+    },
+    "dialog": {
+      "title": "Detail Taruhan",
+      "count": "Taruhan",
+      "time": "Waktu Taruhan",
+      "content": "Konten",
+      "unit": "Harga Satuan",
+      "open": "Hasil"
+    },
+    "mode": {
+      "credit": "Kredit",
+      "official": "Resmi",
+      "creditFull": "Kredit",
+      "officialFull": "Resmi"
+    },
+    "game": {
+      "ssc": "SSC",
+      "pk10": "PK10",
+      "lhc": "Mark Six",
+      "ks": "K3",
+      "hash": "Hash",
+      "sd": "Sic Bo",
+      "kl8": "Keno"
+    },
+    "label": {
+      "mode": "Mode",
+      "method": "Cara",
+      "issue": "Periode",
+      "game": "Game"
+    },
+    "cancel": "Batal",
+    "cancelConfirm": "Batalkan taruhan ini? Taruhan akan dikembalikan.",
+    "cancelOk": "Dibatalkan",
+    "cancelFail": "Gagal batal"
+  }
+}

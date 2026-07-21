@@ -81,7 +81,12 @@ function calculateBetCountZh(tickets: SelectedUnit[][], currentMethod: MethodDef
     return 0;
   }
 
-  return tickets.reduce((product, rowTickets) => product * rowTickets.length, 1);
+  // 综合 = 每选一「组」(各位各取一号的一种组合)同时下「档数」注(1星…N星各一注)。
+  // 总注数 = 组数(各位所选号码数之积) × 档数(= 位数)。
+  // 例:前三综合全包 10×10×10 = 1000 组,每组 3 注 → 3000 注。
+  // 旧写法「各位相乘」漏乘档数(全包只算 1000 注),单选五星更是只算 1 注(应为「共 5 注」)。
+  const combos = tickets.reduce((product, rowTickets) => product * rowTickets.length, 1);
+  return combos * tickets.length;
 }
 
 function randomOneBetZh(rowsData: MethodRow[], currentMethod: MethodDefineItem): SelectedUnit[][] {

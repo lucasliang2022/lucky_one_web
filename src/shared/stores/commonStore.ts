@@ -79,7 +79,7 @@ export const useCommonStore = defineStore('common', () => {
 
     /* =========================================================
      *  彩票模块依赖的 options
-     *  （被 Currency.vue / Times.vue / Unit.vue / OrderList.vue
+     *  （被 Currency.vue / Unit.vue / OrderList.vue
      *   / OfficialBetCart.vue 直接消费）
      * ========================================================= */
 

@@ -1,0 +1,100 @@
+{
+  "menu": {
+    "overview": "Overview",
+    "profile": "Profile",
+    "security": "Security",
+    "bank": "Bank Account",
+    "settings": "Settings",
+    "points": "Points Log",
+    "follow": "Following",
+    "recharge": "Recharge",
+    "vip": "VIP Privileges",
+    "gameRecord": "Game Records",
+    "lotteryRecord": "Lottery Records",
+    "traceRecord": "Trace Records",
+    "report": "My Report",
+    "message": "Messages",
+    "notice": "Announcements"
+  },
+  "record": {
+    "title": "Lottery Records",
+    "refresh": "Refresh",
+    "all": "All",
+    "allGames": "All Games",
+    "detail": "Details",
+    "empty": "No records found",
+    "fetchFail": "Failed to load records",
+    "filter": {
+      "time": "Time",
+      "game": "Game",
+      "currency": "Currency",
+      "status": "Status"
+    },
+    "time": {
+      "today": "Today",
+      "week": "Last Week",
+      "month": "Last Month",
+      "year": "Last Year"
+    },
+    "status": {
+      "pending": "Pending",
+      "win": "Won",
+      "lose": "Lost",
+      "cancel": "Cancelled"
+    },
+    "col": {
+      "status": "Status / Currency",
+      "game": "Game / Mode",
+      "method": "Bet / Issue",
+      "content": "Content / Time",
+      "amount": "Amount / Payout",
+      "action": "Action",
+      "gameType": "Type/Game",
+      "modeMethod": "Mode/Play",
+      "issueOpen": "Issue/Draw",
+      "contentTime": "Bet/Time",
+      "currencyAmount": "Currency/Amount",
+      "statusPrize": "Status/Payout"
+    },
+    "stats": {
+      "title": "Page Total",
+      "count": "Count",
+      "amount": "Amount",
+      "prize": "Payout",
+      "pending": "Pending"
+    },
+    "dialog": {
+      "title": "Bet Details",
+      "count": "Bets",
+      "time": "Bet Time",
+      "content": "Content",
+      "unit": "Unit Price",
+      "open": "Draw"
+    },
+    "mode": {
+      "credit": "Credit",
+      "official": "Official",
+      "creditFull": "Credit",
+      "officialFull": "Official"
+    },
+    "game": {
+      "ssc": "SSC",
+      "pk10": "PK10",
+      "lhc": "Mark Six",
+      "ks": "K3",
+      "hash": "Hash",
+      "sd": "Sic Bo",
+      "kl8": "Keno"
+    },
+    "label": {
+      "mode": "Mode",
+      "method": "Bet",
+      "issue": "Issue",
+      "game": "Game"
+    },
+    "cancel": "Cancel",
+    "cancelConfirm": "Cancel this bet? The stake will be refunded.",
+    "cancelOk": "Cancelled",
+    "cancelFail": "Cancel failed"
+  }
+}

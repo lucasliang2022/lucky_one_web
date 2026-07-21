@@ -1,8 +1,9 @@
 {
   "navTop": {
-    "credit": "两面玩法",
+    "credit": "信用玩法",
     "official": "官方玩法",
-    "history": "开奖历史"
+    "history": "开奖历史",
+    "roadmap": "路珠"
   },
   "methodShow": {
     "tips1": "您选择了",
@@ -30,7 +31,8 @@
         "count": "注数",
         "times": "倍数",
         "cost": "金额",
-        "confirm": "确认"
+        "confirm": "确认",
+        "unit": "单价"
       },
       "tips": {
         "total_1": "共",
@@ -43,5 +45,63 @@
         "confirm": "确认"
       }
     }
+  },
+  "trend": {
+    "posTrend": "位置走势",
+    "refresh": "刷新数据",
+    "line": "折线图",
+    "omission": "遗漏",
+    "total": "今日总次数",
+    "suffix": "走势",
+    "range": {
+      "i30": "近30期",
+      "today": "今日数据",
+      "d2": "近2天",
+      "d5": "近5天"
+    },
+    "swing": "回摆",
+    "swingBack": "反",
+    "swingSame": "重",
+    "swingFwd": "正",
+    "statType": "统计类型"
+  },
+  "roadmap": {
+    "refresh": "刷新数据",
+    "todayTotal": "今天累计",
+    "sum": "总和",
+    "empty": "暂无开奖数据",
+    "attr": {
+      "lhh": "龙虎和",
+      "bs": "大小",
+      "oe": "单双"
+    },
+    "dragon": "龙",
+    "tiger": "虎",
+    "tie": "和",
+    "big": "大",
+    "small": "小",
+    "odd": "单",
+    "even": "双",
+    "road": {
+      "big": "大路",
+      "eye": "大眼仔路",
+      "small": "小路",
+      "cockroach": "甲由路",
+      "bead": "珠盘路"
+    }
+  },
+  "common": {
+    "refresh": "刷新数据",
+    "empty": "暂无开奖数据",
+    "big": "大",
+    "small": "小",
+    "odd": "单",
+    "even": "双",
+    "dragon": "龙",
+    "tiger": "虎",
+    "tie": "和",
+    "sum": "总和",
+    "bigSmall": "大小",
+    "oddEven": "单双"
   }
 }

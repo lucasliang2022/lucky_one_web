@@ -1,8 +1,9 @@
 {
   "navTop": {
-    "credit": "两面玩法",
-    "official": "官方玩法",
-    "history": "开奖历史"
+    "credit": "เครดิต",
+    "official": "ทางการ",
+    "history": "ประวัติ",
+    "roadmap": "โรดแมป"
   },
   "methodShow": {
     "tips1": "您选择了",
@@ -30,7 +31,8 @@
         "count": "注数",
         "times": "倍数",
         "cost": "金额",
-        "confirm": "确认"
+        "confirm": "确认",
+        "unit": "ราคาต่อหน่วย"
       },
       "tips": {
         "total_1": "共",
@@ -43,5 +45,63 @@
         "confirm": "确认"
       }
     }
+  },
+  "trend": {
+    "posTrend": "เทรนด์ตำแหน่ง",
+    "refresh": "รีเฟรช",
+    "line": "เส้น",
+    "omission": "ขาด",
+    "total": "รวมวันนี้",
+    "suffix": "เทรนด์",
+    "range": {
+      "i30": "30 งวด",
+      "today": "วันนี้",
+      "d2": "2 วัน",
+      "d5": "5 วัน"
+    },
+    "swing": "สวิง",
+    "swingBack": "ลง",
+    "swingSame": "ซ้ำ",
+    "swingFwd": "ขึ้น",
+    "statType": "ประเภท"
+  },
+  "roadmap": {
+    "refresh": "รีเฟรช",
+    "todayTotal": "สะสมวันนี้",
+    "sum": "ผลรวม",
+    "empty": "ไม่มีข้อมูล",
+    "attr": {
+      "lhh": "มังกรเสือเสมอ",
+      "bs": "สูงต่ำ",
+      "oe": "คู่คี่"
+    },
+    "dragon": "มังกร",
+    "tiger": "เสือ",
+    "tie": "เสมอ",
+    "big": "สูง",
+    "small": "ต่ำ",
+    "odd": "คี่",
+    "even": "คู่",
+    "road": {
+      "big": "ถนนใหญ่",
+      "eye": "ตาโต",
+      "small": "ถนนเล็ก",
+      "cockroach": "แมลงสาบ",
+      "bead": "แผ่นลูกปัด"
+    }
+  },
+  "common": {
+    "refresh": "รีเฟรช",
+    "empty": "ไม่มีข้อมูล",
+    "big": "สูง",
+    "small": "ต่ำ",
+    "odd": "คี่",
+    "even": "คู่",
+    "dragon": "มังกร",
+    "tiger": "เสือ",
+    "tie": "เสมอ",
+    "sum": "ผลรวม",
+    "bigSmall": "สูงต่ำ",
+    "oddEven": "คู่คี่"
   }
 }

@@ -248,6 +248,11 @@
                 margin-right: 3px;
               }
             }
+            // 显示冷热/遗漏时:数字挪到左上角,主内容整体下移留位;不显示(无 .chm)时自动还原。
+            &.chm {
+              .show-chm { left: 4px; top: 2px; }
+              .ball-wrapper { height: auto; min-height: 50px; padding-top: 18px; }
+            }
           }
           .segmentation-1 {
             flex-basis: calc(100% - 10px);
@@ -274,20 +279,28 @@
             max-width: calc(20% - 10px);
             min-width: calc(20% - 10px);
           }
-          .segmentation-6 {
-            flex-basis: calc(16.66% - 10px);
-            max-width: calc(16.66% - 10px);
-            min-width: calc(16.66% - 10px);
-          }
-          .segmentation-7 {
-            flex-basis: calc(14.28% - 10px);
-            max-width: calc(14.28% - 10px);
-            min-width: calc(14.28% - 10px);
-          }
+          // 每行最多 5 个元素:segmentation ≥6 的玩法一律按 20%(5/行)排,超出自动换行。
+          .segmentation-6,
+          .segmentation-7,
           .segmentation-8 {
-            flex-basis: calc(12.5% - 10px);
-            max-width: calc(12.5% - 10px);
-            min-width: calc(12.5% - 10px);
+            flex-basis: calc(20% - 10px);
+            max-width: calc(20% - 10px);
+            min-width: calc(20% - 10px);
+          }
+          // 窄格子(每行 ≥5 个:形态/号码等)保持横排,标题自适应、输入框弹性收缩,避免溢出格外。
+          .ball-item.segmentation-5,
+          .ball-item.segmentation-6,
+          .ball-item.segmentation-7,
+          .ball-item.segmentation-8 {
+            .ball-wrapper { padding: 8px 3px; }
+            .show-number { gap: 3px; }
+            .display-left .ball-title { width: auto; }
+            .display-right {
+              flex: 1;
+              min-width: 0;
+              .ball-price { margin-right: 3px; }
+              .ball-input { width: auto; flex: 1; min-width: 0; }
+            }
           }
         }
       }

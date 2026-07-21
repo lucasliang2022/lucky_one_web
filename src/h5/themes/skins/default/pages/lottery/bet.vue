@@ -114,19 +114,19 @@
         <div class="bet-options">
           <div class="bet-options__item">
             <span>{{ t('h5.ssc.bar.price') }}</span>
-            <div class="bet-tier">
-              <span
-                v-for="tier in unitTiers"
-                :key="tier.value"
-                class="bet-tier__opt"
-                :class="{ 'is-active': price === tier.value }"
-                @click="price = tier.value"
-              >{{ tier.label }}</span>
+            <div class="bet-price">
+              <van-stepper v-model="price" :min="unitMin" :max="unitMax" integer />
+              <div class="chips">
+                <span
+                  v-for="(opt, idx) in unitOptions"
+                  :key="opt"
+                  class="chip"
+                  :class="{ active: price === opt }"
+                  :style="{ '--chip-color': chipColor(idx) }"
+                  @click="price = opt"
+                >{{ opt }}</span>
+              </div>
             </div>
-          </div>
-          <div class="bet-options__item">
-            <span>{{ t('h5.ssc.bar.times') }}</span>
-            <van-stepper v-model="times" :min="1" integer />
           </div>
         </div>
       </template>
@@ -163,19 +163,19 @@
         <div class="bet-options">
           <div class="bet-options__item">
             <span>{{ t('h5.ssc.bar.price') }}</span>
-            <div class="bet-tier">
-              <span
-                v-for="tier in unitTiers"
-                :key="tier.value"
-                class="bet-tier__opt"
-                :class="{ 'is-active': price === tier.value }"
-                @click="price = tier.value"
-              >{{ tier.label }}</span>
+            <div class="bet-price">
+              <van-stepper v-model="amount" :min="unitMin" :max="unitMax" integer />
+              <div class="chips">
+                <span
+                  v-for="(opt, idx) in unitOptions"
+                  :key="opt"
+                  class="chip"
+                  :class="{ active: amount === opt }"
+                  :style="{ '--chip-color': chipColor(idx) }"
+                  @click="amount = opt"
+                >{{ opt }}</span>
+              </div>
             </div>
-          </div>
-          <div class="bet-options__item">
-            <span>{{ t('h5.ssc.credit.amount') }}</span>
-            <van-stepper v-model="amount" :min="1" integer />
           </div>
         </div>
       </template>
@@ -301,8 +301,9 @@ const {
   creditBetCost,
   // shared
   price,
-  unitModes,
-  times,
+  unitMin,
+  unitMax,
+  unitOptions,
   amount,
   // 冷热遗漏 / 追号 / 购物车相关
   showColdHot,
@@ -314,24 +315,10 @@ const {
 
 const { isLoggedIn } = storeToRefs(useUserStore());
 
-// 每注钱的档位:改为 config 驱动(后端按币种下发 unit_modes,必含元、不含厘)。
-// label 优先用后端本地化文案;缺省时按 value 回落到前端 i18n key;都没有则显示原值。
-const UNIT_LABEL_FALLBACK: Record<string, string> = {
-  '1': 'h5.ssc.bar.tier_yuan',
-  '0.1': 'h5.ssc.bar.tier_jiao',
-  '0.01': 'h5.ssc.bar.tier_fen',
-  '0.001': 'h5.ssc.bar.tier_li',
-};
-const unitTiers = computed(() => {
-  const modes = unitModes.value?.length ? unitModes.value : [{ value: 1 }];
-  return modes.map((m) => {
-    const fallbackKey = UNIT_LABEL_FALLBACK[String(m.value)];
-    return {
-      value: m.value,
-      label: m.label || (fallbackKey ? t(fallbackKey) : String(m.value)),
-    };
-  });
-});
+// 单价快捷筹码边缘配色:按下标循环,保证每颗筹码边缘颜色不同。
+const CHIP_PALETTE = ['#e74c3c', '#3498db', '#2ecc71', '#e67e22', '#9b59b6', '#16a085', '#f1c40f', '#34495e'];
+const chipColor = (idx: number): string => CHIP_PALETTE[idx % CHIP_PALETTE.length];
+
 
 // 共享官方彩选号引擎:整页只创建一个实例(选号盘 BallGrid 与冷热遗漏面板 ChmPanel 共用同一份 rows),
 // calculateChmFn 按当前玩法 layout.type 从共享 chm 模块动态解析(和值/跨度等无冷热的玩法返回 false)。
@@ -624,7 +611,8 @@ onMounted(() => {
 
 .bet-options {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 12px 24px;
   margin-top: 10px;
   padding: 12px 14px;
   background: #fff;
@@ -638,28 +626,41 @@ onMounted(() => {
   }
 }
 
-/* 元角分厘档位选择器 */
-.bet-tier {
+/* 单价:步进器(自由输入,clamp 到 [min,max])+ 快捷档位 */
+.bet-price {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 单价快捷档位:筹码样式(圆形 + 不同颜色边缘) */
+.chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: inline-flex;
-  border: 1px solid var(--van-border-color, #ebedf0);
-  border-radius: 6px;
-  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--chip-color);
+  background: #fff;
+  /* 虚线边 + 内白环 = 筹码质感 */
+  border: 2px dashed var(--chip-color);
+  box-shadow: inset 0 0 0 3px #fff, 0 1px 2px rgba(0, 0, 0, .12);
 
-  &__opt {
-    padding: 5px 12px;
-    font-size: 13px;
-    line-height: 1;
-    color: var(--van-text-color, #323233);
-    background: #fff;
-
-    & + & {
-      border-left: 1px solid var(--van-border-color, #ebedf0);
-    }
-
-    &.is-active {
-      background: #ee0a24;
-      color: #fff;
-    }
+  &.active {
+    background: var(--chip-color);
+    color: #fff;
+    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, .55), 0 2px 5px rgba(0, 0, 0, .22);
   }
 }
 

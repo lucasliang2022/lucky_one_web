@@ -8,7 +8,7 @@
           :class="{ selected: cell.selected, ['segmentation-' + seg]: true }"
           @click="toggle(cell)"
       >
-        <span class="ball-title">{{ t(cell.title) }}</span>
+        <span class="ball-title">{{ tt(cell.title) }}</span>
       </div>
     </div>
     <div class="combo-footer">
@@ -37,6 +37,7 @@ import { useI18n } from 'vue-i18n';
 import { resolveMethodTitle } from '@lottery/base/utils/common';
 
 const { t, te } = useI18n();
+const tt = (k) => (k && te(k) ? t(k) : k);
 const props = defineProps({
   methodCurrent: { type: Object, required: true },
   store: { type: Object, required: true },

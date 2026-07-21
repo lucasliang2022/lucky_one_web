@@ -1,0 +1,99 @@
+{
+  "menu": {
+    "overview": "Tổng quan",
+    "profile": "Hồ sơ",
+    "security": "Bảo mật",
+    "bank": "Tài khoản ngân hàng",
+    "settings": "Cài đặt",
+    "points": "Lịch sử điểm",
+    "follow": "Đang theo dõi",
+    "recharge": "Nạp tiền",
+    "gameRecord": "Lịch sử game",
+    "lotteryRecord": "Lịch sử xổ số",
+    "traceRecord": "Lịch sử đuổi số",
+    "report": "Báo cáo cá nhân",
+    "message": "Tin nhắn",
+    "notice": "Thông báo"
+  },
+  "record": {
+    "title": "Lịch sử xổ số",
+    "refresh": "Làm mới",
+    "all": "Tất cả",
+    "allGames": "Tất cả game",
+    "detail": "Chi tiết",
+    "empty": "Không có bản ghi",
+    "fetchFail": "Tải bản ghi thất bại",
+    "filter": {
+      "time": "Thời gian",
+      "game": "Game",
+      "currency": "Tiền tệ",
+      "status": "Trạng thái"
+    },
+    "time": {
+      "today": "Hôm nay",
+      "week": "Tuần qua",
+      "month": "Tháng qua",
+      "year": "Năm qua"
+    },
+    "status": {
+      "pending": "Chờ mở",
+      "win": "Đã trúng",
+      "lose": "Không trúng",
+      "cancel": "Đã hủy"
+    },
+    "col": {
+      "status": "Trạng thái / Tiền tệ",
+      "game": "Game / Chế độ",
+      "method": "Cách chơi / Kỳ",
+      "content": "Nội dung / Thời gian",
+      "amount": "Tiền cược / Trả thưởng",
+      "action": "Thao tác",
+      "gameType": "Loại/Trò chơi",
+      "modeMethod": "Chế độ/Cách chơi",
+      "issueOpen": "Kỳ/Kết quả",
+      "contentTime": "Cược/Thời gian",
+      "currencyAmount": "Tiền tệ/Số tiền",
+      "statusPrize": "Trạng thái/Trả thưởng"
+    },
+    "stats": {
+      "title": "Thống kê trang",
+      "count": "Số lượng",
+      "amount": "Tiền cược",
+      "prize": "Trả thưởng",
+      "pending": "Chưa xong"
+    },
+    "dialog": {
+      "title": "Chi tiết cược",
+      "count": "Số cược",
+      "time": "Thời gian cược",
+      "content": "Nội dung",
+      "unit": "Đơn giá",
+      "open": "Kết quả"
+    },
+    "mode": {
+      "credit": "Tín dụng",
+      "official": "Chính thức",
+      "creditFull": "Tín dụng",
+      "officialFull": "Chính thức"
+    },
+    "game": {
+      "ssc": "SSC",
+      "pk10": "PK10",
+      "lhc": "Lục hợp",
+      "ks": "Kuai3",
+      "hash": "Hash",
+      "sd": "Sic Bo",
+      "kl8": "Keno"
+    },
+    "label": {
+      "mode": "Chế độ",
+      "method": "Cách chơi",
+      "issue": "Kỳ",
+      "game": "Game"
+    },
+    "cancel": "Hủy",
+    "cancelConfirm": "Hủy cược này? Tiền cược sẽ được hoàn.",
+    "cancelOk": "Đã hủy",
+    "cancelFail": "Hủy thất bại"
+  }
+}

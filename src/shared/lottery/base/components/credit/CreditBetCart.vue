@@ -36,7 +36,7 @@
           </el-table-column>
           <el-table-column label="货币" prop="currency" width="120">
             <template #default="{ row }">
-              {{ commonStore.getCurrencyInfo(row.currency).title }}
+              {{ commonStore.getCurrencyInfo(row.currency)?.label ?? row.currency }}
             </template>
           </el-table-column>
           <el-table-column label="投注金额(元)" width="180">

@@ -39,9 +39,9 @@
             {{ scope.row.count }}
           </template>
         </el-table-column>
-        <el-table-column :label="t('pages.lottery.bet.dialog.label.times')" width="80">
+        <el-table-column :label="t('pages.lottery.bet.dialog.label.unit')" width="80">
           <template #default="scope">
-            {{ scope.row.times }}
+            {{ scope.row.price }}
           </template>
         </el-table-column>
         <el-table-column :label="t('pages.lottery.bet.dialog.label.cost')" width="150">

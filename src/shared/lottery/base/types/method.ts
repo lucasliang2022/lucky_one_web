@@ -23,6 +23,14 @@ export interface UnitMode {
     label?: string;
 }
 
+// 单价配置(倍数已下线):后端按币种下发。「每注」= 可自由输入的数字(clamp 到 [min,max])
+// + 快捷档位 options(默认 1/2/5/10/50/100,后台可设)。
+export interface UnitPriceConfig {
+    min: number;
+    max: number;
+    options: number[];
+}
+
 // ------------- method define -------------------
 
 export interface ExtraContent {

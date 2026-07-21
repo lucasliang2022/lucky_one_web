@@ -1,0 +1,99 @@
+{
+  "menu": {
+    "overview": "Pangkalahatan",
+    "profile": "Profile",
+    "security": "Seguridad",
+    "bank": "Bank Account",
+    "settings": "Settings",
+    "points": "Points Log",
+    "follow": "Sinusundan",
+    "recharge": "Recharge",
+    "gameRecord": "Game Records",
+    "lotteryRecord": "Lottery Records",
+    "traceRecord": "Trace Records",
+    "report": "My Report",
+    "message": "Messages",
+    "notice": "Announcements"
+  },
+  "record": {
+    "title": "Lottery Records",
+    "refresh": "Refresh",
+    "all": "Lahat",
+    "allGames": "Lahat ng Laro",
+    "detail": "Detalye",
+    "empty": "Walang record",
+    "fetchFail": "Nabigong mag-load",
+    "filter": {
+      "time": "Oras",
+      "game": "Laro",
+      "currency": "Currency",
+      "status": "Status"
+    },
+    "time": {
+      "today": "Ngayon",
+      "week": "Nakaraang Linggo",
+      "month": "Nakaraang Buwan",
+      "year": "Nakaraang Taon"
+    },
+    "status": {
+      "pending": "Nakabinbin",
+      "win": "Nanalo",
+      "lose": "Natalo",
+      "cancel": "Kanselado"
+    },
+    "col": {
+      "status": "Status / Currency",
+      "game": "Laro / Mode",
+      "method": "Laro / Issue",
+      "content": "Nilalaman / Oras",
+      "amount": "Halaga / Bayad",
+      "action": "Aksyon",
+      "gameType": "Uri/Laro",
+      "modeMethod": "Mode/Laro",
+      "issueOpen": "Isyu/Bunot",
+      "contentTime": "Taya/Oras",
+      "currencyAmount": "Pera/Halaga",
+      "statusPrize": "Status/Bayad"
+    },
+    "stats": {
+      "title": "Kabuuan",
+      "count": "Bilang",
+      "amount": "Halaga",
+      "prize": "Bayad",
+      "pending": "Bimbin"
+    },
+    "dialog": {
+      "title": "Detalye ng Taya",
+      "count": "Taya",
+      "time": "Oras ng Taya",
+      "content": "Nilalaman",
+      "unit": "Presyo kada Taya",
+      "open": "Bunot"
+    },
+    "mode": {
+      "credit": "Credit",
+      "official": "Opisyal",
+      "creditFull": "Credit",
+      "officialFull": "Opisyal"
+    },
+    "game": {
+      "ssc": "SSC",
+      "pk10": "PK10",
+      "lhc": "Mark Six",
+      "ks": "K3",
+      "hash": "Hash",
+      "sd": "Sic Bo",
+      "kl8": "Keno"
+    },
+    "label": {
+      "mode": "Mode",
+      "method": "Laro",
+      "issue": "Issue",
+      "game": "Laro"
+    },
+    "cancel": "Kanselahin",
+    "cancelConfirm": "Kanselahin ang taya? Isasauli ang halaga.",
+    "cancelOk": "Nakansela",
+    "cancelFail": "Nabigong kanselahin"
+  }
+}

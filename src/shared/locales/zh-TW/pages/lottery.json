@@ -9,7 +9,8 @@
         "count": "注数",
         "times": "倍数",
         "cost": "金额",
-        "confirm": "确认"
+        "confirm": "确认",
+        "unit": "單價"
       },
       "tips": {
         "total_1": "",
@@ -22,5 +23,69 @@
         "confirm": "确认"
       }
     }
+  },
+  "navTop": {
+    "roadmap": "路珠",
+    "credit": "信用玩法",
+    "official": "官方玩法",
+    "history": "開獎歷史"
+  },
+  "trend": {
+    "posTrend": "位置走勢",
+    "refresh": "刷新數據",
+    "line": "折線圖",
+    "omission": "遺漏",
+    "total": "今日總次數",
+    "suffix": "走勢",
+    "range": {
+      "i30": "近30期",
+      "today": "今日數據",
+      "d2": "近2天",
+      "d5": "近5天"
+    },
+    "swing": "回擺",
+    "swingBack": "反",
+    "swingSame": "重",
+    "swingFwd": "正",
+    "statType": "統計類型"
+  },
+  "roadmap": {
+    "refresh": "刷新數據",
+    "todayTotal": "今天累計",
+    "sum": "總和",
+    "empty": "暫無開獎數據",
+    "attr": {
+      "lhh": "龍虎和",
+      "bs": "大小",
+      "oe": "單雙"
+    },
+    "dragon": "龍",
+    "tiger": "虎",
+    "tie": "和",
+    "big": "大",
+    "small": "小",
+    "odd": "單",
+    "even": "雙",
+    "road": {
+      "big": "大路",
+      "eye": "大眼仔路",
+      "small": "小路",
+      "cockroach": "甲由路",
+      "bead": "珠盤路"
+    }
+  },
+  "common": {
+    "refresh": "刷新數據",
+    "empty": "暫無開獎數據",
+    "big": "大",
+    "small": "小",
+    "odd": "單",
+    "even": "雙",
+    "dragon": "龍",
+    "tiger": "虎",
+    "tie": "和",
+    "sum": "總和",
+    "bigSmall": "大小",
+    "oddEven": "單雙"
   }
 }

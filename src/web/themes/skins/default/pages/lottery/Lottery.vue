@@ -22,6 +22,7 @@ const categoryMap: Record<string, () => Promise<Component>> = {
   ssc:   () => import('@web/themes/skins/default/pages/lottery/Ssc.vue'),
   sd:    () => import('@web/themes/skins/default/pages/lottery/Sd.vue'),
   ks:    () => import('@web/themes/skins/default/pages/lottery/Ks.vue'),
+  hash:  () => import('@web/themes/skins/default/pages/lottery/Hash.vue'),
   lhc:   () => import('@web/themes/skins/default/pages/lottery/Lhc.vue'),
   pk10:  () => import('@web/themes/skins/default/pages/lottery/Pk10.vue'),
   kl28:  () => import('@web/themes/skins/default/pages/lottery/Kl8.vue'),

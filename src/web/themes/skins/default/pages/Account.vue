@@ -4,60 +4,64 @@
       <div class="account-sidebar">
         <el-menu
             :default-active="activeIndex"
+            :default-openeds="defaultOpeneds"
             class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose"
         >
           <el-sub-menu index="1">
             <template #title>
               <el-icon><span class="icon-sd icon-sd-menu"></span></el-icon>
-              <span>账号总览</span>
+              <span>{{ m('overview') }}</span>
             </template>
-            <el-menu-item index="1-1">个人资料</el-menu-item>
-            <el-menu-item index="1-2" @click="goto('security')">安全中心</el-menu-item>
-            <el-menu-item index="1-3">银行账户</el-menu-item>
+            <el-menu-item index="1-1">{{ m('profile') }}</el-menu-item>
+            <el-menu-item index="1-2" @click="goto('security')">{{ m('security') }}</el-menu-item>
+            <el-menu-item index="1-3">{{ m('bank') }}</el-menu-item>
           </el-sub-menu>
           <el-sub-menu index="2">
             <template #title>
               <el-icon><span class="icon-sd icon-sd-my_02"></span></el-icon>
-              <span>账号设置</span>
+              <span>{{ m('settings') }}</span>
             </template>
             <el-menu-item index="2-1">item one</el-menu-item>
             <el-menu-item index="2-2">item two</el-menu-item>
           </el-sub-menu>
           <el-menu-item index="3">
             <el-icon><span class="icon-sd icon-sd-setting"></span></el-icon>
-            <span>积分记录</span>
+            <span>{{ m('points') }}</span>
           </el-menu-item>
           <el-menu-item index="4">
             <el-icon><span class="icon-sd icon-sd-setting"></span></el-icon>
-            <span>我的关注</span>
+            <span>{{ m('follow') }}</span>
           </el-menu-item>
           <el-menu-item index="5">
             <el-icon><span class="icon-sd icon-sd-card"></span></el-icon>
-            <span>充值</span>
+            <span>{{ m('recharge') }}</span>
+          </el-menu-item>
+          <el-menu-item index="9" @click="goto('vip')">
+            <el-icon><span class="icon-sd icon-sd-vip8"></span></el-icon>
+            <span>{{ m('vip') }}</span>
           </el-menu-item>
           <el-sub-menu index="6">
             <template #title>
               <el-icon><span class="icon-sd icon-sd-data_02"></span></el-icon>
-              <span>游戏记录</span>
+              <span>{{ m('gameRecord') }}</span>
             </template>
-            <el-menu-item index="6-1">投注记录</el-menu-item>
-            <el-menu-item index="6-2">追号记录</el-menu-item>
-            <el-menu-item index="6-3">个人报表</el-menu-item>
+            <el-menu-item index="6-1">{{ m('lotteryRecord') }}</el-menu-item>
+            <el-menu-item index="6-2">{{ m('traceRecord') }}</el-menu-item>
+            <el-menu-item index="6-3">{{ m('report') }}</el-menu-item>
           </el-sub-menu>
           <el-menu-item index="7" @click="goto('message')">
             <el-icon><span class="icon-sd icon-sd-mail"></span></el-icon>
-            <span>站内消息</span>
+            <span>{{ m('message') }}</span>
           </el-menu-item>
           <el-menu-item index="8">
             <el-icon><span class="icon-sd icon-sd-notice_02"></span></el-icon>
-            <span>系统公告</span>
+            <span>{{ m('notice') }}</span>
           </el-menu-item>
         </el-menu>
       </div>
       <div class="account-main">
-        <Message v-if="page === 'message'" />
+        <Vip v-if="page === 'vip'" />
+        <Message v-else-if="page === 'message'" />
         <Security v-else-if="page === 'security'" />
         <OrderList v-else />
       </div>
@@ -68,19 +72,26 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import OrderList from "@web/themes/skins/default/pages/account/OrderList.vue";
 import Message from "@web/themes/skins/default/pages/account/Message.vue";
 import Security from "@web/themes/skins/default/pages/account/Security.vue";
+import Vip from "@web/themes/skins/default/pages/account/Vip.vue";
 
+const { t } = useI18n();
+const m = (k) => t(`pages.account.menu.${k}`);
 const route = useRoute();
 const router = useRouter();
 const page = computed(() => route.params.page);
-// 选中态跟随路由
+// 选中态跟随路由(默认页 = 彩票记录 6-1)
 const activeIndex = computed(() => {
+  if (page.value === 'vip') return '9';
   if (page.value === 'message') return '7';
   if (page.value === 'security') return '1-2';
-  return '2';
+  return '6-1';
 });
+// 展开当前选中项所在的父级子菜单(如 6-1 → 展开「游戏记录」6)
+const defaultOpeneds = computed(() => (activeIndex.value.includes('-') ? [activeIndex.value.split('-')[0]] : []));
 const goto = (p) => router.push({ name: 'account', params: { page: p } });
 </script>
 

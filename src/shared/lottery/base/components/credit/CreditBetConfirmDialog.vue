@@ -37,11 +37,6 @@
             {{ scope.row.count }}
           </template>
         </el-table-column>
-        <el-table-column label="倍数" width="100">
-          <template #default="scope">
-            {{ scope.row.times }}
-          </template>
-        </el-table-column>
         <el-table-column label="金额" width="150">
           <template #default="scope">
             ¥{{ formatAmount(scope.row.amount) }}

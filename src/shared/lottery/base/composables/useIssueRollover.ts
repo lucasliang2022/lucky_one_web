@@ -26,6 +26,8 @@ export interface IssueRolloverStoreShape {
     issueCurrent: IssueItem;
     fetchIssueCurrent: (initBetHistory: boolean) => Promise<void>;
     setIssueLast: (issue: IssueItem) => void;
+    /** 封盘瞬间切到预取的下一期(零网络延迟),返回是否成功。 */
+    rollToNextIssue?: () => boolean;
 }
 
 /**
@@ -145,6 +147,16 @@ export function useIssueRollover(
 
     async function pullNextIssue(): Promise<void> {
         ctrl.pollId = null;
+        // 优先用预取的下一期无缝续期(零网络延迟):倒计时立刻用下一期的 sale_end_time 续上,
+        // 再后台刷新当前+下一期(为下一次续期备好数据)。此处已在 setTimeout 宏任务里,
+        // isClosed=true 已被各 Issue.vue 观察到,不会吞掉「开奖中」倒计时。
+        if (s.rollToNextIssue?.()) {
+            tick();
+            ctrl.recordedLast = false;
+            s.fetchIssueCurrent(false).catch(() => {});
+            return;
+        }
+        // 回退:预取无有效下一期 → 网络拉取当前+下一期,按节奏轮询直到滚到新期。
         try {
             await s.fetchIssueCurrent(false);
         } catch {
@@ -175,6 +187,9 @@ export function useIssueRollover(
                     s.setIssueLast({ ...(s.issueCurrent as IssueItem) });
                     ctrl.recordedLast = true;
                 }
+                // 用 setTimeout 延到下一宏任务再滚期:先让 isClosed=true 被观察到
+                // (各 Issue.vue 据此启动「开奖中/等待开奖」倒计时),再在 pullNextIssue 里无缝续期。
+                // 若同步改 issueCurrent,isClosed 的 true 会在同一次刷新里被合并掉,等待开奖倒计时就不显示了。
                 scheduleNextIssuePoll(0);
             } else {
                 clearPoll();

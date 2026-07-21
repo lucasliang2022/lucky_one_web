@@ -1,0 +1,99 @@
+{
+  "menu": {
+    "overview": "अवलोकन",
+    "profile": "प्रोफ़ाइल",
+    "security": "सुरक्षा",
+    "bank": "बैंक खाता",
+    "settings": "सेटिंग्स",
+    "points": "अंक लॉग",
+    "follow": "फ़ॉलोइंग",
+    "recharge": "रिचार्ज",
+    "gameRecord": "गेम रिकॉर्ड",
+    "lotteryRecord": "लॉटरी रिकॉर्ड",
+    "traceRecord": "ट्रेस रिकॉर्ड",
+    "report": "मेरी रिपोर्ट",
+    "message": "संदेश",
+    "notice": "घोषणाएं"
+  },
+  "record": {
+    "title": "लॉटरी रिकॉर्ड",
+    "refresh": "रिफ्रेश",
+    "all": "सभी",
+    "allGames": "सभी गेम",
+    "detail": "विवरण",
+    "empty": "कोई रिकॉर्ड नहीं",
+    "fetchFail": "रिकॉर्ड लोड विफल",
+    "filter": {
+      "time": "समय",
+      "game": "गेम",
+      "currency": "मुद्रा",
+      "status": "स्थिति"
+    },
+    "time": {
+      "today": "आज",
+      "week": "पिछला सप्ताह",
+      "month": "पिछला महीना",
+      "year": "पिछला वर्ष"
+    },
+    "status": {
+      "pending": "लंबित",
+      "win": "जीता",
+      "lose": "हारा",
+      "cancel": "रद्द"
+    },
+    "col": {
+      "status": "स्थिति / मुद्रा",
+      "game": "गेम / मोड",
+      "method": "खेल / अंक",
+      "content": "सामग्री / समय",
+      "amount": "राशि / भुगतान",
+      "action": "कार्रवाई",
+      "gameType": "प्रकार/खेल",
+      "modeMethod": "मोड/खेल",
+      "issueOpen": "अंक/परिणाम",
+      "contentTime": "दांव/समय",
+      "currencyAmount": "मुद्रा/राशि",
+      "statusPrize": "स्थिति/भुगतान"
+    },
+    "stats": {
+      "title": "पृष्ठ योग",
+      "count": "संख्या",
+      "amount": "राशि",
+      "prize": "भुगतान",
+      "pending": "बकाया"
+    },
+    "dialog": {
+      "title": "दांव विवरण",
+      "count": "दांव",
+      "time": "दांव समय",
+      "content": "सामग्री",
+      "unit": "इकाई मूल्य",
+      "open": "परिणाम"
+    },
+    "mode": {
+      "credit": "क्रेडिट",
+      "official": "आधिकारिक",
+      "creditFull": "क्रेडिट",
+      "officialFull": "आधिकारिक"
+    },
+    "game": {
+      "ssc": "SSC",
+      "pk10": "PK10",
+      "lhc": "मार्क सिक्स",
+      "ks": "K3",
+      "hash": "हैश",
+      "sd": "सिक बो",
+      "kl8": "केनो"
+    },
+    "label": {
+      "mode": "मोड",
+      "method": "खेल",
+      "issue": "अंक",
+      "game": "गेम"
+    },
+    "cancel": "रद्द करें",
+    "cancelConfirm": "यह दांव रद्द करें? राशि वापस होगी।",
+    "cancelOk": "रद्द किया गया",
+    "cancelFail": "रद्द विफल"
+  }
+}

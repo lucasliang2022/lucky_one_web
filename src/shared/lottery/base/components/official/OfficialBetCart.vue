@@ -41,33 +41,14 @@
             </template>
           </el-table-column>
           <el-table-column label="注数" prop="count" width="70"></el-table-column>
-          <el-table-column label="模式" width="100">
+          <el-table-column label="单价" width="100">
             <template #default="{ row }">
-              <el-select size="small" v-model="row.price" @change="updateBetAmount(row)">
-                <el-option
-                    v-for="option in commonStore.unitOptions"
-                    :key="option.value"
-                    :label="option.label"
-                    :value="option.value"
-                />
-              </el-select>
-            </template>
-          </el-table-column>
-          <el-table-column label="倍数" width="120">
-            <template #default="{ row }">
-              <el-input-number
-                  v-model="row.times"
-                  :min="1"
-                  :max="9999"
-                  @change="updateBetAmount(row)"
-                  size="small"
-                  style="width: 90px"
-              />
+              {{ commonStore.getCurrencyInfo(row.currency)?.symbol ?? '' }}{{ row.price }}
             </template>
           </el-table-column>
           <el-table-column label="货币" prop="currency" width="100">
             <template #default="{ row }">
-              {{ commonStore.getCurrencyInfo(row.currency).title }}
+              {{ commonStore.getCurrencyInfo(row.currency)?.label ?? row.currency }}
             </template>
           </el-table-column>
           <el-table-column label="金额" width="120">
@@ -116,10 +97,6 @@ const commonStore = useCommonStore();
 const totalAmount = computed(() =>
     formatPrize(officialBetList.value.reduce((sum, bet) => sum + (Number(bet.cost) || 0), 0))
 );
-
-const updateBetAmount = (row) => {
-  row.cost = formatPrize(row.count, row.price, row.times);
-};
 
 const removeBet = (bet) => {
   officialBetList.value = officialBetList.value.filter(item => item !== bet);

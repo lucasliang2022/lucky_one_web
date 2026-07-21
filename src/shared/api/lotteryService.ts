@@ -1,5 +1,5 @@
 import api from "@shared/api/index";
-import { IssueItem, MethodServerList, ReqBetHistory, RespBetHistory, UnitMode } from "@shared/types";
+import { IssueItem, MethodServerList, ReqBetHistory, RespBetHistory, UnitPriceConfig } from "@shared/types";
 
 /* =========================================================
  *  后端原始响应类型（仅本文件内部用）
@@ -92,8 +92,8 @@ export interface RespLotteryConfig {
     methods: MethodServerList;
     // 后端玩法结构树(标题已翻译);前端优先用它渲染,缺失时回落旧硬编码结构。
     structure: ServerStructure;
-    // 按币种的档位 map:键为币种(小写,与 currency 值一致),值为该币种档位列表。
-    unit_modes: Record<string, UnitMode[]>;
+    // 按币种的单价配置 map:键为币种(小写,与 currency 值一致),值为 {min,max,options}。
+    unit_modes: Record<string, UnitPriceConfig>;
 }
 
 export interface RespLotteryBet {
@@ -123,6 +123,8 @@ const normalizeIssue = (raw: RawIssue | null | undefined): IssueItem => {
         sale_start_time: toNum(raw.sale_start_time),
         sale_end_time: toNum(raw.sale_end_time),
         lock_time: toNum(raw.lock_time),
+        // 开奖/投注时间(走势图、历史列表用):历史接口给 lottery_time(=input_time),兜底其它时间字段。
+        time: toNum(raw.time ?? raw.lottery_time ?? raw.input_time ?? raw.decide_done_time ?? raw.bet_time),
         status: raw.status ?? undefined,
     } as IssueItem;
 };
@@ -148,23 +150,24 @@ const normalizeMethods = (raw: RawLotteryConfigData['methods'] | undefined): Met
     } as MethodServerList;
 };
 
-// 后端 config.unit_modes(按币种 map)→ 前端档位选择器数据。
-// 遍历每个币种的数组归一化:value 转 number、过滤非法(NaN/<=0);
-// 键统一小写(和 currency 值一致);空/坏 → {}。
+// 后端 config.unit_modes(按币种 map)→ 前端单价配置 {min,max,options}。
+// 键统一小写(和 currency 值一致);逐币种校正:min>0、max>=min、options 过滤非法(NaN/<=0)。
 const normalizeUnitModes = (
     raw: RawLotteryConfigData['unit_modes'] | undefined,
-): Record<string, UnitMode[]> => {
-    const out: Record<string, UnitMode[]> = {};
+): Record<string, UnitPriceConfig> => {
+    const out: Record<string, UnitPriceConfig> = {};
     if (!raw || typeof raw !== 'object') return out;
-    Object.entries(raw).forEach(([currency, list]) => {
+    Object.entries(raw).forEach(([currency, cfg]) => {
         const key = String(currency).toLowerCase();
-        const modes: UnitMode[] = [];
-        (Array.isArray(list) ? list : []).forEach((item) => {
-            const value = Number(item?.value);
-            if (!Number.isFinite(value) || value <= 0) return;
-            modes.push({ value, label: item?.label != null ? String(item.label) : undefined });
-        });
-        if (modes.length > 0) out[key] = modes;
+        const c = (cfg ?? {}) as Partial<UnitPriceConfig>;
+        let min = Number(c.min);
+        let max = Number(c.max);
+        if (!Number.isFinite(min) || min <= 0) min = 1;
+        if (!Number.isFinite(max) || max < min) max = Math.max(min, 100000);
+        const options = (Array.isArray(c.options) ? c.options : [])
+            .map((v) => Number(v))
+            .filter((v) => Number.isFinite(v) && v > 0);
+        out[key] = { min, max, options: options.length > 0 ? options : [1, 2, 5, 10, 50, 100] };
     });
     return out;
 };
@@ -212,6 +215,24 @@ export const fetchIssueCurrent = async (sign: string): Promise<IssueItem> => {
 };
 
 /**
+ * 当前期 + 下一期一次拉齐(同一接口返回体已带 next_issues)。
+ * 用于「无缝滚期」:封盘瞬间先本地切到预取的下一期,再后台刷新,避免等网络的空档。
+ */
+export const fetchIssueCurrentAndNext = async (
+    sign: string,
+): Promise<{ current: IssueItem; next: IssueItem }> => {
+    try {
+        const data = await api.get<RawIssueCurrentData>(`/lottery/${sign}/issue/current`);
+        return {
+            current: normalizeIssue(data?.current_issue),
+            next: normalizeIssue(Array.isArray(data?.next_issues) ? data!.next_issues[0] : null),
+        };
+    } catch (error: any) {
+        throw new Error(error?.message || 'Failed to fetch Issue Current');
+    }
+};
+
+/**
  * 追号用:同一 /lottery/issue 接口返回体里带 next_issues(未开奖的后续期),
  * 归一化后返回给追号面板选择。fetchIssueCurrent 只取 current_issue,故这里单独取 next_issues。
  */
@@ -236,8 +257,8 @@ export const fetchIssueLast = async (sign: string): Promise<IssueItem> => {
 
 export const fetchIssueHistory = async (sign: string): Promise<IssueItem[]> => {
     try {
-        // GET /lottery/{sign}/issue/history → { items, pagination }
-        const data = await api.get<RawHistoryData>(`/lottery/${sign}/issue/history`);
+        // GET /lottery/{sign}/issue/history → { items, pagination };走势图需要较多期,取 60 期。
+        const data = await api.get<RawHistoryData>(`/lottery/${sign}/issue/history`, { params: { page_size: 60 } });
         const items: RawIssue[] = Array.isArray(data?.items) ? data!.items : [];
         return items.map(normalizeIssue);
     } catch (error: any) {
@@ -281,4 +302,33 @@ export const fetchOrderList = async (postData: ReqBetHistory): Promise<RespBetHi
     } catch (error: any) {
         throw error;
     }
+};
+
+/**
+ * 彩票记录(跨彩种,用户维度):GET /lottery/order/list。
+ * lottery_sign 可选(不传 = 全部游戏);后端按用户 + 近一个月返回,分页。
+ */
+export const fetchBetRecords = async (params: {
+    lottery_sign?: string;
+    range?: 'today' | 'week' | 'month' | 'year';
+    page?: number;
+    page_size?: number;
+}): Promise<RespBetHistory> => {
+    const data = await api.get<RespBetHistory | { items: any[]; pagination?: any }>(
+        `/lottery/order/list`,
+        { params },
+    );
+    const anyData = data as any;
+    if (anyData && Array.isArray(anyData.list)) {
+        return { total: Number(anyData.total ?? anyData.list.length), list: anyData.list };
+    }
+    if (anyData && Array.isArray(anyData.items)) {
+        return { total: Number(anyData.pagination?.total ?? anyData.items.length), list: anyData.items };
+    }
+    return { total: 0, list: [] };
+};
+
+/** 撤单 POST /lottery/order/cancel(仅未开奖、未封盘的本人订单可撤;成功退还投注额)。 */
+export const cancelBetOrder = async (orderId: number | string): Promise<{ id: number; status: number; refund: number }> => {
+    return await api.post(`/lottery/order/cancel`, { order_id: orderId });
 };

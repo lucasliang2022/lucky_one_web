@@ -1,0 +1,30 @@
+{
+  "official": {
+    "code": {
+      "dan": "Odd",
+      "shuang": "Even",
+      "da": "Big",
+      "xiao": "Small",
+      "long": "Dragon",
+      "hu": "Tiger",
+      "he": "Tie",
+      "jixiao": "X-Small",
+      "zhong": "Mid",
+      "jida": "X-Big",
+      "baozi": "Triple",
+      "shunzi": "Straight",
+      "pos1": "Pos 1",
+      "pos2": "Pos 2",
+      "pos3": "Pos 3",
+      "pos4": "Pos 4",
+      "pos5": "Pos 5",
+      "zhi": "Prime",
+      "hecom": "Comp",
+      "wan": "Ten-K",
+      "qian": "Thousand",
+      "bai": "Hundred",
+      "shi": "Ten",
+      "ge": "One"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <template>
   <div class="lottery-page">
     <div class="lottery-container">
-      <div class="game-container" ref="gameContainer">
+      <div class="game-container" ref="gameContainer" v-loading="lotteryStore.loading" element-loading-text="加载中...">
         <div ref="issueWrapper" class="issue-wrapper">
           <Issue
               :store="lotteryStore"
@@ -12,22 +12,24 @@
         </div>
         <div class="menu-container">
           <el-tabs v-model="menuCurrent" class="main-menu" type="border-card" @tab-click="handleMenuChange">
-            <el-tab-pane label="信用玩法" name="credit" />
-            <el-tab-pane label="官方玩法" name="official" />
-            <el-tab-pane label="开奖历史" name="history" />
+            <el-tab-pane :label="t('pages.lottery.navTop.credit')" name="credit" />
+            <el-tab-pane :label="t('pages.lottery.navTop.official')" name="official" />
+            <el-tab-pane :label="t('pages.lottery.navTop.history')" name="history" />
+            <el-tab-pane :label="t('pages.lottery.navTop.roadmap')" name="roadmap" />
           </el-tabs>
         </div>
         <div class="method-container">
           <Official v-if="menuCurrent === 'official'" ref="methodRef" :store="lotteryStore" />
           <Credit v-if="menuCurrent === 'credit'" ref="methodRef" :store="lotteryStore" />
           <History v-if="menuCurrent === 'history'" :store="lotteryStore" />
+          <Roadmap v-if="menuCurrent === 'roadmap'" :store="lotteryStore" :ball-names="RM_BALLS" :big-min="RM_BIG" />
         </div>
         <div class="order-container">
           <el-tabs v-model="orderMenuCurrent" class="order-menu">
-            <el-tab-pane label="历史订单" name="orderHistory">
+            <el-tab-pane :label="t('pages.lottery.navBottom.orderHistory')" name="orderHistory">
               <OrderList :store="lotteryStore" />
             </el-tab-pane>
-            <el-tab-pane label="追号计划" name="tracePlan" />
+            <el-tab-pane :label="t('pages.lottery.navBottom.taskPlan')" name="tracePlan" />
           </el-tabs>
         </div>
       </div>
@@ -48,6 +50,9 @@ import Footer from "@web/common/Footer.vue";
 import Official from "@shared/lottery/lhc/components/Official.vue";
 import Credit from "@shared/lottery/lhc/components/Credit.vue";
 import History from "@shared/lottery/lhc/components/History.vue";
+import Roadmap from "@shared/lottery/base/components/Roadmap.vue";
+const RM_BALLS = ['正码一','正码二','正码三','正码四','正码五','正码六','特码'];
+const RM_BIG = 25;
 import OrderList from "@shared/lottery/base/components/OrderList.vue";
 import "@/assets/scss/lottery/lhc.scss";
 

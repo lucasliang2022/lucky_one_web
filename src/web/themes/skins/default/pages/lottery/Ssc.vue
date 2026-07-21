@@ -1,7 +1,7 @@
 <template>
   <div class="lottery-page">
     <div class="lottery-container">
-      <div class="game-container" ref="gameContainer">
+      <div class="game-container" ref="gameContainer" v-loading="lotteryStore.loading" element-loading-text="加载中...">
         <div ref="issueWrapper" class="issue-wrapper">
           <Issue
               :store="lotteryStore"
@@ -15,12 +15,14 @@
             <el-tab-pane :label="t('pages.lottery.navTop.credit')" name="credit" />
             <el-tab-pane :label="t('pages.lottery.navTop.official')" name="official" />
             <el-tab-pane :label="t('pages.lottery.navTop.history')" name="history" />
+            <el-tab-pane :label="t('pages.lottery.navTop.roadmap')" name="roadmap" />
           </el-tabs>
         </div>
         <div class="method-container">
           <Official v-if="menuCurrent === 'official'" ref="methodRef" :store="lotteryStore" />
           <Credit v-if="menuCurrent === 'credit'" ref="methodRef" :store="lotteryStore" />
           <History v-if="menuCurrent === 'history'" :store="lotteryStore" />
+          <Roadmap v-if="menuCurrent === 'roadmap'" :store="lotteryStore" :ball-names="RM_BALLS" :big-min="RM_BIG" :sum-big-min="23" />
         </div>
         <div class="order-container">
           <el-tabs v-model="orderMenuCurrent" class="order-menu">
@@ -48,6 +50,9 @@ import Footer from "@web/common/Footer.vue";
 import Official from "@shared/lottery/ssc/components/Official.vue";
 import Credit from "@shared/lottery/ssc/components/Credit.vue";
 import History from "@shared/lottery/ssc/components/History.vue";
+import Roadmap from "@shared/lottery/base/components/Roadmap.vue";
+const RM_BALLS = ['第一球','第二球','第三球','第四球','第五球'];
+const RM_BIG = 5;
 import OrderList from "@shared/lottery/base/components/OrderList.vue";
 import {useI18n} from 'vue-i18n';
 const {t} = useI18n();

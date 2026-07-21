@@ -353,8 +353,8 @@ const sscOfficialDefine: MethodDefineList = {
     official_Sx_QsiZx_QsiZx: {
         title: '前四直选复式',
         title_sign: 'lottery.ssc.method.QsiZx',
-        desc: '从49个号码中选择1个号码形成1注，所选号码与开奖的特码相同，即中奖。',
-        example: '投注方案：01；开奖特码：01，即中奖。',
+        desc: '从万位、千位、百位、十位上各选择1个号码组成1注。所选号码与开奖号码的万位、千位、百位、十位相同，且顺序一致，即中奖。',
+        example: '投注方案：1,2,3,4；开奖号码：1,2,3,4,*，即中奖。',
         calc: {
             type: 'zx',
             base: [1,1,1,1],
@@ -681,8 +681,8 @@ const sscOfficialDefine: MethodDefineList = {
     official_Sx_HsiZx_HsiZxZh: {
         title: '后四直选组合',
         title_sign: 'lottery.ssc.method.HsiZxZh',
-        desc: '从万位、千位、百位、十位上各选择1个号码组成1~4星的组合，共4注。所选号码的十位与开奖号码的十位相同，则中十位定位胆；所选号码的百位、十位与开奖号码的百位、十位相同，则中十位定位胆及百十位直选。依此类推，最多可同时中4个奖。',
-        example: '投注方案：1,2,3,4；开奖号码：1,2,3,4,*，即中-,-,-,4,*、-,-,3,4,*、-,2,3,4,*、1,2,3,4,*,各一注。',
+        desc: '从千位、百位、十位、个位上各选择1个号码组成1~4星的组合，共4注。所选号码的个位与开奖号码的个位相同，则中个位定位胆；所选号码的十位、个位与开奖号码的十位、个位相同，则中个位定位胆及后二直选。依此类推，最多可同时中4个奖。',
+        example: '投注方案：1,2,3,4；开奖号码：*,1,2,3,4，即中*,-,-,-,4、*,-,-,3,4、*,-,2,3,4、*,1,2,3,4,各一注。',
         lr_status: true,
         yl_status: true,
         random_bet: false,
@@ -926,8 +926,8 @@ const sscOfficialDefine: MethodDefineList = {
     official_Qs_QsZx_QsZxZh: {
         title: '前三直选组合',
         title_sign: 'lottery.ssc.method.QsZxZh',
-        desc: '从万位、千位、百位、十位上各选择1个号码组成1~4星的组合，共4注。所选号码的十位与开奖号码的十位相同，则中十位定位胆；所选号码的百位、十位与开奖号码的百位、十位相同，则中十位定位胆及百十位直选。依此类推，最多可同时中4个奖。',
-        example: '投注方案：1,2,3,4；开奖号码：1,2,3,4,*，即中-,-,-,4,*、-,-,3,4,*、-,2,3,4,*、1,2,3,4,*,各一注。',
+        desc: '从万位、千位、百位中各选择1个号码组成1~3星的组合，共3注。所选号码的百位与开奖号码的百位相同，则中百位定位胆；所选号码的千位、百位与开奖号码的千位、百位相同，则中百位定位胆及千百位直选。依此类推，最多可同时中3个奖。',
+        example: '投注方案：1,2,3；开奖号码：1,2,3,*,*，即中-,-,3,*,*、-,2,3,*,*、1,2,3,*,*,各一注。',
         lr_status: true,
         yl_status: true,
         random_bet: false,
@@ -1605,8 +1605,8 @@ const sscOfficialDefine: MethodDefineList = {
     official_Zs_ZsZu_ZsZuBd: {
         title: '中三组选包胆',
         title_sign: 'lottery.ssc.method.ZsZuBd',
-        desc: '选择1个号码，当开奖号码的万位、千位、百位中任意1位和所选号码相同（不含豹子号），且万位、千位、百位有对子，即中前三组选包胆组三，且万位、千位、百位为单号，即中前三组选包胆组六；',
-        example: '投注方案：8；开奖号码A：*,1,8,8,*,即中前三组选包胆组三；开奖号码B：*,1,2,8,*,即中前三组选包胆组六。',
+        desc: '选择1个号码，当开奖号码的千位、百位、十位中任意1位和所选号码相同（不含豹子号），且千位、百位、十位有对子，即中中三组选包胆组三，若千位、百位、十位为单号，即中中三组选包胆组六；',
+        example: '投注方案：8；开奖号码A：*,1,8,8,*,即中中三组选包胆组三；开奖号码B：*,1,2,8,*,即中中三组选包胆组六。',
         lr_status: true,
         yl_status: true,
         random_bet: false,
@@ -2637,11 +2637,11 @@ const sscOfficialDefine: MethodDefineList = {
         layout: {
             type: 'Dwd',
             rows: [
-                {number:numbers, min_selected: 0, max_selected: 10, position: [1], buttons: true},
-                {number:numbers, min_selected: 0, max_selected: 10, position: [2], buttons: true},
-                {number:numbers, min_selected: 0, max_selected: 10, position: [3], buttons: true},
-                {number:numbers, min_selected: 0, max_selected: 10, position: [4], buttons: true},
-                {number:numbers, min_selected: 0, max_selected: 10, position: [5], buttons: true},
+                {title: '万位', number:numbers, min_selected: 0, max_selected: 10, position: [1], buttons: true},
+                {title: '千位', number:numbers, min_selected: 0, max_selected: 10, position: [2], buttons: true},
+                {title: '百位', number:numbers, min_selected: 0, max_selected: 10, position: [3], buttons: true},
+                {title: '十位', number:numbers, min_selected: 0, max_selected: 10, position: [4], buttons: true},
+                {title: '个位', number:numbers, min_selected: 0, max_selected: 10, position: [5], buttons: true},
             ],
             row_separator: ',',
             row_repeat: true,

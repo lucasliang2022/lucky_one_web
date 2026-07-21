@@ -5,46 +5,64 @@
     <table v-if="!orderListLoading && orderList.length" class="order-table">
       <thead class="order-table-header">
       <tr class="order-table-header-row">
-        <th class="order-table-header-cell">模式</th>
-        <th class="order-table-header-cell">玩法</th>
-        <th class="order-table-header-cell">投注内容</th>
-        <th class="order-table-header-cell">金额</th>
-        <th class="order-table-header-cell">注数</th>
-        <th class="order-table-header-cell">倍数</th>
-        <th class="order-table-header-cell">单位</th>
-        <th class="order-table-header-cell">状态</th>
-        <th class="order-table-header-cell">中奖金额</th>
+        <th class="order-table-header-cell">游戏类型/游戏</th>
+        <th class="order-table-header-cell">模式/玩法</th>
+        <th class="order-table-header-cell">期数/开奖号码</th>
+        <th class="order-table-header-cell">投注内容/时间</th>
+        <th class="order-table-header-cell">币种/金额</th>
+        <th class="order-table-header-cell">状态/派彩</th>
         <th class="order-table-header-cell" style="text-align: center">操作</th>
       </tr>
       </thead>
       <tbody class="order-table-body">
       <tr v-for="order in orderList" :key="order.id" class="order-table-row">
-        <td class="order-table-cell">{{ order.mode === 'official' ? '官方' : '信用' }}</td>
-        <td class="order-table-cell">{{ order.method_define.name }}</td>
         <td class="order-table-cell">
-          <div class="code-wrapper">
+          <div class="cell2">
+            <div class="c-main">{{ gameLabel(order.lottery_sign) }}</div>
+            <div class="c-sub">{{ order.lottery_name || '-' }}</div>
+          </div>
+        </td>
+        <td class="order-table-cell">
+          <div class="cell2">
+            <div class="c-main">{{ order.mode === 'official' ? '官方' : '信用' }}</div>
+            <div class="c-sub">{{ order.method_define.name }}</div>
+          </div>
+        </td>
+        <td class="order-table-cell">
+          <div class="cell2">
+            <div class="c-main">{{ order.issue_no }}</div>
+            <div class="c-sub">{{ order.open_code || '-' }}</div>
+          </div>
+        </td>
+        <td class="order-table-cell">
+          <div class="cell2">
             <el-tooltip
-                v-if="displayCodes[order.id].length > 35"
+                v-if="displayCodes[order.id].length > 22"
                 popper-class="order-code-tooltip"
                 effect="dark"
                 :content="displayCodes[order.id]"
                 placement="top"
             >
-              <span class="order-code">{{ truncateCode(displayCodes[order.id]) }}</span>
+              <div class="c-main order-code">{{ truncateCode(displayCodes[order.id]) }}</div>
             </el-tooltip>
-            <span v-else class="order-code">{{ displayCodes[order.id] }}</span>
+            <div v-else class="c-main order-code">{{ displayCodes[order.id] }}</div>
+            <div class="c-sub">{{ formatTime(order.bet_time) }}</div>
           </div>
         </td>
-        <td class="order-table-cell">{{ currencySymbol }}{{ order.bet_cost }}</td>
-        <td class="order-table-cell">{{ order.bet_count }}</td>
-        <td class="order-table-cell">{{ order.bet_times }}</td>
-        <td class="order-table-cell">{{ getUnitLabel(order.bet_unit) }}</td>
         <td class="order-table-cell">
-          <span class="order-status" :class="statusClass(order)">{{ statusLabel(order) }}</span>
+          <div class="cell2">
+            <div class="c-main">{{ currencyLabel(order.currency) }}</div>
+            <div class="c-sub">{{ currencySymbol }}{{ order.bet_cost }}</div>
+          </div>
         </td>
         <td class="order-table-cell">
-          <span v-if="isWin(order)" class="order-prize">{{ currencySymbol }}{{ order.decide_prize_amount }}</span>
-          <span v-else class="order-prize-none">-</span>
+          <div class="cell2">
+            <div class="c-main order-status" :class="statusClass(order)">{{ statusLabel(order) }}</div>
+            <div class="c-sub">
+              <span v-if="isWin(order)" class="order-prize">+{{ currencySymbol }}{{ order.decide_prize_amount }}</span>
+              <span v-else class="order-prize-none">-</span>
+            </div>
+          </div>
         </td>
         <td class="order-table-cell" style="text-align: center; vertical-align: middle;">
           <!-- 待开奖:可撤单 -->
@@ -89,8 +107,9 @@
 
 <script setup>
 import { computed, onMounted, onUnmounted, watch, ref } from 'vue';
-import { ElButton, ElTooltip, ElPagination } from 'element-plus';
+import { ElButton, ElTooltip, ElPagination, ElMessageBox } from 'element-plus';
 import { notify } from '@shared/notify';
+import { cancelBetOrder } from '@shared/api/lotteryService';
 import api from "@shared/api/index.ts";
 import { storeToRefs } from "pinia";
 import { useCommonStore } from '@shared/stores/commonStore.js';
@@ -143,10 +162,6 @@ watch(() => issueLast.value?.issue_no, (newNo, oldNo) => {
 });
 onUnmounted(() => { if (drawRefreshTimer) clearTimeout(drawRefreshTimer); });
 
-// 单注钱档位 float → 中文标签(元/角/分/厘)。
-const UNIT_LABELS = { '1': '元', '0.1': '角', '0.01': '分', '0.001': '厘' };
-const getUnitLabel = (unitValue) => UNIT_LABELS[String(unitValue)] ?? unitValue;
-
 const currencySymbol = computed(() => commonStore.getCurrency?.(currency.value)?.symbol || '¥');
 
 const displayCodes = computed(() => {
@@ -157,7 +172,24 @@ const displayCodes = computed(() => {
   return codes;
 });
 
-const truncateCode = (code) => (code.length > 35 ? `${code.substring(0, 32)}...` : code);
+const truncateCode = (code) => (code.length > 22 ? `${code.substring(0, 20)}...` : code);
+
+// 游戏类型(时时彩/快三…):按彩种签名前缀映射;游戏名走后端下发的 lottery_name。
+const GAME_TYPE_ZH = { ssc: '时时彩', pk10: '赛车', lhc: '六合彩', ks: '快三', hash: '哈希', sd: '3D', kl8: '快乐8' };
+const gameLabel = (s) => {
+  const k = Object.keys(GAME_TYPE_ZH).find((k) => String(s || '').startsWith(k));
+  return k ? GAME_TYPE_ZH[k] : (s || '-');
+};
+const currencyLabel = (code) => {
+  const c = commonStore.getCurrency?.(code);
+  return c?.label || c?.alias || String(code || '').toUpperCase();
+};
+const formatTime = (ts) => {
+  if (!ts) return '-';
+  const d = new Date(Number(ts) * 1000);
+  const p = (n) => n.toString().padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+};
 
 // —— 状态判定:0 待开奖 / 1-4 已开奖(中奖/未中奖) / 9 已撤单 ——
 const isCancelled = (o) => o.status === 9 || o.cancel_time > 0;
@@ -178,10 +210,21 @@ const statusClass = (o) => {
 };
 
 const cancelOrder = async (order) => {
-  const data = await api.post(`/lottery/betCancel`, { order_id: order.id });
-  notify.success(data.msg);
-  loadOrders();
-  await userStore.fetchBalance();
+  try {
+    await ElMessageBox.confirm('确认撤销该注单?撤销后将退还投注额。', '撤单', {
+      type: 'warning', confirmButtonText: '确认撤单', cancelButtonText: '取消',
+    });
+  } catch {
+    return; // 用户取消
+  }
+  try {
+    await cancelBetOrder(order.id);
+    notify.success('撤单成功');
+    loadOrders();
+    await userStore.fetchBalance();
+  } catch (e) {
+    notify.error(e?.message || '撤单失败');
+  }
 };
 </script>
 
@@ -237,31 +280,36 @@ const cancelOrder = async (order) => {
   background-color: #f9f9f9;
 }
 
-.code-wrapper {
-  position: relative;
-  display: inline-block;
+/* —— 状态 —— */
+.order-status {
+  font-size: 13px;
+  /* 颜色区分:已中奖·派彩=绿,未中奖=灰,待开奖=蓝,已撤单=橙 */
+  &.is-pending   { color: #409eff; font-weight: 600; }
+  &.is-win       { color: #21a366; font-weight: 600; }
+  &.is-lose      { color: #909399; font-weight: 600; }
+  &.is-cancelled { color: #e6a23c; font-weight: 600; }
 }
 
-.order-code {
+.order-prize { color: #21a366; font-weight: 600; }
+.order-prize-none { color: #999; }
+
+/* —— 每格两行:主/次 —— */
+.cell2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.3;
+}
+.c-main { font-size: 13px; color: #1a1a1a; }
+.c-sub { font-size: 12px; color: #909399; }
+.c-main.order-code {
   display: block;
-  max-width: 320px;
+  max-width: 180px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
 }
-
-/* —— 状态 —— */
-.order-status {
-  font-size: 13px;
-  &.is-pending   { color: #909399; }
-  &.is-win       { color: #e4393c; font-weight: 600; }
-  &.is-lose      { color: #67c23a; }
-  &.is-cancelled { color: #999; }
-}
-
-.order-prize { color: #e4393c; font-weight: 600; }
-.order-prize-none { color: #999; }
 
 .order-cancel-button {
   padding: 4px 8px;

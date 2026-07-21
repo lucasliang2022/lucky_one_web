@@ -3,7 +3,10 @@
     <template v-for="(method, methodKey, idx) in (creditGroupCurrent?.methods || {})" :key="methodKey">
       <!-- 组内多玩法同页展示:每个玩法块用带标题的分割线区隔(单玩法时也显示,作小节标题)。 -->
       <el-divider v-if="multiMethod || idx > 0" content-position="center" border-style="dashed">
-        {{ resolveMethodTitle(method, t, te) }}
+        <span class="method-title">
+          {{ resolveMethodTitle(method, t, te) }}
+          <el-icon class="method-title-arrow"><ArrowDown /></el-icon>
+        </span>
       </el-divider>
       <div class="ball-row">
         <component
@@ -26,6 +29,7 @@ import { resolveMethodTitle } from "@lottery/base/utils/common";
 import Ball from "@shared/lottery/ssc/components/layout/credit/Ball.vue";
 import Form from "@shared/lottery/ssc/components/layout/credit/Form.vue";
 import Combo from "@shared/lottery/ssc/components/layout/credit/Combo.vue";
+import { ArrowDown } from '@element-plus/icons-vue';
 
 const props = defineProps({
   store: {
@@ -63,5 +67,17 @@ watch(
 <style lang="scss" scoped>
 .method-display-container {
   padding: 10px;
+}
+
+// 玩法标题右侧的向下标识图标
+.method-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  .method-title-arrow {
+    font-size: 12px;
+    color: var(--el-text-color-secondary, #909399);
+  }
 }
 </style>

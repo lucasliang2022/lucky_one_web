@@ -51,8 +51,7 @@
     <div class="display-options">
       <Currency v-model:currency="currency"/>
       <div class="method-middle-right">
-        <Unit v-model:price="price" :options="unitModes"/>
-        <Times v-model:times="times"/>
+        <Unit v-model:price="price" :min="unitMin" :max="unitMax" :options="unitOptions" :currency="currency"/>
       </div>
     </div>
     <div class="display-buttons">
@@ -89,7 +88,6 @@
       :dialog-bet-list="dialogBetList"
       :store="store"
       @update:officialBetList="handleBetListUpdate"
-      @close="onBetDialogClose"
   />
 </template>
 
@@ -97,7 +95,6 @@
 import {computed, ref, watch, defineAsyncComponent, onMounted, nextTick} from "vue";
 import {storeToRefs} from 'pinia';
 import Unit from "@lottery/base/components/Unit.vue";
-import Times from "@lottery/base/components/Times.vue";
 import Currency from "@lottery/base/components/Currency.vue";
 import Loading from "@lottery/base/components/Loading.vue";
 import OfficialBetCart from "@lottery/base/components/official/OfficialBetCart.vue";
@@ -120,8 +117,9 @@ const store = props.store;
 const {
   currency,
   price,
-  unitModes,
-  times,
+  unitMin,
+  unitMax,
+  unitOptions,
   officialCategoryCurrent,
   officialMethodStructure,
   officialMethodCurrent,
@@ -198,10 +196,6 @@ const handleBetListUpdate = (remainingBets) => {
   } else {
     officialBetList.value = remainingBets;
   }
-};
-
-const onBetDialogClose = () => {
-  console.log('投注弹窗关闭');
 };
 
 const handleMethodClick = (method) => {

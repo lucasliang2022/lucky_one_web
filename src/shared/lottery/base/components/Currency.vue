@@ -100,6 +100,12 @@ onMounted(() => {
   flex: none;
 }
 
+/* 紧凑高度:与右侧「单价」输入框(30px)对齐 */
+.currency-select :deep(.el-select__wrapper) {
+  min-height: 30px;
+  font-size: 13px;
+}
+
 .currency-balance {
   color: red;
 }
